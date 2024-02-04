@@ -1,8 +1,14 @@
-import Cookies from "js-cookie";
 import { Col, Container, Row } from "react-bootstrap";
+import { getPhysiotherapists } from "../redux/actions/physiotherapistActions";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const Homepage = () => {
-  const token = Cookies.get("token");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPhysiotherapists());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container>
       <Row>

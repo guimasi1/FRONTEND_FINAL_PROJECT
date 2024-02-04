@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import registerReducer from "../reducers";
+import registerReducer from "../reducers/index";
 
 const bigReducer = combineReducers({
   register: registerReducer,

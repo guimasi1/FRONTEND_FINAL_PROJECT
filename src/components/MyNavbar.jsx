@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="greenish">
       <Container>
         <Navbar.Brand href="#home">PhysioWEB</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -24,6 +24,12 @@ const MyNavbar = () => {
                 className="text-decoration-none text-black mt-2"
               >
                 Patients
+              </Link>
+              <Link
+                to="/profile"
+                className="text-decoration-none text-black mt-2"
+              >
+                Profile
               </Link>
             </div>
             <NavDropdown title="Resources" id="basic-nav-dropdown">

@@ -17,7 +17,7 @@ const Registration = () => {
 
   return (
     <Container>
-      <Row className="mt-5 justify-content-center">
+      <Row className="my-5 justify-content-center">
         <Col xs={12}>
           <h1 className="text-center bw-bold">Start your healing journey</h1>
         </Col>

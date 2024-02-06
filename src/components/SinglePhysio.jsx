@@ -16,14 +16,14 @@ const SinglePhysio = ({ physio }) => {
   });
   return (
     <Col
-      className="d-flex mb-4 gap-3 border border-1 rounded-5 ps-0 shadow-lg "
+      className="d-flex mb-4 gap-3 border border-1 rounded-4 ps-0 shadow-lg "
       xs={12}
     >
-      <div className="rounded-start-5">
+      <div className="rounded-start-4">
         <img
           src="https://placekitten.com/200"
           alt=""
-          className="rounded-start-5"
+          className="rounded-start-4"
         />
       </div>
 
@@ -40,7 +40,7 @@ const SinglePhysio = ({ physio }) => {
         <div className="mt-3">
           <Button
             variant="success"
-            className={`rounded-pill px-4 py-2`}
+            className={`rounded-pill px-4 py-2 fw-bold`}
             onClick={(e) => {
               e.preventDefault();
               setRequestDetails({
@@ -51,7 +51,7 @@ const SinglePhysio = ({ physio }) => {
               dispatch(connectWithPhysio(requestDetails));
             }}
           >
-            Connect!
+            Connect
           </Button>
         </div>
       </div>

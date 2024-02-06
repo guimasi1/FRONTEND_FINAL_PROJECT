@@ -61,7 +61,7 @@ const Profile = () => {
                 <ListGroup.Item>{myProfile.registrationDate}</ListGroup.Item>
               </ListGroup>
               <Card.Footer className="text-center">
-                <Button variant="primary" className="py-2 px-5">
+                <Button variant="primary" className="py-2 px-5 rounded-4">
                   Save
                 </Button>
               </Card.Footer>

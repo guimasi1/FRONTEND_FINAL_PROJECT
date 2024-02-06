@@ -21,14 +21,17 @@ const Registration = () => {
     <Container>
       <Row className="my-5 justify-content-center">
         <Col xs={12}>
-          <h1 className="text-center bw-bold">Start your healing journey</h1>
+          <h1 className="text-center bw-bold me-5">
+            Start your healing journey
+          </h1>
         </Col>
         <Col xs={12} md={8} lg={6} className="mt-5">
-          <Form>
+          <Form className="d-flex justify-content-center flex-column">
             <Form.Group className="mb-3">
               <Form.Label>First name*</Form.Label>
               <Form.Control
                 value={registrationData.firstName}
+                className="custom-input"
                 type="text"
                 onChange={(e) => {
                   setRegistrationData({
@@ -41,6 +44,7 @@ const Registration = () => {
             <Form.Group className="mb-3">
               <Form.Label>Last name*</Form.Label>
               <Form.Control
+                className="custom-input"
                 value={registrationData.lastName}
                 type="text"
                 onChange={(e) => {
@@ -54,6 +58,7 @@ const Registration = () => {
             <Form.Group className="mb-3">
               <Form.Label>Email address*</Form.Label>
               <Form.Control
+                className="custom-input"
                 value={registrationData.email}
                 type="email"
                 onChange={(e) => {
@@ -68,6 +73,7 @@ const Registration = () => {
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Password*</Form.Label>
               <Form.Control
+                className="custom-input"
                 value={registrationData.password}
                 type="password"
                 onChange={(e) => {
@@ -81,6 +87,7 @@ const Registration = () => {
             <Form.Group className="mb-3">
               <Form.Label>Phone number</Form.Label>
               <Form.Control
+                className="custom-input"
                 value={registrationData.phoneNumber}
                 type="text"
                 onChange={(e) => {
@@ -94,6 +101,7 @@ const Registration = () => {
             <Form.Group className="mb-3">
               <Form.Label>Date of birth*</Form.Label>
               <Form.Control
+                className="custom-input"
                 value={registrationData.dateOfBirth}
                 type="date"
                 onChange={(e) => {
@@ -190,18 +198,20 @@ const Registration = () => {
             ) : (
               ""
             )}
-            <Button
-              variant="primary"
-              type="submit"
-              className="rounded-pill py-2 px-5 fw-bold"
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(register(registrationData, role));
-                navigate("/login");
-              }}
-            >
-              Submit
-            </Button>
+            <div className="d-flex justify-content-center">
+              <div
+                variant="primary"
+                type="submit"
+                className="rounded-pill py-3 px-4 fs-5 fw-bold greenish w-50 text-center text-white me-5"
+                onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(register(registrationData, role));
+                  navigate("/login");
+                }}
+              >
+                Sign up!
+              </div>
+            </div>
           </Form>
           {registrationCompleted && (
             <Alert variant="success" className="mt-4">

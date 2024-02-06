@@ -9,7 +9,7 @@ export const getPatientsLinkRequests = (id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/linkRequests/byPatient/" + id,
+        "http://localhost:3001/api/linkRequests/byPatientAndStatus/" + id,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -5,55 +5,53 @@ import { Link } from "react-router-dom";
 const MyNavbar = () => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
   return (
-    <Navbar expand="lg" className="greenish">
-      <Container>
-        <Navbar.Brand href="#home">PhysioWEB</Navbar.Brand>
+    <Navbar expand="lg">
+      <Container className="ps-lg-5">
+        <Navbar.Brand className="me-0 me-lg-5">PhysioWEB</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <div className="d-flex gap-3">
-              <Link to="/" className="text-decoration-none text-black mt-2">
+            <div
+              className="d-flex gap-5 justify-content-evenly"
+              id="navbar-div"
+            >
+              <Link
+                to="/"
+                className="text-decoration-none text-black mt-2 fw-bold "
+              >
                 Home
               </Link>
               <Link
                 to="/physiotherapists"
-                className="text-decoration-none text-black mt-2"
+                className="text-decoration-none text-black mt-2 fw-bold "
               >
                 Physiotherapists
               </Link>
               <Link
                 to="/patients"
-                className="text-decoration-none text-black mt-2"
+                className="text-decoration-none text-black mt-2 fw-bold "
               >
                 Patients
               </Link>
               <Link
                 to="/profile"
-                className="text-decoration-none text-black mt-2"
+                className="text-decoration-none text-black mt-2 fw-bold "
               >
                 Profile
               </Link>
             </div>
-            <NavDropdown title="Resources" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <div className="d-flex gap-3">
-          <Link to="/login" className="text-decoration-none text-black fw-bold">
+        <div className="d-flex gap-4">
+          <Link
+            to="/login"
+            className="text-decoration-none text-black fw-bold py-3"
+          >
             Login
           </Link>
           <Link
             to="/register"
-            className="text-decoration-none text-black fw-bold"
+            className="text-decoration-none text-black fw-bold greenish py-3 px-4 rounded-pill text-white"
           >
             Get Started
           </Link>

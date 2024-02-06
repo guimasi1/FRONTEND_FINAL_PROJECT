@@ -11,6 +11,12 @@ code {
     monospace;
 }
 
+/* NAVBAR */
+
+#navbar-div {
+  margin-left: 12em !important;
+}
+
 #illustration-registration {
   width: 100%;
 }
@@ -19,7 +25,21 @@ code {
 }
 
 .greenish {
-  background-color: rgb(163 255 196);
+  background-color: #0e9a3d;
+}
+
+.greenish-2 {
+  background-color: #68d89b;
+}
+
+.greenish-3 {
+  background-color: #8dffcd;
+}
+.greenish-4 {
+  background-color: #bcffdb;
+}
+.greenish-5 {
+  background-color: #bee6ce;
 }
 
 .cursor {
@@ -32,4 +52,17 @@ code {
 
 .hidden {
   display: none;
+}
+
+.custom-input {
+  border-radius: 0.9rem !important;
+  border: 2px solid #10ae35 !important;
+  height: 3em;
+  width: 90% !important;
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out !important;
+}
+
+.custom-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+  border-color: #0056b3 !important;
 }

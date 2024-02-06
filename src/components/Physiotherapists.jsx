@@ -14,7 +14,7 @@ const Physiotherapist = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <Container className="my-5 ">
+    <Container className="my-5 border p-5 rounded-5 shadow-lg">
       <Row>
         <h1 className="mb-3">Our physiotherapists</h1>
         {physiotherapists &&

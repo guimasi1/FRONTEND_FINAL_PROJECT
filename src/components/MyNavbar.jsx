@@ -1,7 +1,9 @@
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
+  const myProfile = useSelector((state) => state.patients.patientProfile);
   return (
     <Navbar expand="lg" className="greenish">
       <Container>
@@ -20,7 +22,7 @@ const MyNavbar = () => {
                 Physiotherapists
               </Link>
               <Link
-                to="/physiotherapists"
+                to="/patients"
                 className="text-decoration-none text-black mt-2"
               >
                 Patients

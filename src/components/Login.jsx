@@ -2,10 +2,13 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/actions/authentication";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const [loginData, setLoginData] = useState(null);
-  const role = localStorage.getItem("role");
+  const navigate = useNavigate();
+  // const role = localStorage.getItem("role");
+  const [role, setRole] = useState("");
   return (
     <Container>
       <Row>
@@ -40,6 +43,33 @@ const Login = () => {
                 }}
               />
             </Form.Group>
+            <div className="my-3">
+              <Form.Label className="mb-3">What are you?*</Form.Label>
+              <div>
+                <Form.Check
+                  inline
+                  label="Physiotherapist"
+                  name="group1"
+                  type="radio"
+                  value={"PHYSIOTHERAPIST"}
+                  id="1"
+                  onClick={(e) => {
+                    setRole(e.target.value);
+                  }}
+                />
+                <Form.Check
+                  inline
+                  label="Patient"
+                  name="group1"
+                  type="radio"
+                  value={"PATIENT"}
+                  id="2"
+                  onClick={(e) => {
+                    setRole(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
 
             <Button
               variant="success"
@@ -47,6 +77,7 @@ const Login = () => {
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(login(loginData, role));
+                navigate("/");
               }}
             >
               Submit

@@ -1,7 +1,13 @@
-import { GET_PHYSIOTHERAPISTS } from "../actions/physiotherapistActions";
+import {
+  GET_MY_PHYSIO_PROFILE,
+  GET_PHYSIOTHERAPISTS,
+  SEND_REQUEST,
+} from "../actions/physiotherapistActions";
 
 const initialState = {
-  physiotherapists: [],
+  physiotherapistsData: [],
+  physioProfile: null,
+  linkRequest: null,
 };
 
 const physiotherapistsReducer = (state = initialState, action) => {
@@ -9,7 +15,17 @@ const physiotherapistsReducer = (state = initialState, action) => {
     case GET_PHYSIOTHERAPISTS:
       return {
         ...state,
-        physiotherapists: action.payload,
+        physiotherapistsData: action.payload,
+      };
+    case GET_MY_PHYSIO_PROFILE:
+      return {
+        ...state,
+        physioProfile: action.payload,
+      };
+    case SEND_REQUEST:
+      return {
+        ...state,
+        linkRequest: action.payload,
       };
     default:
       return state;

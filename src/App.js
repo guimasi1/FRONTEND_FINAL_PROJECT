@@ -5,7 +5,9 @@ import MyNavbar from "./components/MyNavbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
-import Physiotherapist from "./components/Physiotherapists";
+import Physiotherapists from "./components/Physiotherapists";
+import Profile from "./components/Profile";
+import Patients from "./components/Patients";
 function App() {
   return (
     <BrowserRouter>
@@ -14,7 +16,9 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-        <Route path="/physiotherapists" element={<Physiotherapist />} />
+        <Route path="/physiotherapists" element={<Physiotherapists />} />
+        <Route path="/patients" element={<Patients />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

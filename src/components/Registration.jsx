@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { register } from "../redux/actions/authentication";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Registration = () => {
   const [role, setRole] = useState("");
   const [registrationData, setRegistrationData] = useState({
@@ -13,6 +14,7 @@ const Registration = () => {
     dateOfBirth: "",
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [registrationCompleted, setRegistrationCompleted] = useState(false);
 
   return (
@@ -195,6 +197,7 @@ const Registration = () => {
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(register(registrationData, role));
+                navigate("/login");
               }}
             >
               Submit

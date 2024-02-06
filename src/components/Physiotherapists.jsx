@@ -18,7 +18,9 @@ const Physiotherapist = () => {
       <Row>
         <h1 className="mb-3">Our physiotherapists</h1>
         {physiotherapists &&
-          physiotherapists.map((physio) => <SinglePhysio physio={physio} />)}
+          physiotherapists.map((physio) => (
+            <SinglePhysio physio={physio} key={physio.id} />
+          ))}
       </Row>
     </Container>
   );

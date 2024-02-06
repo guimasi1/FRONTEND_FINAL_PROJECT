@@ -1,20 +1,24 @@
 import Cookies from "js-cookie";
-export const GET_PATIENTS = "GET_PATIENTS";
-export const GET_MY_PATIENT_PROFILE = "GET_MY_PATIENT_PROFILE";
 
-export const getPatients = () => {
+export const GET_REQUESTS_BY_ID = "GET_REQUESTS_BY_ID";
+export const REMOVE_REQUEST = "REMOVE_REQUEST";
+
+export const getPatientsLinkRequests = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/patients", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        "http://localhost:3001/api/linkRequests/byPatient/" + id,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (res.ok) {
         const data = await res.json();
         dispatch({
-          type: GET_PATIENTS,
+          type: GET_REQUESTS_BY_ID,
           payload: data,
         });
 
@@ -28,11 +32,12 @@ export const getPatients = () => {
   };
 };
 
-export const getMyPatientProfile = () => {
+export const removeRequest = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/patients/me", {
+      const res = await fetch("http://localhost:3001/api/linkRequests/" + id, {
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -40,11 +45,9 @@ export const getMyPatientProfile = () => {
       if (res.ok) {
         const data = await res.json();
         dispatch({
-          type: GET_MY_PATIENT_PROFILE,
+          type: REMOVE_REQUEST,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }

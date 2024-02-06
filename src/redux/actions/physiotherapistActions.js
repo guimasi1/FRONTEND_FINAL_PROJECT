@@ -1,5 +1,4 @@
 import Cookies from "js-cookie";
-import { Alert } from "react-bootstrap";
 export const GET_PHYSIOTHERAPISTS = "GET_PHYSIOTHERAPISTS";
 export const GET_MY_PHYSIO_PROFILE = "GET_MY_PHYSIO_PROFILE";
 export const SEND_REQUEST = "SEND_REQUEST";

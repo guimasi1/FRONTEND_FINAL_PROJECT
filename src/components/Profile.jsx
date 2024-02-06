@@ -1,20 +1,43 @@
 import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getPatientsLinkRequests } from "../redux/actions/linkRequestsActions";
+import SingleRequest from "./SingleRequest";
 const Profile = () => {
   const dispatch = useDispatch();
+  const [update, setUpdate] = useState(0);
   const myProfile = useSelector((state) => state.patients.patientProfile);
+  const patientLinkRequests = useSelector(
+    (state) => state.requests.linkRequestsByPatient.content
+  );
+
+  const updateProfile = () => setUpdate(update + 1);
+
   useEffect(() => {
     dispatch(getMyPatientProfile());
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log(patientLinkRequests);
+    console.log("vengo dopo patient link requests");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    dispatch(getPatientsLinkRequests(myProfile.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    dispatch(getMyPatientProfile());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [update]);
+
   return (
     <Container className="my-5 pt-5">
-      <Row>
+      <Row className="gap-5">
         {myProfile && (
           <Col>
-            <Card className="shadow-sm border-0">
+            <Card className="shadow-lg border-0">
               <Card.Img variant="top" src="https://placekitten.com/500" />
               <Card.Body>
                 <Card.Title>My profile</Card.Title>
@@ -41,8 +64,20 @@ const Profile = () => {
         )}
         <Col>
           <Row>
-            <Col xs={12}>Colonna di destra</Col>
-            <Col>Colonna di destra</Col>
+            <Col xs={12} className="p-4 shadow-lg rounded-5">
+              <h4 className="mb-4">Pending link requests</h4>
+              {patientLinkRequests &&
+                patientLinkRequests.map((request, index) => (
+                  <SingleRequest
+                    request={request}
+                    key={index}
+                    updateProfile={updateProfile}
+                  />
+                ))}
+            </Col>
+            <Col xs={12} className="p-4 shadow-lg rounded-5 mt-5">
+              <h4>Link requests from physiotherapists</h4>
+            </Col>
           </Row>
         </Col>
       </Row>

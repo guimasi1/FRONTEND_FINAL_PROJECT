@@ -21,3 +21,7 @@ code {
 .greenish {
   background-color: rgb(163 255 196);
 }
+
+.cursor {
+  cursor: pointer;
+}

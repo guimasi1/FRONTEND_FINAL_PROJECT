@@ -53,3 +53,29 @@ export const getMyPatientProfile = () => {
     }
   };
 };
+
+export const getPatientsLinkRequests = () => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch("http://localhost:3001/api/patients/me", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_MY_PATIENT_PROFILE,
+          payload: data,
+        });
+
+        console.log(data);
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

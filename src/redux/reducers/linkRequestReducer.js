@@ -1,10 +1,12 @@
 import {
+  ACCEPT_REQUEST,
   GET_REQUESTS_BY_ID,
   REMOVE_REQUEST,
 } from "../actions/linkRequestsActions";
 
 const initialState = {
   linkRequestsByPatient: [],
+  acceptRequest: null,
 };
 
 const linkRequestReducer = (state = initialState, action) => {
@@ -20,6 +22,11 @@ const linkRequestReducer = (state = initialState, action) => {
         linkRequestsByPatient: state.linkRequestsByPatient.filter(
           (request) => request.id !== action.payload
         ),
+      };
+    case ACCEPT_REQUEST:
+      return {
+        ...state,
+        acceptRequest: action.payload,
       };
     default:
       return state;

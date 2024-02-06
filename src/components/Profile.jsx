@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientsLinkRequests } from "../redux/actions/linkRequestsActions";
 import SingleRequest from "./SingleRequest";
+import { motion } from "framer-motion";
+
 const Profile = () => {
   const dispatch = useDispatch();
   const [update, setUpdate] = useState(0);
@@ -33,12 +35,16 @@ const Profile = () => {
   }, [update]);
 
   return (
-    <Container className="my-5 pt-5">
-      <Row className="gap-5">
+    <Container className="my-5 pt-5 ">
+      <Row className="gap-5 ">
         {myProfile && (
           <Col>
-            <Card className="shadow-lg border-0">
-              <Card.Img variant="top" src="https://placekitten.com/500" />
+            <Card className="shadow-lg border-0 rounded-5">
+              <Card.Img
+                variant="top"
+                src="https://placekitten.com/500"
+                className="rounded-top-5"
+              />
               <Card.Body>
                 <Card.Title>My profile</Card.Title>
                 <Card.Text></Card.Text>
@@ -74,9 +80,6 @@ const Profile = () => {
                     updateProfile={updateProfile}
                   />
                 ))}
-            </Col>
-            <Col xs={12} className="p-4 shadow-lg rounded-5 mt-5">
-              <h4>Link requests from physiotherapists</h4>
             </Col>
           </Row>
         </Col>

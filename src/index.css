@@ -25,3 +25,11 @@ code {
 .cursor {
   cursor: pointer;
 }
+
+.icon-request {
+  width: 28px;
+}
+
+.hidden {
+  display: none;
+}

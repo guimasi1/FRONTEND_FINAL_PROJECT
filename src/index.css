@@ -96,3 +96,15 @@ code {
   top: -150px;
   left: 300px;
 }
+
+.hover-request:hover {
+  background-color: #68d89b;
+}
+
+.add-icons {
+  width: 15%;
+}
+
+.add-button:hover {
+  background-color: hsl(48, 82%, 57%) !important;
+}

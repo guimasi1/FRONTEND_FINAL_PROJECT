@@ -5,7 +5,7 @@ const SinglePatient = ({ patient }) => {
   const navigate = useNavigate();
   return (
     <Col
-      className="shadow-lg rounded-3 d-flex flex-column gap-3 py-2 px-3"
+      className="shadow-lg rounded-3 d-flex flex-column gap-3 py-2 px-3 ms-3"
       xs={12}
       md={6}
       lg={3}

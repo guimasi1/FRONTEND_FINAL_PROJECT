@@ -11,7 +11,9 @@ const SingleRequest = ({ request, updateProfile }) => {
   const [removed, setRemoved] = useState(false);
   return (
     <Row
-      className={`mb-2 py-2 rounded-4 ${accepted || removed ? "d-none" : ""}`}
+      className={`hover-request mb-2 py-2 rounded-4 ${
+        accepted || removed ? "d-none" : ""
+      }`}
     >
       <Col xs={2}>
         <img

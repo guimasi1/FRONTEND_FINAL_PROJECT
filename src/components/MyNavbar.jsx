@@ -35,12 +35,16 @@ const MyNavbar = () => {
               ) : (
                 ""
               )}
-              <Link
-                to="/patients"
-                className="text-decoration-none text-black mt-2 fw-bold "
-              >
-                Patients
-              </Link>
+              {role === "PHYSIOTHERAPIST" ? (
+                <Link
+                  to="/patients"
+                  className="text-decoration-none text-black mt-2 fw-bold "
+                >
+                  Patients
+                </Link>
+              ) : (
+                ""
+              )}
               {
                 // eslint-disable-next-line no-const-assign
                 role === "PATIENT" ? (
@@ -56,7 +60,7 @@ const MyNavbar = () => {
               }
               {
                 // eslint-disable-next-line no-const-assign
-                (role = "PHYSIOTHERAPIST" ? (
+                role === "PHYSIOTHERAPIST" ? (
                   <Link
                     to="/physioProfile"
                     className="text-decoration-none text-black mt-2 fw-bold "
@@ -65,7 +69,7 @@ const MyNavbar = () => {
                   </Link>
                 ) : (
                   ""
-                ))
+                )
               }
             </div>
           </Nav>

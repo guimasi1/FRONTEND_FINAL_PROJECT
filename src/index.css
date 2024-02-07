@@ -42,6 +42,16 @@ code {
   background-color: #bee6ce;
 }
 
+.brownish-button {
+  background-color: #ce8013 !important;
+  /* background-color: #9a600e !important; */
+  border: none !important;
+}
+
+.brownish-button:hover {
+  background-color: #ce9d58 !important;
+}
+
 .cursor {
   cursor: pointer;
 }
@@ -75,4 +85,14 @@ code {
   position: absolute;
   opacity: 0.9;
   z-index: -1;
+}
+
+/* EXERCISES ASSIGNMENT */
+.image-profile-exercises {
+  width: 40%;
+}
+
+#stroke-text {
+  top: -150px;
+  left: 300px;
 }

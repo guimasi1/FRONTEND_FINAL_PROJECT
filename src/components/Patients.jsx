@@ -34,7 +34,7 @@ const Patients = () => {
             </div>
             {yourPatients &&
               yourPatients.map((patient) => (
-                <SinglePatient patient={patient} />
+                <SinglePatient patient={patient} key={patient.id} />
               ))}
           </Row>
         </Col>

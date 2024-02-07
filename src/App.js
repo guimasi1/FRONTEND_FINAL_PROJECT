@@ -9,6 +9,7 @@ import Physiotherapists from "./components/Physiotherapists";
 import Profile from "./components/Profile";
 import Patients from "./components/Patients";
 import PhysioProfile from "./components/PhysioProfile";
+import AssignExercisesPage from "./components/AssignExercisesPage";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
         <Route path="/patients" element={<Patients />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/physioProfile" element={<PhysioProfile />} />
+        <Route path="/assignExercises/:id" element={<AssignExercisesPage />} />
       </Routes>
     </BrowserRouter>
   );

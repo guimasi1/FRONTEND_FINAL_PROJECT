@@ -1,37 +1,19 @@
 import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
-import { getMyPatientProfile } from "../redux/actions/patientsActions";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPatientsLinkRequests } from "../redux/actions/linkRequestsActions";
-import SingleRequest from "./SingleRequest";
+import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
+import { motion } from "framer-motion";
 
-const Profile = () => {
+const PhysioProfile = () => {
   const dispatch = useDispatch();
-  const [update, setUpdate] = useState(0);
-  const myProfile = useSelector((state) => state.patients.patientProfile);
-  const patientLinkRequests = useSelector(
-    (state) => state.requests.linkRequestsByPatient.content
+  const myProfile = useSelector(
+    (state) => state.physiotherapists.physioProfile
   );
 
-  const updateProfile = () => setUpdate(update + 1);
-
   useEffect(() => {
-    dispatch(getMyPatientProfile());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    console.log(patientLinkRequests);
-    console.log("vengo dopo patient link requests");
+    dispatch(getMyPhysioProfile());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    dispatch(getPatientsLinkRequests(myProfile.id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    dispatch(getMyPatientProfile());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [update]);
 
   return (
     <Container className="my-5 pt-5 ">
@@ -55,9 +37,13 @@ const Profile = () => {
                   </div>
                   <p>{myProfile.phoneNumber}</p>
                 </ListGroup.Item>
-                <ListGroup.Item>{myProfile.email}</ListGroup.Item>
-                <ListGroup.Item>{myProfile.gender}</ListGroup.Item>
-                <ListGroup.Item>{myProfile.registrationDate}</ListGroup.Item>
+                <ListGroup.Item>Email: {myProfile.email}</ListGroup.Item>
+                <ListGroup.Item>
+                  specializations: {myProfile.specialization}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Registration date: {myProfile.registrationDate}
+                </ListGroup.Item>
               </ListGroup>
               <Card.Footer className="text-center">
                 <Button
@@ -74,14 +60,6 @@ const Profile = () => {
           <Row>
             <Col xs={12} className="p-4 shadow-lg rounded-5">
               <h4 className="mb-4">Pending link requests</h4>
-              {patientLinkRequests &&
-                patientLinkRequests.map((request, index) => (
-                  <SingleRequest
-                    request={request}
-                    key={index}
-                    updateProfile={updateProfile}
-                  />
-                ))}
             </Col>
           </Row>
         </Col>
@@ -90,4 +68,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default PhysioProfile;

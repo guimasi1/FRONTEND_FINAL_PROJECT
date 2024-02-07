@@ -1,9 +1,13 @@
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const MyNavbar = () => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
+  let role = Cookies.get("role");
+  console.log("role");
+  console.log(role);
   return (
     <Navbar expand="lg">
       <Container className="ps-lg-5">
@@ -21,24 +25,48 @@ const MyNavbar = () => {
               >
                 Home
               </Link>
-              <Link
-                to="/physiotherapists"
-                className="text-decoration-none text-black mt-2 fw-bold "
-              >
-                Physiotherapists
-              </Link>
+              {role === "PATIENT" ? (
+                <Link
+                  to="/physiotherapists"
+                  className="text-decoration-none text-black mt-2 fw-bold "
+                >
+                  Physiotherapists
+                </Link>
+              ) : (
+                ""
+              )}
               <Link
                 to="/patients"
                 className="text-decoration-none text-black mt-2 fw-bold "
               >
                 Patients
               </Link>
-              <Link
-                to="/profile"
-                className="text-decoration-none text-black mt-2 fw-bold "
-              >
-                Profile
-              </Link>
+              {
+                // eslint-disable-next-line no-const-assign
+                role === "PATIENT" ? (
+                  <Link
+                    to="/profile"
+                    className="text-decoration-none text-black mt-2 fw-bold "
+                  >
+                    Profile
+                  </Link>
+                ) : (
+                  ""
+                )
+              }
+              {
+                // eslint-disable-next-line no-const-assign
+                (role = "PHYSIOTHERAPIST" ? (
+                  <Link
+                    to="/physioProfile"
+                    className="text-decoration-none text-black mt-2 fw-bold "
+                  >
+                    Profile
+                  </Link>
+                ) : (
+                  ""
+                ))
+              }
             </div>
           </Nav>
         </Navbar.Collapse>

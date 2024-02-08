@@ -108,3 +108,9 @@ code {
 .add-button:hover {
   background-color: hsl(48, 82%, 57%) !important;
 }
+
+/* HOMEPAGE */
+
+#headline {
+  font-size: 5.5em;
+}

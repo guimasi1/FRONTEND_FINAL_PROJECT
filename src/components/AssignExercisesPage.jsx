@@ -88,9 +88,9 @@ const AssignExercisesPage = () => {
       {patientProfile && (
         <Row className="gap-3">
           <Col xs={12}>
-            <div className="position-relative container pb-2">
+            <div className="position-relative container">
               <div>
-                <h1 className="mb-5 text-center ">Your patient</h1>
+                <h1 className="text-center ">Your patient</h1>
                 {/* <img
                   src="/images/stroke.svg"
                   alt=""
@@ -100,11 +100,7 @@ const AssignExercisesPage = () => {
               </div>
             </div>
           </Col>
-          <Col
-            xs={12}
-            md={{ offset: 2, span: 8 }}
-            className="shadow-lg rounded-4 px-5"
-          >
+          <Col xs={12} md={{ offset: 3, span: 6 }} className=" rounded-4 px-5">
             <div>
               <div className="d-flex justify-content-center mt-5 mb-4">
                 <img

@@ -11,7 +11,15 @@ const MyNavbar = () => {
   return (
     <Navbar expand="lg">
       <Container className="ps-lg-5">
-        <Navbar.Brand className="me-0 me-lg-5">PhysioWEB</Navbar.Brand>
+        <Navbar.Brand className="me-0 me-lg-5">
+          <img
+            src="/images/logo.svg"
+            width="100"
+            height="100"
+            className="d-inline-block align-top "
+            alt="React Bootstrap logo"
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -23,6 +31,7 @@ const MyNavbar = () => {
                 to="/"
                 className="text-decoration-none text-black mt-2 fw-bold "
               >
+                {" "}
                 Home
               </Link>
               {role === "PATIENT" ? (
@@ -70,7 +79,21 @@ const MyNavbar = () => {
                 ) : (
                   ""
                 )
-              }
+              }{" "}
+              <Link
+                to="/"
+                className="text-decoration-none text-black mt-2 fw-bold "
+              >
+                {" "}
+                Resources
+              </Link>
+              <Link
+                to="/"
+                className="text-decoration-none text-black mt-2 fw-bold "
+              >
+                {" "}
+                Pricing
+              </Link>
             </div>
           </Nav>
         </Navbar.Collapse>

@@ -7,20 +7,24 @@ import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 
 const Patients = () => {
   const dispatch = useDispatch();
-  const yourPatients = useSelector(
-    (state) => state.patients.patientsByPhysio.content
-  );
-  console.log(yourPatients);
+
   const myPhysioProfile = useSelector(
     (state) => state.physiotherapists.physioProfile
   );
-
+  const yourPatients = useSelector(
+    (state) => state.patients.patientsByPhysio.content
+  );
   useEffect(() => {
     dispatch(getMyPhysioProfile());
 
-    dispatch(getPatientsByPhysio(myPhysioProfile.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (myPhysioProfile && myPhysioProfile.id) {
+      dispatch(getPatientsByPhysio(myPhysioProfile.id));
+    }
+  }, [myPhysioProfile, dispatch]);
 
   return (
     <Container>

@@ -43,9 +43,6 @@ export const getMyPhysioProfile = () => {
           type: GET_MY_PHYSIO_PROFILE,
           payload: data,
         });
-
-        console.log(data);
-        console.log("ciao");
       } else {
         throw new Error("Something went wrong.");
       }

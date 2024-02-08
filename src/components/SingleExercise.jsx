@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Badge, Col, Form, Row } from "react-bootstrap";
-
+import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
 const SingleExercise = ({ exercise }) => {
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);

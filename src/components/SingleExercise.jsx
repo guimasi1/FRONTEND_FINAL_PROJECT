@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Badge, Col, Form, Row } from "react-bootstrap";
 import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
-const SingleExercise = ({ exercise }) => {
+import { useDispatch } from "react-redux";
+const SingleExercise = ({ exercise, getExercises, setUpdate, update }) => {
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);
+  const dispatch = useDispatch();
 
   return (
-    <Col className="border rounded-5 p-4 ">
+    <Col className="border rounded-5 p-4">
       <Row>
         <Col xs={12} className="fw-bold">
           {exercise.name}
@@ -76,8 +78,21 @@ const SingleExercise = ({ exercise }) => {
             </Form.Select>
           </div>
         </Col>
-        <Col className="mt-1 d-flex justify-content-center ">
-          <div className="d-flex justify-content-center align-items-center bg-warning w-50 rounded-pill cursor fw-bold add-button">
+        <Col className="mt-1 d-flex justify-content-center">
+          <div
+            className="d-flex justify-content-center align-items-center bg-warning w-50 rounded-pill cursor fw-bold add-button"
+            onClick={() => {
+              dispatch(
+                createExerciseWithDetails({
+                  sets: sets,
+                  reps: reps,
+                  exercise_id: exercise.id,
+                })
+              );
+              setUpdate(update + 1);
+              dispatch(getExercises());
+            }}
+          >
             <p className="p-0 mt-3 me-2">ADD</p>
             <img src="\images\add-icon.svg" alt="" className="add-icons" />
           </div>

@@ -6,23 +6,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { getExercises } from "../redux/actions/exercisesActions";
 import SingleExercise from "./SingleExercise";
 import Select from "react-select";
-import { createAssignment } from "../redux/actions/assignmentsActions";
+import {
+  createAssignment,
+  getAssignmentsByPatientAndPhysio,
+} from "../redux/actions/assignmentsActions";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
-import { current } from "@reduxjs/toolkit";
 import AddedExercise from "./AddedExercise";
+import SingleAssignment from "./SingleAssignment";
 
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const patientProfile = useSelector((state) => state.patients.singlePatient);
-  const stateTest = useSelector((state) => state.physiotherapists);
   const currentPhysio = useSelector(
     (state) => state.physiotherapists.physioProfile
   );
-  const [assignmentData, setAssignmentData] = useState();
-  const currentDate = new Date(Date.now());
-
-  console.log(currentDate);
+  const assignments = useSelector(
+    (state) => state.assignments.assignmentsByIds.content
+  );
 
   //const currentDate = new Date(Date.now());
 
@@ -36,13 +37,22 @@ const AssignExercisesPage = () => {
   // console.log(formattedDate);
 
   const exercises = useSelector((state) => state.exercises.exercises.content);
-  const [showExercisesOptions, setShowExercisesOptions] = useState(false);
   const [targetArea, setTargetArea] = useState("");
+  const [update, setUpdate] = useState(0);
   console.log(patientProfile);
+
   useEffect(() => {
     dispatch(getMyPhysioProfile());
+    dispatch(getSinglePatient(id));
+    dispatch(getExercises());
+    dispatch(getAssignmentsByPatientAndPhysio(id, currentPhysio.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    dispatch(getSinglePatient(id));
+    dispatch(getExercises());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [update]);
 
   const options = [
     { value: "Abductors", label: "Abductors" },
@@ -73,11 +83,6 @@ const AssignExercisesPage = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
 
-  useEffect(() => {
-    dispatch(getSinglePatient(id));
-    dispatch(getExercises());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <Container className="shadow-lg my-5 rounded-5 py-5 px-5">
       {patientProfile && (
@@ -144,64 +149,98 @@ const AssignExercisesPage = () => {
                     };
                     dispatch(createAssignment(newAssignmentData));
                     console.log("ok");
-                    setShowExercisesOptions(true);
                   }}
                 >
                   New assignment
                 </Button>
               </Col>
             </Row>
+            <Row className="mb-2 align-items-center cursor">
+              <Col className="fw-bold" xs={1}>
+                <div className="d-flex justify-content-center align-items-center py-2">
+                  N°
+                </div>
+              </Col>
+              <Col className="fw-bold">Assignment Date</Col>
+              <Col className="fw-bold">Status</Col>
+              <Col className="d-flex gap-3 justify-content-end"></Col>
+            </Row>
+            {assignments &&
+              assignments.map((assignment, index) => (
+                <SingleAssignment
+                  assignment={assignment}
+                  index={index}
+                  key={assignment.id}
+                />
+              ))}
           </Col>
-          {showExercisesOptions && (
-            <Col className="shadow-lg rounded-4 px-5 mt-5">
-              <Row>
-                <Col xs={12} className="mt-4 d-flex justify-content-between ">
-                  <h2>New Assignment</h2>
-                </Col>
-                <Col>
-                  <p className="p-0 fw-bold">Date:</p>
-                </Col>
-              </Row>
-              <h3 className="my-4">Exercises</h3>
-              <Row>
-                <Col xs={12}>
-                  <Row className="border rounded-2 text-center ">
-                    <Col className="border py-1">Name</Col>
-                    <Col className="border py-1">Sets</Col>
-                    <Col className="border py-1">Reps</Col>
-                  </Row>
-                </Col>
-                <AddedExercise />
-              </Row>
-              <Row>
-                <Col xs={3} className="my-4 d-flex align-items-center gap-3">
-                  <p className="p-0 fw-bold mt-3">Target Area</p>
-                  <Select
-                    className="w-75"
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
-                    options={options}
-                  />
-                </Col>
-                <Col xs={3} className="my-4 d-flex align-items-center gap-3">
-                  <p className="p-0 fw-bold mt-3">Difficulty</p>
-                  <Select
-                    className="w-75"
-                    defaultValue={selectedDifficulty}
-                    onChange={setSelectedDifficulty}
-                    options={difficulties}
-                  />
-                </Col>
-              </Row>
+          <Col className="shadow-lg rounded-4 px-5 mt-5">
+            <Row>
+              <Col xs={12} className="mt-4 d-flex justify-content-between ">
+                <h2>New Assignment</h2>
+              </Col>
+              <Col>
+                <p className="p-0 fw-bold">Date:</p>
+              </Col>
+            </Row>
+            <h3 className="my-4">Exercises</h3>
+            <Row>
+              <Col xs={12}>
+                <Row className="border rounded-2 text-center ">
+                  <Col
+                    className="border border-2 border-black py-1 rounded-start-2"
+                    xs={1}
+                  >
+                    N°
+                  </Col>
+                  <Col className="border border-2 border-black py-1">Name</Col>
+                  <Col className="border border-2 border-black py-1">Sets</Col>
+                  <Col className="border border-2 border-black py-1 rounded-end-2">
+                    Reps
+                  </Col>
+                </Row>
+              </Col>
+              <AddedExercise />
+            </Row>
+            <Row>
+              <Col xs={3} className="my-4 d-flex align-items-center gap-3">
+                <p className="p-0 fw-bold mt-3">Target Area</p>
+                <Select
+                  className="w-75"
+                  defaultValue={selectedOption}
+                  onChange={setSelectedOption}
+                  options={options}
+                />
+              </Col>
+              <Col xs={3} className="my-4 d-flex align-items-center gap-3">
+                <p className="p-0 fw-bold mt-3">Difficulty</p>
+                <Select
+                  className="w-75"
+                  defaultValue={selectedDifficulty}
+                  onChange={setSelectedDifficulty}
+                  options={difficulties}
+                />
+              </Col>
+            </Row>
 
-              <Row xs={1} md={2} lg={3} className="mb-4 gap-3">
-                {exercises &&
-                  exercises.map((exercise) => (
-                    <SingleExercise exercise={exercise} key={exercise.id} />
-                  ))}
-              </Row>
-            </Col>
-          )}
+            <Row
+              xs={1}
+              md={2}
+              lg={4}
+              className="mb-4 gap-2 justify-content-around"
+            >
+              {exercises &&
+                exercises.map((exercise) => (
+                  <SingleExercise
+                    exercise={exercise}
+                    key={exercise.id}
+                    getExercises={getExercises}
+                    setUpdate={setUpdate}
+                    update={update}
+                  />
+                ))}
+            </Row>
+          </Col>
         </Row>
       )}
     </Container>

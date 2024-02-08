@@ -27,13 +27,16 @@ export const getExercises = () => {
   };
 };
 
-export const createExerciseWithDetails = () => {
+export const createExerciseWithDetails = (exercise) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/exerciseDetails", {
+      const res = await fetch("http://localhost:3001/api/exercisesDetails", {
+        method: "POST",
+        body: JSON.stringify(exercise),
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
       if (res.ok) {

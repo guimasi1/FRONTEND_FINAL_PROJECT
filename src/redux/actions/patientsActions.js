@@ -19,8 +19,6 @@ export const getPatients = () => {
           type: GET_PATIENTS,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }
@@ -46,8 +44,6 @@ export const getMyPatientProfile = () => {
           type: GET_MY_PATIENT_PROFILE,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }
@@ -75,8 +71,6 @@ export const getPatientsByPhysio = (physio_id) => {
           type: GET_PATIENTS_BY_PHYSIO,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }
@@ -101,8 +95,6 @@ export const getSinglePatient = (id) => {
           type: GET_SINGLE_PATIENT,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }

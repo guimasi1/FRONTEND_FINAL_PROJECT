@@ -22,8 +22,6 @@ export const getPatientsLinkRequests = (id) => {
           type: GET_REQUESTS_BY_ID,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }

@@ -1,6 +1,8 @@
 import Cookies from "js-cookie";
 export const GET_ASSIGNMENTS = "GET_ASSIGNMENTS";
+export const GET_SINGLE_ASSIGNMENT = "GET_SINGLE_ASSIGNMENT";
 export const CREATE_ASSIGNMENT = "CREATE_ASSIGNMENT";
+export const ADD_EXERCISE_TO_ASSIGNMENT = "ADD_EXERCISE_TO_ASSIGNMENT";
 export const GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO =
   "GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO";
 
@@ -22,8 +24,6 @@ export const getAllAssignments = () => {
           type: GET_ASSIGNMENTS,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }
@@ -84,7 +84,66 @@ export const getAssignmentsByPatientAndPhysio = (patient_id, physio_id) => {
           type: GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
           payload: data,
         });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
 
+export const addExerciseToAssignment = (assignment_id, exerciseDetails_id) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/exercisesAssignments/addExercise/" +
+          assignment_id +
+          "/" +
+          exerciseDetails_id,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: ADD_EXERCISE_TO_ASSIGNMENT,
+          payload: data,
+        });
+        console.log(data);
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getSingleAssignment = (id) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/exercisesAssignments/" + id,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_SINGLE_ASSIGNMENT,
+          payload: data,
+        });
         console.log(data);
       } else {
         throw new Error("Something went wrong.");

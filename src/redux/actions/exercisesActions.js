@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 export const GET_EXERCISES = "GET_EXERCISES";
+export const NEW_DETAILS_EXERCISE = "NEW_DETAILS_EXERCISE";
 
 export const getExercises = () => {
   const token = Cookies.get("token");
@@ -16,8 +17,6 @@ export const getExercises = () => {
           type: GET_EXERCISES,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }
@@ -42,11 +41,9 @@ export const createExerciseWithDetails = (exercise) => {
       if (res.ok) {
         const data = await res.json();
         dispatch({
-          type: GET_EXERCISES,
+          type: NEW_DETAILS_EXERCISE,
           payload: data,
         });
-
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }

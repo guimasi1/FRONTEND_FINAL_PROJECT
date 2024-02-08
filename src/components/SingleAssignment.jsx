@@ -1,8 +1,16 @@
 import { Col, Row } from "react-bootstrap";
+import { getSingleAssignment } from "../redux/actions/assignmentsActions";
+import { useDispatch } from "react-redux";
 
 const SingleAssignment = ({ assignment, index }) => {
+  const dispatch = useDispatch();
   return (
-    <Row className="mb-2 align-items-center cursor">
+    <Row
+      className="mb-2 align-items-center cursor single-assignment rounded-2"
+      onClick={() => {
+        dispatch(getSingleAssignment(assignment.id));
+      }}
+    >
       <Col className="fw-bold" xs={1}>
         <div className="d-flex justify-content-center align-items-center py-2">
           {index + 1}

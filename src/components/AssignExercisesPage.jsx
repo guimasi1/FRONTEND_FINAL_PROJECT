@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Badge, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getSinglePatient } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,13 +8,15 @@ import { getExercises } from "../redux/actions/exercisesActions";
 import SingleExercise from "./SingleExercise";
 import Select from "react-select";
 import {
+  addExerciseToAssignment,
   createAssignment,
   getAssignmentsByPatientAndPhysio,
+  getSingleAssignment,
 } from "../redux/actions/assignmentsActions";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import AddedExercise from "./AddedExercise";
 import SingleAssignment from "./SingleAssignment";
-
+import { current } from "@reduxjs/toolkit";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -24,6 +27,10 @@ const AssignExercisesPage = () => {
   const assignments = useSelector(
     (state) => state.assignments.assignmentsByIds.content
   );
+  const currentAssignment = useSelector(
+    (state) => state.assignments.newAssignment
+  );
+  const newExerciseId = useSelector((state) => state.exercises.newExercise);
 
   //const currentDate = new Date(Date.now());
 
@@ -39,20 +46,31 @@ const AssignExercisesPage = () => {
   const exercises = useSelector((state) => state.exercises.exercises.content);
   const [targetArea, setTargetArea] = useState("");
   const [update, setUpdate] = useState(0);
-  console.log(patientProfile);
 
   useEffect(() => {
     dispatch(getMyPhysioProfile());
     dispatch(getSinglePatient(id));
     dispatch(getExercises());
     dispatch(getAssignmentsByPatientAndPhysio(id, currentPhysio.id));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
     dispatch(getSinglePatient(id));
     dispatch(getExercises());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
+
+  useEffect(() => {
+    if (currentAssignment && currentAssignment.id) {
+      dispatch(getSingleAssignment(currentAssignment.id));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (newExerciseId && currentAssignment && currentAssignment.id) {
+      dispatch(addExerciseToAssignment(currentAssignment.id, newExerciseId));
+    }
+    console.log(newExerciseId.id);
+  }, [newExerciseId]);
 
   const options = [
     { value: "Abductors", label: "Abductors" },
@@ -84,54 +102,58 @@ const AssignExercisesPage = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
 
   return (
-    <Container className="shadow-lg my-5 rounded-5 py-5 px-5">
+    <Container className="px-5">
       {patientProfile && (
         <Row className="gap-3">
-          <Col xs={12}>
-            <div className="position-relative container">
-              <div>
-                <h1 className="text-center ">Your patient</h1>
-                {/* <img
-                  src="/images/stroke.svg"
-                  alt=""
-                  className="position-absolute "
-                  id="stroke-text"
-                /> */}
-              </div>
-            </div>
-          </Col>
-          <Col xs={12} md={{ offset: 3, span: 6 }} className=" rounded-4 px-5">
-            <div>
-              <div className="d-flex justify-content-center mt-5 mb-4">
-                <img
-                  src={patientProfile.profilePictureUrl}
-                  alt=""
-                  className="image-profile-exercises rounded-4"
-                />
-              </div>
-              <h3 className="text-center mb-4">
-                {patientProfile.firstName} {patientProfile.lastName}
-              </h3>
-              <div className="d-flex justify-content-between">
-                <p>
-                  <strong>Email</strong>: {patientProfile.email}
-                </p>
-                <p>
-                  <strong>Phone number</strong>: {patientProfile.phoneNumber}
-                </p>
-              </div>
-              <div className="d-flex justify-content-between pb-5">
-                <p>
-                  <strong>Gender</strong>: {patientProfile.gender}
-                </p>
-                <p>
-                  <strong>Date of birth</strong>: {patientProfile.dateOfBirth}
-                </p>
-              </div>
-            </div>
+          <Col>
+            <Row className="shadow-lg rounded-4 py-3">
+              <Col xs={12}>
+                <div className="position-relative container">
+                  <div>
+                    <h1 className="text-center ">Your patient</h1>
+                  </div>
+                </div>
+              </Col>
+              <Col
+                xs={12}
+                md={{ offset: 3, span: 6 }}
+                className=" rounded-4 px-5"
+              >
+                <div>
+                  <div className="d-flex justify-content-center mt-5 mb-4">
+                    <img
+                      src={patientProfile.profilePictureUrl}
+                      alt=""
+                      className="image-profile-exercises rounded-4"
+                    />
+                  </div>
+                  <h3 className="text-center mb-4">
+                    {patientProfile.firstName} {patientProfile.lastName}
+                  </h3>
+                  <div className="d-flex justify-content-between">
+                    <p>
+                      <strong>Email</strong>: {patientProfile.email}
+                    </p>
+                    <p>
+                      <strong>Phone number</strong>:{" "}
+                      {patientProfile.phoneNumber}
+                    </p>
+                  </div>
+                  <div className="d-flex justify-content-between ">
+                    <p>
+                      <strong>Gender</strong>: {patientProfile.gender}
+                    </p>
+                    <p>
+                      <strong>Date of birth</strong>:{" "}
+                      {patientProfile.dateOfBirth}
+                    </p>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </Col>
 
-          <Col xs={12} className="shadow-lg rounded-4 px-5">
+          <Col xs={12} className="shadow-lg rounded-4 px-5 pb-4">
             <h3 className="text-center mt-2 py-3">Assigned programs</h3>
             <Row>
               <Col className="text-end">
@@ -144,7 +166,6 @@ const AssignExercisesPage = () => {
                       patient_id: id,
                     };
                     dispatch(createAssignment(newAssignmentData));
-                    console.log("ok");
                   }}
                 >
                   New assignment
@@ -170,13 +191,19 @@ const AssignExercisesPage = () => {
                 />
               ))}
           </Col>
-          <Col className="shadow-lg rounded-4 px-5 mt-5">
+          <Col className="shadow-lg rounded-4 px-5 mt-3">
             <Row>
-              <Col xs={12} className="mt-4 d-flex justify-content-between ">
-                <h2>New Assignment</h2>
+              <Col xs={12} className="mt-4 d-flex justify-content-between mb-3">
+                <h2>Assignment</h2>
+                <Badge className="d-flex justify-content-center align-items-center rounded-pill px-4 bg-secondary-subtle text-black">
+                  {currentAssignment ? currentAssignment.assignmentStatus : ""}
+                </Badge>
               </Col>
-              <Col>
-                <p className="p-0 fw-bold">Date:</p>
+              <Col className="text-end">
+                <p className="p-0 ">
+                  <strong>Date</strong>:{" "}
+                  {currentAssignment ? currentAssignment.assignmentDate : ""}{" "}
+                </p>
               </Col>
             </Row>
             <h3 className="my-4">Exercises</h3>
@@ -196,7 +223,23 @@ const AssignExercisesPage = () => {
                   </Col>
                 </Row>
               </Col>
-              <AddedExercise />
+              {currentAssignment &&
+                currentAssignment.exerciseDetails.map((exercise) => (
+                  <AddedExercise />
+                ))}
+            </Row>
+            <Row className="mt-4">
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Notes</Form.Label>
+                  <Form.Control
+                    value={currentAssignment ? currentAssignment.notes : ""}
+                    as="textarea"
+                    rows={3}
+                    onChange={(e) => {}}
+                  />
+                </Form.Group>
+              </Col>
             </Row>
             <Row>
               <Col xs={3} className="my-4 d-flex align-items-center gap-3">

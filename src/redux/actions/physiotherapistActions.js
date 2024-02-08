@@ -18,7 +18,6 @@ export const getPhysiotherapists = () => {
           type: GET_PHYSIOTHERAPISTS,
           payload: data,
         });
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }
@@ -66,7 +65,6 @@ export const connectWithPhysio = (requestDetails) => {
       });
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
         dispatch({
           type: SEND_REQUEST,
           payload: data,

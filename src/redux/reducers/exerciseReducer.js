@@ -1,7 +1,11 @@
-import { GET_EXERCISES } from "../actions/exercisesActions";
+import {
+  GET_EXERCISES,
+  NEW_DETAILS_EXERCISE,
+} from "../actions/exercisesActions";
 
 const initialState = {
   exercises: [],
+  newExercise: "",
 };
 
 const exercisesReducer = (state = initialState, action) => {
@@ -10,6 +14,11 @@ const exercisesReducer = (state = initialState, action) => {
       return {
         ...state,
         exercises: action.payload,
+      };
+    case NEW_DETAILS_EXERCISE:
+      return {
+        ...state,
+        newExercise: action.payload,
       };
 
     default:

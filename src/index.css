@@ -10,7 +10,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 /* NAVBAR */
 
 #navbar-div {
@@ -95,6 +94,10 @@ code {
 #stroke-text {
   top: -150px;
   left: 300px;
+}
+
+.single-assignment:hover {
+  background-color: #68d89b;
 }
 
 .hover-request:hover {

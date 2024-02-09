@@ -23,6 +23,25 @@ code {
   margin-top: 15em;
 }
 
+/* REGISTRATION */
+
+#blob-registration {
+  left: 524px;
+  bottom: 339px;
+  width: 45%;
+}
+
+#blob-registration2 {
+  top: 176px;
+  left: 92px;
+  width: 35%;
+}
+#blob-registration3 {
+  top: 375px;
+  left: 292px;
+  width: 50%;
+}
+
 .greenish {
   background-color: #0e9a3d;
 }

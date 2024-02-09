@@ -19,13 +19,37 @@ const Registration = () => {
 
   return (
     <Container>
-      <Row className="my-5 justify-content-center">
+      <Row className="my-5 justify-content-center position-relative">
+        <div>
+          <img
+            src="/images\blob (1).svg"
+            alt=""
+            className="z-0 position-absolute opacity-25"
+            id="blob-registration"
+          />
+        </div>
+        <div>
+          <img
+            src="/images\blob (2).svg"
+            alt=""
+            className="z-0 position-absolute opacity-25"
+            id="blob-registration2"
+          />
+        </div>
+        <div>
+          <img
+            src="/images\blob (3).svg"
+            alt=""
+            className="z-0 position-absolute opacity-25"
+            id="blob-registration3"
+          />
+        </div>
         <Col xs={12}>
           <h1 className="text-center bw-bold me-5">
             Start your healing journey
           </h1>
         </Col>
-        <Col xs={12} md={8} lg={6} className="mt-5">
+        <Col xs={12} md={8} lg={6} className="mt-5 z-1">
           <Form className="d-flex justify-content-center flex-column">
             <Form.Group className="mb-3">
               <Form.Label>First name*</Form.Label>

@@ -42,10 +42,9 @@ export const removeRequest = (id) => {
         },
       });
       if (res.ok) {
-        const data = await res.json();
         dispatch({
           type: REMOVE_REQUEST,
-          payload: data,
+          payload: id,
         });
       } else {
         throw new Error("Something went wrong.");

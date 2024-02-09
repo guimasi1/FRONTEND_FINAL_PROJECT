@@ -24,7 +24,7 @@ const AssignExercisesPage = () => {
     (state) => state.physiotherapists.physioProfile
   );
   const assignments = useSelector(
-    (state) => state.assignments.assignmentsByIds.content
+    (state) => state.assignments.assignmentsByIds
   );
   const currentAssignment = useSelector(
     (state) => state.assignments.newAssignment

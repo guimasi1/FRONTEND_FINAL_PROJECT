@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import { getSingleAssignment } from "../redux/actions/assignmentsActions";
 import { useDispatch } from "react-redux";
+import { removeAssignment } from "../redux/actions/assignmentsActions";
 
 const SingleAssignment = ({ assignment, index }) => {
   const dispatch = useDispatch();
@@ -20,7 +21,14 @@ const SingleAssignment = ({ assignment, index }) => {
       <Col>{assignment ? assignment.assignmentStatus : ""}</Col>
       <Col className="d-flex gap-3 justify-content-end">
         <img src="/images\edit.svg" alt="" />
-        <img src="/images\delete_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+        <img
+          src="/images\delete_FILL0_wght400_GRAD0_opsz24.svg"
+          alt=""
+          onClick={() => {
+            console.log(assignment.id);
+            dispatch(removeAssignment(assignment.id));
+          }}
+        />
       </Col>
     </Row>
   );

@@ -1,6 +1,7 @@
 import {
   ADD_EXERCISE_TO_ASSIGNMENT,
   CREATE_ASSIGNMENT,
+  DELETE_ASSIGNMENT,
   GET_ASSIGNMENTS,
   GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
   GET_SINGLE_ASSIGNMENT,
@@ -40,6 +41,14 @@ const assignmentReducer = (state = initialState, action) => {
         ...state,
         newAssignment: action.payload,
       };
+    case DELETE_ASSIGNMENT:
+      return {
+        ...state,
+        assignmentsByIds: state.assignmentsByIds.filter(
+          (assignment) => assignment.id !== action.payload
+        ),
+      };
+
     default:
       return state;
   }

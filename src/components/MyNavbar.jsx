@@ -54,12 +54,16 @@ const MyNavbar = () => {
               ) : (
                 ""
               )}
-              <Link
-                to="/myExercises"
-                className="text-decoration-none text-black mt-2 fw-bold "
-              >
-                Your programs
-              </Link>
+              {role === "PATIENT" ? (
+                <Link
+                  to="/myExercises"
+                  className="text-decoration-none text-black mt-2 fw-bold "
+                >
+                  Your programs
+                </Link>
+              ) : (
+                ""
+              )}
               {
                 // eslint-disable-next-line no-const-assign
                 role === "PATIENT" ? (

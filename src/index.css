@@ -119,6 +119,10 @@ code {
   background-color: #e8bc7f;
 }
 
+.selected-assignment {
+  background-color: #e8bc7f;
+}
+
 .hover-request:hover {
   background-color: #68d89b;
 }

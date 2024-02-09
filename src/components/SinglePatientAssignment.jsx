@@ -1,13 +1,18 @@
 import { Badge, Col, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSingleAssignment } from "../redux/actions/assignmentsActions";
 
 const SinglePatientAssignment = ({ assignment }) => {
   const dispatch = useDispatch();
+  const currentAssignment = useSelector(
+    (state) => state.assignments.newAssignment
+  );
 
   return (
     <Row
-      className="cursor single-assignment py-3 px-2 rounded-2 mb-2"
+      className={`cursor single-assignment py-3 px-2 rounded-2 mb-2 ${
+        currentAssignment.id === assignment.id ? "selected-assignment" : ""
+      }`}
       onClick={() => {
         dispatch(getSingleAssignment(assignment.id));
       }}

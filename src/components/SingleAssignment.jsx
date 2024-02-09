@@ -5,9 +5,10 @@ import { removeAssignment } from "../redux/actions/assignmentsActions";
 
 const SingleAssignment = ({ assignment, index }) => {
   const dispatch = useDispatch();
+
   return (
     <Row
-      className="mb-2 align-items-center cursor single-assignment rounded-2"
+      className={`mb-2 align-items-center cursor single-assignment rounded-2`}
       onClick={() => {
         dispatch(getSingleAssignment(assignment.id));
       }}

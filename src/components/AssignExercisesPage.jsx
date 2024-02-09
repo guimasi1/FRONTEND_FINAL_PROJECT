@@ -30,21 +30,11 @@ const AssignExercisesPage = () => {
   const currentAssignment = useSelector(
     (state) => state.assignments.newAssignment
   );
+  // eslint-disable-next-line no-unused-vars
   const newExerciseId = useSelector((state) => state.exercises.newExercise);
 
-  //const currentDate = new Date(Date.now());
-
-  // const year = currentDate.getFullYear();
-  // let month = currentDate.getMonth() + 1;
-  // month = month < 10 ? "0" + month : month;
-  // let day = currentDate.getDate();
-  // day = day < 10 ? "0" + day : day;
-
-  // const formattedDate = `${year}-${month}-${day}`;
-  // console.log(formattedDate);
-
   const exercises = useSelector((state) => state.exercises.exercises.content);
-  const [targetArea, setTargetArea] = useState("");
+  // const [targetArea, setTargetArea] = useState("");
   const [update, setUpdate] = useState(0);
 
   useEffect(() => {
@@ -52,6 +42,9 @@ const AssignExercisesPage = () => {
     dispatch(getSinglePatient(id));
     dispatch(getExercises());
     dispatch(getAssignmentsByPatientAndPhysio(id, currentPhysio.id));
+    if (currentAssignment && currentAssignment.id && assignments) {
+      dispatch(getSingleAssignment(currentAssignment.id));
+    }
   }, []);
 
   useEffect(() => {
@@ -60,14 +53,8 @@ const AssignExercisesPage = () => {
   }, [update]);
 
   useEffect(() => {
-    if (currentAssignment && currentAssignment.id) {
-      dispatch(getSingleAssignment(currentAssignment.id));
-    }
-  }, []);
-
-  useEffect(() => {
     if (newExerciseId && currentAssignment && currentAssignment.id) {
-      dispatch(addExerciseToAssignment(currentAssignment.id, newExerciseId));
+      dispatch(addExerciseToAssignment(currentAssignment.id, newExerciseId.id));
     }
     console.log(newExerciseId.id);
   }, [newExerciseId]);
@@ -224,22 +211,28 @@ const AssignExercisesPage = () => {
                 </Row>
               </Col>
               {currentAssignment &&
-                currentAssignment.exerciseDetails.map((exercise) => (
-                  <AddedExercise />
+                currentAssignment.exercisesDetails.map((exercise, index) => (
+                  <AddedExercise
+                    key={exercise.id}
+                    exercise={exercise}
+                    index={index}
+                  />
                 ))}
             </Row>
             <Row className="mt-4">
-              <Col>
-                <Form.Group className="mb-3">
-                  <Form.Label>Notes</Form.Label>
-                  <Form.Control
-                    value={currentAssignment ? currentAssignment.notes : ""}
-                    as="textarea"
-                    rows={3}
-                    onChange={(e) => {}}
-                  />
-                </Form.Group>
-              </Col>
+              {currentAssignment && (
+                <Col>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Notes</Form.Label>
+                    <Form.Control
+                      value={currentAssignment ? currentAssignment.notes : ""}
+                      as="textarea"
+                      rows={3}
+                      onChange={(e) => {}}
+                    />
+                  </Form.Group>
+                </Col>
+              )}
             </Row>
             <Row>
               <Col xs={3} className="my-4 d-flex align-items-center gap-3">

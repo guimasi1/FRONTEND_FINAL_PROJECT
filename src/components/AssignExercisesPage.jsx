@@ -153,11 +153,14 @@ const AssignExercisesPage = () => {
                   className="brownish-button mb-4"
                   onClick={() => {
                     const newAssignmentData = {
-                      notes: "niente di particolare",
+                      notes: "",
                       physiotherapist_id: currentPhysio.id,
                       patient_id: id,
                     };
                     dispatch(createAssignment(newAssignmentData));
+                    if (currentAssignment) {
+                      console.log(currentAssignment);
+                    }
                   }}
                 >
                   New assignment
@@ -200,7 +203,7 @@ const AssignExercisesPage = () => {
                 <Col className="text-end">
                   <p className="p-0 ">
                     <strong>Date</strong>:{" "}
-                    {currentAssignment ? currentAssignment.assignmentDate : ""}{" "}
+                    {currentAssignment ? currentAssignment.assignmentDate : ""}
                   </p>
                 </Col>
               </Row>
@@ -225,7 +228,7 @@ const AssignExercisesPage = () => {
                     </Col>
                   </Row>
                 </Col>
-                {currentAssignment &&
+                {currentAssignment.exercisesDetails &&
                   currentAssignment.exercisesDetails.map((exercise, index) => (
                     <AddedExercise
                       key={exercise.id}

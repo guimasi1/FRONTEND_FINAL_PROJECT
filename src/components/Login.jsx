@@ -10,16 +10,16 @@ const Login = () => {
   // const role = localStorage.getItem("role");
   const [role, setRole] = useState("");
   return (
-    <Container className="border border-2 pb-5 my-5 rounded-5 shadow-lg ">
+    <Container className="border border-2 pb-5 mb-5 mt-2 rounded-5 shadow-lg ">
       <Row className="px-5">
-        <Col xs={12} md={6} className="text-center order-1 mt-5 pt-5">
+        <Col xs={12} md={6} className="text-center order-1 pt-4">
           <img
             id="illustration-registration"
             src="images/Phisiotherapy-rafiki.svg"
             alt="physiotherapist illustration"
           />
         </Col>
-        <Col xs={12} md={6} className="order-0 pb-5" id="login-form">
+        <Col xs={12} md={6} className="order-0 pb-0" id="login-form">
           <h1 className="text-center me-5">Login</h1>
           <Form>
             <Form.Group className="mb-3">

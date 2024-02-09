@@ -34,16 +34,18 @@ const Profile = () => {
   }, [update]);
 
   return (
-    <Container className="my-5 pt-5 ">
+    <Container className="mb-5 mt-4">
       <Row className="gap-5 ">
         {myProfile && (
           <Col>
             <Card className="shadow-lg border-0 rounded-5">
-              <Card.Img
-                variant="top"
-                src="https://placekitten.com/500"
-                className="rounded-top-5"
-              />
+              <div className="d-flex justify-content-center align-items-center mt-4">
+                <Card.Img
+                  variant="top"
+                  src="https://placekitten.com/500"
+                  className="rounded-pill w-50 "
+                />
+              </div>
               <Card.Body>
                 <Card.Title>My profile</Card.Title>
                 <Card.Text></Card.Text>

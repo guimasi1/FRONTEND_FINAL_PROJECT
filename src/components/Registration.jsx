@@ -19,7 +19,7 @@ const Registration = () => {
 
   return (
     <Container>
-      <Row className="my-5 justify-content-center position-relative">
+      <Row className="mb-5 mt-2 justify-content-center position-relative">
         <div>
           <img
             src="/images\blob (1).svg"
@@ -49,7 +49,7 @@ const Registration = () => {
             Start your healing journey
           </h1>
         </Col>
-        <Col xs={12} md={8} lg={6} className="mt-5 z-1">
+        <Col xs={12} md={8} lg={6} className="mt-3 z-1">
           <Form className="d-flex justify-content-center flex-column">
             <Form.Group className="mb-3">
               <Form.Label>First name*</Form.Label>

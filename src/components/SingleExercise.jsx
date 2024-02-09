@@ -98,7 +98,6 @@ const SingleExercise = ({
 
                 setUpdate(update + 1);
                 dispatch(getExercises());
-                console.log(currentAssignmentId);
                 dispatch(getSingleAssignment(currentAssignmentId));
               }}
             >

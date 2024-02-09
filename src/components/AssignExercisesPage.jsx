@@ -29,6 +29,9 @@ const AssignExercisesPage = () => {
   const currentAssignment = useSelector(
     (state) => state.assignments.newAssignment
   );
+  const exercisesDetailsByAssignment = useSelector(
+    (state) => state.assignments.exercisesDetailsByAssignment
+  );
   // eslint-disable-next-line no-unused-vars
   const newExerciseId = useSelector((state) => state.exercises.newExercise);
 
@@ -220,8 +223,8 @@ const AssignExercisesPage = () => {
                     <Col xs={1}></Col>
                   </Row>
                 </Col>
-                {currentAssignment.exercisesDetails &&
-                  currentAssignment.exercisesDetails.map((exercise, index) => (
+                {exercisesDetailsByAssignment &&
+                  exercisesDetailsByAssignment.map((exercise, index) => (
                     <AddedExercise
                       key={exercise.id}
                       exercise={exercise}

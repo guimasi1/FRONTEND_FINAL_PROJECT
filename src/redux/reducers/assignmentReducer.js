@@ -13,6 +13,7 @@ const initialState = {
   newAssignment: null,
   assignmentsByIds: [],
   newAddedExercise: null,
+  exercisesDetailsByAssignment: [],
 };
 
 const assignmentReducer = (state = initialState, action) => {
@@ -36,12 +37,17 @@ const assignmentReducer = (state = initialState, action) => {
     case ADD_EXERCISE_TO_ASSIGNMENT:
       return {
         ...state,
-        newAddedExercise: action.payload,
+        newAddedExercise: action.payload.id,
+        exercisesDetailsByAssignment: [
+          ...state.exercisesDetailsByAssignment,
+          action.payload,
+        ],
       };
     case GET_SINGLE_ASSIGNMENT:
       return {
         ...state,
         newAssignment: action.payload,
+        exercisesDetailsByAssignment: action.payload.exercisesDetails,
       };
     case DELETE_ASSIGNMENT:
       return {
@@ -59,6 +65,9 @@ const assignmentReducer = (state = initialState, action) => {
             (ex) => ex.id !== action.payload
           ),
         },
+        exercisesDetailsByAssignment: state.exercisesDetailsByAssignment.filter(
+          (exercise) => exercise.id !== action.payload
+        ),
       };
 
     default:

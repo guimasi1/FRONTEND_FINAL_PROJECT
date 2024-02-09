@@ -34,7 +34,11 @@ const MyExercisesPage = () => {
   return (
     <Container className="mt-5">
       <Row className="gap-4">
-        <Col xs={12} xl={4} className="shadow-lg rounded-5 p-5 ">
+        <Col
+          xs={12}
+          xl={4}
+          className="shadow-lg rounded-5 p-5 assignment-column-patient"
+        >
           <h4>Your assignments</h4>
           {/* <Row className="fw-bold mt-3 mb-2">
             <Col xs={1}>N°</Col>

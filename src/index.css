@@ -117,3 +117,8 @@ code {
 #headline {
   font-size: 5.5em;
 }
+
+/* ASSIGNMENTS BY PATIENT */
+.assignment-column-patient {
+  height: 650px;
+}

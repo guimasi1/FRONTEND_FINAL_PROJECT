@@ -103,7 +103,7 @@ const MyNavbar = () => {
             </div>
           </Nav>
         </Navbar.Collapse>
-        <div className="d-flex gap-4">
+        <div className="d-flex gap-4 mt-2">
           <Link
             to="/login"
             className="text-decoration-none text-black fw-bold py-3"

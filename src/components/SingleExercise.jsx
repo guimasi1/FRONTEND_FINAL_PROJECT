@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Badge, Col, Form, Row } from "react-bootstrap";
 import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
 import { useDispatch } from "react-redux";
-import { addExerciseToAssignment } from "../redux/actions/assignmentsActions";
 const SingleExercise = ({ exercise, getExercises, setUpdate, update }) => {
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);
@@ -90,6 +89,7 @@ const SingleExercise = ({ exercise, getExercises, setUpdate, update }) => {
                   exercise_id: exercise.id,
                 })
               );
+
               setUpdate(update + 1);
               dispatch(getExercises());
             }}

@@ -98,10 +98,10 @@ export const addExerciseToAssignment = (assignment_id, exerciseDetails_id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments/addExercise/" +
-          assignment_id +
-          "/" +
-          exerciseDetails_id,
+        "http://localhost:3001/api/exercisesDetails/" +
+          exerciseDetails_id +
+          "/assignTo/" +
+          assignment_id,
         {
           method: "POST",
           headers: {

@@ -16,7 +16,6 @@ import {
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import AddedExercise from "./AddedExercise";
 import SingleAssignment from "./SingleAssignment";
-import { current } from "@reduxjs/toolkit";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -39,16 +38,23 @@ const AssignExercisesPage = () => {
 
   useEffect(() => {
     dispatch(getMyPhysioProfile());
-    dispatch(getSinglePatient(id));
+    if (id) {
+      dispatch(getSinglePatient(id));
+    }
     dispatch(getExercises());
-    dispatch(getAssignmentsByPatientAndPhysio(id, currentPhysio.id));
+    if (id && currentPhysio) {
+      dispatch(getAssignmentsByPatientAndPhysio(id, currentPhysio.id));
+    }
+
     if (currentAssignment && currentAssignment.id && assignments) {
       dispatch(getSingleAssignment(currentAssignment.id));
     }
   }, []);
 
   useEffect(() => {
-    dispatch(getSinglePatient(id));
+    if (id) {
+      dispatch(getSinglePatient(id));
+    }
     dispatch(getExercises());
   }, [update]);
 
@@ -56,7 +62,6 @@ const AssignExercisesPage = () => {
     if (newExerciseId && currentAssignment && currentAssignment.id) {
       dispatch(addExerciseToAssignment(currentAssignment.id, newExerciseId.id));
     }
-    console.log(newExerciseId.id);
   }, [newExerciseId]);
 
   const options = [
@@ -140,7 +145,7 @@ const AssignExercisesPage = () => {
             </Row>
           </Col>
 
-          <Col xs={12} className="shadow-lg rounded-4 px-5 pb-4">
+          <Col xs={12} className="shadow-lg rounded-4 px-5 pb-4 mb-3">
             <h3 className="text-center mt-2 py-3">Assigned programs</h3>
             <Row>
               <Col className="text-end">
@@ -178,101 +183,115 @@ const AssignExercisesPage = () => {
                 />
               ))}
           </Col>
-          <Col className="shadow-lg rounded-4 px-5 mt-3">
-            <Row>
-              <Col xs={12} className="mt-4 d-flex justify-content-between mb-3">
-                <h2>Assignment</h2>
-                <Badge className="d-flex justify-content-center align-items-center rounded-pill px-4 bg-secondary-subtle text-black">
-                  {currentAssignment ? currentAssignment.assignmentStatus : ""}
-                </Badge>
-              </Col>
-              <Col className="text-end">
-                <p className="p-0 ">
-                  <strong>Date</strong>:{" "}
-                  {currentAssignment ? currentAssignment.assignmentDate : ""}{" "}
-                </p>
-              </Col>
-            </Row>
-            <h3 className="my-4">Exercises</h3>
-            <Row>
-              <Col xs={12}>
-                <Row className="border rounded-2 text-center ">
-                  <Col
-                    className="border border-2 border-black py-1 rounded-start-2"
-                    xs={1}
-                  >
-                    N°
-                  </Col>
-                  <Col className="border border-2 border-black py-1">Name</Col>
-                  <Col className="border border-2 border-black py-1">Sets</Col>
-                  <Col className="border border-2 border-black py-1 rounded-end-2">
-                    Reps
-                  </Col>
-                </Row>
-              </Col>
-              {currentAssignment &&
-                currentAssignment.exercisesDetails.map((exercise, index) => (
-                  <AddedExercise
-                    key={exercise.id}
-                    exercise={exercise}
-                    index={index}
-                  />
-                ))}
-            </Row>
-            <Row className="mt-4">
-              {currentAssignment && (
-                <Col>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Notes</Form.Label>
-                    <Form.Control
-                      value={currentAssignment ? currentAssignment.notes : ""}
-                      as="textarea"
-                      rows={3}
-                      onChange={(e) => {}}
-                    />
-                  </Form.Group>
+          {currentAssignment && (
+            <Col className="shadow-lg rounded-4 px-5 mt-3">
+              <Row>
+                <Col
+                  xs={12}
+                  className="mt-4 d-flex justify-content-between mb-3"
+                >
+                  <h2>Assignment</h2>
+                  <Badge className="d-flex justify-content-center align-items-center rounded-pill px-4 bg-secondary-subtle text-black">
+                    {currentAssignment
+                      ? currentAssignment.assignmentStatus
+                      : ""}
+                  </Badge>
                 </Col>
-              )}
-            </Row>
-            <Row>
-              <Col xs={3} className="my-4 d-flex align-items-center gap-3">
-                <p className="p-0 fw-bold mt-3">Target Area</p>
-                <Select
-                  className="w-75"
-                  defaultValue={selectedOption}
-                  onChange={setSelectedOption}
-                  options={options}
-                />
-              </Col>
-              <Col xs={3} className="my-4 d-flex align-items-center gap-3">
-                <p className="p-0 fw-bold mt-3">Difficulty</p>
-                <Select
-                  className="w-75"
-                  defaultValue={selectedDifficulty}
-                  onChange={setSelectedDifficulty}
-                  options={difficulties}
-                />
-              </Col>
-            </Row>
-
-            <Row
-              xs={1}
-              md={2}
-              lg={4}
-              className="mb-4 gap-2 justify-content-around"
-            >
-              {exercises &&
-                exercises.map((exercise) => (
-                  <SingleExercise
-                    exercise={exercise}
-                    key={exercise.id}
-                    getExercises={getExercises}
-                    setUpdate={setUpdate}
-                    update={update}
+                <Col className="text-end">
+                  <p className="p-0 ">
+                    <strong>Date</strong>:{" "}
+                    {currentAssignment ? currentAssignment.assignmentDate : ""}{" "}
+                  </p>
+                </Col>
+              </Row>
+              <h3 className="my-4">Exercises</h3>
+              <Row>
+                <Col xs={12}>
+                  <Row className="border rounded-2 text-center ">
+                    <Col
+                      className="border border-2 border-black py-1 rounded-start-2"
+                      xs={1}
+                    >
+                      N°
+                    </Col>
+                    <Col className="border border-2 border-black py-1">
+                      Name
+                    </Col>
+                    <Col className="border border-2 border-black py-1">
+                      Sets
+                    </Col>
+                    <Col className="border border-2 border-black py-1 rounded-end-2">
+                      Reps
+                    </Col>
+                  </Row>
+                </Col>
+                {currentAssignment &&
+                  currentAssignment.exercisesDetails.map((exercise, index) => (
+                    <AddedExercise
+                      key={exercise.id}
+                      exercise={exercise}
+                      index={index}
+                    />
+                  ))}
+              </Row>
+              <Row className="mt-4">
+                {currentAssignment && (
+                  <Col>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Notes</Form.Label>
+                      <Form.Control
+                        value={currentAssignment ? currentAssignment.notes : ""}
+                        as="textarea"
+                        rows={3}
+                        onChange={(e) => {}}
+                      />
+                    </Form.Group>
+                  </Col>
+                )}
+              </Row>
+              <Row>
+                <Col xs={3} className="my-4 d-flex align-items-center gap-3">
+                  <p className="p-0 fw-bold mt-3">Target Area</p>
+                  <Select
+                    className="w-75"
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
                   />
-                ))}
-            </Row>
-          </Col>
+                </Col>
+                <Col xs={3} className="my-4 d-flex align-items-center gap-3">
+                  <p className="p-0 fw-bold mt-3">Difficulty</p>
+                  <Select
+                    className="w-75"
+                    defaultValue={selectedDifficulty}
+                    onChange={setSelectedDifficulty}
+                    options={difficulties}
+                  />
+                </Col>
+              </Row>
+
+              <Row
+                xs={1}
+                md={2}
+                lg={4}
+                className="mb-4 gap-2 justify-content-around"
+              >
+                {exercises &&
+                  currentAssignment &&
+                  exercises.map((exercise) => (
+                    <SingleExercise
+                      exercise={exercise}
+                      key={exercise.id}
+                      getExercises={getExercises}
+                      setUpdate={setUpdate}
+                      update={update}
+                      getSingleAssignment={getSingleAssignment}
+                      currentAssignmentId={currentAssignment.id}
+                    />
+                  ))}
+              </Row>
+            </Col>
+          )}
         </Row>
       )}
     </Container>

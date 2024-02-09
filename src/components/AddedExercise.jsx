@@ -2,7 +2,7 @@ import { Col, Row } from "react-bootstrap";
 
 const AddedExercise = ({ exercise, index }) => {
   return (
-    <Col xs={12} className=" border rounded-2 text-center">
+    <Col xs={12} className=" border rounded-2 text-center cursor">
       {exercise && (
         <Row>
           <Col className="border py-1 rounded-start-2" xs={1}>

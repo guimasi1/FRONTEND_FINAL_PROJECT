@@ -116,7 +116,6 @@ export const addExerciseToAssignment = (assignment_id, exerciseDetails_id) => {
           type: ADD_EXERCISE_TO_ASSIGNMENT,
           payload: data,
         });
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }
@@ -144,7 +143,6 @@ export const getSingleAssignment = (id) => {
           type: GET_SINGLE_ASSIGNMENT,
           payload: data,
         });
-        console.log(data);
       } else {
         throw new Error("Something went wrong.");
       }

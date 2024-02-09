@@ -8,7 +8,6 @@ const SingleAssignment = ({ assignment, index }) => {
     <Row
       className="mb-2 align-items-center cursor single-assignment rounded-2"
       onClick={() => {
-        console.log(assignment.id);
         dispatch(getSingleAssignment(assignment.id));
       }}
     >

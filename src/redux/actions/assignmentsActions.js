@@ -3,6 +3,7 @@ export const GET_ASSIGNMENTS = "GET_ASSIGNMENTS";
 export const GET_SINGLE_ASSIGNMENT = "GET_SINGLE_ASSIGNMENT";
 export const CREATE_ASSIGNMENT = "CREATE_ASSIGNMENT";
 export const DELETE_ASSIGNMENT = "DELETE_ASSIGNMENT";
+export const REMOVE_EXERCISE_DETAILS = "REMOVE_EXERCISE_DETAILS";
 export const UPDATE_ASSIGNMENTS = "UPDATE_ASSIGNMENTS";
 export const ADD_EXERCISE_TO_ASSIGNMENT = "ADD_EXERCISE_TO_ASSIGNMENT";
 export const GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO =
@@ -172,6 +173,34 @@ export const removeAssignment = (id) => {
           type: DELETE_ASSIGNMENT,
           payload: id,
         });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const removeExerciseDetails = (id) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/exercisesDetails/" + id,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        dispatch({
+          type: REMOVE_EXERCISE_DETAILS,
+          payload: id,
+        });
+        console.log(id);
       } else {
         throw new Error("Something went wrong.");
       }

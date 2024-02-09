@@ -5,7 +5,7 @@ import {
   GET_ASSIGNMENTS,
   GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
   GET_SINGLE_ASSIGNMENT,
-  UPDATE_ASSIGNMENTS,
+  REMOVE_EXERCISE_DETAILS,
 } from "../actions/assignmentsActions";
 
 const initialState = {
@@ -47,8 +47,18 @@ const assignmentReducer = (state = initialState, action) => {
       return {
         ...state,
         assignmentsByIds: state.assignmentsByIds.filter(
-          (request) => request.id !== action.payload
+          (assignment) => assignment.id !== action.payload
         ),
+      };
+    case REMOVE_EXERCISE_DETAILS:
+      return {
+        ...state,
+        newAssignment: {
+          ...state.newAssignment,
+          exercisesDetails: state.newAssignment.exercisesDetails.filter(
+            (ex) => ex.id !== action.payload
+          ),
+        },
       };
 
     default:

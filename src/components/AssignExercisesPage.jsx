@@ -210,22 +210,14 @@ const AssignExercisesPage = () => {
               <h3 className="my-4">Exercises</h3>
               <Row>
                 <Col xs={12}>
-                  <Row className="border rounded-2 text-center ">
-                    <Col
-                      className="border border-2 border-black py-1 rounded-start-2"
-                      xs={1}
-                    >
+                  <Row className=" rounded-2 text-center ">
+                    <Col className="rounded-start-2" xs={1}>
                       N°
                     </Col>
-                    <Col className="border border-2 border-black py-1">
-                      Name
-                    </Col>
-                    <Col className="border border-2 border-black py-1">
-                      Sets
-                    </Col>
-                    <Col className="border border-2 border-black py-1 rounded-end-2">
-                      Reps
-                    </Col>
+                    <Col>Name</Col>
+                    <Col>Sets</Col>
+                    <Col className="rounded-end-2">Reps</Col>
+                    <Col xs={1}></Col>
                   </Row>
                 </Col>
                 {currentAssignment.exercisesDetails &&

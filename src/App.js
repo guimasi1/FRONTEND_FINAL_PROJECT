@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import Patients from "./components/Patients";
 import PhysioProfile from "./components/PhysioProfile";
 import AssignExercisesPage from "./components/AssignExercisesPage";
+import MyExercisesPage from "./components/MyExercisesPage";
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/physioProfile" element={<PhysioProfile />} />
         <Route path="/assignExercises/:id" element={<AssignExercisesPage />} />
+        <Route path="/myExercises" element={<MyExercisesPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,6 +3,7 @@ import {
   CREATE_ASSIGNMENT,
   DELETE_ASSIGNMENT,
   GET_ASSIGNMENTS,
+  GET_ASSIGNMENTS_BY_PATIENT,
   GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
   GET_SINGLE_ASSIGNMENT,
   REMOVE_EXERCISE_DETAILS,
@@ -14,6 +15,7 @@ const initialState = {
   assignmentsByIds: [],
   newAddedExercise: null,
   exercisesDetailsByAssignment: [],
+  patientAssignments: [],
 };
 
 const assignmentReducer = (state = initialState, action) => {
@@ -33,6 +35,11 @@ const assignmentReducer = (state = initialState, action) => {
       return {
         ...state,
         assignmentsByIds: action.payload,
+      };
+    case GET_ASSIGNMENTS_BY_PATIENT:
+      return {
+        ...state,
+        patientAssignments: action.payload,
       };
     case ADD_EXERCISE_TO_ASSIGNMENT:
       return {

@@ -11,7 +11,7 @@ const MyNavbar = () => {
   return (
     <Navbar expand="lg">
       <Container className="ps-lg-5">
-        <Navbar.Brand className="me-0 me-lg-5">
+        <Navbar.Brand className="me-0 ">
           <img
             src="/images/logo.svg"
             width="100"
@@ -22,7 +22,7 @@ const MyNavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto me-lg-3  ">
             <div
               className="d-flex gap-5 justify-content-evenly"
               id="navbar-div"
@@ -93,6 +93,12 @@ const MyNavbar = () => {
               >
                 {" "}
                 Pricing
+              </Link>
+              <Link
+                to="/myExercises"
+                className="text-decoration-none text-black mt-2 fw-bold "
+              >
+                Your programs
               </Link>
             </div>
           </Nav>

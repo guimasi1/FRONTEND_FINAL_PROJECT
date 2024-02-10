@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import SinglePhysio from "./SinglePhysio";
 import Select from "react-select";
+import { motion } from "framer-motion";
 const Physiotherapist = () => {
   const dispatch = useDispatch();
   const physiotherapists = useSelector(
@@ -44,7 +45,13 @@ const Physiotherapist = () => {
   }, [name]);
 
   return (
-    <Container className="mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative ">
+    <motion.div
+      className="mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
+    >
       <div className="fancy-border-radius p-0 top-0 start-0"></div>
 
       <Row>
@@ -89,7 +96,7 @@ const Physiotherapist = () => {
             <SinglePhysio physio={physio} key={physio.id} />
           ))}
       </Row>
-    </Container>
+    </motion.div>
   );
 };
 

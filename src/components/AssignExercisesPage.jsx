@@ -19,6 +19,7 @@ import {
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import AddedExercise from "./AddedExercise";
 import SingleAssignment from "./SingleAssignment";
+import { motion } from "framer-motion";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -100,23 +101,28 @@ const AssignExercisesPage = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
 
   return (
-    <Container className="px-5">
+    <motion.div
+      className="px-3 container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
+    >
       {patientProfile && (
-        <Row className="gap-3">
-          <Col>
-            <Row className="shadow-lg rounded-4 py-3">
+        <Row>
+          <Col xs={{ span: 4 }}>
+            <Row
+              className="shadow-lg rounded-4 py-3 px-5 ms-3"
+              id="your-patient-section"
+            >
               <Col xs={12}>
-                <div className="position-relative container">
+                <div>
                   <div>
-                    <h1 className="text-center ">Your patient</h1>
+                    <h3 className="text-center ">Your patient</h3>
                   </div>
                 </div>
               </Col>
-              <Col
-                xs={12}
-                md={{ offset: 3, span: 6 }}
-                className=" rounded-4 px-5"
-              >
+              <Col xs={12} className=" rounded-4 ">
                 <div>
                   <div className="d-flex justify-content-center mt-5 mb-4">
                     <img
@@ -151,7 +157,11 @@ const AssignExercisesPage = () => {
             </Row>
           </Col>
 
-          <Col xs={12} className="shadow-lg rounded-4 px-5 pb-4 mb-3">
+          <Col
+            xs={7}
+            className="shadow-lg rounded-4 px-5 pb-3 ms-5"
+            id="assigned-programs-section"
+          >
             <h3 className="text-center mt-2 py-3">Assigned programs</h3>
             <Row>
               <Col className="text-end">
@@ -200,7 +210,15 @@ const AssignExercisesPage = () => {
                   className="mt-4 d-flex justify-content-between mb-3"
                 >
                   <h2>Assignment</h2>
-                  <Badge className="d-flex justify-content-center align-items-center rounded-pill px-4 bg-secondary-subtle text-black">
+                  <Badge
+                    className={`d-flex justify-content-center align-items-center rounded-pill px-4 ${
+                      currentAssignment.assignmentStatus === "COMPLETED"
+                        ? "bg-success text-white"
+                        : currentAssignment.assignmentStatus === "IN_PROGRESS"
+                        ? "bg-primary"
+                        : "bg-secondary-subtle"
+                    } text-black`}
+                  >
                     {currentAssignment
                       ? currentAssignment.assignmentStatus
                       : ""}
@@ -208,13 +226,19 @@ const AssignExercisesPage = () => {
                 </Col>
                 <Col className="text-end">
                   <p className="p-0 ">
-                    <strong>Date</strong>:{" "}
+                    <strong>Date: </strong>
                     {currentAssignment ? currentAssignment.assignmentDate : ""}
                   </p>
                 </Col>
               </Row>
               <h3 className="my-4">Exercises</h3>
-              <Row>
+              <motion.div
+                className="row"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
+              >
                 <Col xs={12}>
                   <Row className=" rounded-2 text-center mb-2 fw-bold border-bottom pb-2">
                     <Col className="rounded-start-2" xs={1}>
@@ -238,7 +262,7 @@ const AssignExercisesPage = () => {
                       index={index}
                     />
                   ))}
-              </Row>
+              </motion.div>
               <Row className="mt-4">
                 {currentAssignment && (
                   <Col>
@@ -303,7 +327,7 @@ const AssignExercisesPage = () => {
           )}
         </Row>
       )}
-    </Container>
+    </motion.div>
   );
 };
 

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Badge, Col, Form, Row } from "react-bootstrap";
 import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+
 const SingleExercise = ({
   exercise,
   getExercises,
@@ -87,7 +89,8 @@ const SingleExercise = ({
             </div>
           </Col>
           <Col className="mt-1 d-flex justify-content-center">
-            <div
+            <motion.div
+              whileTap={{ scale: 0.8 }}
               className="d-flex justify-content-center align-items-center bg-warning w-50 rounded-pill cursor fw-bold add-button"
               onClick={() => {
                 dispatch(
@@ -104,8 +107,13 @@ const SingleExercise = ({
               }}
             >
               <p className="p-0 mt-3 me-2">ADD</p>
-              <img src="\images\add-icon.svg" alt="" className="add-icons" />
-            </div>
+              <motion.img
+                src="\images\add-icon.svg"
+                alt=""
+                className="add-icons"
+                whileTap={{ scale: 0.8 }}
+              />
+            </motion.div>
           </Col>
         </Row>
       )}

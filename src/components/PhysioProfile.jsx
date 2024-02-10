@@ -16,11 +16,17 @@ const PhysioProfile = () => {
   }, []);
 
   return (
-    <Container className="my-5 pt-5 ">
-      <Row className="gap-5 ">
+    <motion.div
+      className="mb-5 mt-4 container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 0.3, ease: "linear", duration: 0.2 }}
+    >
+      <Row className="gap-5">
         {myProfile && (
           <Col>
-            <Card className="shadow-lg border-0 rounded-5">
+            <Card className="shadow-lg border-0 rounded-5 pt-4">
               <div className="d-flex justify-content-center align-items-center">
                 <img
                   src="https://placekitten.com/300"
@@ -87,7 +93,7 @@ const PhysioProfile = () => {
           </Row>
         </Col>
       </Row>
-    </Container>
+    </motion.div>
   );
 };
 

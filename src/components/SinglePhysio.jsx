@@ -3,6 +3,7 @@ import { connectWithPhysio } from "../redux/actions/physiotherapistActions";
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 const SinglePhysio = ({ physio }) => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.patients.patientProfile);
@@ -15,7 +16,10 @@ const SinglePhysio = ({ physio }) => {
     physiotherapist_id: "",
   });
   return (
-    <Col
+    <motion.div
+      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0.04 }}
+      transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
       className="d-flex mb-4 gap-3 border border-1 rounded-4 ps-0 shadow-lg "
       xs={12}
     >
@@ -55,7 +59,7 @@ const SinglePhysio = ({ physio }) => {
           </Button>
         </div>
       </div>
-    </Col>
+    </motion.div>
   );
 };
 

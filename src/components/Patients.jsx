@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SinglePatient from "./SinglePatient";
 import { useEffect } from "react";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
-
+import { motion } from "framer-motion";
 const Patients = () => {
   const dispatch = useDispatch();
 
@@ -28,7 +28,13 @@ const Patients = () => {
 
   return (
     <Container>
-      <Row>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ delay: 0.3, ease: "linear", duration: 0.2 }}
+        className="row"
+      >
         <Col className="my-5 border p-5 rounded-5 shadow-lg position-relative">
           <div className="fancy-border-radius p-0 top-0 start-0"></div>
           <Row>
@@ -42,7 +48,7 @@ const Patients = () => {
               ))}
           </Row>
         </Col>
-      </Row>
+      </motion.div>
     </Container>
   );
 };

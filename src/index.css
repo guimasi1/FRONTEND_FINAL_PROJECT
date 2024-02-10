@@ -160,3 +160,8 @@ code {
 }
 
 /* EXERCISES BY PATIENT */
+
+.description-paragraph {
+  font-size: 0.9rem;
+  padding: 0em 7em;
+}

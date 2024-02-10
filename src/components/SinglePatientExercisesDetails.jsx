@@ -2,7 +2,7 @@ import { Col, Row } from "react-bootstrap";
 import { motion } from "framer-motion";
 const SinglePatientExercisesDetails = ({ exercise }) => {
   return (
-    <Row className="pt-4">
+    <Row className="pt-4 border border-1 mb-2 rounded">
       <Col xs={2} className="ps-2 text-center">
         <img src="https://placekitten.com/70" className="rounded-4" alt="" />
       </Col>

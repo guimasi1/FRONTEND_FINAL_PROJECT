@@ -70,7 +70,7 @@ const MyExercisesPage = () => {
             <div>
               <h4 className="mb-4">Exercises</h4>
               {currentAssignment && (
-                <div className="d-flex justify-content-between mb-2">
+                <div className="d-flex justify-content-between mb-4">
                   <div className="d-flex gap-2">
                     <Button
                       className={`rounded-1 ${

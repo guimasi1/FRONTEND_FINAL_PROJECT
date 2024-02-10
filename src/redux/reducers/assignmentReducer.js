@@ -7,6 +7,8 @@ import {
   GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
   GET_SINGLE_ASSIGNMENT,
   REMOVE_EXERCISE_DETAILS,
+  SET_COMPLETED,
+  SET_IN_PROGRESS,
 } from "../actions/assignmentsActions";
 
 const initialState = {
@@ -75,6 +77,32 @@ const assignmentReducer = (state = initialState, action) => {
         exercisesDetailsByAssignment: state.exercisesDetailsByAssignment.filter(
           (exercise) => exercise.id !== action.payload
         ),
+      };
+    case SET_IN_PROGRESS:
+      return {
+        ...state,
+        patientAssignments: state.patientAssignments.map((assignment) =>
+          assignment.id === action.payload
+            ? { ...assignment, assignmentStatus: "IN_PROGRESS" }
+            : assignment
+        ),
+        newAssignment: {
+          ...state.newAssignment,
+          assignmentStatus: "IN_PROGRESS",
+        },
+      };
+    case SET_COMPLETED:
+      return {
+        ...state,
+        patientAssignments: state.patientAssignments.map((assignment) =>
+          assignment.id === action.payload
+            ? { ...assignment, assignmentStatus: "COMPLETED" }
+            : assignment
+        ),
+        newAssignment: {
+          ...state.newAssignment,
+          assignmentStatus: "COMPLETED",
+        },
       };
 
     default:

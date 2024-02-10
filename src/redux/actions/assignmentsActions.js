@@ -9,6 +9,8 @@ export const ADD_EXERCISE_TO_ASSIGNMENT = "ADD_EXERCISE_TO_ASSIGNMENT";
 export const GET_ASSIGNMENTS_BY_PATIENT = "GET_ASSIGNMENTS_BY_PATIENT";
 export const GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO =
   "GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO";
+export const SET_IN_PROGRESS = "SET_IN_PROGRESS";
+export const SET_COMPLETED = "SET_COMPLETED";
 
 export const getAllAssignments = () => {
   const token = Cookies.get("token");
@@ -229,6 +231,60 @@ export const getAssignmentsByPatient = (patient_id) => {
         dispatch({
           type: GET_ASSIGNMENTS_BY_PATIENT,
           payload: data.content,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const setAssignmentToInProgress = (id) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/exercisesAssignments/inProgress/" + id,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        dispatch({
+          type: SET_IN_PROGRESS,
+          payload: id,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const setAssignmentCompleted = (id) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/exercisesAssignments/complete/" + id,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        dispatch({
+          type: SET_COMPLETED,
+          payload: id,
         });
       } else {
         throw new Error("Something went wrong.");

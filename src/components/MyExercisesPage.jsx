@@ -1,9 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
-import { getAssignmentsByPatient } from "../redux/actions/assignmentsActions";
+import {
+  getAssignmentsByPatient,
+  setAssignmentCompleted,
+  setAssignmentToInProgress,
+} from "../redux/actions/assignmentsActions";
 import { useFetcher } from "react-router-dom";
 import SinglePatientAssignment from "./SinglePatientAssignment";
 import SinglePatientExercisesDetails from "./SinglePatientExercisesDetails";
@@ -15,6 +19,10 @@ const MyExercisesPage = () => {
   );
   const myAssignments = useSelector(
     (state) => state.assignments.patientAssignments
+  );
+
+  const currentAssignment = useSelector(
+    (state) => state.assignments.newAssignment
   );
 
   const myExercisesDetails = useSelector(
@@ -59,6 +67,34 @@ const MyExercisesPage = () => {
           <div>
             <div>
               <h4 className="mb-4">Exercises</h4>
+              {currentAssignment && (
+                <div className="d-flex gap-2">
+                  <Button
+                    className={`rounded-1 ${
+                      currentAssignment.assignmentStatus === "IN_PROGRESS"
+                        ? "btn-primary"
+                        : "btn-secondary"
+                    }`}
+                    onClick={() => {
+                      dispatch(setAssignmentToInProgress(currentAssignment.id));
+                    }}
+                  >
+                    In progress
+                  </Button>
+                  <Button
+                    className={`rounded-1 ${
+                      currentAssignment.assignmentStatus === "COMPLETED"
+                        ? "btn-success"
+                        : "btn-secondary"
+                    }`}
+                    onClick={() => {
+                      dispatch(setAssignmentCompleted(currentAssignment.id));
+                    }}
+                  >
+                    Completed
+                  </Button>
+                </div>
+              )}
             </div>
             {myExercisesDetails &&
               myExercisesDetails.map((exercise) => (

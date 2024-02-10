@@ -19,7 +19,7 @@ const SinglePatientAssignment = ({ assignment }) => {
         dispatch(getSingleAssignment(assignment.id));
       }}
     >
-      <Col xs={3}>
+      <Col xs={3} className="p-0">
         {assignment && (
           <Badge
             className={`${
@@ -36,11 +36,11 @@ const SinglePatientAssignment = ({ assignment }) => {
       </Col>
       {assignment && (
         <Col>
-          Dr. {assignment.assignedBy.firstName} {assignment.assignedBy.lastName}
+          Dr.{assignment.assignedBy.firstName} {assignment.assignedBy.lastName}
         </Col>
       )}
       {assignment && (
-        <Col xs={4} className="text-end">
+        <Col xs={4} className="text-end ">
           {assignment.assignmentDate}
         </Col>
       )}

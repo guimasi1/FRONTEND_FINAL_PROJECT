@@ -24,7 +24,9 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getPatientsLinkRequests(myProfile.id));
+    if (myProfile) {
+      dispatch(getPatientsLinkRequests(myProfile.id));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,28 +41,52 @@ const Profile = () => {
         {myProfile && (
           <Col>
             <Card className="shadow-lg border-0 rounded-5">
-              <div className="d-flex justify-content-center align-items-center mt-4">
-                <Card.Img
-                  variant="top"
-                  src="https://placekitten.com/500"
-                  className="rounded-pill w-50 "
+              <div className="d-flex justify-content-center align-items-center">
+                <img
+                  src="https://placekitten.com/300"
+                  className="rounded-pill mt-3"
+                  alt=""
                 />
               </div>
               <Card.Body>
-                <Card.Title>My profile</Card.Title>
-                <Card.Text></Card.Text>
+                <ListGroup className="list-group-flush">
+                  <ListGroup.Item className="py-0 border-0 d-flex justify-content-between mb-2">
+                    <div className="fw-bold d-flex gap-2">
+                      <span class="material-symbols-outlined">badge</span>
+                      {myProfile.firstName} {myProfile.lastName}
+                    </div>
+                  </ListGroup.Item>
+                  <ListGroup.Item className="py-0 border-0 d-flex justify-content-between align-items-center">
+                    <div className="d-flex gap-2">
+                      <span class="material-symbols-outlined">mail</span>
+                      <strong>Email:</strong> {myProfile.email}
+                    </div>
+                    <div className="d-flex gap-2 align-items-center">
+                      <span class="material-symbols-outlined">call</span>
+                      <p className="p-0 mt-3">{myProfile.phoneNumber}</p>
+                    </div>
+                  </ListGroup.Item>
+                  <ListGroup.Item className="py-0 border-0 d-flex gap-1">
+                    <div className="d-flex gap-2">
+                      <span class="material-symbols-outlined">man</span>
+                      <strong>Gender:</strong>{" "}
+                    </div>
+                    <p className="p-0">
+                      {myProfile.gender.slice(0, 1)}
+                      {myProfile.gender.slice(1).toLowerCase()}
+                    </p>
+                  </ListGroup.Item>
+                  <ListGroup.Item className="py-0 border-0 d-flex gap-1">
+                    <div className="d-flex gap-2">
+                      <span class="material-symbols-outlined">
+                        calendar_month
+                      </span>
+                      <strong>Registration date:</strong>
+                    </div>
+                    {myProfile.registrationDate}
+                  </ListGroup.Item>
+                </ListGroup>
               </Card.Body>
-              <ListGroup className="list-group-flush">
-                <ListGroup.Item className="d-flex justify-content-between">
-                  <div>
-                    {myProfile.firstName} {myProfile.lastName}
-                  </div>
-                  <p>{myProfile.phoneNumber}</p>
-                </ListGroup.Item>
-                <ListGroup.Item>{myProfile.email}</ListGroup.Item>
-                <ListGroup.Item>{myProfile.gender}</ListGroup.Item>
-                <ListGroup.Item>{myProfile.registrationDate}</ListGroup.Item>
-              </ListGroup>
               <Card.Footer className="text-center">
                 <Button
                   variant="success"

@@ -80,3 +80,62 @@ export const connectWithPhysio = (requestDetails) => {
     }
   };
 };
+
+export const getPhysiosBySpecialization = (specialization) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/physiotherapists/bySpecialization?specialization=" +
+          specialization,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_PHYSIOTHERAPISTS,
+          payload: data,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getPhysiosByName = (nameObj) => {
+  const { firstName, lastName } = nameObj;
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/physiotherapists/bySpecialization?firstName=" +
+          firstName +
+          "&lastName=" +
+          lastName,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_PHYSIOTHERAPISTS,
+          payload: data,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

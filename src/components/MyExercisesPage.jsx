@@ -7,6 +7,7 @@ import { getAssignmentsByPatient } from "../redux/actions/assignmentsActions";
 import { useFetcher } from "react-router-dom";
 import SinglePatientAssignment from "./SinglePatientAssignment";
 import SinglePatientExercisesDetails from "./SinglePatientExercisesDetails";
+import DownloadPDFButton from "./DownloadPDFButton";
 
 const MyExercisesPage = () => {
   const myPatientProfile = useSelector(
@@ -51,15 +52,22 @@ const MyExercisesPage = () => {
               />
             ))}
         </Col>
-        <Col className="shadow-lg rounded-5 p-5">
-          <h4 className="mb-4">Exercises</h4>
-          {myExercisesDetails &&
-            myExercisesDetails.map((exercise) => (
-              <SinglePatientExercisesDetails
-                key={exercise.id}
-                exercise={exercise}
-              />
-            ))}
+        <Col className="shadow-lg rounded-5 p-5" id="exercises">
+          <div className="d-flex justify-content-end ">
+            <DownloadPDFButton />
+          </div>
+          <div>
+            <div>
+              <h4 className="mb-4">Exercises</h4>
+            </div>
+            {myExercisesDetails &&
+              myExercisesDetails.map((exercise) => (
+                <SinglePatientExercisesDetails
+                  key={exercise.id}
+                  exercise={exercise}
+                />
+              ))}
+          </div>
         </Col>
       </Row>
     </Container>

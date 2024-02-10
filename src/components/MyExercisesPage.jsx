@@ -40,11 +40,7 @@ const MyExercisesPage = () => {
           className="shadow-lg rounded-5 p-5 assignment-column-patient"
         >
           <h4>Your assignments</h4>
-          {/* <Row className="fw-bold mt-3 mb-2">
-            <Col xs={1}>N°</Col>
-            <Col>Assigned by</Col>
-            <Col>Date</Col>
-          </Row> */}
+
           <hr className="p-0 mb-4" />
           {myAssignments &&
             myAssignments.map((assignment, index) => (

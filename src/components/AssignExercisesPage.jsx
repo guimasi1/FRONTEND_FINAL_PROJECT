@@ -213,13 +213,17 @@ const AssignExercisesPage = () => {
               <h3 className="my-4">Exercises</h3>
               <Row>
                 <Col xs={12}>
-                  <Row className=" rounded-2 text-center ">
+                  <Row className=" rounded-2 text-center mb-2 fw-bold border-bottom pb-2">
                     <Col className="rounded-start-2" xs={1}>
                       N°
                     </Col>
                     <Col>Name</Col>
-                    <Col>Sets</Col>
-                    <Col className="rounded-end-2">Reps</Col>
+                    <Col>Target area</Col>
+                    <Col>Difficulty</Col>
+                    <Col xs={1}>Sets</Col>
+                    <Col className="rounded-end-2" xs={1}>
+                      Reps
+                    </Col>
                     <Col xs={1}></Col>
                   </Row>
                 </Col>

@@ -5,6 +5,7 @@ import patientsReducer from "../reducers/patientReducer";
 import linkRequestReducer from "../reducers/linkRequestReducer";
 import exercisesReducer from "../reducers/exerciseReducer";
 import assignmentReducer from "../reducers/assignmentReducer";
+import toastifyReducer from "../reducers/toastifyReducer";
 
 const bigReducer = combineReducers({
   register: registerReducer,
@@ -13,6 +14,7 @@ const bigReducer = combineReducers({
   requests: linkRequestReducer,
   exercises: exercisesReducer,
   assignments: assignmentReducer,
+  toastify: toastifyReducer,
 });
 
 const store = configureStore({

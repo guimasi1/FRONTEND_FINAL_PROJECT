@@ -52,3 +52,30 @@ export const createExerciseWithDetails = (exercise) => {
     }
   };
 };
+
+export const getExercisesByName = (name) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        "http://localhost:3001/api/exercises/byName?name=" + name,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_EXERCISES,
+          payload: data,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

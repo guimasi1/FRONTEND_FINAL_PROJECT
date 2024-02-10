@@ -69,7 +69,6 @@ export const login = (loginPayload, role) => {
           sameSite: "strict",
         });
         Cookies.set("role", role);
-        alert("login succeded");
       } else {
         console.log(loginPayload);
         throw new Error("Something went wront with the login.");

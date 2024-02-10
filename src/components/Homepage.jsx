@@ -2,6 +2,8 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { getPhysiotherapists } from "../redux/actions/physiotherapistActions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -11,6 +13,7 @@ const Homepage = () => {
   }, []);
   return (
     <Container className="mb-5">
+      <ToastContainer />
       <Row>
         <Col className="order-1 order-md-0">
           <h1 id="headline" className="mt-5">

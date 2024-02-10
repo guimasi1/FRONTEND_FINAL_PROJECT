@@ -11,6 +11,7 @@ import Patients from "./components/Patients";
 import PhysioProfile from "./components/PhysioProfile";
 import AssignExercisesPage from "./components/AssignExercisesPage";
 import MyExercisesPage from "./components/MyExercisesPage";
+
 function App() {
   return (
     <BrowserRouter>

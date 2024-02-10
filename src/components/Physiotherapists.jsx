@@ -38,6 +38,9 @@ const Physiotherapist = () => {
 
   useEffect(() => {
     console.log(name);
+    if (name) {
+      dispatch(getPhysiosByName(name));
+    }
   }, [name]);
 
   return (

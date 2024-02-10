@@ -4,7 +4,10 @@ import { Badge, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getSinglePatient } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
-import { getExercises } from "../redux/actions/exercisesActions";
+import {
+  getExercises,
+  getExercisesByName,
+} from "../redux/actions/exercisesActions";
 import SingleExercise from "./SingleExercise";
 import Select from "react-select";
 import {
@@ -253,6 +256,15 @@ const AssignExercisesPage = () => {
               </Row>
               <Row>
                 <Col xs={3} className="my-4 d-flex align-items-center gap-3">
+                  <span class="material-symbols-outlined">search</span>
+                  <Form.Control
+                    placeholder="Search by name"
+                    onChange={(e) => {
+                      dispatch(getExercisesByName(e.target.value));
+                    }}
+                  />
+                </Col>
+                <Col xs={5} className="my-4 d-flex align-items-center gap-3">
                   <p className="p-0 fw-bold mt-3">Target Area</p>
                   <Select
                     className="w-75"
@@ -272,12 +284,7 @@ const AssignExercisesPage = () => {
                 </Col>
               </Row>
 
-              <Row
-                xs={1}
-                md={2}
-                lg={4}
-                className="mb-4 gap-2 justify-content-around"
-              >
+              <Row className="mb-4 gap-5 justify-content-around">
                 {exercises &&
                   currentAssignment &&
                   exercises.map((exercise) => (

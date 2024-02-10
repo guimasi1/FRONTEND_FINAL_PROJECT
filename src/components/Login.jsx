@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../redux/actions/authentication";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { showLoggedIn } from "../redux/actions/toastifyActions";
 const Login = () => {
   const dispatch = useDispatch();
   const [loginData, setLoginData] = useState(null);
@@ -80,6 +81,7 @@ const Login = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(login(loginData, role));
+                  dispatch(showLoggedIn());
                   navigate("/");
                 }}
               >

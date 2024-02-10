@@ -15,7 +15,7 @@ const SingleExercise = ({
   const dispatch = useDispatch();
 
   return (
-    <Col className="border rounded-5 p-4">
+    <Col xs={6} md={4} lg={3} className="border rounded-5 p-4">
       {exercise && (
         <Row>
           <Col xs={12} className="fw-bold">
@@ -27,7 +27,9 @@ const SingleExercise = ({
               {exercise.targetArea}
             </div>
             <Badge
-              className="py-2 px-3"
+              className={`${
+                exercise.difficultyLevel === "MEDIUM" ? "py-2" : "py-2 px-3"
+              } d-flex align-items-center justify-content-center`}
               bg={`${
                 exercise.difficultyLevel === "EASY"
                   ? "success"

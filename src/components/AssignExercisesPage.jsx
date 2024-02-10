@@ -166,7 +166,7 @@ const AssignExercisesPage = () => {
             <Row>
               <Col className="text-end">
                 <Button
-                  className="brownish-button mb-4"
+                  className="brownish-button rounded-pill text-white mb-4 btn btn-sm "
                   onClick={() => {
                     const newAssignmentData = {
                       notes: "",
@@ -179,7 +179,9 @@ const AssignExercisesPage = () => {
                     }
                   }}
                 >
-                  New assignment
+                  <span className="material-symbols-outlined fs-3 px-2 py-2 rounded-circle d-flex justify-content-center align-items-center">
+                    post_add
+                  </span>
                 </Button>
               </Col>
             </Row>

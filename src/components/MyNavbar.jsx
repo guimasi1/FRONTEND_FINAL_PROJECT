@@ -1,13 +1,23 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
+import { setRole } from "../redux/actions/authentication";
 
 const MyNavbar = () => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
+  const dispatch = useDispatch();
   let role = Cookies.get("role");
-  console.log("role");
-  console.log(role);
+  const roleState = useSelector((state) => state.register.role);
+  useEffect(() => {
+    dispatch(setRole(role));
+  }, []);
+  useEffect(() => {
+    dispatch(setRole(role));
+  }, [role]);
   return (
     <Navbar expand="lg">
       <Container className="ps-lg-5">
@@ -107,20 +117,22 @@ const MyNavbar = () => {
             </div>
           </Nav>
         </Navbar.Collapse>
-        <div className="d-flex gap-4 mt-2">
-          <Link
-            to="/login"
-            className="text-decoration-none text-black fw-bold py-3"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className="text-decoration-none text-black fw-bold greenish py-3 px-4 rounded-pill text-white"
-          >
-            Get Started
-          </Link>
-        </div>
+        {
+          <div className="d-flex gap-4 mt-2">
+            <Link
+              to="/login"
+              className="text-decoration-none text-black fw-bold py-3"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="text-decoration-none text-black fw-bold greenish py-3 px-4 rounded-pill text-white"
+            >
+              Get Started
+            </Link>
+          </div>
+        }
       </Container>
     </Navbar>
   );

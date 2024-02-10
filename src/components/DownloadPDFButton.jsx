@@ -28,7 +28,7 @@ const DownloadPDFButton = () => {
       onClick={downloadPDF}
     >
       <div>
-        <span class="material-symbols-outlined">download</span>
+        <span className="material-symbols-outlined">download</span>
       </div>
     </div>
   );

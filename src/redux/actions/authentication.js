@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 export const REGISTER_PHYSIOTHERAPIST = "REGISTER_PHYSIOTHERAPIST";
 export const REGISTER_PATIENT = "REGISTER_PATIENT";
 export const LOGIN = "LOGIN";
+export const SET_ROLE = "SET_ROLE";
 
 export const register = (registrationPayload, role) => {
   const roleToLowerCase = role.toLowerCase();
@@ -78,3 +79,5 @@ export const login = (loginPayload, role) => {
     }
   };
 };
+
+export const setRole = (role) => ({ type: SET_ROLE, payload: role });

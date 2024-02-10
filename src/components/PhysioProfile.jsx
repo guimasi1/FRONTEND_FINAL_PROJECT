@@ -32,7 +32,7 @@ const PhysioProfile = () => {
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item className="d-flex justify-content-between pb-2 mb-0 border-0">
                     <div className="d-flex gap-2 p-0">
-                      <span class="material-symbols-outlined">badge</span>
+                      <span className="material-symbols-outlined">badge</span>
                       <div className="fw-bold">
                         {myProfile.firstName} {myProfile.lastName}
                       </div>
@@ -40,24 +40,26 @@ const PhysioProfile = () => {
                   </ListGroup.Item>
                   <ListGroup.Item className="d-flex justify-content-between align-items-center py-0 border-0">
                     <div className="d-flex gap-2">
-                      <span class="material-symbols-outlined">mail</span>
+                      <span className="material-symbols-outlined">mail</span>
                       <strong>Email:</strong> {myProfile.email}
                     </div>
                     <div className="d-flex gap-2 mt-2">
-                      <span class="material-symbols-outlined">call</span>
+                      <span className="material-symbols-outlined">call</span>
                       <p className="p-0"> {myProfile.phoneNumber}</p>
                     </div>
                   </ListGroup.Item>
 
                   <ListGroup.Item className="d-flex gap-2 border-0">
-                    <span class="material-symbols-outlined">stethoscope</span>{" "}
+                    <span className="material-symbols-outlined">
+                      stethoscope
+                    </span>{" "}
                     <strong>Specialization:</strong>
                     {myProfile.specialization.slice(0, 1) +
                       myProfile.specialization.slice(1).toLowerCase()}
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <div className="d-flex gap-2 border-0">
-                      <span class="material-symbols-outlined">
+                      <span className="material-symbols-outlined">
                         calendar_month
                       </span>
                       <strong>Registration date:</strong>

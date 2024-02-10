@@ -105,7 +105,7 @@ const MyExercisesPage = () => {
                       setShowNotes(!showNotes);
                     }}
                   >
-                    <span class="material-symbols-outlined fs-4">
+                    <span className="material-symbols-outlined fs-4">
                       clinical_notes
                     </span>
                   </Button>

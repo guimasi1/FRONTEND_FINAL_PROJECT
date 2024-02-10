@@ -15,7 +15,7 @@ const SingleExercise = ({
   const dispatch = useDispatch();
 
   return (
-    <Col xs={6} md={4} lg={3} className="border rounded-5 p-4">
+    <Col xs={12} md={3} className="border rounded-5 p-4">
       {exercise && (
         <Row>
           <Col xs={12} className="fw-bold">

@@ -52,23 +52,23 @@ const Profile = () => {
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item className="py-0 border-0 d-flex justify-content-between mb-2">
                     <div className="fw-bold d-flex gap-2">
-                      <span class="material-symbols-outlined">badge</span>
+                      <span className="material-symbols-outlined">badge</span>
                       {myProfile.firstName} {myProfile.lastName}
                     </div>
                   </ListGroup.Item>
                   <ListGroup.Item className="py-0 border-0 d-flex justify-content-between align-items-center">
                     <div className="d-flex gap-2">
-                      <span class="material-symbols-outlined">mail</span>
+                      <span className="material-symbols-outlined">mail</span>
                       <strong>Email:</strong> {myProfile.email}
                     </div>
                     <div className="d-flex gap-2 align-items-center">
-                      <span class="material-symbols-outlined">call</span>
+                      <span className="material-symbols-outlined">call</span>
                       <p className="p-0 mt-3">{myProfile.phoneNumber}</p>
                     </div>
                   </ListGroup.Item>
                   <ListGroup.Item className="py-0 border-0 d-flex gap-1">
                     <div className="d-flex gap-2">
-                      <span class="material-symbols-outlined">man</span>
+                      <span className="material-symbols-outlined">man</span>
                       <strong>Gender:</strong>{" "}
                     </div>
                     <p className="p-0">
@@ -78,7 +78,7 @@ const Profile = () => {
                   </ListGroup.Item>
                   <ListGroup.Item className="py-0 border-0 d-flex gap-1">
                     <div className="d-flex gap-2">
-                      <span class="material-symbols-outlined">
+                      <span className="material-symbols-outlined">
                         calendar_month
                       </span>
                       <strong>Registration date:</strong>

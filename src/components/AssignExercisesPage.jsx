@@ -256,7 +256,7 @@ const AssignExercisesPage = () => {
               </Row>
               <Row>
                 <Col xs={3} className="my-4 d-flex align-items-center gap-3">
-                  <span class="material-symbols-outlined">search</span>
+                  <span className="material-symbols-outlined">search</span>
                   <Form.Control
                     placeholder="Search by name"
                     onChange={(e) => {

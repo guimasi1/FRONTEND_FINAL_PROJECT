@@ -2,12 +2,14 @@ import {
   LOGIN,
   REGISTER_PATIENT,
   REGISTER_PHYSIOTHERAPIST,
+  SET_ROLE,
 } from "../actions/authentication";
 
 const initialState = {
   registrationPhysiotherapistId: "",
   registrationPatientId: "",
   token: "",
+  role: "",
 };
 
 const registerReducer = (state = initialState, action) => {
@@ -26,6 +28,11 @@ const registerReducer = (state = initialState, action) => {
       return {
         ...state,
         token: action.payload,
+      };
+    case SET_ROLE:
+      return {
+        ...state,
+        role: action.payload,
       };
     default:
       return state;

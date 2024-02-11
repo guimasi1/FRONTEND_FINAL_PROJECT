@@ -178,6 +178,34 @@ code {
   border: black;
 }
 
+.fs-7 {
+  font-size: 0.9rem;
+}
+
+.fs-8 {
+  font-size: 0.8rem;
+}
+
+.fs-lg-5 {
+  font-size: 1.4em;
+}
+
+.fs-lg-4 {
+  font-size: 1.6em;
+}
+
+.fs-lg-3 {
+  font-size: 1.8em;
+}
+
+.fs-lg-2 {
+  font-size: 2em;
+}
+
+.fs-lg-1 {
+  font-size: 2.3em;
+}
+
 .brownish-button {
   background-color: #ce8013 !important;
   /* background-color: #9a600e !important; */
@@ -197,6 +225,15 @@ code {
 /* PATIENTS */
 #search-bar-patient {
   width: 300px;
+}
+
+.patient-card {
+  width: 300px !important;
+  margin-bottom: 1em;
+}
+
+.name-container-patient {
+  width: 150px !important;
 }
 
 .icon-request {

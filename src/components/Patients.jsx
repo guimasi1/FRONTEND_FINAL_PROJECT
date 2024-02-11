@@ -50,7 +50,7 @@ const Patients = () => {
               <hr className="mb-5 w-75 border border-2 border-black" />
             </div>
             <Col xs={12} className="mb-5">
-              <div id="search-bar-patient">
+              <div id="search-bar-patient" className="ms-4">
                 <Form.Label className="fw-bold">Search</Form.Label>
                 <Form.Control
                   type="text"

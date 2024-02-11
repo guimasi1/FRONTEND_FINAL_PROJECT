@@ -53,12 +53,14 @@ export const getMyPatientProfile = () => {
   };
 };
 
-export const getPatientsByPhysio = (physio_id) => {
+export const getPatientsByPhysio = (physio_id, lastName) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/patients/byPhysiotherapist/" + physio_id,
+        `http://localhost:3001/api/patients/byPhysiotherapist/${physio_id}${
+          lastName ? `?lastName=${lastName}` : ""
+        }`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

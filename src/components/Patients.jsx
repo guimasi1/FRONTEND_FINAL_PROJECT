@@ -1,8 +1,9 @@
-import { Col, Container, Row } from "react-bootstrap";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Col, Container, Form, Row } from "react-bootstrap";
 import { getPatientsByPhysio } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
 import SinglePatient from "./SinglePatient";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import { motion } from "framer-motion";
 const Patients = () => {
@@ -14,10 +15,10 @@ const Patients = () => {
   const yourPatients = useSelector(
     (state) => state.patients.patientsByPhysio.content
   );
+  const [lastName, setLastName] = useState("");
+
   useEffect(() => {
     dispatch(getMyPhysioProfile());
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -25,6 +26,12 @@ const Patients = () => {
       dispatch(getPatientsByPhysio(myPhysioProfile.id));
     }
   }, [myPhysioProfile, dispatch]);
+
+  useEffect(() => {
+    if (myPhysioProfile) {
+      dispatch(getPatientsByPhysio(myPhysioProfile.id, lastName));
+    }
+  }, [lastName]);
 
   return (
     <Container>
@@ -42,6 +49,19 @@ const Patients = () => {
               <h1>Your Patients</h1>
               <hr className="mb-5 w-75 border border-2 border-black" />
             </div>
+            <Col xs={12} className="mb-5">
+              <div id="search-bar-patient">
+                <Form.Label className="fw-bold">Search</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Name"
+                  className="custom-input"
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                  }}
+                />
+              </div>
+            </Col>
             {yourPatients &&
               yourPatients.map((patient) => (
                 <SinglePatient patient={patient} key={patient.id} />

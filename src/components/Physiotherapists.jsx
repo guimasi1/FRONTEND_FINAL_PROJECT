@@ -61,7 +61,6 @@ const Physiotherapist = () => {
         </div>
         <Col xs={4} className="flex-grow-1 mb-4">
           <Form className="d-flex gap-3 ms-5 ps-4">
-            {" "}
             <Form.Group className="mb-3 d-flex gap-3 align-items-center">
               <Form.Label className="fw-bold">Search</Form.Label>
               <Form.Control

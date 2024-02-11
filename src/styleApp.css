@@ -1,4 +1,208 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+/* REGISTRATION */
+#blob-registration {
+  left: 524px;
+  bottom: 339px;
+  width: 45%;
+}
+
+#blob-registration2 {
+  top: 176px;
+  left: 92px;
+  width: 35%;
+}
+
+#blob-registration3 {
+  top: 375px;
+  left: 292px;
+  width: 50%;
+}
+
+/* EXERCISES ASSIGNMENT */
+.image-profile-exercises {
+  width: 40%;
+}
+
+#stroke-text {
+  top: -150px;
+  left: 300px;
+}
+
+.single-assignment:hover {
+  background-color: #e8bc7f;
+}
+
+.selected-assignment {
+  background-color: #e8bc7f;
+}
+
+.hover-request:hover {
+  background-color: #68d89b;
+}
+
+.add-icons {
+  width: 15%;
+}
+
+.add-button:hover {
+  background-color: hsl(48, 82%, 57%) !important;
+}
+
+#assigned-programs-section {
+  height: 430px;
+}
+
+#your-patient-section {
+  height: 430px !important;
+}
+
+/* ASSIGNMENTS BY PATIENT */
+.assignment-column-patient {
+  height: 650px;
+}
+
+.description-add-exercise {
+  font-size: 0.9rem;
+  height: 113px;
+}
+
+.add-icon-exercise {
+  width: 100px;
+}
+
+.col-exercise {
+  height: 400px;
+}
+
+/* EXERCISES BY PATIENT */
+.description-paragraph {
+  font-size: 0.9rem;
+  padding: 0em 7em;
+}
+
+/* HOMEPAGE */
+#headline {
+  font-size: 5.5em;
+}
+
+/* NAVBAR */
+#navbar-div {
+  margin-left: 7em !important;
+}
+
+#illustration-registration {
+  width: 100%;
+}
+
+#login-form {
+  margin-top: 8em;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.greenish {
+  background-color: #0e9a3d;
+}
+
+.greenish-2 {
+  background-color: #68d89b;
+}
+
+.greenish-3 {
+  background-color: #8dffcd;
+}
+
+.greenish-4 {
+  background-color: #bcffdb;
+}
+
+.greenish-5 {
+  background-color: #bee6ce;
+}
+
+.hidden {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.custom-input {
+  border-radius: 0.9rem !important;
+  border: 2px solid #10ae35 !important;
+  height: 3em;
+  width: 90% !important;
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out !important;
+}
+
+.custom-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+  border-color: #0056b3 !important;
+}
+
+.fancy-border-radius {
+  border-radius: 10% 0% 100% 0%/14% 39% 61% 86%;
+  width: 200px;
+  height: 183px;
+  background-color: #8dffcd;
+  position: absolute;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+/* PAGINATION */
+.pagination .page-link {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.pagination .page-link:hover {
+  background-color: #f2c687;
+  color: black;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #ce8013;
+  color: white;
+  border: black;
+}
+
+.brownish-button {
+  background-color: #ce8013 !important;
+  /* background-color: #9a600e !important; */
+  border: none !important;
+}
+
+.brownish-button:hover {
+  background-color: #ce9d58 !important;
+}
+
+.brownish-button-2 {
+  background-color: #ce9d58 !important;
+  /* background-color: #9a600e !important; */
+  border: none !important;
+}
+
+/* PATIENTS */
+#search-bar-patient {
+  width: 300px;
+}
+
+.icon-request {
+  width: 28px;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.greenish {
+  background-color: #0e9a3d;
+}
+
+.greenish-2 {
+  background-color: #68d89b;
+}
+
+.greenish-3 {
+  background-color: #8dffcd;
+}
+.greenish-4 {
+  background-color: #bcffdb;
+}
+.greenish-5 {
+  background-color: #bee6ce;
+}
+
+.hidden {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.custom-input {
+  border-radius: 0.9rem !important;
+  border: 2px solid #10ae35 !important;
+  height: 3em;
+  width: 90% !important;
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out !important;
+}
+
+.custom-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+  border-color: #0056b3 !important;
+}
+
+.fancy-border-radius {
+  border-radius: 10% 0% 100% 0% / 14% 39% 61% 86%;
+  width: 200px;
+  height: 183px;
+  background-color: #8dffcd;
+  position: absolute;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+/* PAGINATION */
+
+.pagination .page-link {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.pagination .page-link:hover {
+  background-color: #f2c687;
+  color: black;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #ce8013;
+  color: white;
+  border: black;
+}

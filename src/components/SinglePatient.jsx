@@ -10,30 +10,28 @@ const SinglePatient = ({ patient }) => {
       md={6}
       lg={3}
     >
-      <div className="mt-3 d-flex justify-content-between mb-5">
+      <div className="mt-3 d-flex justify-content-between mb-3">
         <img
           src="https://placekitten.com/80"
           alt=""
-          className="rounded-pill ms-3"
+          className="rounded-4 ms-3"
         />
         <div>
+          <div className="d-flex justify-content-between">
+            <p>
+              {patient.firstName} {patient.lastName}
+            </p>
+          </div>
           <Button
-            className="py-2 rounded-pill brownish-button"
+            className="py-2 rounded-2 brownish-button"
             onClick={() => {
               navigate("/assignExercises/" + patient.id);
             }}
           >
-            Assign exercises
+            View
           </Button>
         </div>
       </div>
-      <div className="d-flex justify-content-between">
-        <p>
-          {patient.firstName} {patient.lastName}
-        </p>
-        <p>{patient.phoneNumber}</p>
-      </div>
-      <div></div>
     </Col>
   );
 };

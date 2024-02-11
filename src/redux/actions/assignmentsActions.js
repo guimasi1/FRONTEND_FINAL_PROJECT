@@ -17,7 +17,7 @@ export const getAllAssignments = () => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(BASE_URL, {
+      const res = await fetch(BASE_URL + "exercisesAssignments", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -69,7 +69,11 @@ export const getAssignmentsByPatientAndPhysio = (patient_id, physio_id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        BASE_URL + "getByPatient/" + patient_id + "/andPhysio/" + physio_id,
+        BASE_URL +
+          "exercisesAssignments/getByPatient/" +
+          patient_id +
+          "/andPhysio/" +
+          physio_id,
         {
           headers: {
             Authorization: `Bearer ${token}`,

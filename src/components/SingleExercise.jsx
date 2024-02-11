@@ -17,10 +17,14 @@ const SingleExercise = ({
   const dispatch = useDispatch();
 
   return (
-    <Col xs={12} md={3} className="border rounded-5 p-4">
+    <Col
+      xs={12}
+      md={3}
+      className="border rounded-5 py-2 px-3 col-exercise ms-lg-4"
+    >
       {exercise && (
         <Row>
-          <Col xs={12} className="fw-bold">
+          <Col xs={12} className="fw-bold text-center pt-2">
             {exercise.name}
           </Col>
           <Col className="mt-3 d-flex justify-content-between" xs={12}>
@@ -43,17 +47,17 @@ const SingleExercise = ({
               {exercise.difficultyLevel}
             </Badge>
           </Col>
-          <Col xs={12} className="mt-3">
-            {exercise.description}
+          <Col xs={12} className="mt-3 description-add-exercise">
+            {exercise && exercise.description}
           </Col>
-          <Col xs={12} className="my-3">
+          <Col xs={12} className="my-2">
             <div className="d-flex align-items-center justify-content-between">
               <Form.Label>Sets</Form.Label>
               <Form.Select
                 className="mb-2 w-50"
                 onChange={(e) => setSets(e.target.value)}
               >
-                <option>Sets</option>
+                <option>1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -69,12 +73,12 @@ const SingleExercise = ({
             <div className="d-flex align-items-center justify-content-between">
               <Form.Label>Repetitions</Form.Label>
               <Form.Select
-                className="w-50"
+                className="w-50 "
                 onChange={(e) => {
                   setReps(e.target.value);
                 }}
               >
-                <option>Reps</option>
+                <option>1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -91,7 +95,7 @@ const SingleExercise = ({
           <Col className="mt-1 d-flex justify-content-center">
             <motion.div
               whileTap={{ scale: 0.8 }}
-              className="d-flex justify-content-center align-items-center bg-warning w-50 rounded-pill cursor fw-bold add-button"
+              className="d-flex justify-content-center align-items-center bg-warning w-50 py-2 rounded-pill cursor fw-bold add-button"
               onClick={() => {
                 dispatch(
                   createExerciseWithDetails({
@@ -106,13 +110,7 @@ const SingleExercise = ({
                 dispatch(getSingleAssignment(currentAssignmentId));
               }}
             >
-              <p className="p-0 mt-3 me-2">ADD</p>
-              <motion.img
-                src="\images\add-icon.svg"
-                alt=""
-                className="add-icons"
-                whileTap={{ scale: 0.8 }}
-              />
+              <span class="material-symbols-outlined fw-bold fs-3">add</span>
             </motion.div>
           </Col>
         </Row>

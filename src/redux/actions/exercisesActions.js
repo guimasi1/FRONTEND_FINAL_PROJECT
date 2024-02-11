@@ -1,16 +1,20 @@
 import Cookies from "js-cookie";
 export const GET_EXERCISES = "GET_EXERCISES";
 export const NEW_DETAILS_EXERCISE = "NEW_DETAILS_EXERCISE";
+export const SET_PAGE = "SET_PAGE";
 
-export const getExercises = () => {
+export const getExercises = (page) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/exercises", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        `http://localhost:3001/api/exercises${page ? "?page=" + page : ""}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (res.ok) {
         const data = await res.json();
         dispatch({
@@ -53,12 +57,14 @@ export const createExerciseWithDetails = (exercise) => {
   };
 };
 
-export const getExercisesByName = (name) => {
+export const getExercisesByName = (name, page) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/exercises/byName?name=" + name,
+        `http://localhost:3001/api/exercises/byName?name=${name}&size=6${
+          page ? `&page=${page}` : ""
+        }`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -79,3 +85,5 @@ export const getExercisesByName = (name) => {
     }
   };
 };
+
+export const setPage = (page) => ({ type: SET_PAGE, payload: page });

@@ -159,9 +159,40 @@ code {
   height: 650px;
 }
 
+.description-add-exercise {
+  font-size: 0.9rem;
+  height: 113px;
+}
+
+.add-icon-exercise {
+  width: 100px;
+}
+
+.col-exercise {
+  height: 400px;
+}
+
 /* EXERCISES BY PATIENT */
 
 .description-paragraph {
   font-size: 0.9rem;
   padding: 0em 7em;
+}
+
+/* PAGINATION */
+
+.pagination .page-link {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.pagination .page-link:hover {
+  background-color: #f2c687;
+  color: black;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #ce8013;
+  color: white;
+  border: black;
 }

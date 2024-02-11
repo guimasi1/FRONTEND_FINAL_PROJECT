@@ -1,6 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { Badge, Button, Col, Container, Form, Row } from "react-bootstrap";
+import {
+  Badge,
+  Button,
+  Col,
+  Container,
+  Form,
+  Pagination,
+  Row,
+} from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getSinglePatient } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +28,7 @@ import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import AddedExercise from "./AddedExercise";
 import SingleAssignment from "./SingleAssignment";
 import { motion } from "framer-motion";
+import MyPagination from "./MyPagination";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -99,6 +108,7 @@ const AssignExercisesPage = () => {
   ];
   const [selectedOption, setSelectedOption] = useState("");
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
+  const page = useSelector((state) => state.exercises.page);
 
   return (
     <motion.div
@@ -286,7 +296,7 @@ const AssignExercisesPage = () => {
                   <Form.Control
                     placeholder="Search by name"
                     onChange={(e) => {
-                      dispatch(getExercisesByName(e.target.value));
+                      dispatch(getExercisesByName(e.target.value, page));
                     }}
                   />
                 </Col>
@@ -309,8 +319,20 @@ const AssignExercisesPage = () => {
                   />
                 </Col>
               </Row>
-
-              <Row className="mb-4 gap-5 justify-content-around">
+              <Row className="flex-grow-1">
+                {exercises && (
+                  <Col xs={{ span: 10, offset: 1 }} md={{ span: 6, offset: 3 }}>
+                    <MyPagination
+                      className="d-flex justify-content-center align-items-center ms-5 flex-grow-1"
+                      itemsCount={
+                        exercises.length < 100 ? 100 : exercises.length
+                      }
+                      itemsPerPage={10}
+                    />
+                  </Col>
+                )}
+              </Row>
+              <Row className="mb-4 gap-2 ms-lg-5 ps-lg-5">
                 {exercises &&
                   currentAssignment &&
                   exercises.map((exercise) => (

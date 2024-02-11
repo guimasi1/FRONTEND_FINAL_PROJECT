@@ -19,7 +19,8 @@ const SingleExercise = ({
   return (
     <Col
       xs={12}
-      md={3}
+      md={12}
+      lg={3}
       className="border rounded-5 py-2 px-3 col-exercise ms-lg-4"
     >
       {exercise && (

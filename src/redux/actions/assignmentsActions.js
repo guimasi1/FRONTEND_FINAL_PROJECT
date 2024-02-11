@@ -11,19 +11,17 @@ export const GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO =
   "GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO";
 export const SET_IN_PROGRESS = "SET_IN_PROGRESS";
 export const SET_COMPLETED = "SET_COMPLETED";
+export const BASE_URL = "http://localhost:3001/api/";
 
 export const getAllAssignments = () => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(BASE_URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.ok) {
         const data = await res.json();
         dispatch({
@@ -43,17 +41,14 @@ export const createAssignment = (assignmentData) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments",
-        {
-          method: "POST",
-          body: JSON.stringify(assignmentData),
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch(BASE_URL + "exercisesAssignments", {
+        method: "POST",
+        body: JSON.stringify(assignmentData),
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       if (res.ok) {
         const data = await res.json();
         dispatch({
@@ -74,10 +69,7 @@ export const getAssignmentsByPatientAndPhysio = (patient_id, physio_id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments/getByPatient/" +
-          patient_id +
-          "/andPhysio/" +
-          physio_id,
+        BASE_URL + "getByPatient/" + patient_id + "/andPhysio/" + physio_id,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -104,7 +96,8 @@ export const addExerciseToAssignment = (assignment_id, exerciseDetails_id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/exercisesDetails/" +
+        BASE_URL +
+          "exercisesDetails/" +
           exerciseDetails_id +
           "/assignTo/" +
           assignment_id,
@@ -135,14 +128,11 @@ export const getSingleAssignment = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments/" + id,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(BASE_URL + "exercisesAssignments/" + id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.ok) {
         const data = await res.json();
         dispatch({
@@ -162,15 +152,12 @@ export const removeAssignment = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments/" + id,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(BASE_URL + "exercisesAssignments/" + id, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.ok) {
         dispatch({
           type: DELETE_ASSIGNMENT,
@@ -189,15 +176,12 @@ export const removeExerciseDetails = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(
-        "http://localhost:3001/api/exercisesDetails/" + id,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(BASE_URL + "exercisesDetails/" + id, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.ok) {
         dispatch({
           type: REMOVE_EXERCISE_DETAILS,
@@ -218,8 +202,7 @@ export const getAssignmentsByPatient = (patient_id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments/getByPatient/" +
-          patient_id,
+        BASE_URL + "exercisesAssignments/getByPatient/" + patient_id,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -246,7 +229,7 @@ export const setAssignmentToInProgress = (id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments/inProgress/" + id,
+        BASE_URL + "exercisesAssignments/inProgress/" + id,
         {
           method: "PATCH",
           headers: {
@@ -273,7 +256,7 @@ export const setAssignmentCompleted = (id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/exercisesAssignments/complete/" + id,
+        BASE_URL + "exercisesAssignments/complete/" + id,
         {
           method: "PATCH",
           headers: {

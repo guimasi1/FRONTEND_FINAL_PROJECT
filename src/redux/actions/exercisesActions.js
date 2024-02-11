@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { BASE_URL } from "./assignmentsActions";
 export const GET_EXERCISES = "GET_EXERCISES";
 export const NEW_DETAILS_EXERCISE = "NEW_DETAILS_EXERCISE";
 export const SET_PAGE = "SET_PAGE";
@@ -34,7 +35,7 @@ export const createExerciseWithDetails = (exercise) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/exercisesDetails", {
+      const res = await fetch(BASE_URL + "exercisesDetails", {
         method: "POST",
         body: JSON.stringify(exercise),
         headers: {

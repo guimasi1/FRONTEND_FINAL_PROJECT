@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { BASE_URL } from "./assignmentsActions";
 export const GET_PATIENTS = "GET_PATIENTS";
 export const GET_MY_PATIENT_PROFILE = "GET_MY_PATIENT_PROFILE";
 export const GET_PATIENTS_BY_PHYSIO = "GET_PATIENTS_BY_PHYSIO";
@@ -8,7 +9,7 @@ export const getPatients = () => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/patients", {
+      const res = await fetch(BASE_URL + "patients", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -86,7 +87,7 @@ export const getSinglePatient = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/patients/" + id, {
+      const res = await fetch(BASE_URL + "patients/" + id, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

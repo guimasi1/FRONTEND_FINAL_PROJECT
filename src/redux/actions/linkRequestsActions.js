@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { BASE_URL } from "./assignmentsActions";
 
 export const GET_REQUESTS_BY_ID = "GET_REQUESTS_BY_ID";
 export const REMOVE_REQUEST = "REMOVE_REQUEST";
@@ -9,7 +10,7 @@ export const getPatientsLinkRequests = (id) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/linkRequests/byPatientAndStatus/" + id,
+        BASE_URL + "linkRequests/byPatientAndStatus/" + id,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -35,7 +36,7 @@ export const removeRequest = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/linkRequests/" + id, {
+      const res = await fetch(BASE_URL + "linkRequests/" + id, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -59,15 +60,12 @@ export const acceptRequest = (id) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(
-        "http://localhost:3001/api/linkRequests/accept/" + id,
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(BASE_URL + "linkRequests/accept/" + id, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.ok) {
         const data = await res.json();
         dispatch({

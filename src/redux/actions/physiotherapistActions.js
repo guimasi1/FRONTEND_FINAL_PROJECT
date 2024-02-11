@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import { BASE_URL } from "./assignmentsActions";
 export const GET_PHYSIOTHERAPISTS = "GET_PHYSIOTHERAPISTS";
 export const GET_MY_PHYSIO_PROFILE = "GET_MY_PHYSIO_PROFILE";
 export const SEND_REQUEST = "SEND_REQUEST";
@@ -7,7 +8,7 @@ export const getPhysiotherapists = () => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/physiotherapists", {
+      const res = await fetch(BASE_URL + "physiotherapists", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -31,7 +32,7 @@ export const getMyPhysioProfile = () => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/physiotherapists/me", {
+      const res = await fetch(BASE_URL + "physiotherapists/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -55,7 +56,7 @@ export const connectWithPhysio = (requestDetails) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch("http://localhost:3001/api/linkRequests", {
+      const res = await fetch(BASE_URL + "linkRequests", {
         method: "POST",
         body: JSON.stringify(requestDetails),
         headers: {
@@ -86,7 +87,8 @@ export const getPhysiosBySpecialization = (specialization) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/physiotherapists/bySpecialization?specialization=" +
+        BASE_URL +
+          "physiotherapists/bySpecialization?specialization=" +
           specialization,
         {
           headers: {
@@ -115,7 +117,8 @@ export const getPhysiosByName = (nameObj) => {
   return async (dispatch) => {
     try {
       const res = await fetch(
-        "http://localhost:3001/api/physiotherapists/bySpecialization?firstName=" +
+        BASE_URL +
+          "physiotherapists/bySpecialization?firstName=" +
           firstName +
           "&lastName=" +
           lastName,

@@ -12,6 +12,12 @@ const Homepage = () => {
     dispatch(getPhysiotherapists());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <Container className="mb-5">
       <ToastContainer />
@@ -80,15 +86,60 @@ const Homepage = () => {
           alt=""
           className="right-footprint position-absolute"
           style={{ width: "120px " }}
+          transition={{ delay: 1.3, ease: "easeInOut", duration: 0.2 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
+          whileInView={{ opacity: 0.7 }}
+        />
+        <motion.img
+          src="images/right-footprint.svg"
+          alt=""
+          className="right-footprint-2 position-absolute"
+          style={{ width: "120px " }}
+          transition={{ delay: 1.6, ease: "easeInOut", duration: 0.2 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
+          whileInView={{ opacity: 0.7 }}
+        />
+        <motion.img
+          src="images/right-footprint.svg"
+          alt=""
+          className="right-footprint-3 position-absolute"
+          style={{ width: "120px " }}
+          transition={{ delay: 3, ease: "easeInOut", duration: 0.2 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
+          whileInView={{ opacity: 0.7 }}
         />
         <motion.img
           src="images/left-footprint.svg"
           alt=""
           className="left-footprint position-absolute"
           style={{ width: "138px " }}
+          transition={{ delay: 1.7, ease: "easeInOut", duration: 0.2 }}
           initial={{ opacity: 0 }}
-          transition={{ delay: 1.3, ease: "easeInOut", duration: 2 }}
-          whileInView={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
+          whileInView={{ opacity: 0.7 }}
+        />
+        <motion.img
+          src="images/left-footprint.svg"
+          alt=""
+          className="left-footprint-2 position-absolute"
+          style={{ width: "138px " }}
+          transition={{ delay: 2.3, ease: "easeInOut", duration: 0.2 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
+          whileInView={{ opacity: 0.7 }}
+        />
+        <motion.img
+          src="images/left-footprint.svg"
+          alt=""
+          className="left-footprint-3 position-absolute"
+          style={{ width: "138px " }}
+          transition={{ delay: 3.5, ease: "easeInOut", duration: 0.2 }}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
+          whileInView={{ opacity: 0.7 }}
         />
         <Col xs={12} md={5} className="pe-5 mt-4">
           <img src="images/breathing-exercise.svg" alt="" />

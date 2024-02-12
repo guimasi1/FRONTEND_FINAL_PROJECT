@@ -96,11 +96,39 @@
   top: 0;
 }
 
+.right-footprint-2 {
+  transform: rotate(154deg);
+  position: absolute;
+  top: 220px;
+  left: 90px;
+}
+
+.right-footprint-3 {
+  transform: rotate(154deg);
+  position: absolute;
+  top: 450px;
+  left: 180px;
+}
+
 .left-footprint {
   transform: rotate(165deg);
   position: absolute;
   top: 50px;
   left: 180px;
+}
+
+.left-footprint-2 {
+  transform: rotate(165deg);
+  position: absolute;
+  top: 268px;
+  left: 268px;
+}
+
+.left-footprint-3 {
+  transform: rotate(165deg);
+  position: absolute;
+  top: 478px;
+  left: 378px;
 }
 
 .check-box-icon {

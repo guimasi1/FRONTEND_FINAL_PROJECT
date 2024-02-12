@@ -374,7 +374,10 @@ const AssignExercisesPage = () => {
                   </Col>
                 )}
               </Row>
-              <Row className="mb-4 gap-2 ms-lg-5 ps-lg-5">
+              <Row
+                className="mb-4 gap-2 ms-lg-5 ps-lg-5"
+                id="all-exercises-section"
+              >
                 {exercises &&
                   currentAssignment &&
                   exercises.map((exercise) => (

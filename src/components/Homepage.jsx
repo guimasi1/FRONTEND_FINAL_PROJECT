@@ -74,6 +74,23 @@ const Homepage = () => {
           />
         </Col>
       </Row>
+      <Row>
+        <Col>
+          <motion.img
+            src="images/right-footprint.svg"
+            alt=""
+            className="right-footprint"
+          />
+          <motion.img
+            src="images/left-footprint.svg"
+            alt=""
+            className="left-footprint"
+            initial={{ opacity: 0 }}
+            transition={{ delay: 1.3, ease: "easeInOut", duration: 2 }}
+            whileInView={{ opacity: 1 }}
+          />
+        </Col>
+      </Row>
     </Container>
   );
 };

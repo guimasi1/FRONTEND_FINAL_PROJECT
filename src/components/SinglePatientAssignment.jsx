@@ -30,7 +30,9 @@ const SinglePatientAssignment = ({ assignment }) => {
                 : "bg-success text-white"
             }`}
           >
-            {assignment.assignmentStatus}
+            {assignment.assignmentStatus === "IN_PROGRESS"
+              ? assignment.assignmentStatus.replace("_", " ")
+              : assignment.assignmentStatus}
           </Badge>
         )}
       </Col>

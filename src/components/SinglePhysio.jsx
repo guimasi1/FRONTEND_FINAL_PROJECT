@@ -1,4 +1,4 @@
-import { Button, Col } from "react-bootstrap";
+import { Badge, Button, Col } from "react-bootstrap";
 import { connectWithPhysio } from "../redux/actions/physiotherapistActions";
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,14 +20,14 @@ const SinglePhysio = ({ physio }) => {
       whileInView={{ opacity: 1 }}
       initial={{ opacity: 0.04 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
-      className="d-flex mb-4 gap-3 border border-1 rounded-4 ps-0 shadow-lg "
+      className="d-flex mb-4 gap-3 border border-1 rounded-1 ps-0 shadow-lg "
       xs={12}
     >
-      <div className="rounded-start-4">
+      <div className="rounded-start-1">
         <img
           src="https://placekitten.com/200"
           alt=""
-          className="rounded-start-4"
+          className="rounded-start-1"
         />
       </div>
 
@@ -38,7 +38,9 @@ const SinglePhysio = ({ physio }) => {
           </p>
           <p>{physio.email}</p>
           <p>{physio.phoneNumber}</p>
-          <p className="mt-5 pt-2">{physio.specialization}</p>
+          <p className="mt-5 pt-2">
+            <Badge className="bg-dark">{physio.specialization}</Badge>
+          </p>
         </div>
 
         <div className="mt-3">

@@ -26,10 +26,17 @@ const PhysioProfile = () => {
       <Row className="gap-2">
         {myProfile && (
           <Col>
-            <Card className="shadow-lg border-0 rounded-3 pt-4 pb-3">
+            <Card
+              className="shadow-lg border-0 rounded-3 pt-4 pb-3"
+              id="profile-physio-section"
+            >
               <div className="d-flex justify-content-center align-items-center">
                 <img
-                  src="https://placekitten.com/300"
+                  src={
+                    myProfile.profilePictureUrl
+                      ? myProfile.profilePictureUrl
+                      : "https://placekitten.com/300"
+                  }
                   className="rounded-pill mt-3"
                   alt=""
                 />

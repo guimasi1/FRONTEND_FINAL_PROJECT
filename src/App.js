@@ -11,6 +11,7 @@ import Patients from "./components/Patients";
 import PhysioProfile from "./components/PhysioProfile";
 import AssignExercisesPage from "./components/AssignExercisesPage";
 import MyExercisesPage from "./components/MyExercisesPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/assignExercises/:id" element={<AssignExercisesPage />} />
         <Route path="/myExercises" element={<MyExercisesPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

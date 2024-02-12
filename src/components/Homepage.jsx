@@ -6,6 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 import TypingEffect from "./TypingEffect";
+import GoUpButton from "./GoUpButton";
 const Homepage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -106,7 +107,7 @@ const Homepage = () => {
           alt=""
           className="right-footprint-3 position-absolute"
           style={{ width: "120px " }}
-          transition={{ delay: 3, ease: "easeInOut", duration: 0.2 }}
+          transition={{ delay: 2.5, ease: "easeInOut", duration: 0.2 }}
           initial={{ opacity: 0 }}
           exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
           whileInView={{ opacity: 0.7 }}
@@ -136,7 +137,7 @@ const Homepage = () => {
           alt=""
           className="left-footprint-3 position-absolute"
           style={{ width: "138px " }}
-          transition={{ delay: 3.5, ease: "easeInOut", duration: 0.2 }}
+          transition={{ delay: 2.9, ease: "easeInOut", duration: 0.2 }}
           initial={{ opacity: 0 }}
           exit={{ opacity: 0, transition: { duration: 0.5, delay: 0.5 } }}
           whileInView={{ opacity: 0.7 }}
@@ -192,6 +193,149 @@ const Homepage = () => {
           </p>
         </Col>
       </Row>
+      <Row className="mt-5 py-5">
+        <Col xs={12}>
+          <h2 className="motivational-text">Your New Chapter begins now!</h2>
+          <p className="mt-3 fs-5">
+            Join us and step into a brighter, pain-free future. Your journey to
+            well-being starts here.
+          </p>
+        </Col>
+        <Col
+          id="layer-container"
+          className="position-relative rounded-4 mt-5 cursor"
+        >
+          <motion.div
+            id="layer-under"
+            className="position-absolute rounded-4 border border-2 greenish-6"
+          >
+            <motion.img
+              src="images/Jogging-amico.svg"
+              className="w-100 rounded-top-4 bg-white"
+              alt=""
+              initial={{ opacity: 1 }}
+              whileHover={{ opacity: 0 }}
+            />
+            <p className="fs-5 ps-4 mt-2 fw-bold">
+              Discover the power of physiotherapy
+            </p>
+          </motion.div>
+          <motion.div
+            id="layer-over"
+            className="position-absolute p-4"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1, transition: { duration: 2 } }}
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
+              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
+              totam
+            </p>
+          </motion.div>
+        </Col>
+        <Col
+          id="layer-container"
+          className="position-relative rounded-4 mt-5 cursor"
+        >
+          <motion.div
+            id="layer-under"
+            className="position-absolute rounded-4 border border-2 greenish-6"
+          >
+            <motion.img
+              src="images/physical-therapy-image.svg"
+              className="w-100 rounded-top-4 bg-white "
+              alt=""
+              initial={{ opacity: 1 }}
+              whileHover={{ opacity: 0 }}
+            />
+            <p className="fs-5 ps-4 mt-2 fw-bold">
+              Discover the power of physiotherapy
+            </p>
+          </motion.div>
+          <motion.div
+            id="layer-over"
+            className="position-absolute p-4"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1, transition: { duration: 2 } }}
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
+              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
+              totam
+            </p>
+          </motion.div>
+        </Col>
+        <Col
+          id="layer-container"
+          className="position-relative rounded-4 mt-5 cursor"
+        >
+          <motion.div
+            id="layer-under"
+            className="position-absolute rounded-4 border border-2 greenish-6"
+          >
+            <motion.img
+              src="images/physical-therapy-image-2.svg"
+              className="w-100 rounded-top-4 bg-white"
+              alt=""
+              initial={{ opacity: 1 }}
+              whileHover={{ opacity: 0 }}
+            />
+            <p className="fs-5 ps-4 mt-2 fw-bold">
+              Discover the power of physiotherapy
+            </p>
+          </motion.div>
+          <motion.div
+            id="layer-over"
+            className="position-absolute p-4"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1, transition: { duration: 2 } }}
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
+              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
+              totam
+            </p>
+          </motion.div>
+        </Col>
+        <Col
+          id="layer-container"
+          className="position-relative rounded-4 mt-5 cursor"
+        >
+          <motion.div
+            id="layer-under"
+            className="position-absolute rounded-4 border border-2 greenish-6"
+          >
+            <motion.img
+              src="images/physical-therapy-image-3.svg"
+              className="w-100 rounded-top-4 bg-white"
+              alt=""
+              initial={{ opacity: 1 }}
+              whileHover={{ opacity: 0 }}
+            />
+            <p className="fs-5 ps-4 mt-2 fw-bold">
+              Discover the power of physiotherapy
+            </p>
+          </motion.div>
+          <motion.div
+            id="layer-over"
+            className="position-absolute p-4"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1, transition: { duration: 2 } }}
+          >
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
+              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
+              totam
+            </p>
+          </motion.div>
+        </Col>
+      </Row>
+      <Row className="" id="row-margin-top"></Row>
+      <GoUpButton />
     </Container>
   );
 };

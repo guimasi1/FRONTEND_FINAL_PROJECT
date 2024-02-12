@@ -135,6 +135,10 @@
   color: #0e9a3d;
 }
 
+#row-margin-top {
+  margin-top: 22em;
+}
+
 /* NAVBAR */
 #navbar-div {
   margin-left: 7em !important;
@@ -177,6 +181,10 @@ code {
 
 .greenish-5 {
   background-color: #bee6ce;
+}
+
+.greenish-6 {
+  background-color: #d9f5e4;
 }
 
 .hidden {

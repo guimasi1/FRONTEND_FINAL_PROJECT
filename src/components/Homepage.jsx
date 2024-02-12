@@ -27,7 +27,7 @@ const Homepage = () => {
           >
             Step into Wellness, Move Beyond{" "}
             <motion.p
-              className="d-inline"
+              className="d-block d-md-inline"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

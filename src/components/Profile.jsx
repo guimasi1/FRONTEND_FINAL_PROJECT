@@ -101,7 +101,7 @@ const Profile = () => {
         <Col>
           <Row>
             <Col xs={12} className="p-4 shadow-lg rounded-5">
-              <h4 className="mb-4">Pending link requests</h4>
+              <h4 className="mb-4">Sent link requests</h4>
               {patientLinkRequests &&
                 patientLinkRequests.map((request, index) => (
                   <SingleRequest

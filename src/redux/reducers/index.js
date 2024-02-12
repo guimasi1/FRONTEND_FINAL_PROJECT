@@ -18,11 +18,13 @@ const registerReducer = (state = initialState, action) => {
       return {
         ...state,
         registrationPhysiotherapistId: action.payload,
+        registrationPatientId: "",
       };
     case REGISTER_PATIENT:
       return {
         ...state,
         registrationPatientId: action.payload,
+        registrationPhysiotherapistId: "",
       };
     case LOGIN:
       return {

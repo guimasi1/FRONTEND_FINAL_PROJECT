@@ -26,7 +26,7 @@ const PhysioProfile = () => {
       <Row className="gap-5">
         {myProfile && (
           <Col>
-            <Card className="shadow-lg border-0 rounded-5 pt-4">
+            <Card className="shadow-lg border-0 rounded-3 pt-4 pb-3">
               <div className="d-flex justify-content-center align-items-center">
                 <img
                   src="https://placekitten.com/300"
@@ -74,20 +74,12 @@ const PhysioProfile = () => {
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
-              <Card.Footer className="text-center">
-                <Button
-                  variant="success"
-                  className="py-2 px-5 rounded-4 greenish-3 mt-3"
-                >
-                  Save
-                </Button>
-              </Card.Footer>
             </Card>
           </Col>
         )}
         <Col>
           <Row>
-            <Col xs={12} className="p-4 shadow-lg rounded-5">
+            <Col xs={12} className="p-4 shadow-lg rounded-3">
               <h4 className="mb-4">Pending link requests</h4>
             </Col>
           </Row>

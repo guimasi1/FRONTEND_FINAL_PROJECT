@@ -74,21 +74,71 @@ const Homepage = () => {
           />
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <motion.img
-            src="images/right-footprint.svg"
-            alt=""
-            className="right-footprint"
-          />
-          <motion.img
-            src="images/left-footprint.svg"
-            alt=""
-            className="left-footprint"
-            initial={{ opacity: 0 }}
-            transition={{ delay: 1.3, ease: "easeInOut", duration: 2 }}
-            whileInView={{ opacity: 1 }}
-          />
+      <Row className="position-relative mt-5 pt-5">
+        <motion.img
+          src="images/right-footprint.svg"
+          alt=""
+          className="right-footprint position-absolute"
+          style={{ width: "120px " }}
+        />
+        <motion.img
+          src="images/left-footprint.svg"
+          alt=""
+          className="left-footprint position-absolute"
+          style={{ width: "138px " }}
+          initial={{ opacity: 0 }}
+          transition={{ delay: 1.3, ease: "easeInOut", duration: 2 }}
+          whileInView={{ opacity: 1 }}
+        />
+        <Col xs={12} md={5} className="pe-5 mt-4">
+          <img src="images/breathing-exercise.svg" alt="" />
+        </Col>
+        <Col className="ps-4">
+          <h2 className="motivational-text mb-5">
+            Discover a Healthier, Stronger You
+          </h2>
+          <p className="fs-5">
+            <strong>Embrace the Journeys</strong>: Dive into our tailored
+            physiotherapy exercises and unlock a world where mobility meets
+            freedom. Our expertly designed programs promise more than recovery;
+            they open the door to a life without limits.
+          </p>
+          <p className="p-0 d-flex align-items-center gap-2">
+            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+              check_box
+            </span>{" "}
+            <span className="fs-5">
+              <strong>Improved Mobility & Flexibility:</strong> Say goodbye to
+              stiffness and hello to moving freely.
+            </span>
+          </p>
+          <p className="p-0 d-flex align-items-center gap-2">
+            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+              check_box
+            </span>{" "}
+            <span className="fs-5">
+              <strong>Strength & Resilience:</strong> Build muscle strength
+              around key areas, safeguarding against future injuries.
+            </span>
+          </p>
+          <p className="p-0 d-flex align-items-center gap-2">
+            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+              check_box
+            </span>{" "}
+            <span className="fs-5">
+              <strong>Balance & Posture:</strong> Enhance your core, improve
+              your balance, and stand taller, stronger.
+            </span>
+          </p>
+          <p className="p-0 d-flex align-items-center gap-2">
+            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+              check_box
+            </span>{" "}
+            <span className="fs-5">
+              <strong>Effective Pain Relief:</strong> Target the root of your
+              discomfort, reducing pain with each session.
+            </span>
+          </p>
         </Col>
       </Row>
     </Container>

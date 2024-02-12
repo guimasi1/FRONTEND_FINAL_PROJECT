@@ -86,14 +86,25 @@
   font-size: 5.5em;
 }
 
+.motivational-text {
+  font-size: 2.5em;
+}
+
 .right-footprint {
-  width: 100px;
   transform: rotate(154deg);
+  position: absolute;
+  top: 0;
 }
 
 .left-footprint {
-  width: 120px;
   transform: rotate(165deg);
+  position: absolute;
+  top: 50px;
+  left: 180px;
+}
+
+.check-box-icon {
+  color: #0e9a3d;
 }
 
 /* NAVBAR */

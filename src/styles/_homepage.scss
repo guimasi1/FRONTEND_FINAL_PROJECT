@@ -1,14 +1,33 @@
 /* HOMEPAGE */
 
+$color-green: #0e9a3d;
 #headline {
   font-size: 5.5em;
 }
 
-.right-footprint {
-  width: 100px;
+.motivational-text {
+  font-size: 2.5em;
+}
+
+@mixin right-footprint-model {
   transform: rotate(154deg);
+  position: absolute;
+}
+
+@mixin left-footprint-model {
+  transform: rotate(165deg);
+  position: absolute;
+}
+.right-footprint {
+  @include right-footprint-model();
+  top: 0;
 }
 .left-footprint {
-  width: 120px;
-  transform: rotate(165deg);
+  @include left-footprint-model();
+  top: 50px;
+  left: 180px;
+}
+
+.check-box-icon {
+  color: $color-green;
 }

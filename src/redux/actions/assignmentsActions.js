@@ -11,6 +11,7 @@ export const GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO =
   "GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO";
 export const SET_IN_PROGRESS = "SET_IN_PROGRESS";
 export const SET_COMPLETED = "SET_COMPLETED";
+export const EDIT_ASSIGNMENT = "EDIT_ASSIGNMENT";
 export const BASE_URL = "http://localhost:3001/api/";
 
 export const getAllAssignments = () => {
@@ -274,6 +275,35 @@ export const setAssignmentCompleted = (id) => {
           payload: id,
         });
       } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const editAssignment = (id, assignmentData) => {
+  console.log(assignmentData.id);
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(BASE_URL + "exercisesAssignments/" + id, {
+        method: "PUT",
+        body: JSON.stringify(assignmentData),
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        dispatch({
+          type: EDIT_ASSIGNMENT,
+          payload: assignmentData,
+        });
+      } else {
+        console.log(assignmentData);
+        console.log(id);
         throw new Error("Something went wrong.");
       }
     } catch (error) {

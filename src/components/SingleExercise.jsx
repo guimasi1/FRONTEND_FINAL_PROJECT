@@ -111,7 +111,9 @@ const SingleExercise = ({
                 dispatch(getSingleAssignment(currentAssignmentId));
               }}
             >
-              <span class="material-symbols-outlined fw-bold fs-3">add</span>
+              <span className="material-symbols-outlined fw-bold fs-3">
+                add
+              </span>
             </motion.div>
           </Col>
         </Row>

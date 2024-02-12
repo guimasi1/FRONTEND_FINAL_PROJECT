@@ -23,7 +23,7 @@ const PhysioProfile = () => {
       exit={{ opacity: 0 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.2 }}
     >
-      <Row className="gap-5">
+      <Row className="gap-2">
         {myProfile && (
           <Col>
             <Card className="shadow-lg border-0 rounded-3 pt-4 pb-3">
@@ -79,10 +79,22 @@ const PhysioProfile = () => {
         )}
         <Col>
           <Row>
-            <Col xs={12} className="p-4 shadow-lg rounded-3">
+            <Col
+              xs={12}
+              className="p-4 shadow-lg rounded-3 link-request-physio-section"
+            >
               <h4 className="mb-4">Pending link requests</h4>
             </Col>
           </Row>
+        </Col>
+      </Row>
+      <Row>
+        <Col
+          className="mt-4 p-5 shadow-lg rounded-3 ms-2"
+          id="biography-section"
+        >
+          <h4>Biography</h4>
+          <p>{myProfile && myProfile.bio}</p>
         </Col>
       </Row>
     </motion.div>

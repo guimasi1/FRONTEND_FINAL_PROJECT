@@ -264,6 +264,14 @@ code {
   width: 150px !important;
 }
 
+.link-request-physio-section {
+  height: 556px;
+}
+
+#biography-section {
+  height: 300px;
+}
+
 .icon-request {
   width: 28px;
 }

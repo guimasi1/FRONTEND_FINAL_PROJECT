@@ -32,7 +32,6 @@ const SingleAssignment = ({ assignment, index }) => {
       <Col>{assignment ? assignment.assignmentDate : ""}</Col>
       <Col>{assignment ? assignment.assignmentStatus : ""}</Col>
       <Col className="d-flex gap-3 justify-content-end">
-        <img src="/images\edit.svg" alt="" />
         <img
           src="/images\delete_FILL0_wght400_GRAD0_opsz24.svg"
           alt=""

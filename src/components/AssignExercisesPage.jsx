@@ -21,6 +21,7 @@ import Select from "react-select";
 import {
   addExerciseToAssignment,
   createAssignment,
+  editAssignment,
   getAssignmentsByPatientAndPhysio,
   getSingleAssignment,
 } from "../redux/actions/assignmentsActions";
@@ -49,9 +50,18 @@ const AssignExercisesPage = () => {
   const newExerciseId = useSelector((state) => state.exercises.newExercise);
 
   const exercises = useSelector((state) => state.exercises.exercises.content);
-  // const [targetArea, setTargetArea] = useState("");
   const [update, setUpdate] = useState(0);
 
+  const [assignmentData, setAssignmentData] = useState(
+    currentAssignment
+      ? {
+          notes: currentAssignment.notes,
+          patient_id: currentAssignment.patient.id,
+          physiotherapist_id: currentAssignment.assignedBy.id,
+          assignmentStatus: currentAssignment.assignmentStatus,
+        }
+      : ""
+  );
   useEffect(() => {
     dispatch(getMyPhysioProfile());
     if (id) {
@@ -272,21 +282,56 @@ const AssignExercisesPage = () => {
                     />
                   ))}
               </motion.div>
-              <Row className="mt-4">
-                {currentAssignment && (
-                  <Col>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Notes</Form.Label>
-                      <Form.Control
-                        value={currentAssignment ? currentAssignment.notes : ""}
-                        as="textarea"
-                        rows={3}
-                        onChange={(e) => {}}
-                      />
-                    </Form.Group>
-                  </Col>
-                )}
-              </Row>
+              <Row className="mt-4"></Row>
+              {currentAssignment && currentAssignment.notes && (
+                <Col>
+                  <Row>
+                    <Col>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Notes</Form.Label>
+                        <Form.Control
+                          className="w-100"
+                          value={assignmentData ? assignmentData.notes : ""}
+                          as="textarea"
+                          rows={3}
+                          onChange={(e) => {
+                            setAssignmentData({
+                              ...assignmentData,
+                              notes: e.target.value,
+                            });
+                            console.log(assignmentData);
+                          }}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col className="mt-5 p-0 d-flex flex-column me-4" xs={1}>
+                      <Button
+                        onClick={() => {
+                          dispatch(
+                            editAssignment(currentAssignment.id, assignmentData)
+                          );
+                        }}
+                        className="py-2 d-flex justify-content-center align-items-center rounded-pill btn-success mb-2"
+                        style={{ height: "30px", width: "30px" }}
+                      >
+                        <span className="material-symbols-outlined">done</span>
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          setAssignmentData({
+                            ...assignmentData,
+                            notes: "",
+                          });
+                        }}
+                        className="py-2 d-flex justify-content-center align-items-center rounded-pill btn-secondary mb-2"
+                        style={{ height: "30px", width: "30px" }}
+                      >
+                        <span className="material-symbols-outlined">close</span>
+                      </Button>
+                    </Col>
+                  </Row>
+                </Col>
+              )}
               <Row>
                 <Col xs={3} className="my-4 d-flex align-items-center gap-3">
                   <span className="material-symbols-outlined">search</span>

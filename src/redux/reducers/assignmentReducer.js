@@ -2,6 +2,7 @@ import {
   ADD_EXERCISE_TO_ASSIGNMENT,
   CREATE_ASSIGNMENT,
   DELETE_ASSIGNMENT,
+  EDIT_ASSIGNMENT,
   GET_ASSIGNMENTS,
   GET_ASSIGNMENTS_BY_PATIENT,
   GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
@@ -90,6 +91,16 @@ const assignmentReducer = (state = initialState, action) => {
           ...state.newAssignment,
           assignmentStatus: "IN_PROGRESS",
         },
+      };
+    case EDIT_ASSIGNMENT:
+      return {
+        ...state,
+        patientAssignments: state.patientAssignments.map((assignment) =>
+          assignment.id === action.payload.id
+            ? { assignment: action.payload }
+            : assignment
+        ),
+        newAssignment: action.payload,
       };
     case SET_COMPLETED:
       return {

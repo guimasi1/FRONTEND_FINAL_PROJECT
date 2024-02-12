@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
+import TypingEffect from "./TypingEffect";
 const Homepage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -24,7 +25,16 @@ const Homepage = () => {
             exit={{ opacity: 0 }}
             transition={{ delay: 0.3, ease: "linear", duration: 2 }}
           >
-            Step into Wellness, Move Beyond Limits
+            Step into Wellness, Move Beyond{" "}
+            <motion.p
+              className="d-inline"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 2, ease: "linear", duration: 2 }}
+            >
+              <TypingEffect />
+            </motion.p>
           </motion.h1>
           <motion.p
             className="fs-5 mt-4"
@@ -53,12 +63,6 @@ const Homepage = () => {
               Learn more
             </motion.button>
           </div>
-          {/* <img
-            id="blob-homepage"
-            src="/images/blob.svg"
-            className="position-absolute"
-            alt=""
-          /> */}
         </Col>
         <Col xs={12} md={6} className="order-0 order-md-1">
           <motion.img

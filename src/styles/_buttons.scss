@@ -2,6 +2,9 @@
   background-color: #ce8013 !important;
   /* background-color: #9a600e !important; */
   border: none !important;
+  @media print {
+    display: none;
+  }
 }
 .brownish-button:hover {
   background-color: #ce9d58 !important;
@@ -11,4 +14,11 @@
   background-color: #ce9d58 !important;
   /* background-color: #9a600e !important; */
   border: none !important;
+}
+
+.add-exercise-button {
+  background-color: #e8bc7f;
+  &:hover {
+    background-color: #d8a358;
+  }
 }

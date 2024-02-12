@@ -21,7 +21,7 @@ const SingleExercise = ({
       xs={12}
       md={12}
       lg={3}
-      className="border rounded-5 py-2 px-3 col-exercise ms-lg-4"
+      className="border rounded-2 py-2 px-3 col-exercise ms-lg-4"
     >
       {exercise && (
         <Row>
@@ -96,7 +96,7 @@ const SingleExercise = ({
           <Col className="mt-1 d-flex justify-content-center">
             <motion.div
               whileTap={{ scale: 0.8 }}
-              className="d-flex justify-content-center align-items-center bg-warning w-50 py-2 rounded-pill cursor fw-bold add-button"
+              className="d-flex justify-content-center align-items-center add-exercise-button mt-3 w-50 py-2 rounded-pill cursor fw-bold add-button"
               onClick={() => {
                 dispatch(
                   createExerciseWithDetails({

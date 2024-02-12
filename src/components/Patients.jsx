@@ -42,9 +42,9 @@ const Patients = () => {
         transition={{ delay: 0.3, ease: "linear", duration: 0.2 }}
         className="row"
       >
-        <Col className="my-5 border p-5 rounded-5 shadow-lg position-relative">
+        <Col className="my-5 border p-5 rounded-4 shadow-lg position-relative">
           <div className="fancy-border-radius p-0 top-0 start-0"></div>
-          <Row>
+          <Row className="z-3">
             <div className="d-flex flex-column align-items-center">
               <h1>Your Patients</h1>
               <hr className="mb-5 w-75 border border-2 border-black" />

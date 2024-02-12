@@ -152,12 +152,28 @@ code {
 }
 
 .fancy-border-radius {
-  border-radius: 10% 0% 100% 0%/14% 39% 61% 86%;
+  border-radius: 6% 19% 181% 0%/26% 21% 85% 76%;
   width: 200px;
   height: 183px;
   background-color: #8dffcd;
   position: absolute;
-  opacity: 0.9;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.fancy-bubble-1 {
+  border-radius: 6% 19% 181% 0%/26% 21% 85% 76%;
+  width: 200px;
+  height: 183px;
+  background-color: #8dffcd;
+  position: absolute;
+  opacity: 0.4;
+  z-index: 0 !important;
+  border-radius: 58% 130% 107% 95%/151% 114% 59% 61%;
+  bottom: 146px;
+  right: 132px;
+  width: 331px;
+  height: 223px;
   z-index: -1;
 }
 
@@ -211,6 +227,11 @@ code {
   /* background-color: #9a600e !important; */
   border: none !important;
 }
+@media print {
+  .brownish-button {
+    display: none;
+  }
+}
 
 .brownish-button:hover {
   background-color: #ce9d58 !important;
@@ -220,6 +241,13 @@ code {
   background-color: #ce9d58 !important;
   /* background-color: #9a600e !important; */
   border: none !important;
+}
+
+.add-exercise-button {
+  background-color: #e8bc7f;
+}
+.add-exercise-button:hover {
+  background-color: #d8a358;
 }
 
 /* PATIENTS */

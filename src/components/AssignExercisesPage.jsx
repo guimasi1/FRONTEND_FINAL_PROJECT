@@ -128,23 +128,23 @@ const AssignExercisesPage = () => {
               <Col xs={12}>
                 <div>
                   <div>
-                    <h3 className="text-center ">Your patient</h3>
+                    <h3 className="text-center pt-3">Your patient</h3>
                   </div>
                 </div>
               </Col>
               <Col xs={12} className=" rounded-4 ">
                 <div>
-                  <div className="d-flex justify-content-center mt-5 mb-4">
+                  <div className="d-flex justify-content-center mt-2 mb-4">
                     <img
                       src={patientProfile.profilePictureUrl}
                       alt=""
                       className="image-profile-exercises rounded-4"
                     />
                   </div>
-                  <h3 className="text-center mb-4">
+                  <h3 className="text-center mb-4 fs-4">
                     {patientProfile.firstName} {patientProfile.lastName}
                   </h3>
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between fs-7">
                     <p>
                       <strong>Email</strong>: {patientProfile.email}
                     </p>
@@ -153,7 +153,7 @@ const AssignExercisesPage = () => {
                       {patientProfile.phoneNumber}
                     </p>
                   </div>
-                  <div className="d-flex justify-content-between ">
+                  <div className="d-flex justify-content-between fs-7">
                     <p>
                       <strong>Gender</strong>: {patientProfile.gender}
                     </p>
@@ -184,9 +184,6 @@ const AssignExercisesPage = () => {
                       patient_id: id,
                     };
                     dispatch(createAssignment(newAssignmentData));
-                    if (currentAssignment) {
-                      console.log(currentAssignment);
-                    }
                   }}
                 >
                   <span className="material-symbols-outlined fs-3 px-2 py-2 rounded-circle d-flex justify-content-center align-items-center">
@@ -269,7 +266,7 @@ const AssignExercisesPage = () => {
                 {exercisesDetailsByAssignment &&
                   exercisesDetailsByAssignment.map((exercise, index) => (
                     <AddedExercise
-                      key={exercise.id}
+                      key={index}
                       exercise={exercise}
                       index={index}
                     />

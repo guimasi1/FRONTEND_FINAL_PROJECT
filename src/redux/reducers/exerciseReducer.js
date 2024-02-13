@@ -1,11 +1,16 @@
 import {
+  CLOSE_DIALOG,
   GET_EXERCISES,
   NEW_DETAILS_EXERCISE,
+  OPEN_DIALOG,
+  SET_CURRENT_EXERCISE,
 } from "../actions/exercisesActions";
 
 const initialState = {
   exercises: [],
   newExercise: "",
+  currentExerciseId: "",
+  dialogStatus: false,
 };
 
 const exercisesReducer = (state = initialState, action) => {
@@ -19,6 +24,21 @@ const exercisesReducer = (state = initialState, action) => {
       return {
         ...state,
         newExercise: action.payload,
+      };
+    case CLOSE_DIALOG:
+      return {
+        ...state,
+        dialogStatus: false,
+      };
+    case OPEN_DIALOG:
+      return {
+        ...state,
+        dialogStatus: true,
+      };
+    case SET_CURRENT_EXERCISE:
+      return {
+        ...state,
+        currentExerciseId: action.payload,
       };
 
     default:

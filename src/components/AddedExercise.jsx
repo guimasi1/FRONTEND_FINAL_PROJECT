@@ -1,7 +1,10 @@
 import { Col, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { removeExerciseDetails } from "../redux/actions/assignmentsActions";
 import { motion } from "framer-motion";
+import {
+  openDialog,
+  setCurrentExercise,
+} from "../redux/actions/exercisesActions";
 const AddedExercise = ({ exercise, index }) => {
   const dispatch = useDispatch();
 
@@ -27,7 +30,11 @@ const AddedExercise = ({ exercise, index }) => {
               alt=""
               whileTap={{ scale: 0.8 }}
               onClick={() => {
-                dispatch(removeExerciseDetails(exercise.id));
+                // dispatch(removeExerciseDetails(exercise.id));
+                if (exercise.id) {
+                  dispatch(setCurrentExercise(exercise.id));
+                }
+                dispatch(openDialog());
               }}
             />
           </Col>

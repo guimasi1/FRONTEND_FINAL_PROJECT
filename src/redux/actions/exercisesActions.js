@@ -3,6 +3,9 @@ import { BASE_URL } from "./assignmentsActions";
 export const GET_EXERCISES = "GET_EXERCISES";
 export const NEW_DETAILS_EXERCISE = "NEW_DETAILS_EXERCISE";
 export const SET_PAGE = "SET_PAGE";
+export const SET_CURRENT_EXERCISE = "SET_CURRENT_EXERCISE";
+export const CLOSE_DIALOG = "CLOSE_DIALOG";
+export const OPEN_DIALOG = "OPEN_DIALOG";
 
 export const getExercises = (page) => {
   const token = Cookies.get("token");
@@ -88,3 +91,16 @@ export const getExercisesByName = (name, page) => {
 };
 
 export const setPage = (page) => ({ type: SET_PAGE, payload: page });
+
+export const setCurrentExercise = (id) => ({
+  type: SET_CURRENT_EXERCISE,
+  payload: id,
+});
+
+export const closeDialog = () => ({
+  type: CLOSE_DIALOG,
+});
+
+export const openDialog = () => ({
+  type: OPEN_DIALOG,
+});

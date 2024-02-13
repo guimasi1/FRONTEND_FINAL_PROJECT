@@ -1,14 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import {
-  Badge,
-  Button,
-  Col,
-  Container,
-  Form,
-  Pagination,
-  Row,
-} from "react-bootstrap";
+import { Badge, Button, Col, Form, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getSinglePatient } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +22,7 @@ import AddedExercise from "./AddedExercise";
 import SingleAssignment from "./SingleAssignment";
 import { motion } from "framer-motion";
 import MyPagination from "./MyPagination";
+import ConfirmDialog from "./ConfirmDialog";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -45,6 +38,9 @@ const AssignExercisesPage = () => {
   );
   const exercisesDetailsByAssignment = useSelector(
     (state) => state.assignments.exercisesDetailsByAssignment
+  );
+  const currentExerciseId = useSelector(
+    (state) => state.exercises.currentExerciseId
   );
   // eslint-disable-next-line no-unused-vars
   const newExerciseId = useSelector((state) => state.exercises.newExercise);
@@ -130,6 +126,7 @@ const AssignExercisesPage = () => {
     >
       {patientProfile && (
         <Row>
+          {currentExerciseId && <ConfirmDialog />}
           <Col xs={{ span: 4 }}>
             <Row
               className="shadow-lg rounded-4 py-3 px-5 ms-3"

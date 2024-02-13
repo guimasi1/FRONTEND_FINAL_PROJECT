@@ -25,13 +25,13 @@ const SinglePhysio = ({ physio }) => {
     >
       <div className="rounded-start-1">
         <img
-          src="https://placekitten.com/200"
+          src="https://placekitten.com/220"
           alt=""
           className="rounded-start-1"
         />
       </div>
 
-      <div className="d-flex justify-content-between flex-grow-1">
+      <div className="d-flex justify-content-between flex-grow-1 pt-3">
         <div>
           <p className="fw-bold">
             {physio.firstName} {physio.lastName}

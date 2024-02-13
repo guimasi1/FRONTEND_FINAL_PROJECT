@@ -11,9 +11,11 @@ const ConfirmDialog = () => {
       id="dialog"
       className={`${
         showDialog ? "d-flex" : "d-none"
-      } p-4 flex-column gap-2 position-absolute greenish-6 rounded position-fixed z-3 w-25`}
+      } p-4 flex-column gap-2 position-absolute greenish-6 rounded position-fixed z-3 w-25 border border-2 border-black`}
     >
-      <p className="fw-bold">Are you sure you want to delete the exercise?</p>
+      <p className="fw-bold text-center">
+        Are you sure you want to delete the exercise?
+      </p>
 
       {exerciseId && (
         <div className="d-flex gap-4 justify-content-center">

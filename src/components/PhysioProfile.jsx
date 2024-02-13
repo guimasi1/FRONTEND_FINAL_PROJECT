@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";

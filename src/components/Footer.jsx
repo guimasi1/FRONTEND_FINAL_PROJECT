@@ -1,11 +1,18 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <Container fluid className="mt-5 pt-5">
       <Row className="fs-8 greenish-6 pt-5">
         <Col xs={{ offset: 2, span: 2 }}>
-          <p className="border border-start-5 border-black border-bottom-0 border-top-0 border-end-0 ps-2 cursor">
+          <p
+            className="border border-start-5 border-black border-bottom-0 border-top-0 border-end-0 ps-2 cursor"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             Home
           </p>
           <p className="border border-start-5 border-black border-bottom-0 border-top-0 border-end-0 ps-2 cursor">

@@ -75,6 +75,10 @@
   height: 400px;
 }
 
+#all-exercises-section {
+  height: 850px;
+}
+
 /* EXERCISES BY PATIENT */
 .description-paragraph {
   font-size: 0.9rem;

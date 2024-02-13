@@ -56,18 +56,23 @@ export const getMyPatientProfile = () => {
 
 export const getPatientsByPhysio = (physio_id, lastName) => {
   const token = Cookies.get("token");
+  console.log("questo è il cognome");
+  console.log(lastName);
+  let url;
+  if (lastName) {
+    url =
+      `http://localhost:3001/api/patients/byPhysiotherapist/${physio_id}` +
+      `?lastName=${lastName}`;
+  } else {
+    url = `http://localhost:3001/api/patients/byPhysiotherapist/${physio_id}`;
+  }
   return async (dispatch) => {
     try {
-      const res = await fetch(
-        `http://localhost:3001/api/patients/byPhysiotherapist/${physio_id}${
-          lastName ? `?lastName=${lastName}` : ""
-        }`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (res.ok) {
         const data = await res.json();
         dispatch({

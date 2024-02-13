@@ -12,11 +12,14 @@ import PhysioProfile from "./components/PhysioProfile";
 import AssignExercisesPage from "./components/AssignExercisesPage";
 import MyExercisesPage from "./components/MyExercisesPage";
 import Footer from "./components/Footer";
+import GoBackButton from "./components/GoBackButton";
 
 function App() {
   return (
     <BrowserRouter>
       <MyNavbar />
+      <GoBackButton />
+
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />

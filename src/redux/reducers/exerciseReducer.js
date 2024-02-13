@@ -1,3 +1,4 @@
+import { REMOVE_EXERCISE_DETAILS } from "../actions/assignmentsActions";
 import {
   CLOSE_DIALOG,
   GET_EXERCISES,
@@ -39,6 +40,11 @@ const exercisesReducer = (state = initialState, action) => {
       return {
         ...state,
         currentExerciseId: action.payload,
+      };
+    case REMOVE_EXERCISE_DETAILS:
+      return {
+        ...state,
+        currentExerciseId: "",
       };
 
     default:

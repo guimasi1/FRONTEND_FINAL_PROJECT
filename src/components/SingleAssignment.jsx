@@ -1,9 +1,11 @@
-import { Col, Row } from "react-bootstrap";
-import { getSingleAssignment } from "../redux/actions/assignmentsActions";
+import { Col } from "react-bootstrap";
+import {
+  getSingleAssignment,
+  openAssignmentDialog,
+  setCurrentAssignmentToDelete,
+} from "../redux/actions/assignmentsActions";
 import { useDispatch, useSelector } from "react-redux";
-import { removeAssignment } from "../redux/actions/assignmentsActions";
 import { motion } from "framer-motion";
-import { current } from "@reduxjs/toolkit";
 const SingleAssignment = ({ assignment, index }) => {
   const dispatch = useDispatch();
   const currentAssignment = useSelector(
@@ -36,8 +38,8 @@ const SingleAssignment = ({ assignment, index }) => {
           src="/images\delete_FILL0_wght400_GRAD0_opsz24.svg"
           alt=""
           onClick={() => {
-            console.log(assignment.id);
-            dispatch(removeAssignment(assignment.id));
+            dispatch(openAssignmentDialog());
+            dispatch(setCurrentAssignmentToDelete(assignment.id));
           }}
         />
       </Col>

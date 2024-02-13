@@ -1,12 +1,15 @@
 import {
   ADD_EXERCISE_TO_ASSIGNMENT,
+  CLOSE_ASSIGNMENT_DIALOG,
   CREATE_ASSIGNMENT,
+  CURRENT_ASSIGNMENT_TO_DELETE,
   DELETE_ASSIGNMENT,
   EDIT_ASSIGNMENT,
   GET_ASSIGNMENTS,
   GET_ASSIGNMENTS_BY_PATIENT,
   GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
   GET_SINGLE_ASSIGNMENT,
+  OPEN_ASSIGNMENT_DIALOG,
   REMOVE_EXERCISE_DETAILS,
   SET_COMPLETED,
   SET_IN_PROGRESS,
@@ -19,6 +22,8 @@ const initialState = {
   newAddedExercise: null,
   exercisesDetailsByAssignment: [],
   patientAssignments: [],
+  assignmentToDeleteId: "",
+  dialogStatus: false,
 };
 
 const assignmentReducer = (state = initialState, action) => {
@@ -65,6 +70,7 @@ const assignmentReducer = (state = initialState, action) => {
         assignmentsByIds: state.assignmentsByIds.filter(
           (assignment) => assignment.id !== action.payload
         ),
+        newAssignment: null,
       };
     case REMOVE_EXERCISE_DETAILS:
       return {
@@ -114,6 +120,21 @@ const assignmentReducer = (state = initialState, action) => {
           ...state.newAssignment,
           assignmentStatus: "COMPLETED",
         },
+      };
+    case CLOSE_ASSIGNMENT_DIALOG:
+      return {
+        ...state,
+        dialogStatus: false,
+      };
+    case OPEN_ASSIGNMENT_DIALOG:
+      return {
+        ...state,
+        dialogStatus: true,
+      };
+    case CURRENT_ASSIGNMENT_TO_DELETE:
+      return {
+        ...state,
+        assignmentToDeleteId: action.payload,
       };
 
     default:

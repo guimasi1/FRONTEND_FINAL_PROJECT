@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { closeDialog } from "../redux/actions/exercisesActions";
-import { removeExerciseDetails } from "../redux/actions/assignmentsActions";
+import { closeDialog } from "../../redux/actions/exercisesActions";
+import { removeExerciseDetails } from "../../redux/actions/assignmentsActions";
 const ConfirmDialog = () => {
   const showDialog = useSelector((state) => state.exercises.dialogStatus);
   const dispatch = useDispatch();
@@ -11,9 +11,9 @@ const ConfirmDialog = () => {
       id="dialog"
       className={`${
         showDialog ? "d-flex" : "d-none"
-      } p-4 flex-column gap-2 position-absolute greenish-6 rounded position-fixed z-3 w-25`}
+      } p-4 flex-column gap-2 position-absolute greenish-6 rounded position-fixed z-3`}
     >
-      <p className="fw-bold">Are you sure you want to delete the element?</p>
+      <p className="fw-bold">Are you sure you want to delete the exercise?</p>
 
       {exerciseId && (
         <div className="d-flex gap-4 justify-content-center">

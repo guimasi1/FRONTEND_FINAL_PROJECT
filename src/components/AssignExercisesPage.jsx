@@ -22,7 +22,8 @@ import AddedExercise from "./AddedExercise";
 import SingleAssignment from "./SingleAssignment";
 import { motion } from "framer-motion";
 import MyPagination from "./MyPagination";
-import ConfirmDialog from "./ConfirmDialog";
+import ConfirmDialog from "./Utils/ConfirmDialog";
+import ConfirmAssignmentDialog from "./Utils/ConfirmAssignmentDialog";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -42,6 +43,11 @@ const AssignExercisesPage = () => {
   const currentExerciseId = useSelector(
     (state) => state.exercises.currentExerciseId
   );
+
+  const currentAssignmentToDeleteId = useSelector(
+    (state) => state.assignments.assignmentToDeleteId
+  );
+
   // eslint-disable-next-line no-unused-vars
   const newExerciseId = useSelector((state) => state.exercises.newExercise);
 
@@ -127,6 +133,7 @@ const AssignExercisesPage = () => {
       {patientProfile && (
         <Row>
           {currentExerciseId && <ConfirmDialog />}
+          {currentAssignmentToDeleteId && <ConfirmAssignmentDialog />}
           <Col xs={{ span: 4 }}>
             <Row
               className="shadow-lg rounded-4 py-3 px-5 ms-3"

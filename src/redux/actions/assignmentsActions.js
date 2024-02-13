@@ -12,6 +12,9 @@ export const GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO =
 export const SET_IN_PROGRESS = "SET_IN_PROGRESS";
 export const SET_COMPLETED = "SET_COMPLETED";
 export const EDIT_ASSIGNMENT = "EDIT_ASSIGNMENT";
+export const CURRENT_ASSIGNMENT_TO_DELETE = "CURRENT_ASSIGNMENT_TO_DELETE";
+export const CLOSE_ASSIGNMENT_DIALOG = "CLOSE_ASSIGNMENT_DIALOG";
+export const OPEN_ASSIGNMENT_DIALOG = "OPEN_ASSIGNMENT_DIALOG";
 export const BASE_URL = "http://localhost:3001/api/";
 
 export const getAllAssignments = () => {
@@ -311,3 +314,11 @@ export const editAssignment = (id, assignmentData) => {
     }
   };
 };
+
+export const setCurrentAssignmentToDelete = (id) => ({
+  type: CURRENT_ASSIGNMENT_TO_DELETE,
+  payload: id,
+});
+
+export const closeAssignmentDialog = () => ({ type: CLOSE_ASSIGNMENT_DIALOG });
+export const openAssignmentDialog = () => ({ type: OPEN_ASSIGNMENT_DIALOG });

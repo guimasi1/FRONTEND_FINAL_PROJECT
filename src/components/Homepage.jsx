@@ -213,24 +213,9 @@ const Homepage = () => {
               src="images/Jogging-amico.svg"
               className="w-100 rounded-top-4 bg-white"
               alt=""
-              initial={{ opacity: 1 }}
-              whileHover={{ opacity: 0 }}
             />
             <p className="fs-5 ps-4 mt-2 fw-bold">
               Discover the power of physiotherapy
-            </p>
-          </motion.div>
-          <motion.div
-            id="layer-over"
-            className="position-absolute p-4"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1, transition: { duration: 2 } }}
-          >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
-              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
-              totam
             </p>
           </motion.div>
         </Col>
@@ -246,24 +231,9 @@ const Homepage = () => {
               src="images/physical-therapy-image.svg"
               className="w-100 rounded-top-4 bg-white "
               alt=""
-              initial={{ opacity: 1 }}
-              whileHover={{ opacity: 0 }}
             />
             <p className="fs-5 ps-4 mt-2 fw-bold">
-              Discover the power of physiotherapy
-            </p>
-          </motion.div>
-          <motion.div
-            id="layer-over"
-            className="position-absolute p-4"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1, transition: { duration: 2 } }}
-          >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
-              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
-              totam
+              Get in touch with the best physiotherapists
             </p>
           </motion.div>
         </Col>
@@ -279,24 +249,9 @@ const Homepage = () => {
               src="images/physical-therapy-image-2.svg"
               className="w-100 rounded-top-4 bg-white"
               alt=""
-              initial={{ opacity: 1 }}
-              whileHover={{ opacity: 0 }}
             />
             <p className="fs-5 ps-4 mt-2 fw-bold">
-              Discover the power of physiotherapy
-            </p>
-          </motion.div>
-          <motion.div
-            id="layer-over"
-            className="position-absolute p-4"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1, transition: { duration: 2 } }}
-          >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
-              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
-              totam
+              Follow a personalized exercise program{" "}
             </p>
           </motion.div>
         </Col>
@@ -312,24 +267,9 @@ const Homepage = () => {
               src="images/physical-therapy-image-3.svg"
               className="w-100 rounded-top-4 bg-white"
               alt=""
-              initial={{ opacity: 1 }}
-              whileHover={{ opacity: 0 }}
             />
             <p className="fs-5 ps-4 mt-2 fw-bold">
-              Discover the power of physiotherapy
-            </p>
-          </motion.div>
-          <motion.div
-            id="layer-over"
-            className="position-absolute p-4"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1, transition: { duration: 2 } }}
-          >
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-              dolorem cupiditate animi quibusdam quos, vel debitis ipsum dicta
-              nisi! Asperiores saepe quis recusandae obcaecati, nulla at id
-              totam
+              Get feedback from your therapist{" "}
             </p>
           </motion.div>
         </Col>

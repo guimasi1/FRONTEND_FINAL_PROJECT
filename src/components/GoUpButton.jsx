@@ -1,6 +1,3 @@
-import { useMotionValueEvent, useScroll } from "framer-motion";
-import { useState } from "react";
-
 const GoUpButton = () => {
   const goToTop = () => {
     document.documentElement.scrollTo({
@@ -8,16 +5,6 @@ const GoUpButton = () => {
       behavior: "smooth",
     });
   };
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest < 400) {
-      console.log(true);
-    } else {
-      console.log(false);
-    }
-    console.log(latest);
-  });
 
   return (
     <div

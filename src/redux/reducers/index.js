@@ -1,5 +1,6 @@
 import {
   LOGIN,
+  LOG_STATUS,
   REGISTER_PATIENT,
   REGISTER_PHYSIOTHERAPIST,
   SET_ROLE,
@@ -10,6 +11,7 @@ const initialState = {
   registrationPatientId: "",
   token: "",
   role: "",
+  loggedIn: false,
 };
 
 const registerReducer = (state = initialState, action) => {
@@ -30,11 +32,17 @@ const registerReducer = (state = initialState, action) => {
       return {
         ...state,
         token: action.payload,
+        loggedIn: true,
       };
     case SET_ROLE:
       return {
         ...state,
         role: action.payload,
+      };
+    case LOG_STATUS:
+      return {
+        ...state,
+        loggedIn: false,
       };
     default:
       return state;

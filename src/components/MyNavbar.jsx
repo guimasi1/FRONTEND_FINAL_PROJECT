@@ -2,16 +2,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import { setRole } from "../redux/actions/authentication";
+import { setRole, setLogStatus } from "../redux/actions/authentication";
 
 const MyNavbar = () => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
   const dispatch = useDispatch();
   let role = Cookies.get("role");
   const roleState = useSelector((state) => state.register.role);
+  const loggedIn = useSelector((state) => state.register.loggedIn);
+  const key = process.env.REACT_APP_KEY_REDUX_PERSIST;
+  console.log(key);
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(setRole(role));
   }, []);
@@ -41,10 +45,9 @@ const MyNavbar = () => {
                 to="/"
                 className="text-decoration-none text-black mt-2 fw-bold "
               >
-                {" "}
                 Home
               </Link>
-              {role === "PATIENT" ? (
+              {roleState === "PATIENT" && loggedIn ? (
                 <Link
                   to="/physiotherapists"
                   className="text-decoration-none text-black mt-2 fw-bold "
@@ -54,7 +57,7 @@ const MyNavbar = () => {
               ) : (
                 ""
               )}
-              {role === "PHYSIOTHERAPIST" ? (
+              {roleState === "PHYSIOTHERAPIST" && loggedIn ? (
                 <Link
                   to="/patients"
                   className="text-decoration-none text-black mt-2 fw-bold "
@@ -64,7 +67,7 @@ const MyNavbar = () => {
               ) : (
                 ""
               )}
-              {role === "PATIENT" ? (
+              {roleState === "PATIENT" && loggedIn ? (
                 <Link
                   to="/myExercises"
                   className="text-decoration-none text-black mt-2 fw-bold "
@@ -76,7 +79,7 @@ const MyNavbar = () => {
               )}
               {
                 // eslint-disable-next-line no-const-assign
-                role === "PATIENT" ? (
+                roleState === "PATIENT" && loggedIn ? (
                   <Link
                     to="/profile"
                     className="text-decoration-none text-black mt-2 fw-bold "
@@ -89,7 +92,7 @@ const MyNavbar = () => {
               }
               {
                 // eslint-disable-next-line no-const-assign
-                role === "PHYSIOTHERAPIST" ? (
+                roleState === "PHYSIOTHERAPIST" && loggedIn ? (
                   <Link
                     to="/physioProfile"
                     className="text-decoration-none text-black mt-2 fw-bold "
@@ -104,20 +107,18 @@ const MyNavbar = () => {
                 to="/"
                 className="text-decoration-none text-black mt-2 fw-bold "
               >
-                {" "}
                 Resources
               </Link>
               <Link
                 to="/"
                 className="text-decoration-none text-black mt-2 fw-bold "
               >
-                {" "}
                 Pricing
               </Link>
             </div>
           </Nav>
         </Navbar.Collapse>
-        {
+        {!loggedIn && (
           <div className="d-flex gap-4 mt-2">
             <Link
               to="/login"
@@ -132,7 +133,35 @@ const MyNavbar = () => {
               Get Started
             </Link>
           </div>
-        }
+        )}
+        {loggedIn && (
+          <div className="d-flex gap-4 mt-2 align-items-center">
+            <div>
+              <img
+                src="https://placekitten.com/50"
+                className="rounded-pill cursor"
+                alt=""
+                onClick={() => {
+                  if (roleState === "PATIENT") {
+                    navigate("/profile");
+                  } else {
+                    navigate("/physioProfile");
+                  }
+                }}
+              />
+            </div>
+            <div
+              onClick={() => {
+                dispatch(setLogStatus());
+                console.log(loggedIn + "loggedin");
+                navigate("/");
+              }}
+              className="text-decoration-none text-black fw-bold py-3 cursor"
+            >
+              Logout
+            </div>
+          </div>
+        )}
       </Container>
     </Navbar>
   );

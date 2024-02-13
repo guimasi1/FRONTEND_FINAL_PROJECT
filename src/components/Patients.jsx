@@ -30,7 +30,7 @@ const Patients = () => {
   useEffect(() => {
     if (myPhysioProfile && lastName !== "") {
       dispatch(getPatientsByPhysio(myPhysioProfile.id, lastName));
-    } else {
+    } else if (myPhysioProfile) {
       dispatch(getPatientsByPhysio(myPhysioProfile.id));
     }
   }, [lastName]);

@@ -3,6 +3,7 @@ export const REGISTER_PHYSIOTHERAPIST = "REGISTER_PHYSIOTHERAPIST";
 export const REGISTER_PATIENT = "REGISTER_PATIENT";
 export const LOGIN = "LOGIN";
 export const SET_ROLE = "SET_ROLE";
+export const LOG_STATUS = "LOG_STATUS";
 
 export const register = (registrationPayload, role) => {
   const roleToLowerCase = role.toLowerCase();
@@ -81,3 +82,5 @@ export const login = (loginPayload, role) => {
 };
 
 export const setRole = (role) => ({ type: SET_ROLE, payload: role });
+
+export const setLogStatus = () => ({ type: LOG_STATUS });

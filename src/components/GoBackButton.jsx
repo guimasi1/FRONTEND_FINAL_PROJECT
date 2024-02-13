@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 const GoBackButton = () => {
+  const navigate = useNavigate();
+
   return (
     <div
+      onClick={() => {
+        navigate(-1);
+      }}
       className={` btn-secondary position-fixed top-0 left-0 ms-4 mt-5 text-white brownish-button rounded-pill d-flex justify-content-center align-items-center cursor`}
       style={{ width: "40px", height: "40px" }}
     >

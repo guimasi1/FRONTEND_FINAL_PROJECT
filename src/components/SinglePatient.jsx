@@ -18,7 +18,13 @@ const SinglePatient = ({ patient }) => {
         />
       </div>
       {patient && (
-        <div className="d-flex flex-column align-items-stretch justify-content-end">
+        <div className="d-flex flex-column align-items-stretch justify-content-end position-relative">
+          <span
+            className="material-symbols-outlined text-end position-absolute top-0 end-0 bg-secondary-subtle d-flex justify-content-center align-items-center rounded-pill cursor"
+            style={{ width: "25px", height: "25px" }}
+          >
+            close
+          </span>
           <div className="flex-grow-1 ms-3">
             <p className="fw-bold pb-0 mb-0 ">
               {patient.firstName} {patient.lastName}

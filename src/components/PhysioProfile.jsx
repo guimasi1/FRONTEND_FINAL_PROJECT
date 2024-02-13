@@ -1,17 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import { motion } from "framer-motion";
+import SingleRequestPhysio from "./SingleRequestPhysio";
+import { getPhysioLinkRequests } from "../redux/actions/linkRequestsActions";
 
 const PhysioProfile = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector(
     (state) => state.physiotherapists.physioProfile
   );
+  const linkRequests = useSelector(
+    (state) => state.requests.linkRequestsByPhysio
+  );
 
   useEffect(() => {
     dispatch(getMyPhysioProfile());
+    if (myProfile) {
+      dispatch(getPhysioLinkRequests(myProfile.id));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -91,6 +100,10 @@ const PhysioProfile = () => {
               className="p-4 shadow-lg rounded-3 link-request-physio-section"
             >
               <h4 className="mb-4">Pending link requests</h4>
+              {linkRequests &&
+                linkRequests.map((request) => (
+                  <SingleRequestPhysio request={request} key={request.id} />
+                ))}
             </Col>
           </Row>
         </Col>

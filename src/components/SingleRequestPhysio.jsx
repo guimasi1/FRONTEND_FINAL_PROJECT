@@ -5,15 +5,14 @@ import {
   removeRequest,
 } from "../redux/actions/linkRequestsActions";
 import { useState } from "react";
-const SingleRequest = ({ request, updateProfile }) => {
+
+const SingleRequestPhysio = ({ request }) => {
   const dispatch = useDispatch();
-  const [accepted, setAccepted] = useState(false);
-  const [removed, setRemoved] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
   return (
     <Row
-      className={`hover-request mb-2 py-2 rounded-4 ${
-        accepted || removed ? "d-none" : ""
-      }`}
+      className={`${hidden ? "d-none" : ""} hover-request mb-2 py-2 rounded-4`}
     >
       <Col xs={2}>
         <img
@@ -22,9 +21,9 @@ const SingleRequest = ({ request, updateProfile }) => {
           alt=""
         />
       </Col>
-      <Col className="mt-1 p-0 cursor">
-        {request ? request.physiotherapist.firstName : ""}
-        {request ? request.physiotherapist.lastName : ""}
+      <Col className="mt-2 p-0 cursor d-flex gap-1">
+        <p>{request ? request.patient.firstName : ""}</p>
+        <p>{request ? request.patient.lastName : ""}</p>
       </Col>
       <Col className="mt-1 text-end cursor ">
         <img
@@ -33,8 +32,7 @@ const SingleRequest = ({ request, updateProfile }) => {
           className="me-2 icon-request"
           onClick={() => {
             dispatch(acceptRequest(request.id));
-            updateProfile();
-            setAccepted(true);
+            setHidden(true);
           }}
         />
         <img
@@ -43,12 +41,11 @@ const SingleRequest = ({ request, updateProfile }) => {
           className="icon-request"
           onClick={() => {
             dispatch(removeRequest(request.id));
-            updateProfile();
-            setRemoved(true);
+            setHidden(true);
           }}
         />
       </Col>
     </Row>
   );
 };
-export default SingleRequest;
+export default SingleRequestPhysio;

@@ -1,11 +1,13 @@
 import {
   ACCEPT_REQUEST,
   GET_REQUESTS_BY_ID,
+  GET_REQUESTS_BY_PHYSIO_ID,
   REMOVE_REQUEST,
 } from "../actions/linkRequestsActions";
 
 const initialState = {
   linkRequestsByPatient: [],
+  linkRequestsByPhysio: [],
   acceptRequest: null,
 };
 
@@ -27,6 +29,11 @@ const linkRequestReducer = (state = initialState, action) => {
       return {
         ...state,
         acceptRequest: action.payload,
+      };
+    case GET_REQUESTS_BY_PHYSIO_ID:
+      return {
+        ...state,
+        linkRequestsByPhysio: action.payload,
       };
     default:
       return state;

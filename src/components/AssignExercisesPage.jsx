@@ -139,7 +139,7 @@ const AssignExercisesPage = () => {
               className="shadow-lg rounded-4 py-3 px-5 ms-3"
               id="your-patient-section"
             >
-              <Col xs={12}>
+              <Col xs={12} className="position-relative">
                 <div>
                   <div>
                     <h3 className="text-center pt-3">Your patient</h3>

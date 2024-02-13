@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 import TypingEffect from "./TypingEffect";
-import GoUpButton from "./GoUpButton";
+import GoUpButton from "./Utils/GoUpButton";
 const Homepage = () => {
   const dispatch = useDispatch();
   useEffect(() => {

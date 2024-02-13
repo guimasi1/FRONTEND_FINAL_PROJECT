@@ -81,6 +81,6 @@ export const login = (loginPayload, role) => {
   };
 };
 
-export const setRole = (role) => ({ type: SET_ROLE, payload: role });
+export const setRoleState = (role) => ({ type: SET_ROLE, payload: role });
 
 export const setLogStatus = () => ({ type: LOG_STATUS });

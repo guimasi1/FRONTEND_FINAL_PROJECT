@@ -1,6 +1,6 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { login } from "../redux/actions/authentication";
+import { login, setRoleState } from "../redux/actions/authentication";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { showLoggedIn } from "../redux/actions/toastifyActions";
@@ -58,6 +58,7 @@ const Login = () => {
                   id="1"
                   onClick={(e) => {
                     setRole(e.target.value);
+                    dispatch(setRoleState(e.target.value));
                   }}
                 />
                 <Form.Check
@@ -69,6 +70,7 @@ const Login = () => {
                   id="2"
                   onClick={(e) => {
                     setRole(e.target.value);
+                    dispatch(setRoleState(e.target.value));
                   }}
                 />
               </div>

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
-import { setRole, setLogStatus } from "../redux/actions/authentication";
+import { setLogStatus, setRoleState } from "../redux/actions/authentication";
 
 const MyNavbar = () => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
@@ -17,10 +17,10 @@ const MyNavbar = () => {
   console.log(key);
   const navigate = useNavigate();
   useEffect(() => {
-    dispatch(setRole(role));
+    dispatch(setRoleState(role));
   }, []);
   useEffect(() => {
-    dispatch(setRole(role));
+    dispatch(setRoleState(role));
   }, [role]);
   return (
     <Navbar expand="lg">

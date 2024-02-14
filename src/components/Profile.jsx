@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientsLinkRequests } from "../redux/actions/linkRequestsActions";
 import SingleRequest from "./SingleRequest";
+import SinglePhysioByPatient from "./SinglePhysioByPatient";
+import { getPhysiosByPatient } from "../redux/actions/physiotherapistActions";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -12,14 +14,15 @@ const Profile = () => {
   const patientLinkRequests = useSelector(
     (state) => state.requests.linkRequestsByPatient.content
   );
+  const physiosByPatient = useSelector(
+    (state) => state.physiotherapists.physiosByPatient
+  );
 
   const updateProfile = () => setUpdate(update + 1);
 
   useEffect(() => {
     dispatch(getMyPatientProfile());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    console.log(patientLinkRequests);
-    console.log("vengo dopo patient link requests");
+    dispatch(getPhysiosByPatient(myProfile.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -41,7 +44,7 @@ const Profile = () => {
         {myProfile && (
           <Col>
             <Card
-              className="shadow-lg border-0 rounded-5"
+              className="shadow-lg border-0 rounded-3"
               id="info-profile-section"
             >
               <div className="d-flex justify-content-center align-items-center">
@@ -105,7 +108,7 @@ const Profile = () => {
           <Row>
             <Col
               xs={12}
-              className="p-4 shadow-lg rounded-5"
+              className="p-4 shadow-lg rounded-3"
               id="sent-requests-section"
             >
               <h4 className="mb-4 text-center">Sent link requests</h4>
@@ -122,6 +125,22 @@ const Profile = () => {
                   <p className="m-0">You have 0 pending requests right now.</p>
                 </div>
               )}
+            </Col>
+          </Row>
+        </Col>
+        <Col xs={12}>
+          <Row>
+            <Col
+              className="mt-4 p-5 shadow-lg rounded-3 ms-2"
+              id="biography-section"
+            >
+              <h3 className="text-center mb-5">Your physiotherapists</h3>
+              <Row>
+                {physiosByPatient &&
+                  physiosByPatient.map((physio) => (
+                    <SinglePhysioByPatient physio={physio} />
+                  ))}
+              </Row>
             </Col>
           </Row>
         </Col>

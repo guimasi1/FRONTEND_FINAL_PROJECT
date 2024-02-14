@@ -32,7 +32,6 @@ export const register = (registrationPayload, role) => {
             payload: data,
           });
         }
-        console.log(data);
         localStorage.setItem("role", role);
       } else {
         throw new Error("Something went wrong with the registration");

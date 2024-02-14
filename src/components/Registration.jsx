@@ -16,6 +16,19 @@ const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [registrationCompleted, setRegistrationCompleted] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await dispatch(register(registrationData, role));
+      // Controlla se la registrazione ha restituito un ID o un altro indicatore di successo
+      if (response) {
+        navigate("/login");
+      }
+    } catch (error) {
+      // Gestisci eventuali errori di registrazione qui
+      console.error("Errore durante la registrazione:", error);
+    }
+  };
 
   return (
     <Container>
@@ -228,9 +241,7 @@ const Registration = () => {
                 type="submit"
                 className="rounded-pill py-3 px-4 fs-5 fw-bold greenish w-50 text-center text-white me-5"
                 onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(register(registrationData, role));
-                  navigate("/login");
+                  handleSubmit(e);
                 }}
               >
                 Sign up!

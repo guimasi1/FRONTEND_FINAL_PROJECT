@@ -21,6 +21,7 @@ const PhysioProfile = () => {
   const [showEdit, setShowEdit] = useState(false);
 
   const [bio, setBio] = useState(myProfile.bio);
+
   useEffect(() => {
     dispatch(getMyPhysioProfile());
     if (myProfile) {
@@ -153,7 +154,7 @@ const PhysioProfile = () => {
               </div>
               <div className="d-flex flex-column gap-2 mt-3 justify-content-center mb-5 cursor">
                 <div
-                  className="greenish-button rounded-4 py-2 px-4 text-center"
+                  className="greenish-button rounded-4 py-2 px-4 text-center d-flex gap-2 fw-bold"
                   onClick={() => {
                     dispatch(
                       editBiography(myProfile.id, {
@@ -164,14 +165,16 @@ const PhysioProfile = () => {
                     setShowEdit(false);
                   }}
                 >
+                  <span class="material-symbols-outlined">save</span>
                   Save
                 </div>
                 <div
-                  className="btn btn-secondary text-white rounded-4 py-2 px-4 text-center"
+                  className="btn btn-secondary text-white rounded-4 py-2 px-4 text-center d-flex gap-1 fw-bold"
                   onClick={() => {
                     setShowEdit(false);
                   }}
                 >
+                  <span class="material-symbols-outlined">close</span>
                   Cancel
                 </div>
               </div>

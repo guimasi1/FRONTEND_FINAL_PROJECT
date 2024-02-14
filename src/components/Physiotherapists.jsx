@@ -91,8 +91,8 @@ const Physiotherapist = () => {
           </Form>
         </Col>
         {physiotherapists &&
-          physiotherapists.map((physio) => (
-            <SinglePhysio physio={physio} key={physio.id} />
+          physiotherapists.map((physio, index) => (
+            <SinglePhysio physio={physio} key={physio.id} index={index} />
           ))}
       </Row>
     </motion.div>

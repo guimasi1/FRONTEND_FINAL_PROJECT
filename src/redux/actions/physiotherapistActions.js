@@ -4,15 +4,18 @@ export const GET_PHYSIOTHERAPISTS = "GET_PHYSIOTHERAPISTS";
 export const GET_MY_PHYSIO_PROFILE = "GET_MY_PHYSIO_PROFILE";
 export const SEND_REQUEST = "SEND_REQUEST";
 
-export const getPhysiotherapists = () => {
+export const getPhysiotherapists = (size) => {
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
-      const res = await fetch(BASE_URL + "physiotherapists", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        BASE_URL + `physiotherapists${size ? "?size=" + size : ""}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (res.ok) {
         const data = await res.json();
         dispatch({

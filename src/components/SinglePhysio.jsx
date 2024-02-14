@@ -1,10 +1,14 @@
-import { Badge, Button, Col } from "react-bootstrap";
-import { connectWithPhysio } from "../redux/actions/physiotherapistActions";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Badge, Button } from "react-bootstrap";
+import {
+  connectWithPhysio,
+  getPhysiotherapists,
+} from "../redux/actions/physiotherapistActions";
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-const SinglePhysio = ({ physio }) => {
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+const SinglePhysio = ({ physio, index }) => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.patients.patientProfile);
   useEffect(() => {
@@ -15,8 +19,17 @@ const SinglePhysio = ({ physio }) => {
     patient_id: "",
     physiotherapist_id: "",
   });
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  useEffect(() => {
+    if ((index + 2) % 10 === 0) {
+      dispatch(getPhysiotherapists(index + 10));
+    }
+  }, [isInView]);
+
   return (
     <motion.div
+      ref={ref}
       whileInView={{ opacity: 1 }}
       initial={{ opacity: 0.04 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}

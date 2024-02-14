@@ -47,7 +47,7 @@ const SinglePhysio = ({ physio, index }) => {
       whileInView={{ opacity: 1 }}
       initial={{ opacity: 0.04 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
-      className="d-flex mb-4 gap-3 border border-1 rounded-1 ps-0 shadow-lg "
+      className="d-flex mb-4 gap-3 border border-1 rounded-1 ps-0 shadow-lg z-3"
       xs={12}
     >
       <div className="rounded-start-1">

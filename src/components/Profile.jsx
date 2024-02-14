@@ -40,7 +40,10 @@ const Profile = () => {
       <Row className="gap-5 ">
         {myProfile && (
           <Col>
-            <Card className="shadow-lg border-0 rounded-5">
+            <Card
+              className="shadow-lg border-0 rounded-5"
+              id="info-profile-section"
+            >
               <div className="d-flex justify-content-center align-items-center">
                 <img
                   src="https://placekitten.com/300"
@@ -114,6 +117,11 @@ const Profile = () => {
                     updateProfile={updateProfile}
                   />
                 ))}
+              {patientLinkRequests.length === 0 && (
+                <div className="greenish-6 py-3 d-flex justify-content-center align-items-center">
+                  <p className="m-0">You have 0 pending requests right now.</p>
+                </div>
+              )}
             </Col>
           </Row>
         </Col>

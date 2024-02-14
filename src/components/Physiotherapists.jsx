@@ -70,6 +70,7 @@ const Physiotherapist = () => {
       <Row>
         <div className="d-flex flex-column align-items-center">
           <h1 className="mb-2">Our physiotherapists</h1>
+          <img src="images/health-team.svg" alt="" className="w-25" />
           <hr className="mb-4 w-75 border border-2 border-black" />
         </div>
         <Col xs={4} className="flex-grow-1 mb-4">

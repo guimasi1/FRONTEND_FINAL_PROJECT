@@ -104,6 +104,11 @@ const PhysioProfile = () => {
                 linkRequests.map((request) => (
                   <SingleRequestPhysio request={request} key={request.id} />
                 ))}
+              {linkRequests.length === 0 && (
+                <div className="greenish-6 py-3 d-flex justify-content-center align-items-center">
+                  <p className="m-0">You have 0 pending requests right now.</p>
+                </div>
+              )}
             </Col>
           </Row>
         </Col>

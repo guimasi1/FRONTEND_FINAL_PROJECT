@@ -13,8 +13,6 @@ const MyNavbar = () => {
   let role = Cookies.get("role");
   const roleState = useSelector((state) => state.register.role);
   const loggedIn = useSelector((state) => state.register.loggedIn);
-  const key = process.env.REACT_APP_KEY_REDUX_PERSIST;
-  console.log(key);
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(setRoleState(role));

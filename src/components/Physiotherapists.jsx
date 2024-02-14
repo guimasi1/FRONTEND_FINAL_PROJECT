@@ -10,11 +10,22 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import SinglePhysio from "./SinglePhysio";
 import Select from "react-select";
 import { motion } from "framer-motion";
+import { getPatientsAcceptedRequests } from "../redux/actions/linkRequestsActions";
 const Physiotherapist = () => {
   const dispatch = useDispatch();
   const physiotherapists = useSelector(
     (state) => state.physiotherapists.physiotherapistsData.content
   );
+  const myProfile = useSelector((state) => state.patients.patientProfile);
+  const acceptedRequestsByPatient = useSelector(
+    (state) => state.requests.acceptedRequestsByPatient
+  );
+
+  const physiosToHide = acceptedRequestsByPatient.map(
+    (link) => link.physiotherapist.id
+  );
+  console.log(physiosToHide);
+
   const specializations = [
     { value: "ANY", label: "Any" },
     { value: "CARDIOLOGY", label: "Cardiology" },
@@ -25,6 +36,9 @@ const Physiotherapist = () => {
   ];
   useEffect(() => {
     dispatch(getPhysiotherapists());
+    if (myProfile) {
+      dispatch(getPatientsAcceptedRequests(myProfile.id));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [name, setName] = useState(null);
@@ -91,9 +105,11 @@ const Physiotherapist = () => {
           </Form>
         </Col>
         {physiotherapists &&
-          physiotherapists.map((physio, index) => (
-            <SinglePhysio physio={physio} key={physio.id} index={index} />
-          ))}
+          physiotherapists
+            .filter((physio) => !physiosToHide.includes(physio.id))
+            .map((physio, index) => (
+              <SinglePhysio physio={physio} key={physio.id} index={index} />
+            ))}
       </Row>
     </motion.div>
   );

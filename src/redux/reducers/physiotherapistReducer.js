@@ -27,6 +27,7 @@ const physiotherapistsReducer = (state = initialState, action) => {
         ...state,
         linkRequest: action.payload,
       };
+
     default:
       return state;
   }

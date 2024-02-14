@@ -298,6 +298,7 @@ code {
 }
 
 .successful-action-message {
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -346,6 +347,7 @@ code {
 .patient-card {
   width: 300px !important;
   margin-bottom: 1em;
+  height: 200px;
 }
 
 .name-container-patient {

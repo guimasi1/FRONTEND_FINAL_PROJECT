@@ -1,3 +1,10 @@
+@mixin completelyCentered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -125,24 +132,16 @@ code {
 // DIALOG
 
 #dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include completelyCentered();
 }
 #dialog-assignment {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include completelyCentered();
 }
 
 // CONFIRMATION
 
 .successful-action-message {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include completelyCentered();
 }
 
 //  TRUNCATE

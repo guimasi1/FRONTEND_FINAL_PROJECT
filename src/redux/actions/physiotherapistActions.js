@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import { BASE_URL } from "./assignmentsActions";
 export const GET_PHYSIOTHERAPISTS = "GET_PHYSIOTHERAPISTS";
 export const GET_MY_PHYSIO_PROFILE = "GET_MY_PHYSIO_PROFILE";
+export const REMOVE_PATIENT_FROM_PHYSIO = "REMOVE_PATIENT_FROM_PHYSIO";
 export const SEND_REQUEST = "SEND_REQUEST";
 
 export const getPhysiotherapists = (size) => {
@@ -135,6 +136,33 @@ export const getPhysiosByName = (nameObj) => {
         dispatch({
           type: GET_PHYSIOTHERAPISTS,
           payload: data,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const removePatientFromPhysio = (physioId, patientId) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        BASE_URL + `physiotherapists/${physioId}/removePatient/${patientId}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        dispatch({
+          type: REMOVE_PATIENT_FROM_PHYSIO,
+          payload: patientId,
         });
       } else {
         throw new Error("Something went wrong.");

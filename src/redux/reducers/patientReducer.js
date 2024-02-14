@@ -4,6 +4,7 @@ import {
   GET_PATIENTS_BY_PHYSIO,
   GET_SINGLE_PATIENT,
 } from "../actions/patientsActions";
+import { REMOVE_PATIENT_FROM_PHYSIO } from "../actions/physiotherapistActions";
 
 const initialState = {
   patients: [],
@@ -34,6 +35,17 @@ const patientsReducer = (state = initialState, action) => {
         ...state,
         singlePatient: action.payload,
       };
+    case REMOVE_PATIENT_FROM_PHYSIO:
+      return {
+        ...state,
+        patientsByPhysio: {
+          ...state.patientsByPhysio,
+          content: state.patientsByPhysio.content.filter(
+            (patient) => patient.id !== action.payload
+          ),
+        },
+      };
+
     default:
       return state;
   }

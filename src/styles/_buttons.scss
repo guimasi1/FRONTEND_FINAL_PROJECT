@@ -16,6 +16,14 @@
   border: none !important;
 }
 
+.greenish-button {
+  background-color: $greenish-2;
+  color: white;
+  &:hover {
+    background-color: $greenish;
+  }
+}
+
 .add-exercise-button {
   background-color: #e8bc7f;
   &:hover {

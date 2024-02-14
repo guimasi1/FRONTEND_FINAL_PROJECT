@@ -332,6 +332,14 @@ code {
   border: none !important;
 }
 
+.greenish-button {
+  background-color: #199450;
+  color: white;
+}
+.greenish-button:hover {
+  background-color: #0e9a3d;
+}
+
 .add-exercise-button {
   background-color: #e8bc7f;
 }
@@ -364,6 +372,10 @@ code {
 
 #profile-physio-section {
   height: 556px;
+}
+
+#form-control-biography {
+  height: 100px;
 }
 
 .icon-request {

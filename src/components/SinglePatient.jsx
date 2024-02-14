@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { disableInstantTransitions, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { removePatientFromPhysio } from "../redux/actions/physiotherapistActions";
 import DeletePatientConfirmation from "./Utils/DeletePatientConfirmation";
 import { useEffect, useState } from "react";
+import SuccessfulActionMessage from "./Utils/SuccessfulActionMessage";
 
 const SinglePatient = ({ patient }) => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const SinglePatient = ({ patient }) => {
           message={"Do you want to remove the patient?"}
         />
       )}
+
       {!showAlert && (
         <div>
           <img
@@ -71,7 +73,7 @@ const SinglePatient = ({ patient }) => {
             <span className="material-symbols-outlined fs-5">mail</span>
             <p className="truncate m-0">{patient.email}</p>
           </div>
-          <div className="ms-3 fs-7 d-flex gap-1 mt-1">
+          <div className="ms-3 fs-8 d-flex gap-1 mt-1">
             <span className="material-symbols-outlined fs-5">call</span>
             {patient.phoneNumber}
           </div>

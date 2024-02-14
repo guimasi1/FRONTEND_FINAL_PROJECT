@@ -1,8 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Card, Col, ListGroup, Row } from "react-bootstrap";
-import { useEffect } from "react";
+import { Button, Card, Col, Form, ListGroup, Row } from "react-bootstrap";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
+import {
+  editBiography,
+  getMyPhysioProfile,
+} from "../redux/actions/physiotherapistActions";
 import { motion } from "framer-motion";
 import SingleRequestPhysio from "./SingleRequestPhysio";
 import { getPhysioLinkRequests } from "../redux/actions/linkRequestsActions";
@@ -15,7 +18,9 @@ const PhysioProfile = () => {
   const linkRequests = useSelector(
     (state) => state.requests.linkRequestsByPhysio
   );
+  const [showEdit, setShowEdit] = useState(false);
 
+  const [bio, setBio] = useState(myProfile.bio);
   useEffect(() => {
     dispatch(getMyPhysioProfile());
     if (myProfile) {
@@ -118,8 +123,60 @@ const PhysioProfile = () => {
           className="mt-4 p-5 shadow-lg rounded-3 ms-2"
           id="biography-section"
         >
+          <div className="text-end">
+            <span
+              className="material-symbols-outlined cursor"
+              onClick={() => {
+                setShowEdit(true);
+              }}
+            >
+              edit
+            </span>
+          </div>
           <h3 className="text-center">Biography</h3>
-          <p>{myProfile && myProfile.bio}</p>
+          <div className="mt-4">
+            {!showEdit && <p>{myProfile && myProfile.bio}</p>}
+          </div>
+          {showEdit && (
+            <div className="d-flex mt-4">
+              <div className="flex-grow-1">
+                <Form.Control
+                  id="form-control-biography"
+                  className="custom-input"
+                  as="textarea"
+                  rows={6}
+                  value={bio ? bio : ""}
+                  onChange={(e) => {
+                    setBio(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="d-flex flex-column gap-2 mt-3 justify-content-center mb-5 cursor">
+                <div
+                  className="greenish-button rounded-4 py-2 px-4 text-center"
+                  onClick={() => {
+                    dispatch(
+                      editBiography(myProfile.id, {
+                        ...myProfile,
+                        bio,
+                      })
+                    );
+                    setShowEdit(false);
+                  }}
+                >
+                  Save
+                </div>
+                <div
+                  className="btn btn-secondary text-white rounded-4 py-2 px-4 text-center"
+                  onClick={() => {
+                    setShowEdit(false);
+                  }}
+                >
+                  Cancel
+                </div>
+              </div>
+            </div>
+          )}
         </Col>
       </Row>
     </motion.div>

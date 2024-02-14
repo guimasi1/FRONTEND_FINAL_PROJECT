@@ -10,12 +10,25 @@ body {
   font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // background-color: #fef5ea !important;
+  // background-color: #e7f6ff !important;
+  // background-color: #e3edf8 !important;
+  // background-color: #faf5ff !important;
+  // background-color: #ffedfa !important;
+  // background-color: rgb(248, 255, 237) !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+$greenish: #0e9a3d;
+$greenish-2: #199450;
+$greenish-3: #8dffcd;
+$greenish-4: #bcffdb;
+$greenish-5: #bee6ce;
+$greenish-6: #d9f5e4;
 
 .greenish {
   background-color: #0e9a3d !important;

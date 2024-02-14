@@ -1,4 +1,5 @@
 import {
+  EDIT_BIOGRAPHY,
   GET_MY_PHYSIO_PROFILE,
   GET_PHYSIOTHERAPISTS,
   SEND_REQUEST,
@@ -26,6 +27,11 @@ const physiotherapistsReducer = (state = initialState, action) => {
       return {
         ...state,
         linkRequest: action.payload,
+      };
+    case EDIT_BIOGRAPHY:
+      return {
+        ...state,
+        physioProfile: action.payload,
       };
 
     default:

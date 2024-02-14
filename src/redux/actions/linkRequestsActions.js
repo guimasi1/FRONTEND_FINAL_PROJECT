@@ -7,6 +7,7 @@ export const GET_REQUESTS_BY_PHYSIO_ID = "GET_REQUESTS_BY_PHYSIO_ID";
 export const GET_REQUESTS_BY_ID_AND_ACCEPTED =
   "GET_REQUESTS_BY_ID_AND_ACCEPTED";
 export const ACCEPT_REQUEST = "ACCEPT_REQUEST";
+export const ADD_SINGLE_REQUEST = "ADD_SINGLE_REQUEST";
 
 export const getPatientsLinkRequests = (id) => {
   const token = Cookies.get("token");
@@ -126,6 +127,30 @@ export const acceptRequest = (id) => {
         const data = await res.json();
         dispatch({
           type: ACCEPT_REQUEST,
+          payload: data,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getSingleRequest = (id) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(BASE_URL + "linkRequests/" + id, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: ADD_SINGLE_REQUEST,
           payload: data,
         });
       } else {

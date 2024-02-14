@@ -355,6 +355,10 @@ code {
   width: 28px;
 }
 
+#sent-requests-section {
+  height: 559px;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

@@ -73,7 +73,6 @@ export const connectWithPhysio = (requestDetails) => {
           type: SEND_REQUEST,
           payload: data,
         });
-        alert("request sent");
         console.log(requestDetails);
       } else {
         console.log(requestDetails);

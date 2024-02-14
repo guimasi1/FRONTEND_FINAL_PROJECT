@@ -1,5 +1,6 @@
 import {
   ACCEPT_REQUEST,
+  ADD_SINGLE_REQUEST,
   GET_REQUESTS_BY_ID,
   GET_REQUESTS_BY_ID_AND_ACCEPTED,
   GET_REQUESTS_BY_PHYSIO_ID,
@@ -41,6 +42,14 @@ const linkRequestReducer = (state = initialState, action) => {
       return {
         ...state,
         acceptedRequestsByPatient: action.payload,
+      };
+    case ADD_SINGLE_REQUEST:
+      return {
+        ...state,
+        linkRequestsByPatient: {
+          ...state.linkRequestsByPatient,
+          content: [...state.linkRequestsByPatient.content, action.payload],
+        },
       };
     default:
       return state;

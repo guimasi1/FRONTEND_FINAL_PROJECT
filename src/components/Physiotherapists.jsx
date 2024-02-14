@@ -6,7 +6,7 @@ import {
   getPhysiotherapists,
 } from "../redux/actions/physiotherapistActions";
 import { useDispatch, useSelector } from "react-redux";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Col, Form, Row } from "react-bootstrap";
 import SinglePhysio from "./SinglePhysio";
 import Select from "react-select";
 import { motion } from "framer-motion";
@@ -24,7 +24,6 @@ const Physiotherapist = () => {
   const physiosToHide = acceptedRequestsByPatient.map(
     (link) => link.physiotherapist.id
   );
-  console.log(physiosToHide);
 
   const specializations = [
     { value: "ANY", label: "Any" },

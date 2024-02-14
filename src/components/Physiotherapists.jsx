@@ -96,7 +96,7 @@ const Physiotherapist = () => {
             </Form.Group>
             <Form.Group className="flex-grow-1">
               <Select
-                className="w-50 mt-1"
+                className="w-50 mt-1 "
                 defaultValue={specialization}
                 onChange={setSpecialization}
                 options={specializations}

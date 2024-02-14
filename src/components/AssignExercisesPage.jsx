@@ -263,7 +263,7 @@ const AssignExercisesPage = () => {
                 transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
               >
                 <Col xs={12}>
-                  <Row className=" rounded-2 text-center mb-2 fw-bold border-bottom pb-2">
+                  <Row className=" rounded-2 text-center mb-2 fw-bold border-bottom greenish-6 py-2">
                     <Col className="rounded-start-2" xs={1}>
                       N°
                     </Col>

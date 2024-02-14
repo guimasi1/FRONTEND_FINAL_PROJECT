@@ -116,7 +116,7 @@ const SingleExercise = ({
                 setShowConfirmation(true);
                 setTimeout(() => {
                   setShowConfirmation(false);
-                }, 1500);
+                }, 1000);
               }}
             >
               <span className="material-symbols-outlined fw-bold fs-3">

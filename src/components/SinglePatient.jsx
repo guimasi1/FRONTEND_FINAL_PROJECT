@@ -1,10 +1,14 @@
 import { Button, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const SinglePatient = ({ patient }) => {
   const navigate = useNavigate();
   return (
-    <Col className="shadow-lg rounded-3 d-flex pt-4 pb-2 ps-1 ms-4 patient-card z-3">
+    <motion.div
+      whileHover={{ scale: 1.05, transition: { delay: 0.2 } }}
+      className="shadow-lg rounded-3 d-flex pt-4 pb-2 ps-1 ms-4 patient-card z-3 col"
+    >
       <div>
         <img
           src="https://placekitten.com/80"
@@ -47,7 +51,7 @@ const SinglePatient = ({ patient }) => {
           </div>
         </div>
       )}
-    </Col>
+    </motion.div>
   );
 };
 

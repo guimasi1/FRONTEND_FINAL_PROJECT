@@ -99,7 +99,7 @@ const PhysioProfile = () => {
               xs={12}
               className="p-4 shadow-lg rounded-3 link-request-physio-section"
             >
-              <h4 className="mb-4">Pending link requests</h4>
+              <h4 className="mb-4 text-center">Pending link requests</h4>
               {linkRequests &&
                 linkRequests.map((request) => (
                   <SingleRequestPhysio request={request} key={request.id} />
@@ -113,7 +113,7 @@ const PhysioProfile = () => {
           className="mt-4 p-5 shadow-lg rounded-3 ms-2"
           id="biography-section"
         >
-          <h4>Biography</h4>
+          <h3 className="text-center">Biography</h3>
           <p>{myProfile && myProfile.bio}</p>
         </Col>
       </Row>

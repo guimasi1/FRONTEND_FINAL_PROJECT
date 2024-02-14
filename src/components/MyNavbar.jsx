@@ -153,7 +153,6 @@ const MyNavbar = () => {
             <div
               onClick={() => {
                 dispatch(setLogStatus());
-                console.log(loggedIn + "loggedin");
                 navigate("/");
               }}
               className="text-decoration-none text-black fw-bold py-3 cursor"

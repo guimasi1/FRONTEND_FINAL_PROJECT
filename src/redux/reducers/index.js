@@ -43,6 +43,10 @@ const registerReducer = (state = initialState, action) => {
       return {
         ...state,
         loggedIn: false,
+        registrationPhysiotherapistId: "",
+        registrationPatientId: "",
+        token: "",
+        role: "",
       };
     default:
       return state;

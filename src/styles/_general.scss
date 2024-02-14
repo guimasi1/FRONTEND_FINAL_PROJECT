@@ -136,3 +136,12 @@ code {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+//  TRUNCATE
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 160px;
+}

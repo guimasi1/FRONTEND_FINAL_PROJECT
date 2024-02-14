@@ -297,6 +297,13 @@ code {
   transform: translate(-50%, -50%);
 }
 
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 160px;
+}
+
 .brownish-button {
   background-color: #ce8013 !important;
   /* background-color: #9a600e !important; */

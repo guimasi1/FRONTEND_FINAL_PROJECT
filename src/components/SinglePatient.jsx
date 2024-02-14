@@ -4,12 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SinglePatient = ({ patient }) => {
   const navigate = useNavigate();
   return (
-    <Col
-      className="shadow-lg rounded-3 d-flex pt-4 pb-2 px-3 ms-4 patient-card z-3"
-      xs={12}
-      md={6}
-      lg={12}
-    >
+    <Col className="shadow-lg rounded-3 d-flex pt-4 pb-2 ps-1 ms-4 patient-card z-3">
       <div>
         <img
           src="https://placekitten.com/80"
@@ -32,14 +27,14 @@ const SinglePatient = ({ patient }) => {
           </div>
           <div className="ms-3 mt-1 fs-8 d-flex gap-1">
             <span className="material-symbols-outlined fs-5">mail</span>
-            {patient.email}
+            <p className="truncate m-0">{patient.email}</p>
           </div>
           <div className="ms-3 fs-7 d-flex gap-1 mt-1">
             <span className="material-symbols-outlined fs-5">call</span>
             {patient.phoneNumber}
           </div>
           <div className="mt-5 d-flex mb-3 name-container-patient align-self-end ms-4 ps-2">
-            <div className="text-end ms-3">
+            <div className="text-end ">
               <Button
                 className="py-2 px-5 fs-8 rounded-2 brownish-button fw-bold "
                 onClick={() => {

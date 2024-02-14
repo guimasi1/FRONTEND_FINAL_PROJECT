@@ -64,10 +64,14 @@ const Patients = () => {
                 />
               </div>
             </Col>
-            {yourPatients &&
-              yourPatients.map((patient) => (
-                <SinglePatient patient={patient} key={patient.id} />
-              ))}
+            <Col xs={12}>
+              <Row xs={1} md={2}>
+                {yourPatients &&
+                  yourPatients.map((patient) => (
+                    <SinglePatient patient={patient} key={patient.id} />
+                  ))}
+              </Row>
+            </Col>
           </Row>
         </Col>
       </motion.div>

@@ -297,6 +297,12 @@ code {
   transform: translate(-50%, -50%);
 }
 
+.successful-action-message {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .truncate {
   white-space: nowrap;
   overflow: hidden;

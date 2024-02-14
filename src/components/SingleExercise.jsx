@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge, Col, Form, Row } from "react-bootstrap";
 import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import SuccessfulActionMessage from "./Utils/SuccessfulActionMessage";
 
 const SingleExercise = ({
   exercise,
@@ -15,7 +16,7 @@ const SingleExercise = ({
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);
   const dispatch = useDispatch();
-
+  const [showConfirmation, setShowConfirmation] = useState(false);
   return (
     <Col
       xs={12}
@@ -23,6 +24,9 @@ const SingleExercise = ({
       lg={3}
       className="border rounded-2 py-2 px-3 col-exercise ms-lg-4"
     >
+      {showConfirmation && (
+        <SuccessfulActionMessage message={"Exercise added successfully"} />
+      )}
       {exercise && (
         <Row>
           <Col xs={12} className="fw-bold text-center pt-2">
@@ -109,6 +113,10 @@ const SingleExercise = ({
                 setUpdate(update + 1);
                 dispatch(getExercises());
                 dispatch(getSingleAssignment(currentAssignmentId));
+                setShowConfirmation(true);
+                setTimeout(() => {
+                  setShowConfirmation(false);
+                }, 1500);
               }}
             >
               <span className="material-symbols-outlined fw-bold fs-3">

@@ -119,10 +119,12 @@ export const addExerciseToAssignment = (assignment_id, exerciseDetails_id) => {
       );
       if (res.ok) {
         const data = await res.json();
-        dispatch({
-          type: ADD_EXERCISE_TO_ASSIGNMENT,
-          payload: data,
-        });
+        if (data.exercises != null) {
+          dispatch({
+            type: ADD_EXERCISE_TO_ASSIGNMENT,
+            payload: data,
+          });
+        }
       } else {
         throw new Error("Something went wrong.");
       }

@@ -52,7 +52,7 @@ const SinglePhysio = ({ physio, index }) => {
     >
       <div className="rounded-start-1">
         <img
-          src="https://placekitten.com/220"
+          src="https://placekitten.com/240"
           alt=""
           className="rounded-start-1"
         />
@@ -63,8 +63,14 @@ const SinglePhysio = ({ physio, index }) => {
           <p className="fw-bold">
             {physio.firstName} {physio.lastName}
           </p>
-          <p>{physio.email}</p>
-          <p>{physio.phoneNumber}</p>
+          <div className="d-flex gap-2">
+            <span className="material-symbols-outlined">mail</span>
+            <p className="fs-7">{physio.email}</p>
+          </div>
+          <div className="d-flex gap-2">
+            <span className="material-symbols-outlined">call</span>
+            <p className="fs-7">{physio.phoneNumber}</p>
+          </div>
           <p className="mt-5 pt-2">
             <Badge className="bg-dark">{physio.specialization}</Badge>
           </p>

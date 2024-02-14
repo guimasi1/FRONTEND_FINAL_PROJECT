@@ -105,7 +105,7 @@ const Profile = () => {
               className="p-4 shadow-lg rounded-5"
               id="sent-requests-section"
             >
-              <h4 className="mb-4">Sent link requests</h4>
+              <h4 className="mb-4 text-center">Sent link requests</h4>
               {patientLinkRequests &&
                 patientLinkRequests.map((request, index) => (
                   <SingleRequest

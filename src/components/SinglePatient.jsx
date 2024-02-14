@@ -5,7 +5,7 @@ const SinglePatient = ({ patient }) => {
   const navigate = useNavigate();
   return (
     <Col
-      className="shadow-lg rounded-3 d-flex py-2 px-3 ms-4 patient-card z-3"
+      className="shadow-lg rounded-3 d-flex pt-4 pb-2 px-3 ms-4 patient-card z-3"
       xs={12}
       md={6}
       lg={12}

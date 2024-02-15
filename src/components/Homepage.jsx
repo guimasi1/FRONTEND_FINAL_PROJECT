@@ -7,8 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 import TypingEffect from "./TypingEffect";
 import GoUpButton from "./Utils/GoUpButton";
+import { useNavigate } from "react-router-dom";
 const Homepage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getPhysiotherapists());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,6 +68,9 @@ const Homepage = () => {
               exit={{ opacity: 0 }}
               transition={{ delay: 1.3, ease: "easeInOut", duration: 2 }}
               whileTap={{ scale: 0.8 }}
+              onClick={() => {
+                navigate("/pricing");
+              }}
             >
               Learn more
             </motion.button>

@@ -157,6 +157,13 @@ $greenish-6: #d9f5e4;
   @include completelyCentered();
 }
 
+// ERROR MESSAGE
+
+.error-message {
+  background-color: #fdbe67;
+  border-radius: 0.2em;
+}
+
 //  TRUNCATE
 
 .truncate {

@@ -1,4 +1,4 @@
-const DeletePatientConfirmation = ({
+const DeleteConfirmation = ({
   message,
   setConfirmElimination,
   setShowAlert,
@@ -30,4 +30,4 @@ const DeletePatientConfirmation = ({
     </div>
   );
 };
-export default DeletePatientConfirmation;
+export default DeleteConfirmation;

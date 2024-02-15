@@ -49,6 +49,8 @@ const AssignExercisesPage = () => {
   );
 
   // eslint-disable-next-line no-unused-vars
+  // This is the new exercise id, that comes from the component exercise,
+  //when clicking on add exercise (so it has sets, reps, and the exercise per se)
   const newExerciseId = useSelector((state) => state.exercises.newExercise);
 
   const exercises = useSelector((state) => state.exercises.exercises.content);
@@ -84,12 +86,16 @@ const AssignExercisesPage = () => {
       dispatch(getSinglePatient(id));
     }
     dispatch(getExercises());
+    dispatch(getSingleAssignment(currentAssignment.id));
   }, [update]);
 
+  // Once the exercise (with details) ID arrives, this function adds the exercise to the assignment
   useEffect(() => {
-    if (newExerciseId && currentAssignment && currentAssignment.id) {
-      dispatch(addExerciseToAssignment(currentAssignment.id, newExerciseId.id));
-    }
+    console.log("***********************************");
+    console.log("this is the exe id " + newExerciseId.id);
+    console.log("this is the assignment id " + currentAssignment.id);
+    console.log("***********************************");
+    dispatch(addExerciseToAssignment(currentAssignment.id, newExerciseId.id));
   }, [newExerciseId]);
 
   const options = [
@@ -132,7 +138,9 @@ const AssignExercisesPage = () => {
     >
       {patientProfile && (
         <Row>
+          {/* This dialog asks you if you're sure you want to delete the exercise */}
           {currentExerciseId && <ConfirmDialog />}
+          {/* This dialog asks you if you're sure you want to delete the assignment */}
           {currentAssignmentToDeleteId && <ConfirmAssignmentDialog />}
           <Col xs={{ span: 4 }}>
             <Row
@@ -189,6 +197,7 @@ const AssignExercisesPage = () => {
             <h3 className="text-center mt-2 py-3">Assigned programs</h3>
             <Row>
               <Col className="text-end">
+                {/* BUTTON TO CREATE NEW ASSIGNMENT */}
                 <Button
                   className="brownish-button rounded-pill text-white mb-4 btn btn-sm "
                   onClick={() => {
@@ -277,6 +286,7 @@ const AssignExercisesPage = () => {
                     <Col xs={1}></Col>
                   </Row>
                 </Col>
+
                 {exercisesDetailsByAssignment &&
                   exercisesDetailsByAssignment.map((exercise, index) => (
                     <AddedExercise

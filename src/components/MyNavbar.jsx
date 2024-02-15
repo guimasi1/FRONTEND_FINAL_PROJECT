@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { setLogStatus, setRoleState } from "../redux/actions/authentication";
@@ -13,6 +13,7 @@ const MyNavbar = () => {
   let role = Cookies.get("role");
   const roleState = useSelector((state) => state.register.role);
   const loggedIn = useSelector((state) => state.register.loggedIn);
+  const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(setRoleState(role));
@@ -41,14 +42,22 @@ const MyNavbar = () => {
             >
               <Link
                 to="/"
-                className="text-decoration-none text-black mt-2 fw-bold "
+                className={`text-decoration-none text-black mt-2 fw-bold ${
+                  location.pathname === "/"
+                    ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
+                    : ""
+                }`}
               >
                 Home
               </Link>
               {roleState === "PATIENT" && loggedIn ? (
                 <Link
                   to="/physiotherapists"
-                  className="text-decoration-none text-black mt-2 fw-bold "
+                  className={`text-decoration-none text-black mt-2 fw-bold ${
+                    location.pathname === "/physiotherapists"
+                      ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
+                      : ""
+                  }`}
                 >
                   Physiotherapists
                 </Link>
@@ -58,7 +67,11 @@ const MyNavbar = () => {
               {roleState === "PHYSIOTHERAPIST" && loggedIn ? (
                 <Link
                   to="/patients"
-                  className="text-decoration-none text-black mt-2 fw-bold "
+                  className={`text-decoration-none text-black mt-2 fw-bold ${
+                    location.pathname === "/patients"
+                      ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
+                      : ""
+                  }`}
                 >
                   Patients
                 </Link>
@@ -68,7 +81,11 @@ const MyNavbar = () => {
               {roleState === "PATIENT" && loggedIn ? (
                 <Link
                   to="/myExercises"
-                  className="text-decoration-none text-black mt-2 fw-bold "
+                  className={`text-decoration-none text-black mt-2 fw-bold ${
+                    location.pathname.startsWith("/myExercises")
+                      ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
+                      : ""
+                  }`}
                 >
                   Your programs
                 </Link>
@@ -80,7 +97,11 @@ const MyNavbar = () => {
                 roleState === "PATIENT" && loggedIn ? (
                   <Link
                     to="/profile"
-                    className="text-decoration-none text-black mt-2 fw-bold "
+                    className={`text-decoration-none text-black mt-2 fw-bold ${
+                      location.pathname === "/profile"
+                        ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
+                        : ""
+                    }`}
                   >
                     Profile
                   </Link>
@@ -93,23 +114,26 @@ const MyNavbar = () => {
                 roleState === "PHYSIOTHERAPIST" && loggedIn ? (
                   <Link
                     to="/physioProfile"
-                    className="text-decoration-none text-black mt-2 fw-bold "
+                    className={`text-decoration-none text-black mt-2 fw-bold ${
+                      location.pathname === "/physioProfile"
+                        ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
+                        : ""
+                    }`}
                   >
                     Profile
                   </Link>
                 ) : (
                   ""
                 )
-              }{" "}
+              }
+
               <Link
-                to="/"
-                className="text-decoration-none text-black mt-2 fw-bold "
-              >
-                Resources
-              </Link>
-              <Link
-                to="/"
-                className="text-decoration-none text-black mt-2 fw-bold "
+                to="/pricing"
+                className={`text-decoration-none text-black mt-2 fw-bold ${
+                  location.pathname === "/pricing"
+                    ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
+                    : ""
+                }`}
               >
                 Pricing
               </Link>

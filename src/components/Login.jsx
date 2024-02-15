@@ -4,11 +4,38 @@ import { login, setRoleState } from "../redux/actions/authentication";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { showLoggedIn } from "../redux/actions/toastifyActions";
+import ErrorAuthentication from "./Utils/ErrorAuthentication";
+import { getMyPatientProfile } from "../redux/actions/patientsActions";
+import { disableInstantTransitions } from "framer-motion";
+import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 const Login = () => {
   const dispatch = useDispatch();
   const [loginData, setLoginData] = useState(null);
   const navigate = useNavigate();
+  const [showError, setShowError] = useState(false);
+  const [message, setMessage] = useState(null);
   // const role = localStorage.getItem("role");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await dispatch(login(loginData, role));
+      if (response) {
+        dispatch(showLoggedIn());
+        if (role === "PATIENT") {
+          dispatch(getMyPatientProfile());
+        } else {
+          dispatch(getMyPhysioProfile());
+        }
+        setShowError(false);
+        navigate("/");
+      } else {
+        setShowError(true);
+        setMessage("Incorrect email or password");
+      }
+    } catch (error) {
+      console.error("Errore durante il login:", error);
+    }
+  };
   const [role, setRole] = useState("");
   return (
     <Container className="border border-2 pb-5 mb-5 mt-2 rounded-5 shadow-lg ">
@@ -76,15 +103,13 @@ const Login = () => {
               </div>
             </div>
             <div className="text-center me-5">
+              {showError && <ErrorAuthentication errorMessage={message} />}
               <Button
                 variant="success"
                 type="submit"
                 className="rounded-pill px-4 py-2 fs-5 mt-3 w-50 fw-bold"
                 onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(login(loginData, role));
-                  dispatch(showLoggedIn());
-                  navigate("/");
+                  handleSubmit(e);
                 }}
               >
                 Submit

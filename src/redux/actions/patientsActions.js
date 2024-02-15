@@ -4,6 +4,7 @@ export const GET_PATIENTS = "GET_PATIENTS";
 export const GET_MY_PATIENT_PROFILE = "GET_MY_PATIENT_PROFILE";
 export const GET_PATIENTS_BY_PHYSIO = "GET_PATIENTS_BY_PHYSIO";
 export const GET_SINGLE_PATIENT = "GET_SINGLE_PATIENT";
+export const REMOVE_PHYSIO_FROM_PATIENT = "REMOVE_PHYSIO_FROM_PATIENT";
 
 export const getPatients = () => {
   const token = Cookies.get("token");
@@ -102,6 +103,33 @@ export const getSinglePatient = (id) => {
         dispatch({
           type: GET_SINGLE_PATIENT,
           payload: data,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const removePhysioFromPatient = (physioId, patientId) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        BASE_URL + `physiotherapists/${physioId}/removePatient/${patientId}`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        dispatch({
+          type: REMOVE_PHYSIO_FROM_PATIENT,
+          payload: physioId,
         });
       } else {
         throw new Error("Something went wrong.");

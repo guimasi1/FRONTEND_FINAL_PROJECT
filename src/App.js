@@ -13,6 +13,7 @@ import AssignExercisesPage from "./components/AssignExercisesPage";
 import MyExercisesPage from "./components/MyExercisesPage";
 import Footer from "./components/Footer";
 import GoBackButton from "./components/Utils/GoBackButton";
+import PageNotFound from "./components/Utils/PageNotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/physioProfile" element={<PhysioProfile />} />
         <Route path="/assignExercises/:id" element={<AssignExercisesPage />} />
         <Route path="/myExercises" element={<MyExercisesPage />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>

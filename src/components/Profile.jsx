@@ -138,7 +138,7 @@ const Profile = () => {
               <Row>
                 {physiosByPatient &&
                   physiosByPatient.map((physio) => (
-                    <SinglePhysioByPatient physio={physio} />
+                    <SinglePhysioByPatient physio={physio} key={physio.id} />
                   ))}
               </Row>
             </Col>

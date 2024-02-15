@@ -101,7 +101,8 @@ const SingleExercise = ({
             <motion.div
               whileTap={{ scale: 0.8 }}
               className="d-flex justify-content-center align-items-center add-exercise-button mt-3 w-50 py-2 rounded-pill cursor fw-bold add-button"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 dispatch(
                   createExerciseWithDetails({
                     sets: sets,
@@ -109,10 +110,6 @@ const SingleExercise = ({
                     exercise_id: exercise.id,
                   })
                 );
-
-                setUpdate(update + 1);
-                dispatch(getExercises());
-                dispatch(getSingleAssignment(currentAssignmentId));
                 setShowConfirmation(true);
                 setTimeout(() => {
                   setShowConfirmation(false);

@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { removePatientFromPhysio } from "../redux/actions/physiotherapistActions";
-import DeletePatientConfirmation from "./Utils/DeletePatientConfirmation";
+import DeleteConfirmation from "./Utils/DeleteConfirmation";
 import { useEffect, useState } from "react";
-import SuccessfulActionMessage from "./Utils/SuccessfulActionMessage";
 
 const SinglePatient = ({ patient }) => {
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ const SinglePatient = ({ patient }) => {
       className="shadow-lg rounded-3 d-flex pt-4 pb-2 ps-1 ms-4 patient-card z-3 col"
     >
       {showAlert && (
-        <DeletePatientConfirmation
+        <DeleteConfirmation
           setConfirmElimination={setConfirmElimination}
           setShowAlert={setShowAlert}
           onPointerDown={(e) => e.stopPropagation()}

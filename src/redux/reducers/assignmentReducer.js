@@ -52,11 +52,18 @@ const assignmentReducer = (state = initialState, action) => {
     case ADD_EXERCISE_TO_ASSIGNMENT:
       return {
         ...state,
-        newAddedExercise: action.payload.id,
+        newAddedExercise: action.payload,
         exercisesDetailsByAssignment: [
           ...state.exercisesDetailsByAssignment,
           action.payload,
         ],
+        newAssignment: {
+          ...state.newAssignment,
+          exercisesDetails: [
+            ...state.newAssignment.exercisesDetails,
+            action.payload,
+          ],
+        },
       };
     case GET_SINGLE_ASSIGNMENT:
       return {

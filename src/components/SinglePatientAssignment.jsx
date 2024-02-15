@@ -17,6 +17,7 @@ const SinglePatientAssignment = ({ assignment }) => {
       }`}
       onClick={() => {
         dispatch(getSingleAssignment(assignment.id));
+        console.log(assignment.id);
       }}
     >
       <Col xs={3} className="p-0">

@@ -1,3 +1,4 @@
+import { REMOVE_PHYSIO_FROM_PATIENT } from "../actions/patientsActions";
 import {
   EDIT_BIOGRAPHY,
   GET_MY_PHYSIO_PROFILE,
@@ -39,6 +40,13 @@ const physiotherapistsReducer = (state = initialState, action) => {
       return {
         ...state,
         physiosByPatient: action.payload,
+      };
+    case REMOVE_PHYSIO_FROM_PATIENT:
+      return {
+        ...state,
+        physiosByPatient: state.physiosByPatient.filter(
+          (physio) => physio.id !== action.payload
+        ),
       };
 
     default:

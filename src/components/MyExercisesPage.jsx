@@ -12,6 +12,7 @@ import { useFetcher } from "react-router-dom";
 import SinglePatientAssignment from "./SinglePatientAssignment";
 import SinglePatientExercisesDetails from "./SinglePatientExercisesDetails";
 import DownloadPDFButton from "./DownloadPDFButton";
+import { current } from "@reduxjs/toolkit";
 
 const MyExercisesPage = () => {
   const myPatientProfile = useSelector(

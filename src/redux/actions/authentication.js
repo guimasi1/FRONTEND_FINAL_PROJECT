@@ -63,13 +63,14 @@ export const login = (loginPayload, role) => {
           type: LOGIN,
           payload: data,
         });
-        // localStorage.setItem("token", data.token);
+
         Cookies.set("token", data.token, {
           expires: 7,
           secure: true,
           sameSite: "strict",
         });
         Cookies.set("role", role);
+        return data;
       } else {
         console.log(loginPayload);
         throw new Error("Something went wront with the login.");

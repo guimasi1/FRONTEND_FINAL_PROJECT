@@ -20,12 +20,10 @@ const Registration = () => {
     e.preventDefault();
     try {
       const response = await dispatch(register(registrationData, role));
-      // Controlla se la registrazione ha restituito un ID o un altro indicatore di successo
       if (response) {
         navigate("/login");
       }
     } catch (error) {
-      // Gestisci eventuali errori di registrazione qui
       console.error("Errore durante la registrazione:", error);
     }
   };
@@ -161,7 +159,6 @@ const Registration = () => {
                   id="1"
                   onClick={(e) => {
                     setRole(e.target.value);
-                    console.log(registrationData);
                   }}
                 />
                 <Form.Check
@@ -173,7 +170,6 @@ const Registration = () => {
                   id="2"
                   onClick={(e) => {
                     setRole(e.target.value);
-                    console.log(registrationData);
                   }}
                 />
               </div>

@@ -51,7 +51,6 @@ const Physiotherapist = () => {
   }, [specialization]);
 
   useEffect(() => {
-    console.log(name);
     if (name) {
       dispatch(getPhysiosByName(name));
     }

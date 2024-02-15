@@ -119,12 +119,15 @@ export const addExerciseToAssignment = (assignment_id, exerciseDetails_id) => {
       );
       if (res.ok) {
         const data = await res.json();
-        if (data.exercises != null) {
-          dispatch({
-            type: ADD_EXERCISE_TO_ASSIGNMENT,
-            payload: data,
-          });
-        }
+        dispatch({
+          type: ADD_EXERCISE_TO_ASSIGNMENT,
+          payload: data,
+        });
+        console.log("******************");
+        console.log(data);
+        console.log(exerciseDetails_id);
+        console.log(assignment_id);
+        console.log("******************");
       } else {
         throw new Error("Something went wrong.");
       }
@@ -197,7 +200,6 @@ export const removeExerciseDetails = (id) => {
           type: REMOVE_EXERCISE_DETAILS,
           payload: id,
         });
-        console.log(id);
       } else {
         throw new Error("Something went wrong.");
       }

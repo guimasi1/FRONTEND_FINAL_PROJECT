@@ -8,15 +8,19 @@ import { getMyPatientProfile } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { getSingleRequest } from "../redux/actions/linkRequestsActions";
+import {
+  getPatientsLinkRequests,
+  getSingleRequest,
+} from "../redux/actions/linkRequestsActions";
 const SinglePhysio = ({ physio, index }) => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.patients.patientProfile);
+
   const pendingRequestsByPatient = useSelector(
     (state) => state.requests.linkRequestsByPatient.content
   );
   const recentSentRequestId = useSelector(
-    (state) => state.physiotherapists.linkRequest.uuid
+    (state) => state.physiotherapists.linkRequest
   );
   const pendingPhysios = pendingRequestsByPatient.map(
     (link) => link.physiotherapist.id
@@ -27,13 +31,19 @@ const SinglePhysio = ({ physio, index }) => {
   });
   const ref = useRef(null);
   const isInView = useInView(ref);
+
   useEffect(() => {
     dispatch(getMyPatientProfile());
+    dispatch(getPatientsLinkRequests(myProfile.id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
-    dispatch(getSingleRequest(recentSentRequestId));
+    if (recentSentRequestId) {
+      dispatch(getSingleRequest(recentSentRequestId.uuid));
+    }
   }, [recentSentRequestId]);
+
   useEffect(() => {
     if ((index + 2) % 10 === 0) {
       dispatch(getPhysiotherapists(index + 10));

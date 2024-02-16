@@ -107,3 +107,36 @@ export const closeDialog = () => ({
 export const openDialog = () => ({
   type: OPEN_DIALOG,
 });
+
+export const getExercisesByParams = (params) => {
+  const { page, name, targetArea, difficulty } = params;
+  console.log(params);
+
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3001/api/exercises/byParams?name=${name}&size=6&page=${page}&targetArea=${
+          targetArea === "ANY" ? "" : targetArea
+        }&difficulty=${difficulty === "ANY" ? "" : difficulty}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_EXERCISES,
+          payload: data,
+        });
+        return data;
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

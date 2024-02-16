@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getExercises,
   getExercisesByName,
+  getExercisesByParams,
 } from "../redux/actions/exercisesActions";
 import SingleExercise from "./SingleExercise";
 import Select from "react-select";
@@ -48,14 +49,27 @@ const AssignExercisesPage = () => {
   const currentAssignmentToDeleteId = useSelector(
     (state) => state.assignments.assignmentToDeleteId
   );
+  const page = useSelector((state) => state.exercises.page);
 
-  // eslint-disable-next-line no-unused-vars
   // This is the new exercise id, that comes from the component exercise,
   //when clicking on add exercise (so it has sets, reps, and the exercise per se)
   const newExerciseId = useSelector((state) => state.exercises.newExercise);
 
   const exercises = useSelector((state) => state.exercises.exercises.content);
   const [update, setUpdate] = useState(0);
+  const [exercisesParams, setExercisesParams] = useState({
+    page: page === undefined ? 0 : page,
+    name: "",
+    targetArea: "",
+    difficulty: "",
+  });
+
+  const handleSelectChange = (selectedOption) => {
+    setExercisesParams({
+      ...exercisesParams,
+      targetArea: selectedOption.value,
+    });
+  };
 
   const [assignmentData, setAssignmentData] = useState(
     currentAssignment
@@ -67,12 +81,25 @@ const AssignExercisesPage = () => {
         }
       : ""
   );
+
+  const handleExercisesAtFirstRender = async () => {
+    try {
+      const response = await dispatch(getExercisesByParams(exercisesParams));
+      if (response.content) {
+        dispatch(getExercises());
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     dispatch(getMyPhysioProfile());
     if (id) {
       dispatch(getSinglePatient(id));
     }
-    dispatch(getExercises());
+    //dispatch(getExercises());
+    handleExercisesAtFirstRender();
     if (id && currentPhysio) {
       dispatch(getAssignmentsByPatientAndPhysio(id, currentPhysio.id));
     }
@@ -86,7 +113,7 @@ const AssignExercisesPage = () => {
     if (id) {
       dispatch(getSinglePatient(id));
     }
-    dispatch(getExercises());
+    // dispatch(getExercises());
     dispatch(getSingleAssignment(currentAssignment.id));
   }, [update]);
 
@@ -104,12 +131,25 @@ const AssignExercisesPage = () => {
       console.log(err);
     }
   };
+
+  const handleDifficultyChange = (selectedOption) => {
+    setExercisesParams({
+      ...exercisesParams,
+      difficulty: selectedOption.value,
+    });
+  };
+
   // Once the exercise (with details) ID arrives, this function adds the exercise to the assignment
   useEffect(() => {
     handleAddExerciseToAssignment();
   }, [newExerciseId]);
 
+  useEffect(() => {
+    dispatch(getExercisesByParams(exercisesParams));
+  }, [exercisesParams]);
+
   const options = [
+    { value: "ANY", label: "Any" },
     { value: "Abductors", label: "Abductors" },
     { value: "Adductors", label: "Adductors" },
     { value: "Abs", label: "Abs" },
@@ -131,13 +171,11 @@ const AssignExercisesPage = () => {
     { value: "Pulmonary", label: "Pulmonary" },
   ];
   const difficulties = [
+    { value: "ANY", label: "Any" },
     { value: "EASY", label: "Easy" },
     { value: "MEDIUM", label: "Medium" },
     { value: "HARD", label: "Hard" },
   ];
-  const [selectedOption, setSelectedOption] = useState("");
-  const [selectedDifficulty, setSelectedDifficulty] = useState("");
-  const page = useSelector((state) => state.exercises.page);
 
   return (
     <motion.div
@@ -357,13 +395,19 @@ const AssignExercisesPage = () => {
                   </Row>
                 </Col>
               )}
+              {/* EXERCISES SECTION */}
               <Row>
                 <Col xs={3} className="my-4 d-flex align-items-center gap-3">
                   <span className="material-symbols-outlined">search</span>
                   <Form.Control
                     placeholder="Search by name"
                     onChange={(e) => {
-                      dispatch(getExercisesByName(e.target.value, page));
+                      // dispatch(getExercisesByName(e.target.value, page));
+                      setExercisesParams({
+                        ...exercisesParams,
+                        name: e.target.value,
+                      });
+                      console.log(exercisesParams);
                     }}
                   />
                 </Col>
@@ -371,8 +415,10 @@ const AssignExercisesPage = () => {
                   <p className="p-0 fw-bold mt-3">Target Area</p>
                   <Select
                     className="w-75"
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
+                    defaultValue={options.find(
+                      (option) => option.value === exercisesParams.targetArea
+                    )}
+                    onChange={handleSelectChange}
                     options={options}
                   />
                 </Col>
@@ -380,8 +426,10 @@ const AssignExercisesPage = () => {
                   <p className="p-0 fw-bold mt-3">Difficulty</p>
                   <Select
                     className="w-75"
-                    defaultValue={selectedDifficulty}
-                    onChange={setSelectedDifficulty}
+                    value={difficulties.find(
+                      (option) => option.value === exercisesParams.difficulty
+                    )}
+                    onChange={handleDifficultyChange}
                     options={difficulties}
                   />
                 </Col>

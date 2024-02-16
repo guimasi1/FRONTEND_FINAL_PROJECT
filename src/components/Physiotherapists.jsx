@@ -1,14 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import {
-  getPhysiosByName,
   getPhysiosByParams,
-  getPhysiosBySpecialization,
   getPhysiotherapists,
 } from "../redux/actions/physiotherapistActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Col, Form, Row } from "react-bootstrap";
 import SinglePhysio from "./SinglePhysio";
+import GoUpButton from "./Utils/GoUpButton";
 import Select from "react-select";
 import { motion } from "framer-motion";
 import { getPatientsAcceptedRequests } from "../redux/actions/linkRequestsActions";
@@ -107,6 +107,7 @@ const Physiotherapist = () => {
               <SinglePhysio physio={physio} key={physio.id} index={index} />
             ))}
       </Row>
+      <GoUpButton />
     </motion.div>
   );
 };

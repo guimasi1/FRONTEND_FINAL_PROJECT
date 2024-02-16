@@ -7,6 +7,8 @@ export const REMOVE_EXERCISE_DETAILS = "REMOVE_EXERCISE_DETAILS";
 export const UPDATE_ASSIGNMENTS = "UPDATE_ASSIGNMENTS";
 export const ADD_EXERCISE_TO_ASSIGNMENT = "ADD_EXERCISE_TO_ASSIGNMENT";
 export const GET_ASSIGNMENTS_BY_PATIENT = "GET_ASSIGNMENTS_BY_PATIENT";
+export const GET_SINGLE_EXERCISE_WITH_DETAILS =
+  "GET_SINGLE_EXERCISE_WITH_DETAILS";
 export const GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO =
   "GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO";
 export const SET_IN_PROGRESS = "SET_IN_PROGRESS";
@@ -123,11 +125,6 @@ export const addExerciseToAssignment = (assignment_id, exerciseDetails_id) => {
           type: ADD_EXERCISE_TO_ASSIGNMENT,
           payload: data,
         });
-        console.log("******************");
-        console.log(data);
-        console.log(exerciseDetails_id);
-        console.log(assignment_id);
-        console.log("******************");
       } else {
         throw new Error("Something went wrong.");
       }
@@ -311,6 +308,34 @@ export const editAssignment = (id, assignmentData) => {
       } else {
         console.log(assignmentData);
         console.log(id);
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getSingleExerciseWithDetails = (exerciseWithDetails_id) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(
+        BASE_URL + "exercisesDetails/" + exerciseWithDetails_id,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_SINGLE_EXERCISE_WITH_DETAILS,
+          payload: data,
+        });
+        return data;
+      } else {
         throw new Error("Something went wrong.");
       }
     } catch (error) {

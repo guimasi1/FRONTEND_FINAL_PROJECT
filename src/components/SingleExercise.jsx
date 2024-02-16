@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Badge, Col, Form, Row } from "react-bootstrap";
 import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
 import { useDispatch } from "react-redux";

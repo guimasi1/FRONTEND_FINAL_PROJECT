@@ -9,6 +9,7 @@ import {
   GET_ASSIGNMENTS_BY_PATIENT,
   GET_ASSIGNMENTS_BY_PATIENT_AND_PHYSIO,
   GET_SINGLE_ASSIGNMENT,
+  GET_SINGLE_EXERCISE_WITH_DETAILS,
   OPEN_ASSIGNMENT_DIALOG,
   REMOVE_EXERCISE_DETAILS,
   SET_COMPLETED,
@@ -24,6 +25,7 @@ const initialState = {
   patientAssignments: [],
   assignmentToDeleteId: "",
   dialogStatus: false,
+  singleExerciseWithDetails: null,
 };
 
 const assignmentReducer = (state = initialState, action) => {
@@ -142,6 +144,11 @@ const assignmentReducer = (state = initialState, action) => {
       return {
         ...state,
         assignmentToDeleteId: action.payload,
+      };
+    case GET_SINGLE_EXERCISE_WITH_DETAILS:
+      return {
+        ...state,
+        singleExerciseWithDetails: action.payload,
       };
 
     default:

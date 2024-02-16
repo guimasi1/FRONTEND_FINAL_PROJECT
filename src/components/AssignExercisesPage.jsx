@@ -16,6 +16,7 @@ import {
   editAssignment,
   getAssignmentsByPatientAndPhysio,
   getSingleAssignment,
+  getSingleExerciseWithDetails,
 } from "../redux/actions/assignmentsActions";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import AddedExercise from "./AddedExercise";
@@ -89,13 +90,23 @@ const AssignExercisesPage = () => {
     dispatch(getSingleAssignment(currentAssignment.id));
   }, [update]);
 
+  const handleAddExerciseToAssignment = async () => {
+    try {
+      const response = await dispatch(
+        getSingleExerciseWithDetails(newExerciseId.id)
+      );
+      if (response.exercise) {
+        dispatch(
+          addExerciseToAssignment(currentAssignment.id, newExerciseId.id)
+        );
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   // Once the exercise (with details) ID arrives, this function adds the exercise to the assignment
   useEffect(() => {
-    console.log("***********************************");
-    console.log("this is the exe id " + newExerciseId.id);
-    console.log("this is the assignment id " + currentAssignment.id);
-    console.log("***********************************");
-    dispatch(addExerciseToAssignment(currentAssignment.id, newExerciseId.id));
+    handleAddExerciseToAssignment();
   }, [newExerciseId]);
 
   const options = [

@@ -36,29 +36,32 @@ export const getExercises = (page) => {
 
 export const createExerciseWithDetails = (exercise) => {
   const token = Cookies.get("token");
-  return async (dispatch) => {
-    try {
-      const res = await fetch(BASE_URL + "exercisesDetails", {
-        method: "POST",
-        body: JSON.stringify(exercise),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      if (res.ok) {
-        const data = await res.json();
-        dispatch({
-          type: NEW_DETAILS_EXERCISE,
-          payload: data,
+  if (exercise.exercise !== null) {
+    console.log("sono in create exercise e non dovrei essere null");
+    return async (dispatch) => {
+      try {
+        const res = await fetch(BASE_URL + "exercisesDetails", {
+          method: "POST",
+          body: JSON.stringify(exercise),
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         });
-      } else {
-        throw new Error("Something went wrong.");
+        if (res.ok) {
+          const data = await res.json();
+          dispatch({
+            type: NEW_DETAILS_EXERCISE,
+            payload: data,
+          });
+        } else {
+          throw new Error("Something went wrong.");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+  }
 };
 
 export const getExercisesByName = (name, page) => {

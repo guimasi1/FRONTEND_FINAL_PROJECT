@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import {
   getPhysiosByName,
+  getPhysiosByParams,
   getPhysiosBySpecialization,
   getPhysiotherapists,
 } from "../redux/actions/physiotherapistActions";
@@ -26,7 +27,7 @@ const Physiotherapist = () => {
   );
 
   const specializations = [
-    { value: "ANY", label: "Any" },
+    { value: "", label: "Any" },
     { value: "CARDIOLOGY", label: "Cardiology" },
     { value: "ORTHOPEDICS", label: "Orthopedics" },
     { value: "PNEUMOLOGY", label: "Pneumology" },
@@ -40,21 +41,15 @@ const Physiotherapist = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const [name, setName] = useState(null);
   const [specialization, setSpecialization] = useState("");
+  const [physioParams, setPhysioParams] = useState({
+    lastName: "",
+    specialization,
+  });
   useEffect(() => {
-    if (specialization.value === "ANY") {
-      dispatch(getPhysiotherapists());
-    } else {
-      dispatch(getPhysiosBySpecialization(specialization.value));
-    }
-  }, [specialization]);
-
-  useEffect(() => {
-    if (name) {
-      dispatch(getPhysiosByName(name));
-    }
-  }, [name]);
+    dispatch(getPhysiosByParams(physioParams));
+    //dispatch(getPhysiosBySpecialization(specialization.value));
+  }, [physioParams]);
 
   return (
     <motion.div
@@ -78,26 +73,28 @@ const Physiotherapist = () => {
               <Form.Label className="fw-bold">Search</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="First name"
-                className="custom-input"
-                onChange={(e) => {
-                  setName({ ...name, firstName: e.target.value });
-                }}
-              />
-              <Form.Control
-                type="text"
                 placeholder="Last name"
                 className="custom-input"
                 onChange={(e) => {
-                  setName({ ...name, lastName: e.target.value });
+                  setPhysioParams({
+                    ...physioParams,
+                    lastName: e.target.value,
+                  });
                 }}
               />
             </Form.Group>
             <Form.Group className="flex-grow-1">
               <Select
-                className="w-50 mt-1 "
-                defaultValue={specialization}
-                onChange={setSpecialization}
+                className="w-50 mt-1"
+                value={specializations.find(
+                  (option) => option.value === physioParams.specialization
+                )}
+                onChange={(selectedOption) => {
+                  setPhysioParams((prevParams) => ({
+                    ...prevParams,
+                    specialization: selectedOption.value,
+                  }));
+                }}
                 options={specializations}
               />
             </Form.Group>

@@ -117,17 +117,17 @@ export const getPhysiosBySpecialization = (specialization) => {
   };
 };
 
-export const getPhysiosByName = (nameObj) => {
-  const { firstName, lastName } = nameObj;
+export const getPhysiosByParams = (params) => {
+  const { lastName, specialization } = params;
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
       const res = await fetch(
         BASE_URL +
-          "physiotherapists/bySpecialization?firstName=" +
-          firstName +
-          "&lastName=" +
-          lastName,
+          "physiotherapists/byParams?lastName=" +
+          lastName +
+          "&specialization=" +
+          specialization,
         {
           headers: {
             Authorization: `Bearer ${token}`,

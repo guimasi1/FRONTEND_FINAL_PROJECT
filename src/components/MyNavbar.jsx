@@ -55,7 +55,6 @@ const MyNavbar = () => {
                 }}
                 animate={{
                   backgroundColor: isHomeHovered ? "#0e9a3d" : "#fff",
-                  color: isHomeHovered ? "#fff" : "#0000",
                 }}
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                 className={`rounded-4 px-3 ${
@@ -85,7 +84,6 @@ const MyNavbar = () => {
                   }}
                   animate={{
                     backgroundColor: isPhysiosHovered ? "#0e9a3d" : "#fff",
-                    color: isPhysiosHovered ? "#fff" : "#0000",
                   }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   className={`rounded-4 px-3 ${
@@ -118,7 +116,6 @@ const MyNavbar = () => {
                   }}
                   animate={{
                     backgroundColor: isPatientsHovered ? "#0e9a3d" : "#fff",
-                    color: isPatientsHovered ? "#fff" : "#0000",
                   }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   className={`rounded-4 px-3 ${
@@ -151,7 +148,6 @@ const MyNavbar = () => {
                   }}
                   animate={{
                     backgroundColor: isYourProgramsHovered ? "#0e9a3d" : "#fff",
-                    color: isYourProgramsHovered ? "#fff" : "#0000",
                   }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   className={`rounded-4 px-3 ${
@@ -188,7 +184,6 @@ const MyNavbar = () => {
                       backgroundColor: isPatientProfileHovered
                         ? "#0e9a3d"
                         : "#fff",
-                      color: isPatientProfileHovered ? "#fff" : "#0000",
                     }}
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     className={`rounded-4 px-3 ${
@@ -226,7 +221,6 @@ const MyNavbar = () => {
                       backgroundColor: isPhysioProfileHovered
                         ? "#0e9a3d"
                         : "#fff",
-                      color: isPhysioProfileHovered ? "#fff" : "#0000",
                     }}
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     className={`rounded-4 px-3 ${

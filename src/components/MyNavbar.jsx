@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setLogStatus, setRoleState } from "../redux/actions/authentication";
-
+import { motion } from "framer-motion";
 const MyNavbar = () => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
   const dispatch = useDispatch();
@@ -15,6 +15,12 @@ const MyNavbar = () => {
   const loggedIn = useSelector((state) => state.register.loggedIn);
   const location = useLocation();
   const navigate = useNavigate();
+  const [isHomeHovered, setIsHomeHovered] = useState(false);
+  const [isPatientsHovered, setIsPatientsHovered] = useState(false);
+  const [isPhysiosHovered, setIsPhysiosHovered] = useState(false);
+  const [isYourProgramsHovered, setIsYourProgramsHovered] = useState(false);
+  const [isPatientProfileHovered, setIsPatientProfileHovered] = useState(false);
+  const [isPhysioProfileHovered, setIsPhysioProfileHovered] = useState(false);
   useEffect(() => {
     dispatch(setRoleState(role));
   }, []);
@@ -40,71 +46,168 @@ const MyNavbar = () => {
               className="d-flex gap-5 justify-content-evenly"
               id="navbar-div"
             >
-              <Link
-                to="/"
-                className={`text-decoration-none text-black mt-2 fw-bold ${
+              <motion.div
+                onHoverStart={() => {
+                  setIsHomeHovered(true);
+                }}
+                onHoverEnd={() => {
+                  setIsHomeHovered(false);
+                }}
+                animate={{
+                  backgroundColor: isHomeHovered ? "#0e9a3d" : "#fff",
+                  color: isHomeHovered ? "#fff" : "#0000",
+                }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                className={`rounded-4 px-3 ${
                   location.pathname === "/"
                     ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
                     : ""
                 }`}
               >
-                Home
-              </Link>
+                <div className={`d-flex align-items-center fw-bold`}>
+                  <Link
+                    to="/"
+                    className={`text-decoration-none ${
+                      isHomeHovered ? "text-white" : "text-black"
+                    }  mt-2 pb-1`}
+                  >
+                    Home
+                  </Link>
+                </div>
+              </motion.div>
               {roleState === "PATIENT" && loggedIn ? (
-                <Link
-                  to="/physiotherapists"
-                  className={`text-decoration-none text-black mt-2 fw-bold ${
+                <motion.div
+                  onHoverStart={() => {
+                    setIsPhysiosHovered(true);
+                  }}
+                  onHoverEnd={() => {
+                    setIsPhysiosHovered(false);
+                  }}
+                  animate={{
+                    backgroundColor: isPhysiosHovered ? "#0e9a3d" : "#fff",
+                    color: isPhysiosHovered ? "#fff" : "#0000",
+                  }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                  className={`rounded-4 px-3 ${
                     location.pathname === "/physiotherapists"
                       ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
                       : ""
                   }`}
                 >
-                  Physiotherapists
-                </Link>
+                  <div className={`d-flex align-items-center fw-bold`}>
+                    <Link
+                      to="/physiotherapists"
+                      className={`${
+                        isPhysiosHovered ? "text-white" : "text-black"
+                      } text-decoration-none mt-2 fw-bold pb-1`}
+                    >
+                      Physiotherapists
+                    </Link>
+                  </div>
+                </motion.div>
               ) : (
                 ""
               )}
               {roleState === "PHYSIOTHERAPIST" && loggedIn ? (
-                <Link
-                  to="/patients"
-                  className={`text-decoration-none text-black mt-2 fw-bold ${
+                <motion.div
+                  onHoverStart={() => {
+                    setIsPatientsHovered(true);
+                  }}
+                  onHoverEnd={() => {
+                    setIsPatientsHovered(false);
+                  }}
+                  animate={{
+                    backgroundColor: isPatientsHovered ? "#0e9a3d" : "#fff",
+                    color: isPatientsHovered ? "#fff" : "#0000",
+                  }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                  className={`rounded-4 px-3 ${
                     location.pathname === "/patients"
                       ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
                       : ""
                   }`}
                 >
-                  Patients
-                </Link>
+                  <div className={`d-flex align-items-center fw-bold`}>
+                    <Link
+                      to="/patients"
+                      className={`${
+                        isPatientsHovered ? "text-white" : "text-black"
+                      } text-decoration-none mt-2 fw-bold pb-1`}
+                    >
+                      Patients
+                    </Link>
+                  </div>
+                </motion.div>
               ) : (
                 ""
               )}
               {roleState === "PATIENT" && loggedIn ? (
-                <Link
-                  to="/myExercises"
-                  className={`text-decoration-none text-black mt-2 fw-bold ${
-                    location.pathname.startsWith("/myExercises")
+                <motion.div
+                  onHoverStart={() => {
+                    setIsYourProgramsHovered(true);
+                  }}
+                  onHoverEnd={() => {
+                    setIsYourProgramsHovered(false);
+                  }}
+                  animate={{
+                    backgroundColor: isYourProgramsHovered ? "#0e9a3d" : "#fff",
+                    color: isYourProgramsHovered ? "#fff" : "#0000",
+                  }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                  className={`rounded-4 px-3 ${
+                    location.pathname === "/myExercises"
                       ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
                       : ""
                   }`}
                 >
-                  Your programs
-                </Link>
+                  <div className={`d-flex align-items-center fw-bold`}>
+                    <Link
+                      to="/myExercises"
+                      className={`${
+                        isYourProgramsHovered ? "text-white" : "text-black"
+                      } text-decoration-none mt-2 fw-bold pb-1`}
+                    >
+                      Your programs
+                    </Link>
+                  </div>
+                </motion.div>
               ) : (
                 ""
               )}
               {
                 // eslint-disable-next-line no-const-assign
                 roleState === "PATIENT" && loggedIn ? (
-                  <Link
-                    to="/profile"
-                    className={`text-decoration-none text-black mt-2 fw-bold ${
+                  <motion.div
+                    onHoverStart={() => {
+                      setIsPatientProfileHovered(true);
+                    }}
+                    onHoverEnd={() => {
+                      setIsPatientProfileHovered(false);
+                    }}
+                    animate={{
+                      backgroundColor: isPatientProfileHovered
+                        ? "#0e9a3d"
+                        : "#fff",
+                      color: isPatientProfileHovered ? "#fff" : "#0000",
+                    }}
+                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                    className={`rounded-4 px-3 ${
                       location.pathname === "/profile"
                         ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
                         : ""
                     }`}
                   >
-                    Profile
-                  </Link>
+                    <div className={`d-flex align-items-center fw-bold`}>
+                      <Link
+                        to="/profile"
+                        className={`${
+                          isPatientProfileHovered ? "text-white" : "text-black"
+                        } text-decoration-none mt-2 fw-bold pb-1`}
+                      >
+                        Profile
+                      </Link>
+                    </div>
+                  </motion.div>
                 ) : (
                   ""
                 )
@@ -112,16 +215,37 @@ const MyNavbar = () => {
               {
                 // eslint-disable-next-line no-const-assign
                 roleState === "PHYSIOTHERAPIST" && loggedIn ? (
-                  <Link
-                    to="/physioProfile"
-                    className={`text-decoration-none text-black mt-2 fw-bold ${
+                  <motion.div
+                    onHoverStart={() => {
+                      setIsPhysioProfileHovered(true);
+                    }}
+                    onHoverEnd={() => {
+                      setIsPhysioProfileHovered(false);
+                    }}
+                    animate={{
+                      backgroundColor: isPhysioProfileHovered
+                        ? "#0e9a3d"
+                        : "#fff",
+                      color: isPhysioProfileHovered ? "#fff" : "#0000",
+                    }}
+                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                    className={`rounded-4 px-3 ${
                       location.pathname === "/physioProfile"
                         ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
                         : ""
                     }`}
                   >
-                    Profile
-                  </Link>
+                    <div className={`d-flex align-items-center fw-bold`}>
+                      <Link
+                        to="/physioProfile"
+                        className={`${
+                          isPhysioProfileHovered ? "text-white" : "text-black"
+                        } text-decoration-none mt-2 fw-bold pb-1`}
+                      >
+                        Profile
+                      </Link>
+                    </div>
+                  </motion.div>
                 ) : (
                   ""
                 )

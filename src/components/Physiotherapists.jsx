@@ -53,7 +53,7 @@ const Physiotherapist = () => {
 
   return (
     <motion.div
-      className="mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative container"
+      className="mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative container "
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

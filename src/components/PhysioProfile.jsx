@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Button, Card, Col, Form, ListGroup, Row } from "react-bootstrap";
+import { Card, Col, Form, ListGroup, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -9,6 +9,7 @@ import {
 import { motion } from "framer-motion";
 import SingleRequestPhysio from "./SingleRequestPhysio";
 import { getPhysioLinkRequests } from "../redux/actions/linkRequestsActions";
+import { parseISO, format } from "date-fns";
 
 const PhysioProfile = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,10 @@ const PhysioProfile = () => {
   const [showEdit, setShowEdit] = useState(false);
 
   const [bio, setBio] = useState(myProfile.bio);
+  const formattedDate = format(
+    parseISO(myProfile.registrationDate),
+    "dd MMMM yyyy"
+  );
 
   useEffect(() => {
     dispatch(getMyPhysioProfile());
@@ -45,14 +50,14 @@ const PhysioProfile = () => {
               className="shadow-lg border-0 rounded-3 pt-4 pb-3"
               id="profile-physio-section"
             >
-              <div className="d-flex justify-content-center align-items-center">
+              <div className="d-flex justify-content-center align-items-center ">
                 <img
                   src={
                     myProfile.profilePictureUrl
                       ? myProfile.profilePictureUrl
-                      : "https://placekitten.com/300"
+                      : "images/Circle-icons-profile.svg"
                   }
-                  className="rounded-pill mt-3"
+                  className="rounded-pill mt-3 profile-image"
                   alt=""
                 />
               </div>
@@ -91,7 +96,7 @@ const PhysioProfile = () => {
                         calendar_month
                       </span>
                       <strong>Registration date:</strong>
-                      {myProfile.registrationDate}
+                      {formattedDate}
                     </div>
                   </ListGroup.Item>
                 </ListGroup>

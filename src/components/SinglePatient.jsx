@@ -15,7 +15,6 @@ const SinglePatient = ({ patient }) => {
   );
   const [showAlert, setShowAlert] = useState(false);
   const [confirmElimination, setConfirmElimination] = useState(false);
-
   useEffect(() => {
     if (confirmElimination) {
       dispatch(removePatientFromPhysio(myProfile.id, patient.id));
@@ -36,13 +35,16 @@ const SinglePatient = ({ patient }) => {
           message={"Do you want to remove the patient?"}
         />
       )}
-
       {!showAlert && (
         <div>
           <img
-            src="https://placekitten.com/80"
+            src={`${
+              patient.profilePictureUrl
+                ? patient.profilePictureUrl
+                : "images/Circle-icons-profile.svg"
+            }`}
             alt=""
-            className="rounded-4 ms-1"
+            className="rounded-4 ms-1 patient-profile-image-card"
           />
         </div>
       )}

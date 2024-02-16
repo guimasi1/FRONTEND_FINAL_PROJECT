@@ -4,7 +4,11 @@ const SinglePatientExercisesDetails = ({ exercise }) => {
   return (
     <Row className="pt-4 border border-1 mb-2 rounded">
       <Col xs={2} className="ps-2 text-center">
-        <img src="https://placekitten.com/70" className="rounded-4" alt="" />
+        <img
+          src={`images/weights_2871284.png`}
+          className="rounded-4 image-exercise-default"
+          alt=""
+        />
       </Col>
       <Col className="p-0 fw-bold" xs={5}>
         {exercise.exercise && exercise.exercise.name}

@@ -6,6 +6,7 @@ import { getPatientsLinkRequests } from "../redux/actions/linkRequestsActions";
 import SingleRequest from "./SingleRequest";
 import SinglePhysioByPatient from "./SinglePhysioByPatient";
 import { getPhysiosByPatient } from "../redux/actions/physiotherapistActions";
+import { format, parseISO } from "date-fns";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,10 @@ const Profile = () => {
     dispatch(getMyPatientProfile());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
+  const formattedDate = format(
+    parseISO(myProfile.registrationDate),
+    "dd MMMM yyyy"
+  );
 
   return (
     <Container className="mb-5 mt-4">
@@ -87,20 +92,12 @@ const Profile = () => {
                       <span className="material-symbols-outlined">
                         calendar_month
                       </span>
-                      <strong>Registration date:</strong>
+                      <strong>Registration date: </strong>
                     </div>
-                    {myProfile.registrationDate}
+                    {formattedDate}
                   </ListGroup.Item>
                 </ListGroup>
               </Card.Body>
-              <Card.Footer className="text-center">
-                <Button
-                  variant="success"
-                  className="py-2 px-5 rounded-4 greenish-3"
-                >
-                  Save
-                </Button>
-              </Card.Footer>
             </Card>
           </Col>
         )}

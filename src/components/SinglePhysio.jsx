@@ -61,9 +61,18 @@ const SinglePhysio = ({ physio, index }) => {
     >
       <div className="rounded-start-1">
         <img
-          src="https://placekitten.com/240"
+          src={`${
+            physio.profilePictureUrl !== null
+              ? physio.profilePictureUrl
+              : // : "https://placekitten.com/240"
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
+          }`}
           alt=""
-          className="rounded-start-1"
+          className={`rounded-start-1 mt-3  ${
+            physio.profilePictureUrl === null
+              ? "physio-profile-image-card-fallback"
+              : "physio-profile-image-card"
+          }`}
         />
       </div>
 

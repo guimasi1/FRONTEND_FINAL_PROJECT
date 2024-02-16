@@ -37,7 +37,7 @@ export const getExercises = (page) => {
 export const createExerciseWithDetails = (exercise) => {
   const token = Cookies.get("token");
   if (exercise.exercise !== null) {
-    console.log("sono in create exercise e non dovrei essere null");
+    console.log("create exercise e non dovrei essere null");
     return async (dispatch) => {
       try {
         const res = await fetch(BASE_URL + "exercisesDetails", {

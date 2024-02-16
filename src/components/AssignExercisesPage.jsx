@@ -39,8 +39,18 @@ const AssignExercisesPage = () => {
   const currentAssignment = useSelector(
     (state) => state.assignments.newAssignment
   );
-  const exercisesDetailsByAssignment = useSelector(
+  const exercisesAssignmentFromState = useSelector(
     (state) => state.assignments.exercisesDetailsByAssignment
+  );
+
+  const exercisesDetailsByAssignment = Object.values(
+    exercisesAssignmentFromState.reduce((acc, exercise) => {
+      // Usa l'ID dell'esercizio come chiave nell'oggetto di appoggio
+      if (exercise) {
+        acc[exercise.id] = exercise;
+      }
+      return acc;
+    }, {})
   );
   const currentExerciseId = useSelector(
     (state) => state.exercises.currentExerciseId
@@ -113,8 +123,10 @@ const AssignExercisesPage = () => {
     if (id) {
       dispatch(getSinglePatient(id));
     }
-    // dispatch(getExercises());
-    dispatch(getSingleAssignment(currentAssignment.id));
+    if (currentAssignment) {
+      // dispatch(getExercises());
+      dispatch(getSingleAssignment(currentAssignment.id));
+    }
   }, [update]);
 
   const handleAddExerciseToAssignment = async () => {

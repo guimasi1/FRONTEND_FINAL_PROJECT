@@ -57,8 +57,6 @@ export const getMyPatientProfile = () => {
 
 export const getPatientsByPhysio = (physio_id, lastName) => {
   const token = Cookies.get("token");
-  console.log("questo è il cognome");
-  console.log(lastName);
   let url;
   if (lastName) {
     url =

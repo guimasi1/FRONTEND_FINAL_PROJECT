@@ -82,6 +82,7 @@ const SinglePatient = ({ patient }) => {
                 className="py-2 px-5 fs-8 rounded-2 brownish-button fw-bold "
                 onClick={() => {
                   navigate("/assignExercises/" + patient.id);
+                  window.scrollTo(0, 0);
                 }}
               >
                 View

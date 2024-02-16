@@ -56,7 +56,7 @@ const Patients = () => {
                 <Form.Label className="fw-bold">Search</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Name"
+                  placeholder="Last name"
                   className="custom-input"
                   onChange={(e) => {
                     setLastName(e.target.value);

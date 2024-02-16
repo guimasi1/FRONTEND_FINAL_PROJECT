@@ -26,8 +26,15 @@ const MyExercisesPage = () => {
     (state) => state.assignments.newAssignment
   );
 
-  const myExercisesDetails = useSelector(
+  const exercises = useSelector(
     (state) => state.assignments.exercisesDetailsByAssignment
+  );
+  const myExercisesDetails = Object.values(
+    exercises.reduce((acc, exercise) => {
+      // Usa l'ID dell'esercizio come chiave nell'oggetto di appoggio
+      acc[exercise.id] = exercise;
+      return acc;
+    }, {})
   );
 
   const [showNotes, setShowNotes] = useState(false);

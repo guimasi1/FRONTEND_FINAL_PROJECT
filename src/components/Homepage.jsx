@@ -274,7 +274,7 @@ const Homepage = () => {
               alt=""
             />
             <p className="fs-5 ps-4 mt-2 fw-bold">
-              Get feedback from your therapist{" "}
+              Receive feedback from your therapist{" "}
             </p>
           </motion.div>
         </Col>

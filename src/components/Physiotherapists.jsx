@@ -53,7 +53,7 @@ const Physiotherapist = () => {
 
   return (
     <motion.div
-      className="mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative container "
+      className="mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative container physiotherapists-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -100,12 +100,14 @@ const Physiotherapist = () => {
             </Form.Group>
           </Form>
         </Col>
-        {physiotherapists &&
-          physiotherapists
-            .filter((physio) => !physiosToHide.includes(physio.id))
-            .map((physio, index) => (
-              <SinglePhysio physio={physio} key={physio.id} index={index} />
-            ))}
+        <Col xs={12}>
+          {physiotherapists &&
+            physiotherapists
+              .filter((physio) => !physiosToHide.includes(physio.id))
+              .map((physio, index) => (
+                <SinglePhysio physio={physio} key={physio.id} index={index} />
+              ))}
+        </Col>
       </Row>
       <GoUpButton />
     </motion.div>

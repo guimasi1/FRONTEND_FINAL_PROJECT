@@ -45,7 +45,6 @@ const AssignExercisesPage = () => {
 
   const exercisesDetailsByAssignment = Object.values(
     exercisesAssignmentFromState.reduce((acc, exercise) => {
-      // Usa l'ID dell'esercizio come chiave nell'oggetto di appoggio
       if (exercise) {
         acc[exercise.id] = exercise;
       }

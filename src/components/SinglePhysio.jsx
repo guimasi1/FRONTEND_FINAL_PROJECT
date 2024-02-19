@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Badge, Button } from "react-bootstrap";
+import { Badge, Button, Col } from "react-bootstrap";
 import {
   connectWithPhysio,
   getPhysiotherapists,
@@ -15,7 +15,6 @@ import {
 const SinglePhysio = ({ physio, index }) => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.patients.patientProfile);
-
   const pendingRequestsByPatient = useSelector(
     (state) => state.requests.linkRequestsByPatient.content
   );
@@ -31,7 +30,10 @@ const SinglePhysio = ({ physio, index }) => {
   });
   const ref = useRef(null);
   const isInView = useInView(ref);
-
+  const averageRating =
+    physio.reviews.reduce((acc, review) => {
+      return review.rating + acc;
+    }, 0) / physio.reviews.length || null;
   useEffect(() => {
     dispatch(getMyPatientProfile());
     dispatch(getPatientsLinkRequests(myProfile.id));
@@ -56,10 +58,10 @@ const SinglePhysio = ({ physio, index }) => {
       whileInView={{ opacity: 1 }}
       initial={{ opacity: 0.04 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
-      className="d-flex mb-4 gap-3 border border-1 rounded-1 ps-0 shadow-lg"
+      className="d-flex mb-4 gap-3 border border-1 rounded-1 ps-0 shadow-lg row"
       xs={12}
     >
-      <div className="rounded-start-1">
+      <Col xs={2} className="rounded-start-1">
         <img
           src={`${
             physio.profilePictureUrl !== null
@@ -74,9 +76,9 @@ const SinglePhysio = ({ physio, index }) => {
               : "physio-profile-image-card"
           }`}
         />
-      </div>
+      </Col>
 
-      <div className="d-flex justify-content-between flex-grow-1 pt-3">
+      <Col xs={4} className="d-flex justify-content-between pt-3 ms-lg-5">
         <div>
           <p className="fw-bold">
             {physio.firstName} {physio.lastName}
@@ -93,33 +95,65 @@ const SinglePhysio = ({ physio, index }) => {
             <Badge className="bg-dark">{physio.specialization}</Badge>
           </p>
         </div>
-
-        <div className="mt-3">
-          <Button
-            className={`rounded-pill px-4 py-2 fw-bold ${
-              pendingPhysios.includes(physio.id)
-                ? "btn-secondary"
-                : "btn-success"
-            } `}
-            onClick={(e) => {
-              e.preventDefault();
-              setRequestDetails({
-                physiotherapist_id: physio.id,
-                patient_id: myProfile.id,
-              });
-              if (!pendingPhysios.includes(physio.id)) {
-                dispatch(connectWithPhysio(requestDetails));
-              } else {
-                console.log(
-                  "Please, wait for the physiotherapist to accept your request."
-                );
-              }
-            }}
-          >
-            {pendingPhysios.includes(physio.id) ? "Pending" : "Connect"}
-          </Button>
+      </Col>
+      <Col className="flex-grow-1">
+        <p className="mt-3 fw-bold">Rating</p>
+        <div className="d-flex gap-2">
+          {averageRating && (
+            <p>
+              {Array.from({ length: Math.floor(averageRating) }, (_, i) => (
+                <span key={i}>
+                  <i className="bi bi-star-fill text-warning"></i>
+                </span>
+              ))}
+              {averageRating % 1 >= 0.5 && (
+                <span>
+                  <i className="bi bi-star-half text-warning"></i>
+                </span>
+              )}
+              {Array.from(
+                {
+                  length:
+                    5 - Math.floor(averageRating) - (averageRating % 1 >= 0.5),
+                },
+                (_, i) => (
+                  <span key={i}>
+                    <i className="bi bi-star text-warning"></i>
+                  </span>
+                )
+              )}
+            </p>
+          )}
+          <p>
+            {physio.reviews && physio.reviews.length > 0
+              ? "(" + physio.reviews.length + ")"
+              : "There aren't reviews."}
+          </p>
         </div>
-      </div>
+      </Col>
+      <Col className="mt-4 text-end">
+        <Button
+          className={`rounded-pill px-4 py-2 fw-bold ${
+            pendingPhysios.includes(physio.id) ? "btn-secondary" : "btn-success"
+          } `}
+          onClick={(e) => {
+            e.preventDefault();
+            setRequestDetails({
+              physiotherapist_id: physio.id,
+              patient_id: myProfile.id,
+            });
+            if (!pendingPhysios.includes(physio.id)) {
+              dispatch(connectWithPhysio(requestDetails));
+            } else {
+              console.log(
+                "Please, wait for the physiotherapist to accept your request."
+              );
+            }
+          }}
+        >
+          {pendingPhysios.includes(physio.id) ? "Pending" : "Connect"}
+        </Button>
+      </Col>
     </motion.div>
   );
 };

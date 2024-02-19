@@ -6,3 +6,9 @@
   width: 200px;
   padding: 1em 1em;
 }
+
+.physiotherapists-container {
+  @media screen and (min-width: 700px) {
+    width: 70% !important;
+  }
+}

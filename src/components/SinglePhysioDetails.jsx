@@ -38,29 +38,27 @@ const SinglePhysioDetails = () => {
   });
   return (
     <Container id="physio-card-details">
-      <Row className="shadow-lg py-5 rounded-4">
+      <Row className="py-5">
         <Col xs={12} md={{ span: 10, offset: 1 }} className="text-center">
-          <Row>
-            <Col>
+          <Row className="mt-4 shadow-lg rounded-4 py-4 px-4">
+            <Col xs={12}>
               <img
                 src={
                   physio.profilePictureUrl
                     ? physio.profilePictureUrl
                     : "/images/Circle-icons-profile.svg"
                 }
-                className="w-25"
+                className="physio-profile-image-details-card rounded-pill"
                 alt=""
               />
             </Col>
-          </Row>
-          <Row className="mt-4">
             <Col xs={12} className="d-flex justify-content-between">
               <p className="fw-bold fs-4">
                 Dr. {physio ? physio.lastName + " " + physio.firstName : ""}
               </p>
               <div className="d-flex gap-2 align-items-center">
                 <p>Specialization: </p>
-                <p className="bg-dark text-white fw-bold py-2 px-4 rounded-4 ">
+                <p className="bg-dark text-white fw-bold py-1 px-3 rounded ">
                   {physio.specialization.slice(0, 1) +
                     physio.specialization.slice(1).toLowerCase()}
                 </p>
@@ -93,10 +91,11 @@ const SinglePhysioDetails = () => {
               </div>
             </Col>
           </Row>
-          <Row>
+          <Row className="mt-4 shadow-lg rounded-4 py-4 px-4">
             <Col className="text-start">
               <h4 className="fs-5 mt-4 mb-4">
-                {physio.reviews ? physio.reviews.length : ""} Reviews
+                {physio.reviews ? physio.reviews.length : ""}{" "}
+                {physio.reviews.length === 1 ? "Review" : "Reviews"}
               </h4>
               {physio.reviews &&
                 physio.reviews.map((review) => (

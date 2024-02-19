@@ -7,7 +7,7 @@ import {
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { easeOut, motion, useInView } from "framer-motion";
 import {
   getPatientsLinkRequests,
   getSingleRequest,
@@ -57,6 +57,10 @@ const SinglePhysio = ({ physio, index }) => {
   return (
     <motion.div
       ref={ref}
+      whileHover={{
+        scale: 1.01,
+      }}
+      exit={{ scale: 1 }}
       whileInView={{ opacity: 1 }}
       initial={{ opacity: 0.04 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}

@@ -263,6 +263,10 @@ code {
   font-size: 0.8rem;
 }
 
+.fs-9 {
+  font-size: 0.7rem;
+}
+
 .fs-lg-5 {
   font-size: 1.4em;
 }
@@ -394,6 +398,10 @@ code {
   #physio-card-details {
     width: 70% !important;
   }
+}
+
+.physio-profile-image-details-card {
+  width: 40%;
 }
 
 .icon-request {

@@ -19,11 +19,13 @@ const SingleReview = ({ review }) => {
   return (
     <>
       {showAlert && (
-        <DeleteConfirmation
-          message={"Are you sure you want to delete the review?"}
-          setShowAlert={setShowAlert}
-          setConfirmElimination={setConfirmElimination}
-        />
+        <div className="mb-2 fs-8 me-5">
+          <DeleteConfirmation
+            message={"Are you sure you want to delete the review?"}
+            setShowAlert={setShowAlert}
+            setConfirmElimination={setConfirmElimination}
+          />
+        </div>
       )}
       {!showAlert && (
         <div className="fs-8 mb-2">
@@ -57,7 +59,9 @@ const SingleReview = ({ review }) => {
                       </span>
                     ))}
                   </p>
-                  <p>{formattedDate}</p>
+                  <p className="fs-9">
+                    <em>{formattedDate}</em>
+                  </p>
                   <p>{review.content}</p>
                 </div>
                 <div className="cursor me-5">

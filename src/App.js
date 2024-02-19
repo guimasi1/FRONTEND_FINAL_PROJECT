@@ -14,6 +14,7 @@ import MyExercisesPage from "./components/MyExercisesPage";
 import Footer from "./components/Footer";
 import GoBackButton from "./components/Utils/GoBackButton";
 import PageNotFound from "./components/Utils/PageNotFound";
+import SinglePhysioDetails from "./components/SinglePhysioDetails";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/physiotherapists" element={<Physiotherapists />} />
+        <Route path="/physioDetails/:id" element={<SinglePhysioDetails />} />
         <Route path="/patients" element={<Patients />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/physioProfile" element={<PhysioProfile />} />

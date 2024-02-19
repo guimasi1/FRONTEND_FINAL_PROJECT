@@ -386,6 +386,16 @@ code {
   }
 }
 
+.patient-profile-image-review {
+  width: 70px;
+}
+
+@media screen and (min-width: 700px) {
+  #physio-card-details {
+    width: 70% !important;
+  }
+}
+
 .icon-request {
   width: 28px;
 }

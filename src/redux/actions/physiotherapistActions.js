@@ -7,6 +7,7 @@ export const GET_MY_PHYSIO_PROFILE = "GET_MY_PHYSIO_PROFILE";
 export const EDIT_BIOGRAPHY = "EDIT_BIOGRAPHY";
 export const REMOVE_PATIENT_FROM_PHYSIO = "REMOVE_PATIENT_FROM_PHYSIO";
 export const SEND_REQUEST = "SEND_REQUEST";
+export const GET_SINGLE_PHYSIO = "GET_SINGLE_PHYSIO";
 
 export const getPhysiotherapists = (size) => {
   const token = Cookies.get("token");
@@ -219,6 +220,30 @@ export const getPhysiosByPatient = (patientId) => {
         dispatch({
           type: GET_PHYSIOTHERAPISTS_BY_PATIENT,
           payload: data.content,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getPhysioById = (physioId) => {
+  const token = Cookies.get("token");
+  return async (dispatch) => {
+    try {
+      const res = await fetch(BASE_URL + `physiotherapists/${physioId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_SINGLE_PHYSIO,
+          payload: data,
         });
       } else {
         throw new Error("Something went wrong.");

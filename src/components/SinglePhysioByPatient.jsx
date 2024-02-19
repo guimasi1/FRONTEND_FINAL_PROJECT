@@ -45,7 +45,11 @@ const SinglePhysioByPatient = ({ physio }) => {
           </motion.div>
           <div>
             <img
-              src="https://placekitten.com/100"
+              src={`${
+                physio.profilePictureUrl
+                  ? physio.profilePictureUrl
+                  : "https://placekitten.com/70"
+              }`}
               className="rounded-pill"
               alt=""
             />

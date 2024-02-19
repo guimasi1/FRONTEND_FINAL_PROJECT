@@ -12,8 +12,10 @@ import {
   getPatientsLinkRequests,
   getSingleRequest,
 } from "../redux/actions/linkRequestsActions";
+import { useNavigate } from "react-router-dom";
 const SinglePhysio = ({ physio, index }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const myProfile = useSelector((state) => state.patients.patientProfile);
   const pendingRequestsByPatient = useSelector(
     (state) => state.requests.linkRequestsByPatient.content
@@ -63,6 +65,10 @@ const SinglePhysio = ({ physio, index }) => {
     >
       <Col xs={2} className="rounded-start-1">
         <img
+          onClick={() => {
+            navigate("/physioDetails/" + physio.id);
+            window.scrollTo(0, 0);
+          }}
           src={`${
             physio.profilePictureUrl !== null
               ? physio.profilePictureUrl
@@ -70,7 +76,7 @@ const SinglePhysio = ({ physio, index }) => {
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
           }`}
           alt=""
-          className={`rounded-start-1 mt-3  ${
+          className={`rounded-start-1 mt-3 cursor  ${
             physio.profilePictureUrl === null
               ? "physio-profile-image-card-fallback"
               : "physio-profile-image-card"
@@ -80,7 +86,13 @@ const SinglePhysio = ({ physio, index }) => {
 
       <Col xs={4} className="d-flex justify-content-between pt-3 ms-lg-5">
         <div>
-          <p className="fw-bold">
+          <p
+            className="fw-bold cursor"
+            onClick={() => {
+              navigate("/physioDetails/" + physio.id);
+              window.scrollTo(0, 0);
+            }}
+          >
             {physio.firstName} {physio.lastName}
           </p>
           <div className="d-flex gap-2">
@@ -97,8 +109,22 @@ const SinglePhysio = ({ physio, index }) => {
         </div>
       </Col>
       <Col className="flex-grow-1">
-        <p className="mt-3 fw-bold">Rating</p>
-        <div className="d-flex gap-2">
+        <p
+          className="mt-3 fw-bold cursor"
+          onClick={() => {
+            navigate("/physioDetails/" + physio.id);
+            window.scrollTo(0, 0);
+          }}
+        >
+          Rating
+        </p>
+        <div
+          className="d-flex gap-2 cursor"
+          onClick={() => {
+            navigate("/physioDetails/" + physio.id);
+            window.scrollTo(0, 0);
+          }}
+        >
           {averageRating && (
             <p>
               {Array.from({ length: Math.floor(averageRating) }, (_, i) => (

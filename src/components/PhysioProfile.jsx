@@ -170,7 +170,7 @@ const PhysioProfile = () => {
                     setShowEdit(false);
                   }}
                 >
-                  <span class="material-symbols-outlined">save</span>
+                  <span className="material-symbols-outlined">save</span>
                   Save
                 </div>
                 <div
@@ -179,7 +179,7 @@ const PhysioProfile = () => {
                     setShowEdit(false);
                   }}
                 >
-                  <span class="material-symbols-outlined">close</span>
+                  <span className="material-symbols-outlined">close</span>
                   Cancel
                 </div>
               </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
-const StripeOption1 = () => {
+const StripeOption1 = ({ priceId, buttonText }) => {
   const handleClick = async () => {
     // When the customer clicks on the button, redirect them to Checkout.
     const stripe = await stripePromise;
@@ -10,7 +10,7 @@ const StripeOption1 = () => {
     const { error } = await stripe.redirectToCheckout({
       lineItems: [
         {
-          price: "price_1OlZiWHxfOF7FT2OHCZ6mH3Q", // Replace with the ID of your price
+          price: priceId, // Replace with the ID of your price
           quantity: 1,
         },
       ],
@@ -29,7 +29,7 @@ const StripeOption1 = () => {
         handleClick();
       }}
     >
-      Checkout
+      {buttonText}
     </button>
   );
 };

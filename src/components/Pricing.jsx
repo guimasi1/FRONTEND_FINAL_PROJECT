@@ -20,8 +20,12 @@ const Pricing = () => {
             </p>
           </div>
         </Col>
-        <Col>
-          <Stripe />
+        <Col className="rounded-4 border border-2 py-3 px-4">
+          <div className="d-flex flex-column">
+            <div className="w-100 text-center">
+              <Stripe />
+            </div>
+          </div>
         </Col>
         <Col></Col>
         <Col></Col>

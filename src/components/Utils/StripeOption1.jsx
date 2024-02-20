@@ -1,9 +1,6 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
-// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
-const stripePromise = loadStripe(
-  "pk_test_51OkS1CHxfOF7FT2OxuQFQSx2K8dVkgJ2dK8URXPqal8rXfhy3bZlCRpovdDzlAyf6C6mvKyjHAO0fIoJv17bEB9q00sw6ivFOD"
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 const StripeOption1 = () => {
   const handleClick = async () => {

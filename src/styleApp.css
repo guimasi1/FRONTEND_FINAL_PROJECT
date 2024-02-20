@@ -440,6 +440,11 @@ code {
   width: 80px;
 }
 
+#container-pricing {
+  background-color: rgb(217, 245, 228);
+  height: 700px;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

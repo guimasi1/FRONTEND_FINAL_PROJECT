@@ -15,6 +15,9 @@ import Footer from "./components/Footer";
 import GoBackButton from "./components/Utils/GoBackButton";
 import PageNotFound from "./components/Utils/PageNotFound";
 import SinglePhysioDetails from "./components/SinglePhysioDetails";
+import SuccessfulPayment from "./components/Utils/SuccessfulPayment";
+import DeniedPayment from "./components/Utils/DeniedPayment";
+import Pricing from "./components/Pricing";
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
         <Route path="/physioProfile" element={<PhysioProfile />} />
         <Route path="/assignExercises/:id" element={<AssignExercisesPage />} />
         <Route path="/myExercises" element={<MyExercisesPage />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/successful-payment" element={<SuccessfulPayment />} />
+        <Route path="/denied-payment" element={<DeniedPayment />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />

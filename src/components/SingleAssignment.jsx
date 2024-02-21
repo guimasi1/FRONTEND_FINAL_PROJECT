@@ -1,14 +1,27 @@
-import { Col, Row } from "react-bootstrap";
-import { getSingleAssignment } from "../redux/actions/assignmentsActions";
-import { useDispatch } from "react-redux";
-import { removeAssignment } from "../redux/actions/assignmentsActions";
-
+import { Col } from "react-bootstrap";
+import {
+  getSingleAssignment,
+  openAssignmentDialog,
+  setCurrentAssignmentToDelete,
+} from "../redux/actions/assignmentsActions";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
 const SingleAssignment = ({ assignment, index }) => {
   const dispatch = useDispatch();
-
+  const currentAssignment = useSelector(
+    (state) => state.assignments.newAssignment
+  );
   return (
-    <Row
-      className={`mb-2 align-items-center cursor single-assignment rounded-2`}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
+      className={`mb-2 align-items-center cursor single-assignment rounded-2 row ${
+        currentAssignment && currentAssignment.id === assignment.id
+          ? "selected-assignment"
+          : ""
+      }`}
       onClick={() => {
         dispatch(getSingleAssignment(assignment.id));
       }}
@@ -21,17 +34,16 @@ const SingleAssignment = ({ assignment, index }) => {
       <Col>{assignment ? assignment.assignmentDate : ""}</Col>
       <Col>{assignment ? assignment.assignmentStatus : ""}</Col>
       <Col className="d-flex gap-3 justify-content-end">
-        <img src="/images\edit.svg" alt="" />
         <img
           src="/images\delete_FILL0_wght400_GRAD0_opsz24.svg"
           alt=""
           onClick={() => {
-            console.log(assignment.id);
-            dispatch(removeAssignment(assignment.id));
+            dispatch(openAssignmentDialog());
+            dispatch(setCurrentAssignmentToDelete(assignment.id));
           }}
         />
       </Col>
-    </Row>
+    </motion.div>
   );
 };
 

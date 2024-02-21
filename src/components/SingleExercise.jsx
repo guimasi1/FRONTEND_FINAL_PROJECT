@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Badge, Col, Form, Row } from "react-bootstrap";
 import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import SuccessfulActionMessage from "./Utils/SuccessfulActionMessage";
+
 const SingleExercise = ({
   exercise,
   getExercises,
@@ -13,12 +16,20 @@ const SingleExercise = ({
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);
   const dispatch = useDispatch();
-
+  const [showConfirmation, setShowConfirmation] = useState(false);
   return (
-    <Col className="border rounded-5 p-4">
+    <Col
+      xs={12}
+      md={12}
+      lg={3}
+      className="border rounded-2 py-2 px-3 col-exercise ms-lg-4"
+    >
+      {showConfirmation && (
+        <SuccessfulActionMessage message={"Exercise added successfully"} />
+      )}
       {exercise && (
         <Row>
-          <Col xs={12} className="fw-bold">
+          <Col xs={12} className="fw-bold text-center pt-2">
             {exercise.name}
           </Col>
           <Col className="mt-3 d-flex justify-content-between" xs={12}>
@@ -27,7 +38,9 @@ const SingleExercise = ({
               {exercise.targetArea}
             </div>
             <Badge
-              className="py-2 px-3"
+              className={`${
+                exercise.difficultyLevel === "MEDIUM" ? "py-2" : "py-2 px-3"
+              } d-flex align-items-center justify-content-center`}
               bg={`${
                 exercise.difficultyLevel === "EASY"
                   ? "success"
@@ -39,17 +52,17 @@ const SingleExercise = ({
               {exercise.difficultyLevel}
             </Badge>
           </Col>
-          <Col xs={12} className="mt-3">
-            {exercise.description}
+          <Col xs={12} className="mt-3 description-add-exercise">
+            {exercise && exercise.description}
           </Col>
-          <Col xs={12} className="my-3">
+          <Col xs={12} className="my-2">
             <div className="d-flex align-items-center justify-content-between">
               <Form.Label>Sets</Form.Label>
               <Form.Select
                 className="mb-2 w-50"
                 onChange={(e) => setSets(e.target.value)}
               >
-                <option>Sets</option>
+                <option>1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -65,12 +78,12 @@ const SingleExercise = ({
             <div className="d-flex align-items-center justify-content-between">
               <Form.Label>Repetitions</Form.Label>
               <Form.Select
-                className="w-50"
+                className="w-50 "
                 onChange={(e) => {
                   setReps(e.target.value);
                 }}
               >
-                <option>Reps</option>
+                <option>1</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -85,9 +98,11 @@ const SingleExercise = ({
             </div>
           </Col>
           <Col className="mt-1 d-flex justify-content-center">
-            <div
-              className="d-flex justify-content-center align-items-center bg-warning w-50 rounded-pill cursor fw-bold add-button"
-              onClick={() => {
+            <motion.div
+              whileTap={{ scale: 0.8 }}
+              className="d-flex justify-content-center align-items-center add-exercise-button mt-3 w-50 py-2 rounded-pill cursor fw-bold add-button"
+              onClick={(e) => {
+                e.preventDefault();
                 dispatch(
                   createExerciseWithDetails({
                     sets: sets,
@@ -95,15 +110,16 @@ const SingleExercise = ({
                     exercise_id: exercise.id,
                   })
                 );
-
-                setUpdate(update + 1);
-                dispatch(getExercises());
-                dispatch(getSingleAssignment(currentAssignmentId));
+                setShowConfirmation(true);
+                setTimeout(() => {
+                  setShowConfirmation(false);
+                }, 1000);
               }}
             >
-              <p className="p-0 mt-3 me-2">ADD</p>
-              <img src="\images\add-icon.svg" alt="" className="add-icons" />
-            </div>
+              <span className="material-symbols-outlined fw-bold fs-3">
+                add
+              </span>
+            </motion.div>
           </Col>
         </Row>
       )}

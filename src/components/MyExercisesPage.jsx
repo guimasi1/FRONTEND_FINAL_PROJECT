@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
@@ -12,6 +12,7 @@ import { useFetcher } from "react-router-dom";
 import SinglePatientAssignment from "./SinglePatientAssignment";
 import SinglePatientExercisesDetails from "./SinglePatientExercisesDetails";
 import DownloadPDFButton from "./DownloadPDFButton";
+import { current } from "@reduxjs/toolkit";
 
 const MyExercisesPage = () => {
   const myPatientProfile = useSelector(
@@ -25,9 +26,18 @@ const MyExercisesPage = () => {
     (state) => state.assignments.newAssignment
   );
 
-  const myExercisesDetails = useSelector(
+  const exercises = useSelector(
     (state) => state.assignments.exercisesDetailsByAssignment
   );
+  const myExercisesDetails = Object.values(
+    exercises.reduce((acc, exercise) => {
+      // Usa l'ID dell'esercizio come chiave nell'oggetto di appoggio
+      acc[exercise.id] = exercise;
+      return acc;
+    }, {})
+  );
+
+  const [showNotes, setShowNotes] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -68,34 +78,54 @@ const MyExercisesPage = () => {
             <div>
               <h4 className="mb-4">Exercises</h4>
               {currentAssignment && (
-                <div className="d-flex gap-2">
+                <div className="d-flex justify-content-between mb-4">
+                  <div className="d-flex gap-2">
+                    <Button
+                      className={`rounded-1 ${
+                        currentAssignment.assignmentStatus === "IN_PROGRESS"
+                          ? "btn-primary"
+                          : "btn-secondary"
+                      }`}
+                      onClick={() => {
+                        dispatch(
+                          setAssignmentToInProgress(currentAssignment.id)
+                        );
+                      }}
+                    >
+                      In progress
+                    </Button>
+                    <Button
+                      className={`rounded-1 ${
+                        currentAssignment.assignmentStatus === "COMPLETED"
+                          ? "btn-success"
+                          : "btn-secondary"
+                      }`}
+                      onClick={() => {
+                        dispatch(setAssignmentCompleted(currentAssignment.id));
+                      }}
+                    >
+                      Completed
+                    </Button>
+                  </div>
                   <Button
-                    className={`rounded-1 ${
-                      currentAssignment.assignmentStatus === "IN_PROGRESS"
-                        ? "btn-primary"
-                        : "btn-secondary"
-                    }`}
+                    className="brownish-button-2 d-flex justify-content-center px-3 align-items-center me-2"
                     onClick={() => {
-                      dispatch(setAssignmentToInProgress(currentAssignment.id));
+                      setShowNotes(!showNotes);
                     }}
                   >
-                    In progress
-                  </Button>
-                  <Button
-                    className={`rounded-1 ${
-                      currentAssignment.assignmentStatus === "COMPLETED"
-                        ? "btn-success"
-                        : "btn-secondary"
-                    }`}
-                    onClick={() => {
-                      dispatch(setAssignmentCompleted(currentAssignment.id));
-                    }}
-                  >
-                    Completed
+                    <span className="material-symbols-outlined fs-4">
+                      clinical_notes
+                    </span>
                   </Button>
                 </div>
               )}
             </div>
+            {currentAssignment && showNotes && (
+              <div className="d-flex flex-column mt-3">
+                <p className="p-0 fw-bold mb-0">Notes</p>
+                <p>{currentAssignment.notes}</p>
+              </div>
+            )}
             {myExercisesDetails &&
               myExercisesDetails.map((exercise) => (
                 <SinglePatientExercisesDetails

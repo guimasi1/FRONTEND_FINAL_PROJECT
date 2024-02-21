@@ -1,5 +1,22 @@
 @import "./bootstrap-5.3.2/bootstrap-5.3.2/scss/functions";
 @import "./bootstrap-5.3.2/bootstrap-5.3.2/scss/variables";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import "./styles/authentication";
+@import "./styles/assignments";
+@import "./styles/footer";
+@import "./styles/homepage";
+@import "./styles/navbar";
+@import "./styles/general";
+@import "./styles/buttons";
+@import "./styles/patients";
+@import "./styles/physiotherapists";
+@import "./styles/requests";
+@import "./styles/patient-profile";
+@import "./styles/physio-profile";
+@import "./styles/exercises";
+@import "./styles/pricing";
 
 $theme-colors: (
   "primary": $primary,

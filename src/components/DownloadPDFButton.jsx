@@ -1,6 +1,5 @@
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import { Button } from "react-bootstrap";
 
 const DownloadPDFButton = () => {
   const downloadPDF = () => {
@@ -25,10 +24,11 @@ const DownloadPDFButton = () => {
   return (
     <div
       className="brownish-button rounded-pill px-4 d-flex align-items-center justify-content-center text-white gap-1 me-2 cursor pt-2"
+      // window.print();
       onClick={downloadPDF}
     >
       <div>
-        <span class="material-symbols-outlined">download</span>
+        <span className="material-symbols-outlined">download</span>
       </div>
     </div>
   );

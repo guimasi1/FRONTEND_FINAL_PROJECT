@@ -2,6 +2,8 @@ import Cookies from "js-cookie";
 export const REGISTER_PHYSIOTHERAPIST = "REGISTER_PHYSIOTHERAPIST";
 export const REGISTER_PATIENT = "REGISTER_PATIENT";
 export const LOGIN = "LOGIN";
+export const SET_ROLE = "SET_ROLE";
+export const LOG_STATUS = "LOG_STATUS";
 
 export const register = (registrationPayload, role) => {
   const roleToLowerCase = role.toLowerCase();
@@ -30,7 +32,6 @@ export const register = (registrationPayload, role) => {
             payload: data,
           });
         }
-        console.log(data);
         localStorage.setItem("role", role);
       } else {
         throw new Error("Something went wrong with the registration");
@@ -62,14 +63,14 @@ export const login = (loginPayload, role) => {
           type: LOGIN,
           payload: data,
         });
-        // localStorage.setItem("token", data.token);
+
         Cookies.set("token", data.token, {
           expires: 7,
           secure: true,
           sameSite: "strict",
         });
         Cookies.set("role", role);
-        alert("login succeded");
+        return data;
       } else {
         console.log(loginPayload);
         throw new Error("Something went wront with the login.");
@@ -79,3 +80,7 @@ export const login = (loginPayload, role) => {
     }
   };
 };
+
+export const setRoleState = (role) => ({ type: SET_ROLE, payload: role });
+
+export const setLogStatus = () => ({ type: LOG_STATUS });

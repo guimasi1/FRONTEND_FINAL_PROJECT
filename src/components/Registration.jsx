@@ -16,6 +16,17 @@ const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [registrationCompleted, setRegistrationCompleted] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await dispatch(register(registrationData, role));
+      if (response) {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Errore durante la registrazione:", error);
+    }
+  };
 
   return (
     <Container>
@@ -148,7 +159,6 @@ const Registration = () => {
                   id="1"
                   onClick={(e) => {
                     setRole(e.target.value);
-                    console.log(registrationData);
                   }}
                 />
                 <Form.Check
@@ -160,7 +170,6 @@ const Registration = () => {
                   id="2"
                   onClick={(e) => {
                     setRole(e.target.value);
-                    console.log(registrationData);
                   }}
                 />
               </div>
@@ -228,9 +237,7 @@ const Registration = () => {
                 type="submit"
                 className="rounded-pill py-3 px-4 fs-5 fw-bold greenish w-50 text-center text-white me-5"
                 onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(register(registrationData, role));
-                  navigate("/login");
+                  handleSubmit(e);
                 }}
               >
                 Sign up!

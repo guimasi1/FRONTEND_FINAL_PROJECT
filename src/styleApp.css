@@ -1,4 +1,461 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+/* REGISTRATION */
+#blob-registration {
+  left: 524px;
+  bottom: 339px;
+  width: 45%;
+}
+
+#blob-registration2 {
+  top: 176px;
+  left: 92px;
+  width: 35%;
+}
+
+#blob-registration3 {
+  top: 375px;
+  left: 292px;
+  width: 50%;
+}
+
+/* EXERCISES ASSIGNMENT */
+.image-profile-exercises {
+  width: 40%;
+}
+
+#stroke-text {
+  top: -150px;
+  left: 300px;
+}
+
+.single-assignment:hover {
+  background-color: #e8bc7f;
+}
+
+.selected-assignment {
+  background-color: #e8bc7f;
+}
+
+.hover-request:hover {
+  background-color: #68d89b;
+}
+
+.add-icons {
+  width: 15%;
+}
+
+.add-button:hover {
+  background-color: hsl(48, 82%, 57%) !important;
+}
+
+#assigned-programs-section {
+  height: 430px;
+}
+
+#your-patient-section {
+  height: 430px !important;
+}
+
+/* ASSIGNMENTS BY PATIENT */
+.assignment-column-patient {
+  height: 650px;
+}
+
+.description-add-exercise {
+  font-size: 0.9rem;
+  height: 113px;
+}
+
+.add-icon-exercise {
+  width: 100px;
+}
+
+.col-exercise {
+  height: 400px;
+}
+
+#all-exercises-section {
+  height: 850px;
+}
+
+/* EXERCISES BY PATIENT */
+.description-paragraph {
+  font-size: 0.9rem;
+  padding: 0em 7em;
+}
+
+/* HOMEPAGE */
+#headline {
+  font-size: 5.5em;
+}
+
+.motivational-text {
+  font-size: 2.5em;
+}
+
+.right-footprint {
+  transform: rotate(154deg);
+  position: absolute;
+  top: 0;
+}
+
+.right-footprint-2 {
+  transform: rotate(154deg);
+  position: absolute;
+  top: 220px;
+  left: 90px;
+}
+
+.right-footprint-3 {
+  transform: rotate(154deg);
+  position: absolute;
+  top: 450px;
+  left: 180px;
+}
+
+.left-footprint {
+  transform: rotate(165deg);
+  position: absolute;
+  top: 50px;
+  left: 180px;
+}
+
+.left-footprint-2 {
+  transform: rotate(165deg);
+  position: absolute;
+  top: 268px;
+  left: 268px;
+}
+
+.left-footprint-3 {
+  transform: rotate(165deg);
+  position: absolute;
+  top: 478px;
+  left: 378px;
+}
+
+.check-box-icon {
+  color: #0e9a3d;
+}
+
+#row-margin-top {
+  margin-top: 22em;
+}
+
+/* NAVBAR */
+#navbar-div {
+  margin-left: 7em !important;
+}
+
+#illustration-registration {
+  width: 100%;
+}
+
+#login-form {
+  margin-top: 8em;
+}
+
+body {
+  margin: 0;
+  font-family: "Urbanist", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.greenish {
+  background-color: #0e9a3d !important;
+}
+
+.greenish-2 {
+  background-color: #68d89b;
+}
+
+.greenish-3 {
+  background-color: #8dffcd;
+}
+
+.greenish-4 {
+  background-color: #bcffdb;
+}
+
+.greenish-5 {
+  background-color: #bee6ce;
+}
+
+.greenish-6 {
+  background-color: #d9f5e4;
+}
+
+.hidden {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.custom-input {
+  border-radius: 0.9rem !important;
+  border: 2px solid #10ae35 !important;
+  height: 3em;
+  width: 90% !important;
+  transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out !important;
+}
+
+.custom-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+  border-color: #0056b3 !important;
+}
+
+.fancy-border-radius {
+  border-radius: 6% 19% 181% 0%/26% 21% 85% 76%;
+  width: 200px;
+  height: 183px;
+  background-color: #8dffcd;
+  position: absolute;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+.fancy-bubble-1 {
+  border-radius: 6% 19% 181% 0%/26% 21% 85% 76%;
+  width: 200px;
+  height: 183px;
+  background-color: #8dffcd;
+  position: absolute;
+  opacity: 0.4;
+  z-index: 0 !important;
+  border-radius: 58% 130% 107% 95%/151% 114% 59% 61%;
+  bottom: 146px;
+  right: 132px;
+  width: 331px;
+  height: 223px;
+  z-index: -1;
+}
+
+/* PAGINATION */
+.pagination .page-link {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.pagination .page-link:hover {
+  background-color: #f2c687;
+  color: black;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #ce8013;
+  color: white;
+  border: black;
+}
+
+.fs-7 {
+  font-size: 0.9rem;
+}
+
+.fs-8 {
+  font-size: 0.8rem;
+}
+
+.fs-9 {
+  font-size: 0.7rem;
+}
+
+.fs-lg-5 {
+  font-size: 1.4em;
+}
+
+.fs-lg-4 {
+  font-size: 1.6em;
+}
+
+.fs-lg-3 {
+  font-size: 1.8em;
+}
+
+.fs-lg-2 {
+  font-size: 2em;
+}
+
+.fs-lg-1 {
+  font-size: 2.3em;
+}
+
+#dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#dialog-assignment {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.successful-action-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.error-message {
+  background-color: #fdbe67;
+  border-radius: 0.2em;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 160px;
+}
+
+.brownish-button {
+  background-color: #ce8013 !important;
+  /* background-color: #9a600e !important; */
+  border: none !important;
+}
+@media print {
+  .brownish-button {
+    display: none;
+  }
+}
+
+.brownish-button:hover {
+  background-color: #ce9d58 !important;
+}
+
+.brownish-button-2 {
+  background-color: #ce9d58 !important;
+  /* background-color: #9a600e !important; */
+  border: none !important;
+}
+
+.greenish-button {
+  background-color: #199450;
+  color: white;
+}
+.greenish-button:hover {
+  background-color: #0e9a3d;
+}
+
+.add-exercise-button {
+  background-color: #e8bc7f;
+}
+.add-exercise-button:hover {
+  background-color: #d8a358;
+}
+
+/* PATIENTS */
+#search-bar-patient {
+  width: 300px;
+}
+
+.patient-card {
+  width: 300px !important;
+  margin-bottom: 1em;
+  height: 200px;
+}
+
+.name-container-patient {
+  width: 150px !important;
+}
+
+.patient-profile-image-card {
+  width: 80px;
+}
+
+.physio-profile-image-card {
+  width: 200px;
+}
+
+.physio-profile-image-card-fallback {
+  width: 200px;
+  padding: 1em 1em;
+}
+
+@media screen and (min-width: 700px) {
+  .physiotherapists-container {
+    width: 70% !important;
+  }
+}
+
+.patient-profile-image-review {
+  width: 70px;
+}
+
+@media screen and (min-width: 700px) {
+  #physio-card-details {
+    width: 70% !important;
+  }
+}
+
+.physio-profile-image-details-card {
+  width: 40%;
+}
+
+.icon-request {
+  width: 28px;
+}
+
+#sent-requests-section {
+  height: 559px;
+}
+
+#info-profile-section {
+  height: 559px;
+}
+
+.profile-image {
+  width: 300px;
+}
+
+#biography-section {
+  height: 300px;
+}
+
+#profile-physio-section {
+  height: 556px;
+}
+
+#form-control-biography {
+  height: 100px;
+}
+
+.link-request-physio-section {
+  height: 556px;
+}
+
+.image-exercise-default {
+  width: 80px;
+}
+
+#container-pricing {
+  background-color: rgb(217, 245, 228);
+  height: 700px;
+}
+
+.badge-pricing {
+  margin: 0 auto;
+}
+
+#bookmark-favourite-plan {
+  top: -21px;
+  left: 72%;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

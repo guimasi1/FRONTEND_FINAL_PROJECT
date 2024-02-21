@@ -17,6 +17,7 @@ const SinglePatientAssignment = ({ assignment }) => {
       }`}
       onClick={() => {
         dispatch(getSingleAssignment(assignment.id));
+        console.log(assignment.id);
       }}
     >
       <Col xs={3} className="p-0">
@@ -30,7 +31,9 @@ const SinglePatientAssignment = ({ assignment }) => {
                 : "bg-success text-white"
             }`}
           >
-            {assignment.assignmentStatus}
+            {assignment.assignmentStatus === "IN_PROGRESS"
+              ? assignment.assignmentStatus.replace("_", " ")
+              : assignment.assignmentStatus}
           </Badge>
         )}
       </Col>

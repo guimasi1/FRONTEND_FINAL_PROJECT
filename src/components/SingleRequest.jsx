@@ -23,20 +23,10 @@ const SingleRequest = ({ request, updateProfile }) => {
         />
       </Col>
       <Col className="mt-1 p-0 cursor">
-        {request ? request.physiotherapist.firstName : ""}{" "}
+        {request ? request.physiotherapist.firstName : ""}
         {request ? request.physiotherapist.lastName : ""}
       </Col>
       <Col className="mt-1 text-end cursor ">
-        <img
-          src="images\accept-icon.svg"
-          alt=""
-          className="me-2 icon-request"
-          onClick={() => {
-            dispatch(acceptRequest(request.id));
-            updateProfile();
-            setAccepted(true);
-          }}
-        />
         <img
           src="images/delete_FILL0_wght400_GRAD0_opsz24.svg"
           alt=""

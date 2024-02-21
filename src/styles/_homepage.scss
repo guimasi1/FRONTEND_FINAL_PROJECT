@@ -1,0 +1,57 @@
+/* HOMEPAGE */
+
+$color-green: #0e9a3d;
+#headline {
+  font-size: 5.5em;
+}
+
+.motivational-text {
+  font-size: 2.5em;
+}
+
+@mixin right-footprint-model {
+  transform: rotate(154deg);
+  position: absolute;
+}
+
+@mixin left-footprint-model {
+  transform: rotate(165deg);
+  position: absolute;
+}
+.right-footprint {
+  @include right-footprint-model();
+  top: 0;
+}
+.right-footprint-2 {
+  @include right-footprint-model();
+  top: 220px;
+  left: 90px;
+}
+.right-footprint-3 {
+  @include right-footprint-model();
+  top: 450px;
+  left: 180px;
+}
+.left-footprint {
+  @include left-footprint-model();
+  top: 50px;
+  left: 180px;
+}
+.left-footprint-2 {
+  @include left-footprint-model();
+  top: 268px;
+  left: 268px;
+}
+.left-footprint-3 {
+  @include left-footprint-model();
+  top: 478px;
+  left: 378px;
+}
+
+.check-box-icon {
+  color: $color-green;
+}
+
+#row-margin-top {
+  margin-top: 22em;
+}

@@ -54,7 +54,12 @@ const Profile = () => {
             >
               <div className="d-flex justify-content-center align-items-center">
                 <img
-                  src="https://placekitten.com/300"
+                  src={`${
+                    myProfile.profilePictureUrl
+                      ? myProfile.profilePictureUrl
+                      : "images/Circle-icons-profile.svg"
+                  }`}
+                  style={{ width: "300px" }}
                   className="rounded-pill mt-3"
                   alt=""
                 />

@@ -48,9 +48,10 @@ const SinglePhysioByPatient = ({ physio }) => {
               src={`${
                 physio.profilePictureUrl
                   ? physio.profilePictureUrl
-                  : "https://placekitten.com/70"
+                  : "images/Circle-icons-profile.svg"
               }`}
               className="rounded-pill"
+              style={{ width: "50px" }}
               alt=""
             />
           </div>

@@ -1,12 +1,27 @@
 import { Col, Row } from "react-bootstrap";
 import { motion } from "framer-motion";
+import { useState } from "react";
 const SinglePatientExercisesDetails = ({ exercise }) => {
+  const [isImgHovered, setIsImgHovered] = useState(false);
   return (
     <Row className="pt-4 border border-1 mb-2 rounded">
       <Col xs={2} className="ps-2 text-center">
-        <img
-          src={`images/weights_2871284.png`}
-          className="rounded-4 image-exercise-default"
+        <motion.img
+          whileHover={{ scale: 4 }}
+          onHoverStart={() => {
+            setIsImgHovered(true);
+          }}
+          onHoverEnd={() => {
+            setIsImgHovered(false);
+          }}
+          src={`${
+            exercise.exercise.imageUrl
+              ? exercise.exercise.imageUrl
+              : "images/weights_2871284.png"
+          } `}
+          className={`${
+            isImgHovered ? "" : "rounded-4"
+          } image-exercise-default`}
           alt=""
         />
       </Col>

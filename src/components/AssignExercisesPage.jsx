@@ -184,6 +184,7 @@ const AssignExercisesPage = () => {
     { value: "Triceps", label: "Triceps" },
     { value: "Cardiovascular", label: "Cardiovascular" },
     { value: "Pulmonary", label: "Pulmonary" },
+    { value: "Balance", label: "Balance" },
   ];
   const difficulties = [
     { value: "ANY", label: "Any" },

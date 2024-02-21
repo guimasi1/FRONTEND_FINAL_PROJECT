@@ -21,6 +21,7 @@ const MyNavbar = () => {
   const [isYourProgramsHovered, setIsYourProgramsHovered] = useState(false);
   const [isPatientProfileHovered, setIsPatientProfileHovered] = useState(false);
   const [isPhysioProfileHovered, setIsPhysioProfileHovered] = useState(false);
+  const [isPricingHovered, setIsPricingHovered] = useState(false);
   useEffect(() => {
     dispatch(setRoleState(role));
   }, []);
@@ -245,16 +246,34 @@ const MyNavbar = () => {
                 )
               }
 
-              <Link
-                to="/pricing"
-                className={`text-decoration-none text-black mt-2 fw-bold ${
+              <motion.div
+                onHoverStart={() => {
+                  setIsPricingHovered(true);
+                }}
+                onHoverEnd={() => {
+                  setIsPricingHovered(false);
+                }}
+                animate={{
+                  backgroundColor: isPricingHovered ? "#0e9a3d" : "#fff",
+                }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                className={`rounded-4 px-3 ${
                   location.pathname === "/pricing"
                     ? "border border-5 border-bottom border-success border-top-0 border-end-0 border-start-0"
                     : ""
                 }`}
               >
-                Pricing
-              </Link>
+                <div className={`d-flex align-items-center fw-bold`}>
+                  <Link
+                    to="/pricing"
+                    className={`text-decoration-none ${
+                      isPricingHovered ? "text-white" : "text-black"
+                    }  mt-2 pb-1`}
+                  >
+                    Pricing
+                  </Link>
+                </div>
+              </motion.div>
             </div>
           </Nav>
         </Navbar.Collapse>

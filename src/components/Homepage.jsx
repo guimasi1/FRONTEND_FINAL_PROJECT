@@ -1,4 +1,4 @@
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { getPhysiotherapists } from "../redux/actions/physiotherapistActions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import TypingEffect from "./TypingEffect";
 import GoUpButton from "./Utils/GoUpButton";
 import { useNavigate } from "react-router-dom";
+
 const Homepage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,11 +16,6 @@ const Homepage = () => {
     dispatch(getPhysiotherapists());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
 
   return (
     <Container className="mb-5">
@@ -86,6 +82,7 @@ const Homepage = () => {
           />
         </Col>
       </Row>
+
       <Row className="position-relative mt-5 pt-5">
         <motion.img
           src="images/right-footprint.svg"

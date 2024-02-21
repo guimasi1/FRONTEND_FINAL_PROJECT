@@ -6,7 +6,6 @@ const StripeOption1 = ({ priceId, buttonText }) => {
   const handleClick = async () => {
     // When the customer clicks on the button, redirect them to Checkout.
     const stripe = await stripePromise;
-    console.log("ciao");
     const { error } = await stripe.redirectToCheckout({
       lineItems: [
         {

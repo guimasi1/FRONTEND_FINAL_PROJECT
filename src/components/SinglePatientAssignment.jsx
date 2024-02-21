@@ -1,11 +1,15 @@
 import { Badge, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleAssignment } from "../redux/actions/assignmentsActions";
-
+import { format, parseISO } from "date-fns";
 const SinglePatientAssignment = ({ assignment }) => {
   const dispatch = useDispatch();
   const currentAssignment = useSelector(
     (state) => state.assignments.newAssignment
+  );
+  const formattedDate = format(
+    parseISO(assignment.assignmentDate),
+    "dd MMM yyyy"
   );
 
   return (
@@ -44,7 +48,7 @@ const SinglePatientAssignment = ({ assignment }) => {
       )}
       {assignment && (
         <Col xs={4} className="text-end ">
-          {assignment.assignmentDate}
+          {formattedDate}
         </Col>
       )}
     </Row>

@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Col, Container, Row } from "react-bootstrap";
 import { getPhysiotherapists } from "../redux/actions/physiotherapistActions";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import TypingEffect from "./TypingEffect";
 import GoUpButton from "./Utils/GoUpButton";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +17,23 @@ const Homepage = () => {
     dispatch(getPhysiotherapists());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const ref = useRef(null);
+  const ref2 = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const isInView2 = useInView(ref2, { once: true });
+  const motionControls = useAnimation();
+  const motionControls2 = useAnimation();
+  useEffect(() => {
+    if (isInView) {
+      motionControls.start("visible");
+    }
+  }, [isInView]);
+  useEffect(() => {
+    if (isInView2) {
+      motionControls2.start("visible");
+    }
+  }, [isInView2]);
 
   return (
     <Container className="mb-5">
@@ -148,66 +166,164 @@ const Homepage = () => {
           <img src="images/breathing-exercise.svg" alt="" />
         </Col>
         <Col className="ps-4">
-          <h2 className="motivational-text mb-5">
-            Discover a Healthier, Stronger You
-          </h2>
-          <p className="fs-5">
-            <strong>Embrace the Journeys</strong>: Dive into our tailored
-            physiotherapy exercises and unlock a world where mobility meets
-            freedom. Our expertly designed programs promise more than recovery;
-            they open the door to a life without limits.
-          </p>
-          <p className="p-0 d-flex align-items-center gap-2">
-            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
-              check_box
-            </span>{" "}
-            <span className="fs-5">
-              <strong>Improved Mobility & Flexibility:</strong> Say goodbye to
-              stiffness and hello to moving freely.
-            </span>
-          </p>
-          <p className="p-0 d-flex align-items-center gap-2">
-            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
-              check_box
-            </span>{" "}
-            <span className="fs-5">
-              <strong>Strength & Resilience:</strong> Build muscle strength
-              around key areas, safeguarding against future injuries.
-            </span>
-          </p>
-          <p className="p-0 d-flex align-items-center gap-2">
-            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
-              check_box
-            </span>{" "}
-            <span className="fs-5">
-              <strong>Balance & Posture:</strong> Enhance your core, improve
-              your balance, and stand taller, stronger.
-            </span>
-          </p>
-          <p className="p-0 d-flex align-items-center gap-2">
-            <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
-              check_box
-            </span>{" "}
-            <span className="fs-5">
-              <strong>Effective Pain Relief:</strong> Target the root of your
-              discomfort, reducing pain with each session.
-            </span>
-          </p>
+          <motion.div ref={ref}>
+            <motion.h2
+              className="motivational-text mb-5"
+              variants={{
+                hidden: { opacity: 0, x: 200 },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 1, duration: 1 },
+                },
+              }}
+              initial="hidden"
+              animate={motionControls}
+            >
+              Discover a Healthier, Stronger You
+            </motion.h2>
+            <motion.p
+              className="fs-5"
+              variants={{
+                hidden: { opacity: 0, x: 200 },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 1.4, duration: 1 },
+                },
+              }}
+              initial="hidden"
+              animate={motionControls}
+            >
+              <strong>Embrace the Journeys</strong>: Dive into our tailored
+              physiotherapy exercises and unlock a world where mobility meets
+              freedom. Our expertly designed programs promise more than
+              recovery; they open the door to a life without limits.
+            </motion.p>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: 200 },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 1.7, duration: 1 },
+                },
+              }}
+              initial="hidden"
+              animate={motionControls}
+              className="p-0 d-flex align-items-center gap-2"
+            >
+              <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+                check_box
+              </span>{" "}
+              <span className="fs-5">
+                <strong>Improved Mobility & Flexibility:</strong> Say goodbye to
+                stiffness and hello to moving freely.
+              </span>
+            </motion.p>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: 200 },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 2, duration: 1 },
+                },
+              }}
+              initial="hidden"
+              animate={motionControls}
+              className="p-0 d-flex align-items-center gap-2"
+            >
+              <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+                check_box
+              </span>{" "}
+              <span className="fs-5">
+                <strong>Strength & Resilience:</strong> Build muscle strength
+                around key areas, safeguarding against future injuries.
+              </span>
+            </motion.p>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: 200 },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 2.3, duration: 1 },
+                },
+              }}
+              initial="hidden"
+              animate={motionControls}
+              className="p-0 d-flex align-items-center gap-2"
+            >
+              <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+                check_box
+              </span>{" "}
+              <span className="fs-5">
+                <strong>Balance & Posture:</strong> Enhance your core, improve
+                your balance, and stand taller, stronger.
+              </span>
+            </motion.p>
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, x: 200 },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  transition: { delay: 2.6, duration: 1 },
+                },
+              }}
+              initial="hidden"
+              animate={motionControls}
+              className="p-0 d-flex align-items-center gap-2"
+            >
+              <span className="material-symbols-outlined pt-2 align-self-baseline fs-1 fw-bold check-box-icon">
+                check_box
+              </span>{" "}
+              <span className="fs-5">
+                <strong>Effective Pain Relief:</strong> Target the root of your
+                discomfort, reducing pain with each session.
+              </span>
+            </motion.p>
+          </motion.div>
         </Col>
       </Row>
       <Row className="mt-5 py-5">
         <Col xs={12}>
-          <h2 className="motivational-text">Your New Chapter begins now!</h2>
-          <p className="mt-3 fs-5">
-            Join us and step into a brighter, pain-free future. Your journey to
-            well-being starts here.
-          </p>
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 100, scale: 0.8 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: { delay: 1, duration: 1.2 },
+              },
+            }}
+            initial="hidden"
+            animate={motionControls2}
+          >
+            <h2 className="motivational-text">Your New Chapter begins now!</h2>
+            <p className="mt-3 fs-5">
+              Join us and step into a brighter, pain-free future. Your journey
+              to well-being starts here.
+            </p>
+          </motion.div>
         </Col>
         <Col
           id="layer-container"
           className="position-relative rounded-4 mt-5 cursor"
         >
           <motion.div
+            variants={{
+              hidden: { opacity: 0, x: -200 },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: { delay: 1.6, duration: 1 },
+              },
+            }}
+            initial="hidden"
+            animate={motionControls2}
             id="layer-under"
             className="position-absolute rounded-4 border border-2 greenish-6"
           >
@@ -226,6 +342,16 @@ const Homepage = () => {
           className="position-relative rounded-4 mt-5 cursor"
         >
           <motion.div
+            variants={{
+              hidden: { opacity: 0, x: -200 },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: { delay: 1.1, duration: 1 },
+              },
+            }}
+            initial="hidden"
+            animate={motionControls2}
             id="layer-under"
             className="position-absolute rounded-4 border border-2 greenish-6"
           >
@@ -240,10 +366,21 @@ const Homepage = () => {
           </motion.div>
         </Col>
         <Col
+          ref={ref2}
           id="layer-container"
           className="position-relative rounded-4 mt-5 cursor"
         >
           <motion.div
+            variants={{
+              hidden: { opacity: 0, x: 200 },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: { delay: 1.1, duration: 1 },
+              },
+            }}
+            initial="hidden"
+            animate={motionControls2}
             id="layer-under"
             className="position-absolute rounded-4 border border-2 greenish-6"
           >
@@ -262,6 +399,16 @@ const Homepage = () => {
           className="position-relative rounded-4 mt-5 cursor"
         >
           <motion.div
+            variants={{
+              hidden: { opacity: 0, x: 200 },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: { delay: 1.6, duration: 1 },
+              },
+            }}
+            initial="hidden"
+            animate={motionControls2}
             id="layer-under"
             className="position-absolute rounded-4 border border-2 greenish-6"
           >
@@ -276,6 +423,7 @@ const Homepage = () => {
           </motion.div>
         </Col>
       </Row>
+
       <Row className="" id="row-margin-top"></Row>
       <GoUpButton />
     </Container>

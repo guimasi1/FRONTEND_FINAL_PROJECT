@@ -1,8 +1,19 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Col, Container, NavItem, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const SuccessfulPayment = () => {
   const navigate = useNavigate();
+  const [redirectTimer, setRedirectTimer] = useState(5);
+
+  setInterval(() => {
+    if (redirectTimer > 0) {
+      setRedirectTimer(redirectTimer - 1);
+    } else {
+      navigate("/");
+    }
+  }, 1000);
+
   return (
     <Container id="container-pricing" fluid>
       <Row>
@@ -11,16 +22,20 @@ const SuccessfulPayment = () => {
             <p>
               <strong>Congratulation!</strong>
             </p>
-            <p>
+            <p className="fs-5">
               <em>The payment has been successful.</em>
             </p>
-            <div
-              className="brownish-button fs-5 rounded-5 px-4 py-2 cursor"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Homepage
+
+            <div>
+              <p className="fs-5">You'll be redirected to the homepage in</p>
+              <div className="d-flex justify-content-center">
+                <p
+                  className="fw-bold mx-2 brownish-button rounded-pill px-2 py-1 text-white d-flex justify-content-center align-items-center"
+                  style={{ width: "30px", height: "30px" }}
+                >
+                  {redirectTimer}
+                </p>
+              </div>
             </div>
           </div>
         </Col>

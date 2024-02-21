@@ -26,6 +26,7 @@ import { motion } from "framer-motion";
 import MyPagination from "./MyPagination";
 import ConfirmDialog from "./Utils/ConfirmDialog";
 import ConfirmAssignmentDialog from "./Utils/ConfirmAssignmentDialog";
+import { parseISO, format } from "date-fns";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -159,6 +160,11 @@ const AssignExercisesPage = () => {
     dispatch(getExercisesByParams(exercisesParams));
   }, [exercisesParams]);
 
+  const formattedDate = format(
+    parseISO(patientProfile.dateOfBirth),
+    "dd MMM yyyy"
+  );
+
   const options = [
     { value: "ANY", label: "Any" },
     { value: "Abductors", label: "Abductors" },
@@ -240,8 +246,7 @@ const AssignExercisesPage = () => {
                       <strong>Gender</strong>: {patientProfile.gender}
                     </p>
                     <p>
-                      <strong>Date of birth</strong>:{" "}
-                      {patientProfile.dateOfBirth}
+                      <strong>Date of birth</strong>: {formattedDate}
                     </p>
                   </div>
                 </div>

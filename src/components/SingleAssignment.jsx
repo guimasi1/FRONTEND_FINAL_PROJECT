@@ -6,10 +6,15 @@ import {
 } from "../redux/actions/assignmentsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { format, parseISO } from "date-fns";
 const SingleAssignment = ({ assignment, index }) => {
   const dispatch = useDispatch();
   const currentAssignment = useSelector(
     (state) => state.assignments.newAssignment
+  );
+  const formattedDate = format(
+    parseISO(assignment.assignmentDate),
+    "dd MMM yyyy"
   );
   return (
     <motion.div
@@ -31,7 +36,7 @@ const SingleAssignment = ({ assignment, index }) => {
           {assignment ? index + 1 : ""}
         </div>
       </Col>
-      <Col>{assignment ? assignment.assignmentDate : ""}</Col>
+      <Col>{assignment ? formattedDate : ""}</Col>
       <Col>{assignment ? assignment.assignmentStatus : ""}</Col>
       <Col className="d-flex gap-3 justify-content-end">
         <img

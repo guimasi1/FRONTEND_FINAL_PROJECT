@@ -6,7 +6,6 @@ import { getSinglePatient } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getExercises,
-  getExercisesByName,
   getExercisesByParams,
 } from "../redux/actions/exercisesActions";
 import SingleExercise from "./SingleExercise";
@@ -26,6 +25,7 @@ import { motion } from "framer-motion";
 import MyPagination from "./MyPagination";
 import ConfirmDialog from "./Utils/ConfirmDialog";
 import ConfirmAssignmentDialog from "./Utils/ConfirmAssignmentDialog";
+import { format, parseISO } from "date-fns";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -158,6 +158,10 @@ const AssignExercisesPage = () => {
   useEffect(() => {
     dispatch(getExercisesByParams(exercisesParams));
   }, [exercisesParams]);
+  const formattedDate = format(
+    parseISO(patientProfile.dateOfBirth),
+    "dd MMM yyyy"
+  );
 
   const options = [
     { value: "ANY", label: "Any" },
@@ -240,8 +244,7 @@ const AssignExercisesPage = () => {
                       <strong>Gender</strong>: {patientProfile.gender}
                     </p>
                     <p>
-                      <strong>Date of birth</strong>:{" "}
-                      {patientProfile.dateOfBirth}
+                      <strong>Date of birth</strong>: {formattedDate}
                     </p>
                   </div>
                 </div>

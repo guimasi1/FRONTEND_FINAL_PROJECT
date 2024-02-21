@@ -9,6 +9,10 @@ import { setLogStatus, setRoleState } from "../redux/actions/authentication";
 import { motion } from "framer-motion";
 const MyNavbar = () => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
+  const myPhysioProfile = useSelector(
+    (state) => state.physiotherapists.physioProfile
+  );
+
   const dispatch = useDispatch();
   let role = Cookies.get("role");
   const roleState = useSelector((state) => state.register.role);
@@ -22,6 +26,10 @@ const MyNavbar = () => {
   const [isPatientProfileHovered, setIsPatientProfileHovered] = useState(false);
   const [isPhysioProfileHovered, setIsPhysioProfileHovered] = useState(false);
   const [isPricingHovered, setIsPricingHovered] = useState(false);
+  const profilePictureUrl =
+    roleState === "PATIENT"
+      ? myProfile.profilePictureUrl || "images/Circle-icons-profile.svg"
+      : myPhysioProfile.profilePictureUrl || "images/Circle-icons-profile.svg";
   useEffect(() => {
     dispatch(setRoleState(role));
   }, []);
@@ -295,10 +303,10 @@ const MyNavbar = () => {
         )}
         {loggedIn && (
           <div className="d-flex gap-4 mt-2 align-items-center">
-            <div>
+            <div style={{ width: "50px" }}>
               <img
-                src="https://placekitten.com/50"
-                className="rounded-pill cursor"
+                src={profilePictureUrl}
+                className="rounded-pill cursor w-100"
                 alt=""
                 onClick={() => {
                   if (roleState === "PATIENT") {

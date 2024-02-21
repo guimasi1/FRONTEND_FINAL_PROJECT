@@ -8,11 +8,10 @@ import {
   setAssignmentCompleted,
   setAssignmentToInProgress,
 } from "../redux/actions/assignmentsActions";
-import { useFetcher } from "react-router-dom";
 import SinglePatientAssignment from "./SinglePatientAssignment";
 import SinglePatientExercisesDetails from "./SinglePatientExercisesDetails";
 import DownloadPDFButton from "./DownloadPDFButton";
-import { current } from "@reduxjs/toolkit";
+import { motion } from "framer-motion";
 
 const MyExercisesPage = () => {
   const myPatientProfile = useSelector(
@@ -36,6 +35,8 @@ const MyExercisesPage = () => {
       return acc;
     }, {})
   );
+
+  const [assignmentsFilter, setAssignmentsFilter] = useState("");
 
   const [showNotes, setShowNotes] = useState(false);
 
@@ -61,14 +62,68 @@ const MyExercisesPage = () => {
           <h4>Your assignments</h4>
 
           <hr className="p-0 mb-4" />
+          <div className="d-flex gap-2 mb-3">
+            <motion.span
+              whileHover={{ opacity: 0.6 }}
+              className={`cursor badge px-2 py-2 ${
+                assignmentsFilter === "" ? "bg-warning" : "bg-secondary"
+              }`}
+              onClick={() => {
+                setAssignmentsFilter("");
+              }}
+            >
+              All
+            </motion.span>
+            <motion.span
+              whileHover={{ opacity: 0.6 }}
+              className={`cursor badge px-2 py-2 ${
+                assignmentsFilter === "ASSIGNED" ? "bg-warning" : "bg-secondary"
+              }`}
+              onClick={() => {
+                setAssignmentsFilter("ASSIGNED");
+              }}
+            >
+              Assigned
+            </motion.span>
+            <motion.span
+              whileHover={{ opacity: 0.6 }}
+              className={`cursor badge px-2 py-2 ${
+                assignmentsFilter === "IN_PROGRESS"
+                  ? "bg-warning"
+                  : "bg-secondary"
+              }`}
+              onClick={() => {
+                setAssignmentsFilter("IN_PROGRESS");
+              }}
+            >
+              In progress
+            </motion.span>
+            <motion.span
+              whileHover={{ opacity: 0.6 }}
+              className={`cursor badge px-2 py-2 ${
+                assignmentsFilter === "COMPLETED"
+                  ? "bg-warning"
+                  : "bg-secondary"
+              }`}
+              onClick={() => {
+                setAssignmentsFilter("COMPLETED");
+              }}
+            >
+              Completed
+            </motion.span>
+          </div>
           {myAssignments &&
-            myAssignments.map((assignment, index) => (
-              <SinglePatientAssignment
-                assignment={assignment}
-                key={assignment.id}
-                index={index}
-              />
-            ))}
+            myAssignments
+              .filter((assignment) =>
+                assignment.assignmentStatus.includes(assignmentsFilter)
+              )
+              .map((assignment, index) => (
+                <SinglePatientAssignment
+                  assignment={assignment}
+                  key={assignment.id}
+                  index={index}
+                />
+              ))}
         </Col>
         <Col className="shadow-lg rounded-5 p-5" id="exercises">
           <div className="d-flex justify-content-end ">

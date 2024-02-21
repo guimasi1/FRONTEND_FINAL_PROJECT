@@ -42,15 +42,15 @@ const Homepage = () => {
         <Col className="order-1 order-md-0">
           <motion.h1
             id="headline"
-            className="mt-5"
+            className="mt-5 fw-bolder"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ delay: 0.3, ease: "linear", duration: 2 }}
           >
-            Step into Wellness, Move Beyond{" "}
+            Step into Wellness, Move Beyond
             <motion.p
-              className="d-block d-md-inline"
+              className="d-block d-md-inline ms-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -287,7 +287,7 @@ const Homepage = () => {
           </motion.div>
         </Col>
       </Row>
-      <Row className="mt-5 py-5">
+      <Row className="mt-5 py-5 d-none d-md-flex">
         <Col xs={12}>
           <motion.div
             variants={{

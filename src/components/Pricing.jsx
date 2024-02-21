@@ -21,6 +21,7 @@ const Pricing = () => {
           className="d-flex flex-column justify-content-center text-center mt-5"
         >
           <motion.div
+            className="fw-bold"
             ref={ref}
             initial={{ opacity: 0 }}
             animate={{
@@ -28,7 +29,7 @@ const Pricing = () => {
               transition: { duration: 1.5, delay: 0.3 },
             }}
           >
-            <p className="fs-1 fw-bold">
+            <p className="fs-1 fw-bolder">
               Our pricing is simple with no <br /> hidden fees!
             </p>
           </motion.div>

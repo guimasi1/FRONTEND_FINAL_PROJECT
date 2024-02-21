@@ -35,7 +35,9 @@ const SingleExercise = ({
           <Col className="mt-3 d-flex justify-content-between" xs={12}>
             <div>
               <strong>Target area: </strong>
-              {exercise.targetArea}
+              {exercise.targetArea === "Cardiovascular"
+                ? "Cardio"
+                : exercise.targetArea}
             </div>
             <Badge
               className={`${
@@ -52,7 +54,10 @@ const SingleExercise = ({
               {exercise.difficultyLevel}
             </Badge>
           </Col>
-          <Col xs={12} className="mt-3 description-add-exercise">
+          <Col
+            xs={12}
+            className="mt-3 description-add-exercise truncate-exercise-description"
+          >
             {exercise && exercise.description}
           </Col>
           <Col xs={12} className="my-2">

@@ -14,7 +14,7 @@ const SinglePatientAssignment = ({ assignment }) => {
 
   return (
     <Row
-      className={`cursor single-assignment py-3 px-2 rounded-2 mb-2 ${
+      className={`cursor single-assignment py-3 px-2 rounded-2 mb-2 fs-7 ${
         currentAssignment && currentAssignment.id === assignment.id
           ? "selected-assignment"
           : ""

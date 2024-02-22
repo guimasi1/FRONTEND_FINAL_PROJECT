@@ -3,6 +3,7 @@ import {
   GET_PATIENTS,
   GET_PATIENTS_BY_PHYSIO,
   GET_SINGLE_PATIENT,
+  UPLOAD_PATIENT_IMAGE_PROFILE,
 } from "../actions/patientsActions";
 import { REMOVE_PATIENT_FROM_PHYSIO } from "../actions/physiotherapistActions";
 
@@ -34,6 +35,14 @@ const patientsReducer = (state = initialState, action) => {
       return {
         ...state,
         singlePatient: action.payload,
+      };
+    case UPLOAD_PATIENT_IMAGE_PROFILE:
+      return {
+        ...state,
+        patientProfile: {
+          ...state.patientProfile,
+          profilePictureUrl: action.payload,
+        },
       };
     case REMOVE_PATIENT_FROM_PHYSIO:
       return {

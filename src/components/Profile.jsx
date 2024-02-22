@@ -1,14 +1,27 @@
-import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
-import { getMyPatientProfile } from "../redux/actions/patientsActions";
-import { useEffect, useState } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Container,
+  Form,
+  ListGroup,
+  Row,
+} from "react-bootstrap";
+import {
+  getMyPatientProfile,
+  uploadPatientProfileImage,
+} from "../redux/actions/patientsActions";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientsLinkRequests } from "../redux/actions/linkRequestsActions";
 import SingleRequest from "./SingleRequest";
 import SinglePhysioByPatient from "./SinglePhysioByPatient";
 import { getPhysiosByPatient } from "../redux/actions/physiotherapistActions";
 import { format, parseISO } from "date-fns";
+import { BeatLoader } from "react-spinners";
 
 const Profile = () => {
+  const ref = useRef(null);
   const dispatch = useDispatch();
   const [update, setUpdate] = useState(0);
   const myProfile = useSelector((state) => state.patients.patientProfile);
@@ -18,7 +31,7 @@ const Profile = () => {
   const physiosByPatient = useSelector(
     (state) => state.physiotherapists.physiosByPatient
   );
-
+  const [waiting, setWaiting] = useState(false);
   const updateProfile = () => setUpdate(update + 1);
 
   useEffect(() => {
@@ -38,10 +51,31 @@ const Profile = () => {
     dispatch(getMyPatientProfile());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [update]);
+
   const formattedDate = format(
     parseISO(myProfile.registrationDate),
     "dd MMMM yyyy"
   );
+
+  const handleProfileImgClick = () => {
+    ref.current.click();
+  };
+
+  const handleUploadPicture = async (e) => {
+    const file = e.target.files[0];
+    try {
+      setWaiting(true);
+      const response = await dispatch(
+        uploadPatientProfileImage(myProfile.id, file)
+      );
+      if (response !== null || response !== undefined) {
+        setWaiting(false);
+      }
+    } catch (err) {
+      setWaiting(false);
+      console.log(err);
+    }
+  };
 
   return (
     <Container className="mb-5 mt-4">
@@ -52,18 +86,35 @@ const Profile = () => {
               className="shadow-lg border-0 rounded-3"
               id="info-profile-section"
             >
-              <div className="d-flex justify-content-center align-items-center">
-                <img
-                  src={`${
-                    myProfile.profilePictureUrl
-                      ? myProfile.profilePictureUrl
-                      : "images/Circle-icons-profile.svg"
-                  }`}
-                  style={{ width: "300px" }}
-                  className="rounded-pill mt-3"
-                  alt=""
-                />
+              <div
+                className="d-flex justify-content-center align-items-center cursor"
+                style={{ height: "300px" }}
+                onClick={handleProfileImgClick}
+              >
+                {waiting && (
+                  <div>
+                    <BeatLoader color="#0e9a3d" />
+                  </div>
+                )}
+                {!waiting && (
+                  <img
+                    src={`${
+                      myProfile.profilePictureUrl
+                        ? myProfile.profilePictureUrl
+                        : "images/Circle-icons-profile.svg"
+                    }`}
+                    style={{ width: "300px" }}
+                    className="rounded-pill mt-3"
+                    alt=""
+                  />
+                )}
               </div>
+              <Form.Control
+                type="file"
+                className="d-none"
+                ref={ref}
+                onChange={handleUploadPicture}
+              />
               <Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item className="py-0 border-0 d-flex justify-content-between mb-2">

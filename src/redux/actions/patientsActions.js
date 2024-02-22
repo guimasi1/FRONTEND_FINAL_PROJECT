@@ -5,6 +5,7 @@ export const GET_MY_PATIENT_PROFILE = "GET_MY_PATIENT_PROFILE";
 export const GET_PATIENTS_BY_PHYSIO = "GET_PATIENTS_BY_PHYSIO";
 export const GET_SINGLE_PATIENT = "GET_SINGLE_PATIENT";
 export const REMOVE_PHYSIO_FROM_PATIENT = "REMOVE_PHYSIO_FROM_PATIENT";
+export const UPLOAD_PATIENT_IMAGE_PROFILE = "UPLOAD_PATIENT_IMAGE_PROFILE";
 
 export const getPatients = () => {
   const token = Cookies.get("token");
@@ -137,3 +138,39 @@ export const removePhysioFromPatient = (physioId, patientId) => {
     }
   };
 };
+
+export const uploadPatientProfileImage =
+  (patientId, file) => async (dispatch) => {
+    const token = Cookies.get("token");
+
+    try {
+      const formData = new FormData();
+      formData.append("picture", file);
+
+      const response = await fetch(
+        BASE_URL + "patients/" + patientId + "/profilePicture",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+
+      const data = await response.text();
+
+      if (response.ok) {
+        dispatch({
+          type: UPLOAD_PATIENT_IMAGE_PROFILE,
+          payload: data,
+        });
+      } else {
+        throw new Error(
+          data.message || "Errore durante l'upload dell'immagine"
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };

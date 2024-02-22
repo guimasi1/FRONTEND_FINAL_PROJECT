@@ -13,7 +13,7 @@ This website allows physiotherapists to assign **personalized rehabilitation pro
 
 To store the data i used PostgreSQL.
 
-## :mechanical_arm: Functionalities
+## :mechanical_arm: Functionality
 
 - Registration and login
 - Physiotherapists can:

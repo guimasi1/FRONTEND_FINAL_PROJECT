@@ -1,4 +1,4 @@
-<img src="images\screenshot.png" width="40%"/>
+<img src="public/images/screenshot.png" width="40%"/>
 
 # :woman_with_probing_cane: Physio Path Website Project :computer:
 

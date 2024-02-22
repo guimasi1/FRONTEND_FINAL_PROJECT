@@ -1,15 +1,15 @@
 # Physio Path Website Project :computer:
 
-## What is it?
+## :question: What is it?
 
 This website allows physiotherapists to assign **personalized rehabilitation programs** to their patients, which in turn can ask a connection to their favourite physiotherapists and visualize the programs they're given to.
 
-## Programming Languages
+## :books: Programming Languages
 
 - Front end: React
 - Back end: Spring
 
-## Functionalities
+## :mechanical_arm: Functionalities
 
 - Registration and login
 - Physiotherapists can:
@@ -34,7 +34,7 @@ This website allows physiotherapists to assign **personalized rehabilitation pro
   - change profile details
   - upload profile picture
 
-## Packages
+## :package: Packages
 
 - `npm i react react-bootstrap`
 - `npm i date-fns`
@@ -53,17 +53,17 @@ This website allows physiotherapists to assign **personalized rehabilitation pro
 - `npm i @reduxjs/toolkit`
 - `npm i @stripe/stripe-js`
 
-## CSS
+## :paintbrush: CSS
 
-The primary color is `#0e9a3d`. I used SASS for the whole project.
+The primary color is `#0e9a3d` and `#ce8013` is the secondary one. I used SASS for the whole project.
 
-## Do you want to test it?
+## :microscope: Do you want to test it?
 
 Download the project, open it with an IDE (i used Visual Studio Code) and use the following commands:
 `npm install`
 `npm start`
 
-## Back end repository
+## :cd: Back end repository
 
 Link to backend repository
 https://github.com/guimasi1/EPICODE_FINAL_PROJECT

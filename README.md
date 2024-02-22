@@ -1,3 +1,5 @@
+<img src="images\screenshot.png" width="40%"/>
+
 # :woman_with_probing_cane: Physio Path Website Project :computer:
 
 ## :question: What is it?
@@ -9,7 +11,7 @@ This website allows physiotherapists to assign **personalized rehabilitation pro
 - Front end: React
 - Back end: Spring
 
-To store the data i used PostgreSQL
+To store the data i used PostgreSQL.
 
 ## :mechanical_arm: Functionalities
 

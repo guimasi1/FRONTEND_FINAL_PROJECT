@@ -11,7 +11,7 @@ This website allows physiotherapists to assign **personalized rehabilitation pro
 - Front end: React
 - Back end: Spring
 
-To store the data i used PostgreSQL.
+To store the data I used PostgreSQL.
 
 ## :mechanical_arm: Functionality
 
@@ -63,10 +63,13 @@ The primary color is `#0e9a3d` and `#ce8013` is the secondary one. I used SASS f
 
 ## :microscope: Do you want to test it?
 
-Download the project, open it with an IDE (i used Visual Studio Code) and use the following commands:
+Download the project, open it with an IDE (I used Visual Studio Code) and use the following commands:
 
 - `npm install`
 - `npm start`
+
+To populate the database with the exercises simply use the file "exercises.csv" which is inside the back end repository. I suggest using Postman with a POST method to:
+http://localhost:3001/uploadExercises with "picture" as key and the file exercises.csv as value.
 
 ## :cd: Back end repository
 

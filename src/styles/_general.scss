@@ -179,3 +179,12 @@ $greenish-6: #d9f5e4;
   text-overflow: ellipsis;
   width: 160px;
 }
+
+.truncate-exercise-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: calc(1.2em * 5);
+}

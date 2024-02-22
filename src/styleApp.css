@@ -322,6 +322,15 @@ code {
   width: 160px;
 }
 
+.truncate-exercise-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 6em;
+}
+
 .brownish-button {
   background-color: #ce8013 !important;
   /* background-color: #9a600e !important; */
@@ -454,6 +463,10 @@ code {
 #bookmark-favourite-plan {
   top: -21px;
   left: 72%;
+}
+
+#row-reviews {
+  height: 500px;
 }
 
 /*!

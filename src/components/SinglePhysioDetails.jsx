@@ -91,11 +91,13 @@ const SinglePhysioDetails = () => {
               </div>
             </Col>
           </Row>
-          <Row className="mt-4 shadow-lg rounded-4 py-4 px-4">
+          <Row className="mt-4 shadow-lg rounded-4 py-4 px-4" id="row-reviews">
             <Col className="text-start">
               <h4 className="fs-5 mt-4 mb-4">
-                {physio.reviews ? physio.reviews.length : ""}{" "}
-                {physio.reviews.length === 1 ? "Review" : "Reviews"}
+                {physio.reviews ? physio.reviews.length : ""}
+                <span className="ms-2">
+                  {physio.reviews.length === 1 ? "Review" : "Reviews"}
+                </span>
               </h4>
               {physio.reviews &&
                 physio.reviews.map((review) => (

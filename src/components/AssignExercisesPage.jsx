@@ -6,7 +6,6 @@ import { getSinglePatient } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getExercises,
-  getExercisesByName,
   getExercisesByParams,
 } from "../redux/actions/exercisesActions";
 import SingleExercise from "./SingleExercise";
@@ -26,6 +25,7 @@ import { motion } from "framer-motion";
 import MyPagination from "./MyPagination";
 import ConfirmDialog from "./Utils/ConfirmDialog";
 import ConfirmAssignmentDialog from "./Utils/ConfirmAssignmentDialog";
+import { format, parseISO } from "date-fns";
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -158,6 +158,10 @@ const AssignExercisesPage = () => {
   useEffect(() => {
     dispatch(getExercisesByParams(exercisesParams));
   }, [exercisesParams]);
+  const formattedDate = format(
+    parseISO(patientProfile.dateOfBirth),
+    "dd MMM yyyy"
+  );
 
   const options = [
     { value: "ANY", label: "Any" },
@@ -169,6 +173,8 @@ const AssignExercisesPage = () => {
     { value: "Chest", label: "Chest" },
     { value: "Hamstrings", label: "Hamstrings" },
     { value: "Hip flexors", label: "Hip flexors" },
+    { value: "Glutes", label: "Glutes" },
+    { value: "Hips", label: "Hips" },
     { value: "Lats", label: "Lats" },
     { value: "Lower back", label: "Lower back" },
     { value: "Upper back", label: "Upper back" },
@@ -178,8 +184,11 @@ const AssignExercisesPage = () => {
     { value: "Shoulders", label: "Shoulders" },
     { value: "Traps", label: "Traps" },
     { value: "Triceps", label: "Triceps" },
+    { value: "Wrists", label: "Wrists" },
+    { value: "Ankles", label: "Ankles" },
     { value: "Cardiovascular", label: "Cardiovascular" },
     { value: "Pulmonary", label: "Pulmonary" },
+    { value: "Balance", label: "Balance" },
   ];
   const difficulties = [
     { value: "ANY", label: "Any" },
@@ -240,8 +249,7 @@ const AssignExercisesPage = () => {
                       <strong>Gender</strong>: {patientProfile.gender}
                     </p>
                     <p>
-                      <strong>Date of birth</strong>:{" "}
-                      {patientProfile.dateOfBirth}
+                      <strong>Date of birth</strong>: {formattedDate}
                     </p>
                   </div>
                 </div>

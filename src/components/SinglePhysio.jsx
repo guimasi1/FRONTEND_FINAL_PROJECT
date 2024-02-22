@@ -87,7 +87,6 @@ const SinglePhysio = ({ physio, index }) => {
           }`}
         />
       </Col>
-
       <Col xs={4} className="d-flex justify-content-between pt-3 ms-lg-5">
         <div>
           <p

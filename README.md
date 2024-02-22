@@ -9,6 +9,8 @@ This website allows physiotherapists to assign **personalized rehabilitation pro
 - Front end: React
 - Back end: Spring
 
+To store the data i used PostgreSQL
+
 ## :mechanical_arm: Functionalities
 
 - Registration and login
@@ -60,8 +62,9 @@ The primary color is `#0e9a3d` and `#ce8013` is the secondary one. I used SASS f
 ## :microscope: Do you want to test it?
 
 Download the project, open it with an IDE (i used Visual Studio Code) and use the following commands:
-`npm install`
-`npm start`
+
+- `npm install`
+- `npm start`
 
 ## :cd: Back end repository
 

@@ -23,7 +23,7 @@ const SingleAssignment = ({ assignment, index }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
-      className={`mb-2 align-items-center cursor single-assignment rounded-2 row ${
+      className={`mb-2 align-items-center cursor single-assignment rounded-2 row fs-6 ${
         currentAssignment && currentAssignment.id === assignment.id
           ? "selected-assignment"
           : ""
@@ -54,7 +54,9 @@ const SingleAssignment = ({ assignment, index }) => {
           dispatch(getSingleAssignment(assignment.id));
         }}
       >
-        {assignment ? assignment.assignmentStatus : ""}
+        {assignment?.assignmentStatus === "IN_PROGRESS"
+          ? assignment.assignmentStatus.replace("_", " ")
+          : assignment.assignmentStatus}
       </Col>
       <Col className="d-flex gap-3 justify-content-end">
         <img

@@ -1,4 +1,4 @@
-# Physio Path Website Project
+# Physio Path Website Project :computer:
 
 ## What is it?
 
@@ -36,28 +36,34 @@ This website allows physiotherapists to assign **personalized rehabilitation pro
 
 ## Packages
 
-`npm i react react-bootstrap`
-`npm i date-fns`
-`npm i framer-motion`
-`npm i html2canvas`
-`npm i js-cookie`
-`npm i jspdf`
-`npm i react-bootstrap-icons`
-`npm i react-router-dom`
-`npm i react-redux`
-`npm i react-select`
-`npm i react-simple-typewriter`
-`npm i react-spinners`
-`npm i react-toastify`
-`npm i redux-persist`
-`npm i @reduxjs/toolkit`
-`npm i @stripe/stripe-js`
+- `npm i react react-bootstrap`
+- `npm i date-fns`
+- `npm i framer-motion`
+- `npm i html2canvas`
+- `npm i js-cookie`
+- `npm i jspdf`
+- `npm i react-bootstrap-icons`
+- `npm i react-router-dom`
+- `npm i react-redux`
+- `npm i react-select`
+- `npm i react-simple-typewriter`
+- `npm i react-spinners`
+- `npm i react-toastify`
+- `npm i redux-persist`
+- `npm i @reduxjs/toolkit`
+- `npm i @stripe/stripe-js`
 
-## I want to try it
+## CSS
+
+The primary color is `#0e9a3d`. I used SASS for the whole project.
+
+## Do you want to test it?
 
 Download the project, open it with an IDE (i used Visual Studio Code) and use the following commands:
 `npm install`
 `npm start`
+
+## Back end repository
 
 Link to backend repository
 https://github.com/guimasi1/EPICODE_FINAL_PROJECT

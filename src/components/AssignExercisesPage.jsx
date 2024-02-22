@@ -381,7 +381,6 @@ const AssignExercisesPage = () => {
                               ...assignmentData,
                               notes: e.target.value,
                             });
-                            console.log(assignmentData);
                           }}
                         />
                       </Form.Group>
@@ -426,7 +425,6 @@ const AssignExercisesPage = () => {
                         ...exercisesParams,
                         name: e.target.value,
                       });
-                      console.log(exercisesParams);
                     }}
                   />
                 </Col>

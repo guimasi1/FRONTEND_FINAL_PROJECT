@@ -56,6 +56,7 @@ To store the data I used PostgreSQL.
 - `npm i redux-persist`
 - `npm i @reduxjs/toolkit`
 - `npm i @stripe/stripe-js`
+- `npm i react-confetti`
 
 ## :paintbrush: CSS
 

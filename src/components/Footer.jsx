@@ -26,6 +26,16 @@ const Footer = () => {
           <p className="border border-start-5 border-black border-bottom-0 border-top-0 border-end-0 ps-2 cursor">
             Privacy policy
           </p>
+          <p>
+            Images by{" "}
+            <a href="https://www.freepik.com/" className="text-black">
+              Freepik
+            </a>{" "}
+            and
+            <a href="https://storyset.com/" className="ms-1 text-black">
+              StorySet
+            </a>
+          </p>
         </Col>
         <Col md={2}>
           <p className="border border-start-5 border-black border-bottom-0 border-top-0 border-end-0 ps-2 cursor">

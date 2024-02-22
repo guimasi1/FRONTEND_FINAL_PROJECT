@@ -28,17 +28,34 @@ const SingleAssignment = ({ assignment, index }) => {
           ? "selected-assignment"
           : ""
       }`}
-      onClick={() => {
-        dispatch(getSingleAssignment(assignment.id));
-      }}
     >
-      <Col className="fw-bold" xs={1}>
+      <Col
+        className="fw-bold"
+        xs={1}
+        onClick={() => {
+          dispatch(getSingleAssignment(assignment.id));
+        }}
+      >
         <div className="d-flex justify-content-center align-items-center py-2">
           {assignment ? index + 1 : ""}
         </div>
       </Col>
-      <Col>{assignment ? formattedDate : ""}</Col>
-      <Col>{assignment ? assignment.assignmentStatus : ""}</Col>
+      <Col
+        xs={3}
+        onClick={() => {
+          dispatch(getSingleAssignment(assignment.id));
+        }}
+      >
+        {assignment ? formattedDate : ""}
+      </Col>
+      <Col
+        xs={6}
+        onClick={() => {
+          dispatch(getSingleAssignment(assignment.id));
+        }}
+      >
+        {assignment ? assignment.assignmentStatus : ""}
+      </Col>
       <Col className="d-flex gap-3 justify-content-end">
         <img
           src="/images\delete_FILL0_wght400_GRAD0_opsz24.svg"

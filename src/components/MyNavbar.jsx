@@ -303,6 +303,12 @@ const MyNavbar = () => {
         )}
         {loggedIn && (
           <div className="d-flex gap-4 mt-2 align-items-center">
+            {roleState === "PHYSIOTHERAPIST" && (
+              <p className="m-0 fw-bold">Hi, {myPhysioProfile?.firstName}!</p>
+            )}
+            {roleState === "PATIENT" && (
+              <p className="m-0 fw-bold">Hi, {myProfile?.firstName}!</p>
+            )}
             <div style={{ width: "50px" }}>
               <img
                 src={profilePictureUrl}

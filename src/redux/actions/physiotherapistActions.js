@@ -78,9 +78,7 @@ export const connectWithPhysio = (requestDetails) => {
           type: SEND_REQUEST,
           payload: data,
         });
-        console.log(requestDetails);
       } else {
-        console.log(requestDetails);
         throw new Error("Something went wront with the request.");
       }
     } catch (error) {

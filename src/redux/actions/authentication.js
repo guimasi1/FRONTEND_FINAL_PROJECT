@@ -72,7 +72,6 @@ export const login = (loginPayload, role) => {
         Cookies.set("role", role);
         return data;
       } else {
-        console.log(loginPayload);
         throw new Error("Something went wront with the login.");
       }
     } catch (error) {

@@ -104,7 +104,7 @@ const Profile = () => {
                         : "images/Circle-icons-profile.svg"
                     }`}
                     style={{ width: "300px" }}
-                    className="rounded-pill mt-3"
+                    className="rounded-pill mt-3 shadow-sm"
                     alt=""
                   />
                 )}

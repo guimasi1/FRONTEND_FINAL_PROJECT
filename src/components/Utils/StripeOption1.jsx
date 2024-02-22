@@ -4,12 +4,11 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
 const StripeOption1 = ({ priceId, buttonText }) => {
   const handleClick = async () => {
-    // When the customer clicks on the button, redirect them to Checkout.
     const stripe = await stripePromise;
     const { error } = await stripe.redirectToCheckout({
       lineItems: [
         {
-          price: priceId, // Replace with the ID of your price
+          price: priceId,
           quantity: 1,
         },
       ],

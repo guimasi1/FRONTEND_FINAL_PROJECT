@@ -465,6 +465,10 @@ code {
   left: 72%;
 }
 
+#row-reviews {
+  height: 500px;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

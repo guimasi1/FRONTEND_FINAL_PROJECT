@@ -6,6 +6,7 @@ import {
   GET_PHYSIOTHERAPISTS_BY_PATIENT,
   GET_SINGLE_PHYSIO,
   SEND_REQUEST,
+  UPLOAD_PHYSIO_IMAGE_PROFILE,
 } from "../actions/physiotherapistActions";
 import { NEW_REVIEW, REMOVE_REVIEW } from "../actions/reviewsActions";
 
@@ -72,6 +73,14 @@ const physiotherapistsReducer = (state = initialState, action) => {
           reviews: state.singlePhysio.reviews.filter(
             (review) => review.id !== action.payload
           ),
+        },
+      };
+    case UPLOAD_PHYSIO_IMAGE_PROFILE:
+      return {
+        ...state,
+        physioProfile: {
+          ...state.physioProfile,
+          profilePictureUrl: action.payload,
         },
       };
     default:

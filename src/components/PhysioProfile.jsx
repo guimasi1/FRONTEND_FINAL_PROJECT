@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Card, Col, Form, ListGroup, Row } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   editBiography,
   getMyPhysioProfile,
+  uploadPhysioProfileImage,
 } from "../redux/actions/physiotherapistActions";
 import { motion } from "framer-motion";
 import SingleRequestPhysio from "./SingleRequestPhysio";
 import { getPhysioLinkRequests } from "../redux/actions/linkRequestsActions";
 import { parseISO, format } from "date-fns";
+import { BeatLoader } from "react-spinners";
 
 const PhysioProfile = () => {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ const PhysioProfile = () => {
     parseISO(myProfile.registrationDate),
     "dd MMMM yyyy"
   );
+  const [waiting, setWaiting] = useState(false);
 
   useEffect(() => {
     dispatch(getMyPhysioProfile());
@@ -34,6 +37,27 @@ const PhysioProfile = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const ref = useRef(null);
+
+  const handleProfileImgClick = () => {
+    ref.current.click();
+  };
+
+  const handleUploadPicture = async (e) => {
+    const file = e.target.files[0];
+    try {
+      setWaiting(true);
+      const response = await dispatch(
+        uploadPhysioProfileImage(myProfile.id, file)
+      );
+      if (response !== null || response !== undefined) {
+        setWaiting(false);
+      }
+    } catch (err) {
+      setWaiting(false);
+      console.log(err);
+    }
+  };
 
   return (
     <motion.div
@@ -50,17 +74,34 @@ const PhysioProfile = () => {
               className="shadow-lg border-0 rounded-3 pt-4 pb-3"
               id="profile-physio-section"
             >
-              <div className="d-flex justify-content-center align-items-center ">
-                <img
-                  src={
-                    myProfile.profilePictureUrl
-                      ? myProfile.profilePictureUrl
-                      : "images/Circle-icons-profile.svg"
-                  }
-                  className="rounded-pill mt-3 profile-image"
-                  alt=""
-                />
+              <div
+                className="d-flex  justify-content-center align-items-center"
+                style={{ height: "300px" }}
+                onClick={handleProfileImgClick}
+              >
+                {!waiting && (
+                  <img
+                    src={
+                      myProfile.profilePictureUrl
+                        ? myProfile.profilePictureUrl
+                        : "images/Circle-icons-profile.svg"
+                    }
+                    className="rounded-pill cursor mt-3 profile-image"
+                    alt=""
+                  />
+                )}
+                {waiting && (
+                  <div>
+                    <BeatLoader color="#0e9a3d" />
+                  </div>
+                )}
               </div>
+              <Form.Control
+                type="file"
+                className="d-none"
+                ref={ref}
+                onChange={handleUploadPicture}
+              />
               <Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item className="d-flex justify-content-between pb-2 mb-0 border-0">

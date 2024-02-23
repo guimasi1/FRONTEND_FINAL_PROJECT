@@ -8,6 +8,7 @@ export const EDIT_BIOGRAPHY = "EDIT_BIOGRAPHY";
 export const REMOVE_PATIENT_FROM_PHYSIO = "REMOVE_PATIENT_FROM_PHYSIO";
 export const SEND_REQUEST = "SEND_REQUEST";
 export const GET_SINGLE_PHYSIO = "GET_SINGLE_PHYSIO";
+export const UPLOAD_PHYSIO_IMAGE_PROFILE = "UPLOAD_PHYSIO_IMAGE_PROFILE";
 
 export const getPhysiotherapists = (size) => {
   const token = Cookies.get("token");
@@ -251,3 +252,39 @@ export const getPhysioById = (physioId) => {
     }
   };
 };
+
+export const uploadPhysioProfileImage =
+  (physioId, file) => async (dispatch) => {
+    const token = Cookies.get("token");
+
+    try {
+      const formData = new FormData();
+      formData.append("picture", file);
+
+      const response = await fetch(
+        BASE_URL + "physiotherapists/" + physioId + "/profilePicture",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+
+      const data = await response.text();
+
+      if (response.ok) {
+        dispatch({
+          type: UPLOAD_PHYSIO_IMAGE_PROFILE,
+          payload: data,
+        });
+      } else {
+        throw new Error(
+          data.message || "Errore durante l'upload dell'immagine"
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };

@@ -1,12 +1,4 @@
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Form,
-  ListGroup,
-  Row,
-} from "react-bootstrap";
+import { Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 import {
   getMyPatientProfile,
   uploadPatientProfileImage,

@@ -162,12 +162,14 @@ const Pricing = () => {
               theme === "dark" ? "bg-grey" : ""
             } d-flex flex-column rounded-4 shadow-lg py-4 px-2 fw-bold mt-4 position-relative`}
           >
-            <img
-              src="images/bookmark.svg"
-              alt=""
-              className="w-25 position-absolute"
-              id="bookmark-favourite-plan"
-            />
+            {theme === "light" && (
+              <img
+                src="images/bookmark.svg"
+                alt=""
+                className="w-25 position-absolute"
+                id="bookmark-favourite-plan"
+              />
+            )}
             <div className="text-center w-50 badge-pricing">
               <div
                 className={`px-5 py-2 fs-5 rounded-2 ${

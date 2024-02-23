@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removePatientFromPhysio } from "../redux/actions/physiotherapistActions";
 import DeleteConfirmation from "./Utils/DeleteConfirmation";
 import { useEffect, useState } from "react";
-
+import { useTheme } from "./Theme";
 const SinglePatient = ({ patient }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,10 +22,13 @@ const SinglePatient = ({ patient }) => {
     setConfirmElimination(false);
   }, [confirmElimination]);
 
+  const { theme } = useTheme();
   return (
     <motion.div
       whileHover={{ scale: 1.05, transition: { delay: 0.2 } }}
-      className="shadow-lg rounded-3 d-flex pt-4 pb-2 ps-1 ms-4 patient-card z-3 col"
+      className={`shadow-lg rounded-3 d-flex pt-4 pb-2 ps-1 ms-4 patient-card z-3 col ${
+        theme === "dark" ? "bg-grey" : ""
+      }`}
     >
       {showAlert && (
         <DeleteConfirmation
@@ -60,7 +63,9 @@ const SinglePatient = ({ patient }) => {
                 console.log("Something went wrong");
               }
             }}
-            className="material-symbols-outlined text-end position-absolute top-0 end-0 bg-secondary-subtle d-flex justify-content-center align-items-center rounded-pill cursor"
+            className={`material-symbols-outlined text-end position-absolute top-0 end-0 ${
+              theme === "dark" ? "bg-grey" : "bg-secondary-subtle"
+            }  d-flex justify-content-center align-items-center rounded-pill cursor`}
             style={{ width: "25px", height: "25px" }}
           >
             close

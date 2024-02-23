@@ -7,7 +7,9 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { setLogStatus, setRoleState } from "../redux/actions/authentication";
 import { motion } from "framer-motion";
-const MyNavbar = () => {
+import { useTheme } from "./Theme";
+
+const MyNavbar = ({ ThemeProvider }) => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
   const myPhysioProfile = useSelector(
     (state) => state.physiotherapists.physioProfile
@@ -36,6 +38,17 @@ const MyNavbar = () => {
   useEffect(() => {
     dispatch(setRoleState(role));
   }, [role]);
+  const { toggleTheme } = useTheme();
+  const { theme } = useTheme();
+  useEffect(() => {
+    if (theme === "light") {
+      document.getElementById("root").classList.add("light");
+      document.getElementById("root").classList.remove("dark");
+    } else {
+      document.getElementById("root").classList.add("dark");
+      document.getElementById("root").classList.remove("light");
+    }
+  }, [theme]);
   return (
     <Navbar expand="lg">
       <Container className="ps-lg-5">
@@ -63,7 +76,11 @@ const MyNavbar = () => {
                   setIsHomeHovered(false);
                 }}
                 animate={{
-                  backgroundColor: isHomeHovered ? "#0e9a3d" : "#fff",
+                  backgroundColor: isHomeHovered
+                    ? "#0e9a3d"
+                    : theme === "light"
+                    ? "#fff"
+                    : "#333",
                 }}
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                 className={`rounded-4 px-3 ${
@@ -77,7 +94,9 @@ const MyNavbar = () => {
                     to="/"
                     className={`text-decoration-none ${
                       isHomeHovered ? "text-white" : "text-black"
-                    }  mt-2 pb-1`}
+                    }  mt-2 pb-1 ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
                   >
                     Home
                   </Link>
@@ -92,7 +111,11 @@ const MyNavbar = () => {
                     setIsPhysiosHovered(false);
                   }}
                   animate={{
-                    backgroundColor: isPhysiosHovered ? "#0e9a3d" : "#fff",
+                    backgroundColor: isPhysiosHovered
+                      ? "#0e9a3d"
+                      : theme === "light"
+                      ? "#fff"
+                      : "#333",
                   }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   className={`rounded-4 px-3 ${
@@ -106,7 +129,9 @@ const MyNavbar = () => {
                       to="/physiotherapists"
                       className={`${
                         isPhysiosHovered ? "text-white" : "text-black"
-                      } text-decoration-none mt-2 fw-bold pb-1`}
+                      } text-decoration-none mt-2 fw-bold pb-1 ${
+                        theme === "dark" ? "text-white" : "text-black"
+                      }`}
                     >
                       Physiotherapists
                     </Link>
@@ -124,7 +149,11 @@ const MyNavbar = () => {
                     setIsPatientsHovered(false);
                   }}
                   animate={{
-                    backgroundColor: isPatientsHovered ? "#0e9a3d" : "#fff",
+                    backgroundColor: isPatientsHovered
+                      ? "#0e9a3d"
+                      : theme === "light"
+                      ? "#fff"
+                      : "#333",
                   }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   className={`rounded-4 px-3 ${
@@ -138,7 +167,9 @@ const MyNavbar = () => {
                       to="/patients"
                       className={`${
                         isPatientsHovered ? "text-white" : "text-black"
-                      } text-decoration-none mt-2 fw-bold pb-1`}
+                      } text-decoration-none mt-2 fw-bold pb-1 ${
+                        theme === "dark" ? "text-white" : "text-black"
+                      }`}
                     >
                       Patients
                     </Link>
@@ -156,7 +187,11 @@ const MyNavbar = () => {
                     setIsYourProgramsHovered(false);
                   }}
                   animate={{
-                    backgroundColor: isYourProgramsHovered ? "#0e9a3d" : "#fff",
+                    backgroundColor: isYourProgramsHovered
+                      ? "#0e9a3d"
+                      : theme === "light"
+                      ? "#fff"
+                      : "#333",
                   }}
                   whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                   className={`rounded-4 px-3 ${
@@ -170,7 +205,9 @@ const MyNavbar = () => {
                       to="/myExercises"
                       className={`${
                         isYourProgramsHovered ? "text-white" : "text-black"
-                      } text-decoration-none mt-2 fw-bold pb-1`}
+                      } text-decoration-none mt-2 fw-bold pb-1 ${
+                        theme === "dark" ? "text-white" : "text-black"
+                      }`}
                     >
                       Your programs
                     </Link>
@@ -192,7 +229,9 @@ const MyNavbar = () => {
                     animate={{
                       backgroundColor: isPatientProfileHovered
                         ? "#0e9a3d"
-                        : "#fff",
+                        : theme === "light"
+                        ? "#fff"
+                        : "#333",
                     }}
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     className={`rounded-4 px-3 ${
@@ -206,7 +245,9 @@ const MyNavbar = () => {
                         to="/profile"
                         className={`${
                           isPatientProfileHovered ? "text-white" : "text-black"
-                        } text-decoration-none mt-2 fw-bold pb-1`}
+                        } text-decoration-none mt-2 fw-bold pb-1 ${
+                          theme === "dark" ? "text-white" : "text-black"
+                        }`}
                       >
                         Profile
                       </Link>
@@ -229,7 +270,9 @@ const MyNavbar = () => {
                     animate={{
                       backgroundColor: isPhysioProfileHovered
                         ? "#0e9a3d"
-                        : "#fff",
+                        : theme === "light"
+                        ? "#fff"
+                        : "#333",
                     }}
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     className={`rounded-4 px-3 ${
@@ -243,7 +286,9 @@ const MyNavbar = () => {
                         to="/physioProfile"
                         className={`${
                           isPhysioProfileHovered ? "text-white" : "text-black"
-                        } text-decoration-none mt-2 fw-bold pb-1`}
+                        } text-decoration-none mt-2 fw-bold pb-1 ${
+                          theme === "dark" ? "text-white" : "text-black"
+                        }`}
                       >
                         Profile
                       </Link>
@@ -262,7 +307,11 @@ const MyNavbar = () => {
                   setIsPricingHovered(false);
                 }}
                 animate={{
-                  backgroundColor: isPricingHovered ? "#0e9a3d" : "#fff",
+                  backgroundColor: isPricingHovered
+                    ? "#0e9a3d"
+                    : theme === "light"
+                    ? "#fff"
+                    : "#333",
                 }}
                 whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                 className={`rounded-4 px-3 ${
@@ -276,7 +325,9 @@ const MyNavbar = () => {
                     to="/pricing"
                     className={`text-decoration-none ${
                       isPricingHovered ? "text-white" : "text-black"
-                    }  mt-2 pb-1`}
+                    } mt-2 pb-1 ${
+                      theme === "dark" ? "text-white" : "text-black"
+                    }`}
                   >
                     Pricing
                   </Link>
@@ -328,9 +379,19 @@ const MyNavbar = () => {
                 dispatch(setLogStatus());
                 navigate("/");
               }}
-              className="text-decoration-none text-black fw-bold py-3 cursor"
+              className={`text-decoration-none ${
+                theme === "dark" ? "text-white" : "text-black"
+              } fw-bold py-3 cursor`}
             >
               Logout
+            </div>
+            <div>
+              <span
+                className="material-symbols-outlined cursor"
+                onClick={toggleTheme}
+              >
+                dark_mode
+              </span>
             </div>
           </div>
         )}

@@ -166,8 +166,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.light {
+  color: black !important;
+  background-color: white !important;
+}
+
+.dark {
+  color: white !important;
+  background-color: #333 !important;
+}
+
+.bg-grey {
+  background-color: #434343 !important;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.blur {
+  filter: blur(1px);
 }
 
 .greenish {

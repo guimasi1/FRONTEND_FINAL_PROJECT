@@ -12,9 +12,11 @@ import SingleRequestPhysio from "./SingleRequestPhysio";
 import { getPhysioLinkRequests } from "../redux/actions/linkRequestsActions";
 import { parseISO, format } from "date-fns";
 import { BeatLoader } from "react-spinners";
+import { useTheme } from "./Theme";
 
 const PhysioProfile = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
   const myProfile = useSelector(
     (state) => state.physiotherapists.physioProfile
   );
@@ -71,11 +73,13 @@ const PhysioProfile = () => {
         {myProfile && (
           <Col>
             <Card
-              className="shadow-lg border-0 rounded-3 pt-4 pb-3"
+              className={`${
+                theme === "dark" ? "bg-grey" : ""
+              } shadow-lg border-0 rounded-3 pt-4 pb-3`}
               id="profile-physio-section"
             >
               <div
-                className="d-flex  justify-content-center align-items-center position-relative"
+                className="d-flex justify-content-center align-items-center position-relative"
                 style={{ height: "300px" }}
                 onClick={handleProfileImgClick}
               >
@@ -113,8 +117,16 @@ const PhysioProfile = () => {
                 onChange={handleUploadPicture}
               />
               <Card.Body>
-                <ListGroup className="list-group-flush">
-                  <ListGroup.Item className="d-flex justify-content-between pb-2 mb-0 border-0">
+                <ListGroup
+                  className={`list-group-flush ${
+                    theme === "dark" ? "bg-grey" : ""
+                  }`}
+                >
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    } d-flex justify-content-between pb-2 mb-0 border-0`}
+                  >
                     <div className="d-flex gap-2 p-0">
                       <span className="material-symbols-outlined">badge</span>
                       <div className="fw-bold">
@@ -122,7 +134,11 @@ const PhysioProfile = () => {
                       </div>
                     </div>
                   </ListGroup.Item>
-                  <ListGroup.Item className="d-flex justify-content-between align-items-center py-0 border-0">
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    } d-flex justify-content-between align-items-center py-0 border-0`}
+                  >
                     <div className="d-flex gap-2">
                       <span className="material-symbols-outlined">mail</span>
                       <strong>Email:</strong> {myProfile.email}
@@ -133,7 +149,11 @@ const PhysioProfile = () => {
                     </div>
                   </ListGroup.Item>
 
-                  <ListGroup.Item className="d-flex gap-2 border-0">
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    } d-flex gap-2 border-0`}
+                  >
                     <span className="material-symbols-outlined">
                       stethoscope
                     </span>{" "}
@@ -141,8 +161,12 @@ const PhysioProfile = () => {
                     {myProfile.specialization.slice(0, 1) +
                       myProfile.specialization.slice(1).toLowerCase()}
                   </ListGroup.Item>
-                  <ListGroup.Item>
-                    <div className="d-flex gap-2 border-0">
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    }`}
+                  >
+                    <div className={`d-flex gap-2 border-0`}>
                       <span className="material-symbols-outlined">
                         calendar_month
                       </span>
@@ -159,7 +183,9 @@ const PhysioProfile = () => {
           <Row>
             <Col
               xs={12}
-              className="p-4 shadow-lg rounded-3 link-request-physio-section"
+              className={`${
+                theme === "dark" ? "bg-grey text-white" : ""
+              } p-4 shadow-lg rounded-3 link-request-physio-section`}
             >
               <h4 className="mb-4 text-center">Pending link requests</h4>
               {linkRequests &&
@@ -167,7 +193,11 @@ const PhysioProfile = () => {
                   <SingleRequestPhysio request={request} key={request.id} />
                 ))}
               {linkRequests.length === 0 && (
-                <div className="greenish-6 py-3 d-flex justify-content-center align-items-center">
+                <div
+                  className={`${
+                    theme === "dark" ? "bg-grey text-white" : "greenish"
+                  }  py-3 d-flex justify-content-center align-items-center`}
+                >
                   <p className="m-0">You have 0 pending requests right now.</p>
                 </div>
               )}

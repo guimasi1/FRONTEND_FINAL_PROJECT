@@ -9,6 +9,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import TypingEffect from "./TypingEffect";
 import GoUpButton from "./Utils/GoUpButton";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "./Theme";
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -34,9 +35,19 @@ const Homepage = () => {
       motionControls2.start("visible");
     }
   }, [isInView2]);
+  const { theme } = useTheme();
+  useEffect(() => {
+    if (theme === "light") {
+      document.getElementById("root").classList.add("light");
+      document.getElementById("root").classList.remove("dark");
+    } else {
+      document.getElementById("root").classList.add("dark");
+      document.getElementById("root").classList.remove("light");
+    }
+  }, [theme]);
 
   return (
-    <Container className="mb-5">
+    <Container className={`mb-5 ${theme}`}>
       <ToastContainer />
       <Row>
         <Col className="order-1 order-md-0">
@@ -332,7 +343,7 @@ const Homepage = () => {
               className="w-100 rounded-top-4 bg-white"
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Discover the power of physiotherapy
             </p>
           </motion.div>
@@ -360,7 +371,7 @@ const Homepage = () => {
               className="w-100 rounded-top-4 bg-white "
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Get in touch with the best physiotherapists
             </p>
           </motion.div>
@@ -389,7 +400,7 @@ const Homepage = () => {
               className="w-100 rounded-top-4 bg-white"
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Follow a personalized exercise program{" "}
             </p>
           </motion.div>
@@ -417,7 +428,7 @@ const Homepage = () => {
               className="w-100 rounded-top-4 bg-white"
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Receive feedback from your therapist{" "}
             </p>
           </motion.div>

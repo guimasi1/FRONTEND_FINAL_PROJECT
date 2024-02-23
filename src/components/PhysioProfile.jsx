@@ -75,7 +75,7 @@ const PhysioProfile = () => {
               id="profile-physio-section"
             >
               <div
-                className="d-flex  justify-content-center align-items-center"
+                className="d-flex  justify-content-center align-items-center position-relative"
                 style={{ height: "300px" }}
                 onClick={handleProfileImgClick}
               >
@@ -90,6 +90,16 @@ const PhysioProfile = () => {
                     alt=""
                   />
                 )}
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileHover={{
+                    opacity: 1,
+                    transition: { duration: 0.5 },
+                  }}
+                  className="material-symbols-outlined position-absolute top-50 fs-1 border border-2 cursor border-black rounded-pill p-1 pencil-profile-image"
+                >
+                  edit
+                </motion.span>
                 {waiting && (
                   <div>
                     <BeatLoader color="#0e9a3d" />

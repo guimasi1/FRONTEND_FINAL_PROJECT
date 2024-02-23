@@ -11,7 +11,7 @@ import SinglePhysioByPatient from "./SinglePhysioByPatient";
 import { getPhysiosByPatient } from "../redux/actions/physiotherapistActions";
 import { format, parseISO } from "date-fns";
 import { BeatLoader } from "react-spinners";
-
+import { motion } from "framer-motion";
 const Profile = () => {
   const ref = useRef(null);
   const dispatch = useDispatch();
@@ -79,7 +79,7 @@ const Profile = () => {
               id="info-profile-section"
             >
               <div
-                className="d-flex justify-content-center align-items-center cursor"
+                className="d-flex justify-content-center align-items-center cursor position-relative"
                 style={{ height: "300px" }}
                 onClick={handleProfileImgClick}
               >
@@ -100,6 +100,16 @@ const Profile = () => {
                     alt=""
                   />
                 )}
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileHover={{
+                    opacity: 1,
+                    transition: { duration: 0.5 },
+                  }}
+                  className="material-symbols-outlined position-absolute top-50 fs-1 border border-2 cursor border-black rounded-pill p-1 pencil-profile-image"
+                >
+                  edit
+                </motion.span>
               </div>
               <Form.Control
                 type="file"

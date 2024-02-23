@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { setLogStatus, setRoleState } from "../redux/actions/authentication";
 import { motion } from "framer-motion";
 import { useTheme } from "./Theme";
+import DarkModeButton from "./Utils/DarkModeButton";
 
 const MyNavbar = ({ ThemeProvider }) => {
   const myProfile = useSelector((state) => state.patients.patientProfile);
@@ -38,7 +39,6 @@ const MyNavbar = ({ ThemeProvider }) => {
   useEffect(() => {
     dispatch(setRoleState(role));
   }, [role]);
-  const { toggleTheme } = useTheme();
   const { theme } = useTheme();
   useEffect(() => {
     if (theme === "light") {
@@ -385,14 +385,7 @@ const MyNavbar = ({ ThemeProvider }) => {
             >
               Logout
             </div>
-            <div>
-              <span
-                className="material-symbols-outlined cursor"
-                onClick={toggleTheme}
-              >
-                dark_mode
-              </span>
-            </div>
+            <DarkModeButton />
           </div>
         )}
       </Container>

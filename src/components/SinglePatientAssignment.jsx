@@ -2,6 +2,7 @@ import { Badge, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleAssignment } from "../redux/actions/assignmentsActions";
 import { format, parseISO } from "date-fns";
+import { useTheme } from "./Theme";
 const SinglePatientAssignment = ({ assignment }) => {
   const dispatch = useDispatch();
   const currentAssignment = useSelector(
@@ -11,13 +12,22 @@ const SinglePatientAssignment = ({ assignment }) => {
     parseISO(assignment.assignmentDate),
     "dd MMM yyyy"
   );
+  const { theme } = useTheme();
 
   return (
     <Row
-      className={`cursor single-assignment py-3 px-2 rounded-2 mb-2 fs-7 ${
-        currentAssignment && currentAssignment.id === assignment.id
-          ? "selected-assignment"
+      className={` cursor single-assignment py-3 px-2 rounded-2 mb-2 fs-7 ${
+        theme === "dark"
+          ? currentAssignment && currentAssignment.id === assignment.id
+            ? "selected-assignment"
+            : "text-white"
           : ""
+      } ${
+        theme === "light" &&
+        currentAssignment &&
+        currentAssignment.id === assignment.id
+          ? "selected-assignment"
+          : "text-black"
       }`}
       onClick={() => {
         dispatch(getSingleAssignment(assignment.id));

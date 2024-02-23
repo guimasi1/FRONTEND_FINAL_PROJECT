@@ -1,10 +1,16 @@
 import { Col, Row } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTheme } from "./Theme";
 const SinglePatientExercisesDetails = ({ exercise }) => {
   const [isImgHovered, setIsImgHovered] = useState(false);
+  const { theme } = useTheme();
   return (
-    <Row className="pt-4 border border-1 mb-2 rounded">
+    <Row
+      className={`${
+        theme === "dark" ? "border-0 bg-grey-2" : ""
+      } pt-4 border border-1 mb-2 rounded`}
+    >
       <Col xs={2} className="ps-2 text-center">
         <motion.img
           whileHover={{ scale: 4 }}
@@ -58,7 +64,12 @@ const SinglePatientExercisesDetails = ({ exercise }) => {
           </span>
         </p>
       </Col>
-      <Col xs={12} className="mt-3 border-bottom pb-4 description-paragraph">
+      <Col
+        xs={12}
+        className={`${
+          theme === "dark" ? "border-0" : "border-bottom"
+        } mt-3  pb-4 description-paragraph`}
+      >
         {exercise.exercise && exercise.exercise.description}
       </Col>
     </Row>

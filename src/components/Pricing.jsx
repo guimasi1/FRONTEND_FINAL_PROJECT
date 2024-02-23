@@ -3,8 +3,10 @@ import { Col, Container, ListGroup, Row } from "react-bootstrap";
 import StripeOption1 from "./Utils/StripeOption1";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { useTheme } from "./Theme";
 
 const Pricing = () => {
+  const { theme } = useTheme();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
@@ -68,10 +70,18 @@ const Pricing = () => {
               scale: 1.05,
               transition: { duration: 0.3, delay: 0.2 },
             }}
-            className="d-flex flex-column rounded-4 shadow-lg py-4 px-2 fw-bold mt-4"
+            className={`${
+              theme === "dark" ? "bg-grey" : ""
+            } d-flex flex-column rounded-4 shadow-lg py-4 px-2 fw-bold mt-4`}
           >
             <div className="text-center w-50 badge-pricing">
-              <div className="px-5 py-2 fs-5 rounded-2 text-black">Basic</div>
+              <div
+                className={`px-5 py-2 fs-5 rounded-2 text-black ${
+                  theme === "dark" ? "text-white" : "text-black"
+                }`}
+              >
+                Basic
+              </div>
             </div>
             <div>
               <p className="fs-lg-1 text-center fw-bolder">
@@ -83,25 +93,41 @@ const Pricing = () => {
             </p>
             <hr className="mt-1 mb-4" />
             <ListGroup className="px-4">
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Cras justo odio
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Dapibus ac facilisis in
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Morbi leo risus
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2 mb-5">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2 mb-5`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
@@ -132,7 +158,9 @@ const Pricing = () => {
               scale: 1.05,
               transition: { duration: 0.3, delay: 0.2 },
             }}
-            className="d-flex flex-column rounded-4 shadow-lg py-4 px-2 fw-bold mt-4 position-relative"
+            className={`${
+              theme === "dark" ? "bg-grey" : ""
+            } d-flex flex-column rounded-4 shadow-lg py-4 px-2 fw-bold mt-4 position-relative`}
           >
             <img
               src="images/bookmark.svg"
@@ -141,7 +169,13 @@ const Pricing = () => {
               id="bookmark-favourite-plan"
             />
             <div className="text-center w-50 badge-pricing">
-              <div className="px-5 py-2 fs-5 rounded-2 text-black">Premium</div>
+              <div
+                className={`px-5 py-2 fs-5 rounded-2 ${
+                  theme === "dark" ? "text-white" : "text-black"
+                }`}
+              >
+                Premium
+              </div>
             </div>
             <div>
               <p className="fs-lg-1 text-center fw-bolder">
@@ -153,25 +187,41 @@ const Pricing = () => {
             </p>
             <hr className="mt-1 mb-4" />
             <ListGroup className="px-4">
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Cras justo odio
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Dapibus ac facilisis in
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Morbi leo risus
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2 mb-5">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2 mb-5`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
@@ -202,10 +252,16 @@ const Pricing = () => {
               scale: 1.05,
               transition: { duration: 0.3, delay: 0.2 },
             }}
-            className="d-flex flex-column rounded-4 shadow-lg py-4 px-2 fw-bold mt-4"
+            className={`${
+              theme === "dark" ? "bg-grey" : ""
+            } d-flex flex-column rounded-4 shadow-lg py-4 px-2 fw-bold mt-4`}
           >
             <div className="text-center w-50 badge-pricing">
-              <div className="px-5 py-2 fs-5 rounded-2 text-black">
+              <div
+                className={`px-5 py-2 fs-5 rounded-2 ${
+                  theme === "dark" ? "text-white" : "text-black"
+                }`}
+              >
                 Exclusive
               </div>
             </div>
@@ -219,25 +275,41 @@ const Pricing = () => {
             </p>
             <hr className="mt-1 mb-4" />
             <ListGroup className="px-4">
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Cras justo odio
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Dapibus ac facilisis in
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>
                 Morbi leo risus
               </ListGroup.Item>
-              <ListGroup.Item className="border-0 fw-lighter fs-7 align-items-center d-flex gap-2 mb-5">
+              <ListGroup.Item
+                className={`${
+                  theme === "dark" ? "bg-grey text-white" : ""
+                } border-0 fw-lighter fs-7 align-items-center d-flex gap-2 mb-5`}
+              >
                 <span className="material-symbols-outlined fs-4 fw-bold text-success">
                   check_circle
                 </span>

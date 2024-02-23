@@ -59,14 +59,15 @@ const SingleAssignment = ({ assignment, index }) => {
           : assignment.assignmentStatus}
       </Col>
       <Col className="d-flex gap-3 justify-content-end">
-        <img
-          src="/images\delete_FILL0_wght400_GRAD0_opsz24.svg"
-          alt=""
+        <span
+          className="material-symbols-outlined"
           onClick={() => {
             dispatch(openAssignmentDialog());
             dispatch(setCurrentAssignmentToDelete(assignment.id));
           }}
-        />
+        >
+          delete
+        </span>
       </Col>
     </motion.div>
   );

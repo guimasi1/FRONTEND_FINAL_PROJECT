@@ -195,7 +195,7 @@ const PhysioProfile = () => {
               {linkRequests.length === 0 && (
                 <div
                   className={`${
-                    theme === "dark" ? "bg-grey text-white" : "greenish"
+                    theme === "dark" ? "bg-grey text-white" : "greenish-6"
                   }  py-3 d-flex justify-content-center align-items-center`}
                 >
                   <p className="m-0">You have 0 pending requests right now.</p>
@@ -207,7 +207,9 @@ const PhysioProfile = () => {
       </Row>
       <Row>
         <Col
-          className="mt-4 p-5 shadow-lg rounded-3 ms-2"
+          className={`${
+            theme === "dark" ? "bg-grey" : ""
+          } mt-4 p-5 shadow-lg rounded-3 ms-2`}
           id="biography-section"
         >
           <div className="text-end">

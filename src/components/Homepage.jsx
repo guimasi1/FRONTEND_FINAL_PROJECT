@@ -340,7 +340,7 @@ const Homepage = () => {
           >
             <motion.img
               src="images/Jogging-amico.svg"
-              className="w-100 rounded-top-4 bg-white"
+              className={`w-100 rounded-top-4 bg-white`}
               alt=""
             />
             <p className="fs-5 ps-4 mt-2 fw-bold text-black">

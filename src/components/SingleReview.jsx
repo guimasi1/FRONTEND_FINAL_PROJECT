@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import DeleteConfirmation from "./Utils/DeleteConfirmation";
 import { removeReview } from "../redux/actions/reviewsActions";
+import { useTheme } from "./Theme";
 const SingleReview = ({ review }) => {
+  const { theme } = useTheme();
   const dispatch = useDispatch();
   const formattedDate = format(parseISO(review.date), "dd MMMM yyyy");
 
@@ -30,7 +32,7 @@ const SingleReview = ({ review }) => {
       {!showAlert && (
         <div className="fs-8 mb-2">
           {review && (
-            <div className="d-flex gap-3">
+            <div className={`d-flex gap-3`}>
               <div>
                 <img
                   className="patient-profile-image-review rounded-pill mt-1"
@@ -66,7 +68,9 @@ const SingleReview = ({ review }) => {
                 </div>
                 <div className="cursor me-5">
                   <div
-                    className="d-flex justify-content-center align-items-center rounded-pill bg-secondary-subtle"
+                    className={`${
+                      theme === "dark" ? "bg-grey-2" : "bg-secondary-subtle"
+                    } d-flex justify-content-center align-items-center rounded-pill `}
                     onClick={() => {
                       setShowAlert(true);
                     }}

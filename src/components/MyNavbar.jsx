@@ -340,7 +340,9 @@ const MyNavbar = ({ ThemeProvider }) => {
           <div className="d-flex gap-4 mt-2">
             <Link
               to="/login"
-              className="text-decoration-none text-black fw-bold py-3"
+              className={`${
+                theme === "dark" ? "text-white" : "text-black"
+              } text-decoration-none fw-bold py-3`}
             >
               Login
             </Link>

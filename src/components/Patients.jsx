@@ -6,7 +6,9 @@ import SinglePatient from "./SinglePatient";
 import { useEffect, useState } from "react";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
 import { motion } from "framer-motion";
+import { useTheme } from "./Theme";
 const Patients = () => {
+  const { theme } = useTheme();
   const dispatch = useDispatch();
 
   const myPhysioProfile = useSelector(
@@ -44,7 +46,11 @@ const Patients = () => {
         transition={{ delay: 0.3, ease: "linear", duration: 0.2 }}
         className="row"
       >
-        <Col className="my-5 border p-5 rounded-4 shadow-lg position-relative">
+        <Col
+          className={`${
+            theme === "dark" ? "bg-grey border-0" : ""
+          } my-5 border p-5 rounded-4 shadow-lg position-relative`}
+        >
           <div className="fancy-border-radius p-0 top-0 start-0"></div>
           <Row className="z-3">
             <div className="d-flex flex-column align-items-center">

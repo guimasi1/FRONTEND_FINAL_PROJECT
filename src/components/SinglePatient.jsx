@@ -27,7 +27,7 @@ const SinglePatient = ({ patient }) => {
     <motion.div
       whileHover={{ scale: 1.05, transition: { delay: 0.2 } }}
       className={`shadow-lg rounded-3 d-flex pt-4 pb-2 ps-1 ms-4 patient-card z-3 col ${
-        theme === "dark" ? "bg-grey" : ""
+        theme === "dark" ? "bg-grey-2" : ""
       }`}
     >
       {showAlert && (

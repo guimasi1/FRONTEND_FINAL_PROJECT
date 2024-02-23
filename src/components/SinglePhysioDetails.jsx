@@ -8,7 +8,10 @@ import { parseISO, format } from "date-fns";
 import SingleReview from "./SingleReview";
 import { motion } from "framer-motion";
 import { createReview } from "../redux/actions/reviewsActions";
+import { useTheme } from "./Theme";
+
 const SinglePhysioDetails = () => {
+  const { theme } = useTheme();
   const { id } = useParams();
   const dispatch = useDispatch();
   const physio = useSelector((state) => state.physiotherapists.singlePhysio);
@@ -40,7 +43,11 @@ const SinglePhysioDetails = () => {
     <Container id="physio-card-details">
       <Row className="py-5">
         <Col xs={12} md={{ span: 10, offset: 1 }} className="text-center">
-          <Row className="mt-4 shadow-lg rounded-4 py-4 px-4">
+          <Row
+            className={`${
+              theme === "dark" ? "bg-grey" : ""
+            } mt-4 shadow-lg rounded-4 py-4 px-4`}
+          >
             <Col xs={12}>
               <img
                 src={
@@ -91,7 +98,12 @@ const SinglePhysioDetails = () => {
               </div>
             </Col>
           </Row>
-          <Row className="mt-4 shadow-lg rounded-4 py-4 px-4" id="row-reviews">
+          <Row
+            className={`${
+              theme === "dark" ? "bg-grey" : ""
+            } mt-4 shadow-lg rounded-4 py-4 px-4`}
+            id="row-reviews"
+          >
             <Col className="text-start">
               <h4 className="fs-5 mt-4 mb-4">
                 {physio.reviews ? physio.reviews.length : ""}

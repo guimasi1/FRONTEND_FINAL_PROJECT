@@ -8,7 +8,9 @@ import ErrorAuthentication from "./Utils/ErrorAuthentication";
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
 import { disableInstantTransitions } from "framer-motion";
 import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
+import { useTheme } from "./Theme";
 const Login = () => {
+  const { theme } = useTheme();
   const dispatch = useDispatch();
   const [loginData, setLoginData] = useState(null);
   const navigate = useNavigate();
@@ -38,7 +40,11 @@ const Login = () => {
   };
   const [role, setRole] = useState("");
   return (
-    <Container className="border border-2 pb-5 mb-5 mt-2 rounded-5 shadow-lg ">
+    <Container
+      className={`${
+        theme === "dark" ? "border-0 bg-grey" : ""
+      } border border-2 pb-5 mb-5 mt-2 rounded-5 shadow-lg`}
+    >
       <Row className="px-5">
         <Col xs={12} md={6} className="text-center order-1 pt-4">
           <img

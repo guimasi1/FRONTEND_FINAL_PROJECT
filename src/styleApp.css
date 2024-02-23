@@ -448,6 +448,10 @@ code {
   height: 556px;
 }
 
+.pencil-profile-image {
+  left: 45%;
+}
+
 .image-exercise-default {
   width: 80px;
 }

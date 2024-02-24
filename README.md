@@ -37,6 +37,7 @@ To store the data I used PostgreSQL.
 - Both type of users can:
   - change profile details
   - upload profile picture
+  - choose between light and dark mode
 
 ## :package: Packages
 

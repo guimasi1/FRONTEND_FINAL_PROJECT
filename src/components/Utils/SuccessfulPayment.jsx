@@ -1,8 +1,10 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
+import { useTheme } from "../Theme";
 
 const SuccessfulPayment = () => {
+  const { theme } = useTheme();
   const navigate = useNavigate();
 
   return (
@@ -16,7 +18,11 @@ const SuccessfulPayment = () => {
           recycle={false}
         />
         <Col>
-          <div className="d-flex flex-column align-items-center justify-content-center mt-5 fs-lg-3">
+          <div
+            className={`${
+              theme === "dark" ? "text-black" : ""
+            } d-flex flex-column align-items-center justify-content-center mt-5 fs-lg-3`}
+          >
             <p>
               <strong>Congratulation!</strong>
             </p>

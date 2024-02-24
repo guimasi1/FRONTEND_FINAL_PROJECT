@@ -337,7 +337,7 @@ const MyNavbar = ({ ThemeProvider }) => {
           </Nav>
         </Navbar.Collapse>
         {!loggedIn && (
-          <div className="d-flex gap-4 mt-2">
+          <div className="d-flex gap-4">
             <Link
               to="/login"
               className={`${
@@ -355,7 +355,7 @@ const MyNavbar = ({ ThemeProvider }) => {
           </div>
         )}
         {loggedIn && (
-          <div className="d-flex gap-4 mt-2 align-items-center">
+          <div className="d-flex gap-4 align-items-center">
             {roleState === "PHYSIOTHERAPIST" && (
               <p className="m-0 fw-bold">Hi, {myPhysioProfile?.firstName}!</p>
             )}

@@ -192,6 +192,10 @@ code {
   filter: blur(1px);
 }
 
+.text-greenish {
+  color: #0e9a3d;
+}
+
 .greenish {
   background-color: #0e9a3d !important;
 }

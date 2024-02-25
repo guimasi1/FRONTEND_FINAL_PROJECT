@@ -64,8 +64,6 @@ const Physiotherapist = () => {
       exit={{ opacity: 0 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
     >
-      <div className="fancy-border-radius p-0 top-0 start-0"></div>
-
       <Row>
         <div className="d-flex flex-column align-items-center">
           <h1 className="mb-2">Our physiotherapists</h1>

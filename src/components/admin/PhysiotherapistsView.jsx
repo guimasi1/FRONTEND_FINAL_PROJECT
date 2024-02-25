@@ -25,7 +25,7 @@ const PhysiotherapistsView = () => {
       <Col xs={12} className="mt-2 text-center me-5">
         <h1>Physiotherapists</h1>
         <Row className="mb-3 mt-4">
-          <Col className="d-flex gap-3">
+          <Col className="d-flex gap-3 text-start">
             <div>
               <Form.Label>Search</Form.Label>
 

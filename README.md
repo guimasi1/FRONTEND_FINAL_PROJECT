@@ -38,6 +38,9 @@ To store the data I used PostgreSQL.
   - change profile details
   - upload profile picture
   - choose between light and dark mode
+- Admin can:
+  - remove physiotherapists, patients, exercises.
+  - add physiotherapists, patients, exercises.
 
 ## :package: Packages
 

@@ -39,9 +39,7 @@ const SingleExerciseAdmin = ({ exercise }) => {
           <Col>
             <p className="m-0 pt-2">{exercise?.targetArea}</p>
           </Col>
-          <Col xs={2}>
-            {/* <p className="m-0 pt-2">{exercise?.difficultyLevel}</p> */}
-          </Col>
+
           <Col xs={2}>
             <p className="m-0 pt-2">
               {exercise?.difficultyLevel.slice(0, 1) +
@@ -49,7 +47,7 @@ const SingleExerciseAdmin = ({ exercise }) => {
             </p>
           </Col>
           <Col xs={2}>
-            {/* <p className="m-0 pt-2">{exercise?.registrationDate}</p> */}
+            <p className="m-0 pt-2 truncate">{exercise?.imageUrl}</p>
           </Col>
           <Col
             xs={1}

@@ -67,9 +67,14 @@ export const getPatientsByLastName = (lastName, size) => {
   };
 };
 export const getAllExercisesByParams = (params, size) => {
-  const { name, difficultyLevel, targetArea } = params;
+  let { name, difficultyLevel, targetArea } = params;
   const token = Cookies.get("token");
-
+  if (targetArea === "ANY") {
+    targetArea = "";
+  }
+  if (difficultyLevel === "ANY") {
+    difficultyLevel = "";
+  }
   return async (dispatch) => {
     try {
       const res = await fetch(
@@ -78,7 +83,7 @@ export const getAllExercisesByParams = (params, size) => {
           name +
           "&size=" +
           size +
-          "&difficultyLevel=" +
+          "&difficulty=" +
           difficultyLevel +
           "&targetArea=" +
           targetArea,

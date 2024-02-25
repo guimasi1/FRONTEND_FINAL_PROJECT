@@ -20,7 +20,7 @@ const SinglePhysioAdmin = ({ physio }) => {
       {showAlert && (
         <Row className="fs-6 row rounded cursor text-start pb-2">
           <DeleteConfirmation
-            message={"Are you sure you want to delete the patient?"}
+            message={"Are you sure you want to delete the physiotherapist?"}
             setShowAlert={setShowAlert}
             setConfirmElimination={setConfirmElimination}
           />

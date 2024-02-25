@@ -9,6 +9,7 @@ import toastifyReducer from "../reducers/toastifyReducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // Usa local storage come default
 import reviewsReducer from "../reducers/reviewsReducer";
+import adminsReducer from "../reducers/adminsReducer";
 
 const rootReducer = combineReducers({
   register: registerReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   assignments: assignmentReducer,
   toastify: toastifyReducer,
   reviews: reviewsReducer,
+  admins: adminsReducer,
 });
 
 const persistConfig = {

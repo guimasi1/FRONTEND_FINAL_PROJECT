@@ -1,12 +1,17 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useTheme } from "./Theme";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { theme } = useTheme();
   return (
-    <Container fluid className="mt-5 pt-5">
+    <Container
+      fluid
+      className={location.pathname === "/admin" ? "d-none" : "mt-5 pt-5"}
+    >
       <Row
         className={`fs-8 ${theme === "dark" ? "bg-grey-2" : "greenish-6"} pt-5`}
       >

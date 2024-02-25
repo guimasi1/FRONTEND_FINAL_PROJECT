@@ -50,8 +50,11 @@ const MyNavbar = ({ ThemeProvider }) => {
     }
   }, [theme]);
   return (
-    <Navbar expand="lg">
-      <Container className="ps-lg-5">
+    <Navbar
+      expand="lg"
+      className={location.pathname === "/admin" ? "d-none" : ""}
+    >
+      <Container className="ps-lg-3">
         <Navbar.Brand className="me-0 ">
           <img
             src="/images/logo.svg"

@@ -19,6 +19,7 @@ import SuccessfulPayment from "./components/Utils/SuccessfulPayment";
 import DeniedPayment from "./components/Utils/DeniedPayment";
 import Pricing from "./components/Pricing";
 import { ThemeProvider } from "react-bootstrap";
+import Dashboard from "./components/admin/Dashboard";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Dashboard />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/physiotherapists" element={<Physiotherapists />} />
           <Route path="/physioDetails/:id" element={<SinglePhysioDetails />} />

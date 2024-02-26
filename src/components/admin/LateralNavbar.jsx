@@ -29,9 +29,9 @@ const LateralNavbar = ({
       </div>
       <motion.div
         whileHover={{ backgroundColor: "#00000" }}
-        className={`${
-          activeBreadCrumb === "main" ? "bg-black" : ""
-        } d-flex gap-2 py-2 rounded mb-2 px-2`}
+        className={`${activeBreadCrumb === "main" ? "bg-black" : ""} ${
+          activeBreadCrumb !== "main" ? "bg-grey" : ""
+        }  d-flex gap-2 py-2 rounded mb-2 px-2`}
         onClick={() => {
           setComponent("main");
         }}

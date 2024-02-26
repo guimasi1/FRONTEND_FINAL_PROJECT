@@ -59,7 +59,9 @@ const DashboardView = () => {
               onClick={() => {
                 setStatistics("patients-physios");
               }}
-              className={`p-4 rounded cursor bg-grey`}
+              className={`p-4 rounded cursor 
+              ${statistics.includes("patients") ? "bg-brownish" : "bg-grey"}
+              `}
             >
               <p className="fw-bold fs-3">Patients</p>
               <p>Total: {totalPatients}</p>
@@ -69,7 +71,9 @@ const DashboardView = () => {
             <motion.div
               transition={{ duration: 0.3 }}
               whileHover={{ scale: 1.04, backgroundColor: "#ce9d58" }}
-              className={`p-4 rounded cursor bg-grey`}
+              className={`p-4 rounded cursor ${
+                statistics.includes("patients") ? "bg-brownish" : "bg-grey"
+              }`}
               onClick={() => {
                 setStatistics("patients-physios");
               }}
@@ -85,7 +89,9 @@ const DashboardView = () => {
               onClick={() => {
                 setStatistics("exercises");
               }}
-              className={`p-4 rounded cursor bg-grey`}
+              className={`p-4 rounded cursor  ${
+                statistics === "exercises" ? "bg-brownish" : "bg-grey"
+              }`}
             >
               <p className="fw-bold fs-3">Exercises</p>
               <p>Total: {totalExercises}</p>

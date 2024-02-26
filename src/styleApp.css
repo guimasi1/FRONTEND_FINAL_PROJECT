@@ -177,11 +177,15 @@ body {
 }
 
 .bg-grey {
-  background-color: #434343 !important;
+  background-color: #434343;
 }
 
 .bg-grey-2 {
-  background-color: rgb(46, 46, 46) !important;
+  background-color: rgb(46, 46, 46);
+}
+
+.bg-brownish {
+  background-color: #ce9d58;
 }
 
 code {

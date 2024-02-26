@@ -1,11 +1,16 @@
 import { motion } from "framer-motion";
-const LateralNavbar = ({ setActiveBreadCrumb, setWidth, width }) => {
+const LateralNavbar = ({
+  setActiveBreadCrumb,
+  setWidth,
+  width,
+  activeBreadCrumb,
+}) => {
   const setComponent = (component) => {
     setActiveBreadCrumb(component);
   };
 
   return (
-    <div className="fw-bold px-3 pt-3 vh-100 shadow-sm">
+    <div className="fw-bold px-3 pt-3 vh-100 shadow-sm position-sticky top-0">
       <div className="d-flex justify-content-end">
         <span
           onClick={() => {
@@ -24,7 +29,23 @@ const LateralNavbar = ({ setActiveBreadCrumb, setWidth, width }) => {
       </div>
       <motion.div
         whileHover={{ backgroundColor: "#00000" }}
-        className="d-flex gap-2 py-2 rounded px-2"
+        className={`${
+          activeBreadCrumb === "main" ? "bg-black" : ""
+        } d-flex gap-2 py-2 rounded mb-2 px-2`}
+        onClick={() => {
+          setComponent("main");
+        }}
+      >
+        <span className="material-symbols-outlined cursor">
+          bar_chart_4_bars
+        </span>
+        {width === "auto" && <p className="cursor m-0">Statistics</p>}{" "}
+      </motion.div>
+      <motion.div
+        whileHover={{ backgroundColor: "#00000" }}
+        className={`${
+          activeBreadCrumb === "patients" ? "bg-black" : ""
+        } d-flex gap-2 py-2 rounded mb-2 px-2`}
         onClick={() => {
           setComponent("patients");
         }}
@@ -35,7 +56,9 @@ const LateralNavbar = ({ setActiveBreadCrumb, setWidth, width }) => {
         {width === "auto" && <p className="cursor m-0">Patients</p>}{" "}
       </motion.div>
       <motion.div
-        className="d-flex gap-2 py-2 rounded px-2"
+        className={`${
+          activeBreadCrumb === "physiotherapists" ? "bg-black" : ""
+        } d-flex gap-2 py-2 rounded mb-2 px-2`}
         whileHover={{ backgroundColor: "#00000" }}
         onClick={() => {
           setComponent("physiotherapists");
@@ -47,7 +70,9 @@ const LateralNavbar = ({ setActiveBreadCrumb, setWidth, width }) => {
         )}{" "}
       </motion.div>
       <motion.div
-        className="d-flex gap-2 py-2 rounded px-2"
+        className={`${
+          activeBreadCrumb === "exercises" ? "bg-black" : ""
+        } d-flex gap-2 py-2 rounded mb-2 px-2`}
         whileHover={{ backgroundColor: "#00000" }}
         onClick={() => {
           setComponent("exercises");
@@ -55,16 +80,6 @@ const LateralNavbar = ({ setActiveBreadCrumb, setWidth, width }) => {
       >
         <span className="material-symbols-outlined cursor">fitness_center</span>
         {width === "auto" && <p className="cursor m-0">Exercises</p>}{" "}
-      </motion.div>
-      <motion.div
-        className="d-flex gap-2 py-2 rounded px-2"
-        whileHover={{ backgroundColor: "#00000" }}
-        onClick={() => {
-          setComponent("assignments");
-        }}
-      >
-        <span className="material-symbols-outlined cursor">assignment</span>
-        {width === "auto" && <p className="cursor m-0">Assignments</p>}{" "}
       </motion.div>
     </div>
   );

@@ -89,8 +89,8 @@ const MyNavbar = ({ ThemeProvider }) => {
           >
             <g
               id="svgGroup"
-              stroke-linecap="round"
-              fill-rule="evenodd"
+              strokeLinecap="round"
+              fillRule="evenodd"
               font-size="9pt"
               stroke="#0e9a3d"
               stroke-width="1mm"

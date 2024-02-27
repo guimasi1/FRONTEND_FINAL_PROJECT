@@ -4,6 +4,7 @@ import { createExerciseWithDetails } from "../redux/actions/exercisesActions";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import SuccessfulActionMessage from "./Utils/SuccessfulActionMessage";
+import { useTheme } from "./Theme";
 
 const SingleExercise = ({
   exercise,
@@ -13,6 +14,7 @@ const SingleExercise = ({
   getSingleAssignment,
   currentAssignmentId,
 }) => {
+  const { theme } = useTheme();
   const [sets, setSets] = useState(1);
   const [reps, setReps] = useState(1);
   const dispatch = useDispatch();
@@ -22,7 +24,9 @@ const SingleExercise = ({
       xs={12}
       md={12}
       lg={3}
-      className="border rounded-2 py-2 px-3 col-exercise ms-lg-4"
+      className={`${
+        theme === "dark" ? "bg-grey-2 border-0" : ""
+      } border rounded-2 py-2 px-3 col-exercise ms-lg-4`}
     >
       {showConfirmation && (
         <SuccessfulActionMessage message={"Exercise added successfully"} />

@@ -7,13 +7,16 @@ import {
 import { getMyPatientProfile } from "../redux/actions/patientsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
-import { easeOut, motion, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   getPatientsLinkRequests,
   getSingleRequest,
 } from "../redux/actions/linkRequestsActions";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "./Theme";
+
 const SinglePhysio = ({ physio, index }) => {
+  const { theme } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const myProfile = useSelector((state) => state.patients.patientProfile);
@@ -64,7 +67,9 @@ const SinglePhysio = ({ physio, index }) => {
       whileInView={{ opacity: 1 }}
       initial={{ opacity: 0.04 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
-      className="d-flex mb-4 gap-3 border border-1 rounded-1 ps-0 shadow-lg row"
+      className={`${
+        theme === "dark" ? "border-0 bg-grey-2" : ""
+      } d-flex mb-4 gap-3 border border-1 rounded-1 ps-0 shadow-lg row`}
       xs={12}
     >
       <Col xs={2} className="rounded-start-1">

@@ -24,10 +24,9 @@ const AddedExercise = ({ exercise, index }) => {
           <Col className=" rounded-end-2" xs={1}>
             {exercise && exercise.reps}
           </Col>
-          <Col xs={1} className=" rounded-end-2">
-            <motion.img
-              src="/images/delete_FILL0_wght400_GRAD0_opsz24.svg"
-              alt=""
+          <Col xs={1} className="rounded-end-2">
+            <motion.span
+              className="material-symbols-outlined"
               whileTap={{ scale: 0.8 }}
               onClick={() => {
                 // dispatch(removeExerciseDetails(exercise.id));
@@ -36,7 +35,9 @@ const AddedExercise = ({ exercise, index }) => {
                 }
                 dispatch(openDialog());
               }}
-            />
+            >
+              delete
+            </motion.span>
           </Col>
         </Row>
       )}

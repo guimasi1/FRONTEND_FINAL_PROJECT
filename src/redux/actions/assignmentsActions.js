@@ -288,7 +288,6 @@ export const setAssignmentCompleted = (id) => {
 };
 
 export const editAssignment = (id, assignmentData) => {
-  console.log(assignmentData.id);
   const token = Cookies.get("token");
   return async (dispatch) => {
     try {
@@ -306,8 +305,6 @@ export const editAssignment = (id, assignmentData) => {
           payload: assignmentData,
         });
       } else {
-        console.log(assignmentData);
-        console.log(id);
         throw new Error("Something went wrong.");
       }
     } catch (error) {

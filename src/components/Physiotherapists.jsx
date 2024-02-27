@@ -12,8 +12,11 @@ import GoUpButton from "./Utils/GoUpButton";
 import Select from "react-select";
 import { motion } from "framer-motion";
 import { getPatientsAcceptedRequests } from "../redux/actions/linkRequestsActions";
+import { useTheme } from "./Theme";
+
 const Physiotherapist = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
   const physiotherapists = useSelector(
     (state) => state.physiotherapists.physiotherapistsData.content
   );
@@ -53,14 +56,14 @@ const Physiotherapist = () => {
 
   return (
     <motion.div
-      className="mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative container physiotherapists-container"
+      className={`${
+        theme === "dark" ? "bg-grey border-0" : ""
+      } mb-5 mt-2 border p-5 rounded-5 shadow-lg position-relative container physiotherapists-container`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
     >
-      <div className="fancy-border-radius p-0 top-0 start-0"></div>
-
       <Row>
         <div className="d-flex flex-column align-items-center">
           <h1 className="mb-2">Our physiotherapists</h1>

@@ -1,12 +1,4 @@
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Form,
-  ListGroup,
-  Row,
-} from "react-bootstrap";
+import { Card, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 import {
   getMyPatientProfile,
   uploadPatientProfileImage,
@@ -19,8 +11,11 @@ import SinglePhysioByPatient from "./SinglePhysioByPatient";
 import { getPhysiosByPatient } from "../redux/actions/physiotherapistActions";
 import { format, parseISO } from "date-fns";
 import { BeatLoader } from "react-spinners";
+import { motion } from "framer-motion";
+import { useTheme } from "./Theme";
 
 const Profile = () => {
+  const { theme } = useTheme();
   const ref = useRef(null);
   const dispatch = useDispatch();
   const [update, setUpdate] = useState(0);
@@ -83,11 +78,13 @@ const Profile = () => {
         {myProfile && (
           <Col>
             <Card
-              className="shadow-lg border-0 rounded-3"
+              className={`${
+                theme === "dark" ? "bg-grey" : ""
+              } shadow-lg border-0 rounded-3`}
               id="info-profile-section"
             >
               <div
-                className="d-flex justify-content-center align-items-center cursor"
+                className="d-flex justify-content-center align-items-center cursor position-relative"
                 style={{ height: "300px" }}
                 onClick={handleProfileImgClick}
               >
@@ -104,10 +101,20 @@ const Profile = () => {
                         : "images/Circle-icons-profile.svg"
                     }`}
                     style={{ width: "300px" }}
-                    className="rounded-pill mt-3 shadow-sm"
+                    className={`bg-white rounded-pill mt-3 shadow-sm`}
                     alt=""
                   />
                 )}
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileHover={{
+                    opacity: 1,
+                    transition: { duration: 0.5 },
+                  }}
+                  className="material-symbols-outlined position-absolute top-50 fs-1 border border-2 cursor border-black rounded-pill p-1 pencil-profile-image"
+                >
+                  edit
+                </motion.span>
               </div>
               <Form.Control
                 type="file"
@@ -117,13 +124,21 @@ const Profile = () => {
               />
               <Card.Body>
                 <ListGroup className="list-group-flush">
-                  <ListGroup.Item className="py-0 border-0 d-flex justify-content-between mb-2">
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    } py-0 border-0 d-flex justify-content-between mb-2`}
+                  >
                     <div className="fw-bold d-flex gap-2">
                       <span className="material-symbols-outlined">badge</span>
                       {myProfile.firstName} {myProfile.lastName}
                     </div>
                   </ListGroup.Item>
-                  <ListGroup.Item className="py-0 border-0 d-flex justify-content-between align-items-center">
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    } py-0 border-0 d-flex justify-content-between align-items-center`}
+                  >
                     <div className="d-flex gap-2">
                       <span className="material-symbols-outlined">mail</span>
                       <strong>Email:</strong> {myProfile.email}
@@ -133,7 +148,11 @@ const Profile = () => {
                       <p className="p-0 mt-3">{myProfile.phoneNumber}</p>
                     </div>
                   </ListGroup.Item>
-                  <ListGroup.Item className="py-0 border-0 d-flex gap-1">
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    } py-0 border-0 d-flex gap-1`}
+                  >
                     <div className="d-flex gap-2">
                       <span className="material-symbols-outlined">man</span>
                       <strong>Gender:</strong>{" "}
@@ -143,7 +162,11 @@ const Profile = () => {
                       {myProfile.gender.slice(1).toLowerCase()}
                     </p>
                   </ListGroup.Item>
-                  <ListGroup.Item className="py-0 border-0 d-flex gap-1">
+                  <ListGroup.Item
+                    className={`${
+                      theme === "dark" ? "bg-grey text-white" : ""
+                    } py-0 border-0 d-flex gap-1`}
+                  >
                     <div className="d-flex gap-2">
                       <span className="material-symbols-outlined">
                         calendar_month
@@ -161,7 +184,9 @@ const Profile = () => {
           <Row>
             <Col
               xs={12}
-              className="p-4 shadow-lg rounded-3"
+              className={`${
+                theme === "dark" ? "bg-grey" : ""
+              } p-4 shadow-lg rounded-3`}
               id="sent-requests-section"
             >
               <h4 className="mb-4 text-center">Sent link requests</h4>
@@ -174,7 +199,11 @@ const Profile = () => {
                   />
                 ))}
               {patientLinkRequests.length === 0 && (
-                <div className="greenish-6 py-3 d-flex justify-content-center align-items-center">
+                <div
+                  className={`${
+                    theme === "dark" ? "brownish-button" : "greenish-6"
+                  } py-3 d-flex justify-content-center align-items-center`}
+                >
                   <p className="m-0">You have 0 pending requests right now.</p>
                 </div>
               )}
@@ -184,7 +213,9 @@ const Profile = () => {
         <Col xs={12}>
           <Row>
             <Col
-              className="mt-4 p-5 shadow-lg rounded-3 ms-2"
+              className={`${
+                theme === "dark" ? "bg-grey" : ""
+              } mt-4 p-5 shadow-lg rounded-3 ms-2`}
               id="biography-section"
             >
               <h3 className="text-center mb-5">Your physiotherapists</h3>

@@ -9,6 +9,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import TypingEffect from "./TypingEffect";
 import GoUpButton from "./Utils/GoUpButton";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "./Theme";
 
 const Homepage = () => {
   const dispatch = useDispatch();
@@ -34,9 +35,19 @@ const Homepage = () => {
       motionControls2.start("visible");
     }
   }, [isInView2]);
+  const { theme } = useTheme();
+  useEffect(() => {
+    if (theme === "light") {
+      document.getElementById("root").classList.add("light");
+      document.getElementById("root").classList.remove("dark");
+    } else {
+      document.getElementById("root").classList.add("dark");
+      document.getElementById("root").classList.remove("light");
+    }
+  }, [theme]);
 
   return (
-    <Container className="mb-5">
+    <Container className={`mb-5 ${theme}`}>
       <ToastContainer />
       <Row>
         <Col className="order-1 order-md-0">
@@ -50,7 +61,7 @@ const Homepage = () => {
           >
             Step into Wellness, Move Beyond
             <motion.p
-              className="d-block d-md-inline ms-3"
+              className="d-block d-md-inline ms-3 text-greenish"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -329,10 +340,10 @@ const Homepage = () => {
           >
             <motion.img
               src="images/Jogging-amico.svg"
-              className="w-100 rounded-top-4 bg-white"
+              className={`w-100 rounded-top-4 bg-white`}
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Discover the power of physiotherapy
             </p>
           </motion.div>
@@ -360,7 +371,7 @@ const Homepage = () => {
               className="w-100 rounded-top-4 bg-white "
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Get in touch with the best physiotherapists
             </p>
           </motion.div>
@@ -389,7 +400,7 @@ const Homepage = () => {
               className="w-100 rounded-top-4 bg-white"
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Follow a personalized exercise program{" "}
             </p>
           </motion.div>
@@ -417,7 +428,7 @@ const Homepage = () => {
               className="w-100 rounded-top-4 bg-white"
               alt=""
             />
-            <p className="fs-5 ps-4 mt-2 fw-bold">
+            <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Receive feedback from your therapist{" "}
             </p>
           </motion.div>
@@ -425,6 +436,39 @@ const Homepage = () => {
       </Row>
 
       <Row className="" id="row-margin-top"></Row>
+      <Row className="mt-5">
+        <Col className="d-flex flex-column text-center mt-5">
+          <h4 className="fs-1 fw-bold">Are you ready?</h4>
+          <div className="d-flex justify-content-center ">
+            <svg
+              className="w-25"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <motion.path
+                  d="M8 12.3333L10.4615 15L16 9M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                  stroke="#0e9a3d"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ opacity: 0, pathLength: 0 }}
+                  animate={{ opacity: 1, pathLength: 1 }}
+                  whileInView={{ opacity: 1, pathLength: 1 }}
+                  transition={{ duration: 2.5, delay: 4 }}
+                ></motion.path>
+              </g>
+            </svg>
+          </div>
+        </Col>
+      </Row>
       <GoUpButton />
     </Container>
   );

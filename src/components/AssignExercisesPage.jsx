@@ -26,9 +26,12 @@ import MyPagination from "./MyPagination";
 import ConfirmDialog from "./Utils/ConfirmDialog";
 import ConfirmAssignmentDialog from "./Utils/ConfirmAssignmentDialog";
 import { format, parseISO } from "date-fns";
+import { useTheme } from "./Theme";
+
 const AssignExercisesPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const { theme } = useTheme();
   const patientProfile = useSelector((state) => state.patients.singlePatient);
   const currentPhysio = useSelector(
     (state) => state.physiotherapists.physioProfile
@@ -53,6 +56,10 @@ const AssignExercisesPage = () => {
   );
   const currentExerciseId = useSelector(
     (state) => state.exercises.currentExerciseId
+  );
+  const showDialog = useSelector((state) => state.exercises.dialogStatus);
+  const showDialogAssignments = useSelector(
+    (state) => state.assignments.dialogStatus
   );
 
   const currentAssignmentToDeleteId = useSelector(
@@ -213,17 +220,26 @@ const AssignExercisesPage = () => {
           {currentAssignmentToDeleteId && <ConfirmAssignmentDialog />}
           <Col xs={{ span: 4 }}>
             <Row
-              className="shadow-lg rounded-4 py-3 px-5 ms-3"
+              className={`${
+                (showDialog || showDialogAssignments) && "blur"
+              } shadow-lg rounded-4 py-3 px-5 ms-3 ${
+                theme === "dark" ? "bg-grey" : ""
+              }`}
               id="your-patient-section"
             >
-              <Col xs={12} className="position-relative">
+              <Col
+                xs={12}
+                className={`${
+                  (showDialog || showDialogAssignments) && "blur"
+                } position-relative`}
+              >
                 <div>
                   <div>
                     <h3 className="text-center pt-3">Your patient</h3>
                   </div>
                 </div>
               </Col>
-              <Col xs={12} className=" rounded-4 ">
+              <Col xs={12} className={`rounded-4`}>
                 <div>
                   <div className="d-flex justify-content-center mt-2 mb-4">
                     <img
@@ -259,7 +275,11 @@ const AssignExercisesPage = () => {
 
           <Col
             xs={7}
-            className="shadow-lg rounded-4 px-5 pb-3 ms-5"
+            className={`${
+              (showDialog || showDialogAssignments) && "blur"
+            } shadow-lg rounded-4 px-5 pb-3 ms-5 ${
+              theme === "dark" ? "bg-grey" : ""
+            }`}
             id="assigned-programs-section"
           >
             <h3 className="text-center mt-2 py-3">Assigned programs</h3>
@@ -283,8 +303,16 @@ const AssignExercisesPage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row className="mb-2 align-items-center cursor">
-              <Col className="fw-bold" xs={1}>
+            <Row
+              className={`${
+                (showDialog || showDialogAssignments) && "blur"
+              } mb-2 align-items-center cursor`}
+            >
+              <Col
+                className={`
+              ${showDialog && "blur"} fw-bold`}
+                xs={1}
+              >
                 <div className="d-flex justify-content-center align-items-center py-2">
                   N°
                 </div>
@@ -303,7 +331,11 @@ const AssignExercisesPage = () => {
               ))}
           </Col>
           {currentAssignment && (
-            <Col className="shadow-lg rounded-4 px-5 mt-3">
+            <Col
+              className={` ${theme === "dark" ? "bg-grey" : ""} ${
+                (showDialog || showDialogAssignments) && "blur"
+              } shadow-lg rounded-4 px-5 mt-3`}
+            >
               <Row>
                 <Col
                   xs={12}
@@ -340,7 +372,13 @@ const AssignExercisesPage = () => {
                 transition={{ delay: 0.3, ease: "linear", duration: 0.3 }}
               >
                 <Col xs={12}>
-                  <Row className=" rounded-2 text-center mb-2 fw-bold border-bottom greenish-6 py-2">
+                  <Row
+                    className={`rounded-2 text-center mb-2 fw-bold border-bottom  ${
+                      theme === "dark"
+                        ? "dark border-black border-3"
+                        : "greenish-6"
+                    } py-2`}
+                  >
                     <Col className="rounded-start-2" xs={1}>
                       N°
                     </Col>
@@ -381,7 +419,6 @@ const AssignExercisesPage = () => {
                               ...assignmentData,
                               notes: e.target.value,
                             });
-                            console.log(assignmentData);
                           }}
                         />
                       </Form.Group>
@@ -426,7 +463,6 @@ const AssignExercisesPage = () => {
                         ...exercisesParams,
                         name: e.target.value,
                       });
-                      console.log(exercisesParams);
                     }}
                   />
                 </Col>

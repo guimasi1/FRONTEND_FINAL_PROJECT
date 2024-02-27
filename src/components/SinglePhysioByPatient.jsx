@@ -6,11 +6,13 @@ import DeleteConfirmation from "./Utils/DeleteConfirmation";
 import { useDispatch, useSelector } from "react-redux";
 import { removePhysioFromPatient } from "../redux/actions/patientsActions";
 import { getPhysiosByPatient } from "../redux/actions/physiotherapistActions";
+import { useNavigate } from "react-router";
 const SinglePhysioByPatient = ({ physio }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [confirmElimination, setConfirmElimination] = useState(false);
   const myProfile = useSelector((state) => state.patients.patientProfile);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     if (confirmElimination) {
       dispatch(removePhysioFromPatient(physio.id, myProfile.id));
@@ -43,7 +45,12 @@ const SinglePhysioByPatient = ({ physio }) => {
           >
             <span className="material-symbols-outlined">close</span>
           </motion.div>
-          <div>
+          <div
+            onClick={() => {
+              navigate("/physioDetails/" + physio.id);
+              window.scrollTo(0, 0);
+            }}
+          >
             <img
               src={`${
                 physio.profilePictureUrl
@@ -56,7 +63,12 @@ const SinglePhysioByPatient = ({ physio }) => {
             />
           </div>
           <div className="d-flex flex-column ms-2">
-            <div>
+            <div
+              onClick={() => {
+                navigate("/physioDetails/" + physio.id);
+                window.scrollTo(0, 0);
+              }}
+            >
               <p className="fw-bold m-0 fs-7">
                 {physio ? physio.firstName : ""} {physio ? physio.lastName : ""}
               </p>

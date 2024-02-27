@@ -12,8 +12,10 @@ import SinglePatientAssignment from "./SinglePatientAssignment";
 import SinglePatientExercisesDetails from "./SinglePatientExercisesDetails";
 import DownloadPDFButton from "./DownloadPDFButton";
 import { motion } from "framer-motion";
+import { useTheme } from "./Theme";
 
 const MyExercisesPage = () => {
+  const { theme } = useTheme();
   const myPatientProfile = useSelector(
     (state) => state.patients.patientProfile
   );
@@ -57,7 +59,9 @@ const MyExercisesPage = () => {
         <Col
           xs={12}
           xl={4}
-          className="shadow-lg rounded-5 p-5 assignment-column-patient"
+          className={`${
+            theme === "dark" ? "bg-grey" : ""
+          } shadow-lg rounded-5 p-5 assignment-column-patient`}
         >
           <h4>Your assignments</h4>
 
@@ -125,7 +129,12 @@ const MyExercisesPage = () => {
                 />
               ))}
         </Col>
-        <Col className="shadow-lg rounded-5 p-5" id="exercises">
+        <Col
+          className={`${
+            theme === "dark" ? "bg-grey" : ""
+          } shadow-lg rounded-5 p-5`}
+          id="exercises"
+        >
           <div className="d-flex justify-content-end ">
             <DownloadPDFButton />
           </div>

@@ -10,7 +10,9 @@ const Footer = () => {
   return (
     <Container
       fluid
-      className={location.pathname === "/admin" ? "d-none" : "mt-5 pt-5"}
+      className={
+        location.pathname.startsWith("/admin") ? "d-none" : "mt-5 pt-5"
+      }
     >
       <Row
         className={`fs-8 ${theme === "dark" ? "bg-grey-2" : "greenish-6"} pt-5`}

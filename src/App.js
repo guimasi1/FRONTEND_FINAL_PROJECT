@@ -20,6 +20,7 @@ import DeniedPayment from "./components/Utils/DeniedPayment";
 import Pricing from "./components/Pricing";
 import { ThemeProvider } from "react-bootstrap";
 import Dashboard from "./components/admin/Dashboard";
+import AdminLogin from "./components/admin/AdminLogin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/physiotherapists" element={<Physiotherapists />} />

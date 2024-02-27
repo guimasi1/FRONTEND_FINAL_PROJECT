@@ -18,29 +18,30 @@ To store the data I used PostgreSQL.
 - Registration and login
 - Physiotherapists can:
   - accept patients' link requests.
-  - create new programs
-  - add exercises to programs, choosing sets and reps
-  - filter exercises by target area, difficulty level and name
-  - assign programs to patients
-  - search patients by last name
-  - remove patients from their connections
+  - create new programs.
+  - add exercises to programs, choosing sets and reps.
+  - filter exercises by target area, difficulty level and name.
+  - assign programs to patients.
+  - search patients by last name.
+  - remove patients from their connections.
 - Patients can:
-  - send link requests to physiotherapists
-  - view the assigned programs
-  - set the programs to completed or in progress
-  - purchase their favourite subscription
-  - leave reviews to physiotherapists
-  - search physiotherapists by last name and specialization
-  - filter the assignments by assignment status
-  - download the PDF of the program
-  - remove physiotherapists from their connections
+  - send link requests to physiotherapists.
+  - view the assigned programs.
+  - set the programs to completed or in progress.
+  - purchase their favourite subscription.
+  - leave reviews to physiotherapists.
+  - search physiotherapists by last name and specialization.
+  - filter the assignments by assignment status.
+  - download the PDF of the program.
+  - remove physiotherapists from their connections.
 - Both type of users can:
-  - change profile details
-  - upload profile picture
-  - choose between light and dark mode
+  - change profile details.
+  - upload profile picture.
+  - choose between light and dark mode.
 - Admin can:
   - remove physiotherapists, patients, exercises.
   - add physiotherapists, patients, exercises.
+  - view statistics.
 
 ## :package: Packages
 

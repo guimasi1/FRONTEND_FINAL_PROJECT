@@ -49,7 +49,7 @@ const DashboardView = () => {
 
   const COLORS = ["#ce9d58", "#9E59CF", "#5B401A"];
   return (
-    <Row className="mx-2 mt-5 dashboard-rows">
+    <Row className="mx-2 mt-2 dashboard-rows">
       <Col xs={12} className="mt-2 text-center me-5">
         <Row>
           <Col xs={12} md={4}>

@@ -1,59 +1,63 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { login, setRoleState } from "../redux/actions/authentication";
+import { useTheme } from "../Theme";
 import { useState } from "react";
+import ErrorAuthentication from "../Utils/ErrorAuthentication";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { showLoggedIn } from "../redux/actions/toastifyActions";
-import ErrorAuthentication from "./Utils/ErrorAuthentication";
-import { getMyPatientProfile } from "../redux/actions/patientsActions";
-import { getMyPhysioProfile } from "../redux/actions/physiotherapistActions";
-import { useTheme } from "./Theme";
-const Login = () => {
+import {
+  adminLogin,
+  getMyAdminProfile,
+} from "../../redux/actions/adminsActions";
+import { HashLoader } from "react-spinners";
+const AdminLogin = () => {
   const { theme } = useTheme();
+  const [loginData, setLoginData] = useState();
   const dispatch = useDispatch();
-  const [loginData, setLoginData] = useState(null);
   const navigate = useNavigate();
   const [showError, setShowError] = useState(false);
   const [message, setMessage] = useState(null);
-  // const role = localStorage.getItem("role");
+  const [waiting, setWaiting] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(login(loginData, role));
+      setWaiting(true);
+      const response = await dispatch(adminLogin(loginData));
       if (response) {
-        dispatch(showLoggedIn());
-        if (role === "PATIENT") {
-          dispatch(getMyPatientProfile());
-        } else {
-          dispatch(getMyPhysioProfile());
-        }
         setShowError(false);
-        navigate("/");
+        dispatch(getMyAdminProfile());
+        navigate("/admin");
+        setWaiting(false);
       } else {
         setShowError(true);
         setMessage("Incorrect email or password");
+        setWaiting(false);
       }
     } catch (error) {
       console.error("Errore durante il login:", error);
     }
   };
-  const [role, setRole] = useState("");
   return (
     <Container
-      className={`${
-        theme === "dark" ? "border-0 bg-grey" : ""
-      } border border-2 pb-5 mb-5 mt-2 rounded-5 shadow-lg`}
+      className={`${theme === "dark" ? "border-0" : ""} border border-2`}
+      id="admin-login-container"
     >
-      <Row className="px-5">
+      {waiting && (
+        <HashLoader
+          color="#0e9a3d"
+          className="completely-centered position-absolute"
+          size={200}
+        />
+      )}
+      <Row className={`px-5`}>
         <Col xs={12} md={6} className="text-center order-1 pt-4">
           <img
-            id="illustration-registration"
-            src="images/Phisiotherapy-rafiki.svg"
+            className="w-100"
+            src="images/admin-login.svg"
             alt="physiotherapist illustration"
           />
         </Col>
         <Col xs={12} md={6} className="order-0 pb-0" id="login-form">
-          <h1 className="text-center me-5">Login</h1>
+          <h1 className="text-center me-5">Admin Login</h1>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label className="fs-5">Email address</Form.Label>
@@ -78,35 +82,7 @@ const Login = () => {
                 }}
               />
             </Form.Group>
-            <div className="my-3">
-              <Form.Label className="fs-5 mb-3">What are you?*</Form.Label>
-              <div>
-                <Form.Check
-                  inline
-                  label="Physiotherapist"
-                  name="group1"
-                  type="radio"
-                  value={"PHYSIOTHERAPIST"}
-                  id="1"
-                  onClick={(e) => {
-                    setRole(e.target.value);
-                    dispatch(setRoleState(e.target.value));
-                  }}
-                />
-                <Form.Check
-                  inline
-                  label="Patient"
-                  name="group1"
-                  type="radio"
-                  value={"PATIENT"}
-                  id="2"
-                  onClick={(e) => {
-                    setRole(e.target.value);
-                    dispatch(setRoleState(e.target.value));
-                  }}
-                />
-              </div>
-            </div>
+            <div className="my-3"></div>
             <div className="text-center me-5">
               {showError && <ErrorAuthentication errorMessage={message} />}
               <Button
@@ -126,5 +102,4 @@ const Login = () => {
     </Container>
   );
 };
-
-export default Login;
+export default AdminLogin;

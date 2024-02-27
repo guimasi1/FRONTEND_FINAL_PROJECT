@@ -57,6 +57,10 @@ const AssignExercisesPage = () => {
   const currentExerciseId = useSelector(
     (state) => state.exercises.currentExerciseId
   );
+  const showDialog = useSelector((state) => state.exercises.dialogStatus);
+  const showDialogAssignments = useSelector(
+    (state) => state.assignments.dialogStatus
+  );
 
   const currentAssignmentToDeleteId = useSelector(
     (state) => state.assignments.assignmentToDeleteId
@@ -216,19 +220,26 @@ const AssignExercisesPage = () => {
           {currentAssignmentToDeleteId && <ConfirmAssignmentDialog />}
           <Col xs={{ span: 4 }}>
             <Row
-              className={`shadow-lg rounded-4 py-3 px-5 ms-3 ${
+              className={`${
+                (showDialog || showDialogAssignments) && "blur"
+              } shadow-lg rounded-4 py-3 px-5 ms-3 ${
                 theme === "dark" ? "bg-grey" : ""
               }`}
               id="your-patient-section"
             >
-              <Col xs={12} className="position-relative">
+              <Col
+                xs={12}
+                className={`${
+                  (showDialog || showDialogAssignments) && "blur"
+                } position-relative`}
+              >
                 <div>
                   <div>
                     <h3 className="text-center pt-3">Your patient</h3>
                   </div>
                 </div>
               </Col>
-              <Col xs={12} className=" rounded-4 ">
+              <Col xs={12} className={`rounded-4`}>
                 <div>
                   <div className="d-flex justify-content-center mt-2 mb-4">
                     <img
@@ -264,7 +275,9 @@ const AssignExercisesPage = () => {
 
           <Col
             xs={7}
-            className={`shadow-lg rounded-4 px-5 pb-3 ms-5 ${
+            className={`${
+              (showDialog || showDialogAssignments) && "blur"
+            } shadow-lg rounded-4 px-5 pb-3 ms-5 ${
               theme === "dark" ? "bg-grey" : ""
             }`}
             id="assigned-programs-section"
@@ -290,8 +303,16 @@ const AssignExercisesPage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row className="mb-2 align-items-center cursor">
-              <Col className="fw-bold" xs={1}>
+            <Row
+              className={`${
+                (showDialog || showDialogAssignments) && "blur"
+              } mb-2 align-items-center cursor`}
+            >
+              <Col
+                className={`
+              ${showDialog && "blur"} fw-bold`}
+                xs={1}
+              >
                 <div className="d-flex justify-content-center align-items-center py-2">
                   N°
                 </div>
@@ -311,8 +332,8 @@ const AssignExercisesPage = () => {
           </Col>
           {currentAssignment && (
             <Col
-              className={` ${
-                theme === "dark" ? "bg-grey" : ""
+              className={` ${theme === "dark" ? "bg-grey" : ""} ${
+                (showDialog || showDialogAssignments) && "blur"
               } shadow-lg rounded-4 px-5 mt-3`}
             >
               <Row>

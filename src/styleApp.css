@@ -192,6 +192,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.completely-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .blur {
   filter: blur(1px);
 }
@@ -505,6 +512,10 @@ code {
 }
 
 .dashboard-rows {
+  height: 100vh;
+}
+
+#admin-login-container {
   height: 100vh;
 }
 

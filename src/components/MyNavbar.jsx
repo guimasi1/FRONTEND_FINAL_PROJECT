@@ -68,7 +68,7 @@ const MyNavbar = ({ ThemeProvider }) => {
   return (
     <Navbar
       expand="lg"
-      className={location.pathname === "/admin" ? "d-none" : ""}
+      className={location.pathname.startsWith("/admin") ? "d-none" : ""}
     >
       <Container className="ps-lg-3">
         <Navbar.Brand className="me-0 ">
@@ -93,7 +93,7 @@ const MyNavbar = ({ ThemeProvider }) => {
               fillRule="evenodd"
               font-size="9pt"
               stroke="#0e9a3d"
-              stroke-width="1mm"
+              strokeWidth="1mm"
               fill="#0e9a3d"
               style={{
                 stroke: "#0e9a3d",
@@ -370,18 +370,20 @@ const MyNavbar = ({ ThemeProvider }) => {
                     : ""
                 }`}
               >
-                <div className={`d-flex align-items-center fw-bold`}>
-                  <Link
-                    to="/pricing"
-                    className={`text-decoration-none ${
-                      isPricingHovered ? "text-white" : "text-black"
-                    } mt-2 pb-1 ${
-                      theme === "dark" ? "text-white" : "text-black"
-                    }`}
-                  >
-                    Pricing
-                  </Link>
-                </div>
+                {roleState !== "PATIENT" && (
+                  <div className={`d-flex align-items-center fw-bold`}>
+                    <Link
+                      to="/pricing"
+                      className={`text-decoration-none ${
+                        isPricingHovered ? "text-white" : "text-black"
+                      } mt-2 pb-1 ${
+                        theme === "dark" ? "text-white" : "text-black"
+                      }`}
+                    >
+                      Pricing
+                    </Link>
+                  </div>
+                )}
               </motion.div>
             </div>
           </Nav>

@@ -13,6 +13,9 @@ export const TOTAL_PHYSIOS = "TOTAL_PHYSIOS";
 export const TOTAL_EASY = "TOTAL_EASY";
 export const TOTAL_HARD = "TOTAL_HARD";
 export const TOTAL_MEDIUM = "TOTAL_MEDIUM";
+export const LOGIN_ADMIN = "LOGIN_ADMIN";
+export const GET_MY_ADMIN_PROFILE = "GET_MY_ADMIN_PROFILE";
+export const ADMIN_LOGOUT = "ADMIN_LOGOUT";
 
 export const getPhysiosByParameters = (specialization, size) => {
   const token = Cookies.get("token");
@@ -296,3 +299,59 @@ export const getNumExercisesByDifficulty = (difficulty) => {
     }
   };
 };
+
+export const adminLogin = (loginData) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch("http://localhost:3001/auth/login/admin", {
+        method: "POST",
+        body: JSON.stringify(loginData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: LOGIN_ADMIN,
+          payload: data.token,
+        });
+        console.log(loginData);
+        Cookies.set("adminToken", data.token);
+        return true;
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getMyAdminProfile = () => {
+  const token = Cookies.get("adminToken");
+  console.log(token + "sono nel getadminprofile");
+
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`${BASE_URL}admins/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        dispatch({
+          type: GET_MY_ADMIN_PROFILE,
+          payload: data,
+        });
+      } else {
+        throw new Error("Something went wrong.");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const adminLogout = () => ({ type: ADMIN_LOGOUT });

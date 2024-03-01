@@ -203,6 +203,30 @@ const AssignExercisesPage = () => {
     { value: "MEDIUM", label: "Medium" },
     { value: "HARD", label: "Hard" },
   ];
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      backgroundColor: "white",
+      borderColor: "#9e9e9e",
+      boxShadow: "none",
+      "&:hover": {
+        borderColor: "#9e9e9e",
+      },
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#4a4a4a",
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? "white" : "#4a4a4a",
+      backgroundColor: state.isSelected ? "#ce9d58" : null,
+      "&:hover": {
+        backgroundColor: "#ce9d58",
+        color: "white",
+      },
+    }),
+  };
 
   return (
     <motion.div
@@ -469,6 +493,7 @@ const AssignExercisesPage = () => {
                 <Col xs={5} className="my-4 d-flex align-items-center gap-3">
                   <p className="p-0 fw-bold mt-3">Target Area</p>
                   <Select
+                    styles={customStyles}
                     className="w-75"
                     defaultValue={options.find(
                       (option) => option.value === exercisesParams.targetArea
@@ -480,6 +505,7 @@ const AssignExercisesPage = () => {
                 <Col xs={3} className="my-4 d-flex align-items-center gap-3">
                   <p className="p-0 fw-bold mt-3">Difficulty</p>
                   <Select
+                    styles={customStyles}
                     className="w-75"
                     value={difficulties.find(
                       (option) => option.value === exercisesParams.difficulty

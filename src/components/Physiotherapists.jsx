@@ -49,6 +49,30 @@ const Physiotherapist = () => {
     lastName: "",
     specialization,
   });
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      backgroundColor: "white",
+      borderColor: "#9e9e9e",
+      boxShadow: "none",
+      "&:hover": {
+        borderColor: "#9e9e9e",
+      },
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#4a4a4a",
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      color: state.isSelected ? "white" : "#4a4a4a",
+      backgroundColor: state.isSelected ? "#ce9d58" : null,
+      "&:hover": {
+        backgroundColor: "#ce9d58",
+        color: "white",
+      },
+    }),
+  };
   useEffect(() => {
     dispatch(getPhysiosByParams(physioParams));
     //dispatch(getPhysiosBySpecialization(specialization.value));
@@ -88,6 +112,7 @@ const Physiotherapist = () => {
             </Form.Group>
             <Form.Group className="flex-grow-1">
               <Select
+                styles={customStyles}
                 className="w-50 mt-1"
                 value={specializations.find(
                   (option) => option.value === physioParams.specialization

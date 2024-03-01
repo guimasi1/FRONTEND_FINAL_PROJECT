@@ -52,8 +52,8 @@ const LateralNavbar = ({
               theme === "dark" && activeBreadCrumb === "main" ? "bg-black" : ""
             } ${
               theme === "light" && activeBreadCrumb === "main"
-                ? "bg-success text-white"
-                : "bg-white"
+                ? "greenish text-white"
+                : ""
             }   
              d-flex gap-2 py-2 rounded mb-2 px-2`}
             onClick={() => {

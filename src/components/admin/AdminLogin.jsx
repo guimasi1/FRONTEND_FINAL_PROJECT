@@ -25,8 +25,10 @@ const AdminLogin = () => {
       if (response) {
         setShowError(false);
         dispatch(getMyAdminProfile());
-        navigate("/admin");
-        setWaiting(false);
+        setTimeout(() => {
+          navigate("/admin");
+          setWaiting(false);
+        }, 1000);
       } else {
         setShowError(true);
         setMessage("Incorrect email or password");

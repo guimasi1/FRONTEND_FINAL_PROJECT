@@ -14,6 +14,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useTheme } from "../Theme";
+import { motion } from "framer-motion";
+import { HashLoader } from "react-spinners";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -21,12 +23,19 @@ const Dashboard = () => {
   const [width, setWidth] = useState("auto");
   const adminProfile = useSelector((state) => state.admins.adminProfile);
   const navigate = useNavigate();
+  const [waiting, setWaiting] = useState(false);
   const { theme } = useTheme();
   useEffect(() => {
     dispatch(getMyAdminProfile());
   }, []);
+
   return (
     <Container fluid>
+      {waiting && (
+        <div className="completely-centered z-1">
+          <HashLoader color="#0e9a3d" size={200} />
+        </div>
+      )}
       {adminProfile && (
         <Row>
           <Col
@@ -47,16 +56,24 @@ const Dashboard = () => {
                 <p className="mt-2 text-end fw-bold">
                   Admin: {adminProfile?.firstName} {adminProfile?.lastName}
                 </p>
-                <span
-                  className="material-symbols-outlined mb-2 cursor fs-3"
-                  onClick={() => {
-                    dispatch(adminLogout());
-                    navigate("/admin-login");
-                    Cookies.set("adminToken", "");
-                  }}
-                >
-                  logout
-                </span>
+                <div className="d-flex justify-content-center align-items-center">
+                  <motion.span
+                    whileHover={{
+                      backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+                    }}
+                    className="material-symbols-outlined mb-2 cursor fs-3 px-2 py-2 rounded-pill"
+                    onClick={() => {
+                      setWaiting(true);
+                      setTimeout(() => {
+                        navigate("/admin-login");
+                        dispatch(adminLogout());
+                        Cookies.set("adminToken", "");
+                      }, 1000);
+                    }}
+                  >
+                    logout
+                  </motion.span>
+                </div>
               </div>
             )}
             {adminProfile && (

@@ -33,7 +33,9 @@ const SingleExerciseAdmin = ({ exercise }) => {
       {!showAlert && (
         <motion.div
           className="fs-6 row rounded cursor text-start pb-2"
-          whileHover={{ backgroundColor: "#00000" }}
+          whileHover={{
+            backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+          }}
         >
           <Col>
             <p className="m-0 pt-2">

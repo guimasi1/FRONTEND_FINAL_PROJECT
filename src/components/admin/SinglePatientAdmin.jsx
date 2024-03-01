@@ -5,8 +5,12 @@ import DeleteConfirmation from "../Utils/DeleteConfirmation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removePatient } from "../../redux/actions/adminsActions";
+import { useTheme } from "../Theme";
+
 const SinglePatientAdmin = ({ patient }) => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const [confirmElimination, setConfirmElimination] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 

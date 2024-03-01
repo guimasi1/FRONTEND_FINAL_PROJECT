@@ -13,6 +13,7 @@ import {
 } from "../../redux/actions/adminsActions";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useTheme } from "../Theme";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const Dashboard = () => {
   const [width, setWidth] = useState("auto");
   const adminProfile = useSelector((state) => state.admins.adminProfile);
   const navigate = useNavigate();
+  const { theme } = useTheme();
   useEffect(() => {
     dispatch(getMyAdminProfile());
   }, []);
@@ -27,7 +29,11 @@ const Dashboard = () => {
     <Container fluid>
       {adminProfile && (
         <Row>
-          <Col xs={2} className="p-0 bg-grey" style={{ width }}>
+          <Col
+            xs={2}
+            className={`${theme === "dark" ? "bg-grey" : ""} p-0 `}
+            style={{ width }}
+          >
             <LateralNavbar
               activeBreadCrumb={activeBreadCrumb}
               setActiveBreadCrumb={setActiveBreadCrumb}

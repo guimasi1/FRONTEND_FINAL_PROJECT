@@ -38,7 +38,9 @@ const AdminLogin = () => {
   };
   return (
     <Container
-      className={`${theme === "dark" ? "border-0" : ""} border border-2`}
+      className={`${
+        theme === "dark" ? "border-0" : "border-0"
+      } border border-2`}
       id="admin-login-container"
     >
       {waiting && (

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { HashLoader } from "react-spinners";
 import Cookies from "js-cookie";
+import { useTheme } from "../Theme";
 const LateralNavbar = ({
   setActiveBreadCrumb,
   setWidth,
@@ -16,6 +17,7 @@ const LateralNavbar = ({
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { theme } = useTheme();
   const [waiting, setWaiting] = useState(false);
   return (
     <div>
@@ -43,10 +45,17 @@ const LateralNavbar = ({
             </span>
           </div>
           <motion.div
-            whileHover={{ backgroundColor: "#00000" }}
-            className={`${activeBreadCrumb === "main" ? "bg-black" : ""} ${
-              activeBreadCrumb !== "main" ? "bg-grey" : ""
-            }  d-flex gap-2 py-2 rounded mb-2 px-2`}
+            whileHover={{
+              backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+            }}
+            className={`${
+              theme === "dark" && activeBreadCrumb === "main" ? "bg-black" : ""
+            } ${
+              theme === "light" && activeBreadCrumb === "main"
+                ? "bg-success text-white"
+                : "bg-white"
+            }   
+             d-flex gap-2 py-2 rounded mb-2 px-2`}
             onClick={() => {
               setComponent("main");
             }}
@@ -57,10 +66,18 @@ const LateralNavbar = ({
             {width === "auto" && <p className="cursor m-0">Statistics</p>}{" "}
           </motion.div>
           <motion.div
-            whileHover={{ backgroundColor: "#00000" }}
+            whileHover={{
+              backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+            }}
             className={`${
-              activeBreadCrumb === "patients" ? "bg-black" : ""
-            } d-flex gap-2 py-2 rounded mb-2 px-2`}
+              theme === "dark" && activeBreadCrumb === "patients"
+                ? "bg-black"
+                : ""
+            } ${
+              theme === "light" && activeBreadCrumb === "patients"
+                ? "greenish text-white"
+                : ""
+            }  d-flex gap-2 py-2 rounded mb-2 px-2`}
             onClick={() => {
               setComponent("patients");
             }}
@@ -72,9 +89,17 @@ const LateralNavbar = ({
           </motion.div>
           <motion.div
             className={`${
-              activeBreadCrumb === "physiotherapists" ? "bg-black" : ""
+              theme === "dark" && activeBreadCrumb === "physiotherapists"
+                ? "bg-black"
+                : ""
+            } ${
+              theme === "light" && activeBreadCrumb === "physiotherapists"
+                ? "greenish text-white"
+                : ""
             } d-flex gap-2 py-2 rounded mb-2 px-2`}
-            whileHover={{ backgroundColor: "#00000" }}
+            whileHover={{
+              backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+            }}
             onClick={() => {
               setComponent("physiotherapists");
             }}
@@ -86,9 +111,17 @@ const LateralNavbar = ({
           </motion.div>
           <motion.div
             className={`${
-              activeBreadCrumb === "exercises" ? "bg-black" : ""
-            } d-flex gap-2 py-2 rounded mb-2 px-2`}
-            whileHover={{ backgroundColor: "#00000" }}
+              theme === "dark" && activeBreadCrumb === "exercises"
+                ? "bg-black"
+                : ""
+            } ${
+              theme === "light" && activeBreadCrumb === "exercises"
+                ? "greenish text-white"
+                : ""
+            }  d-flex gap-2 py-2 rounded mb-2 px-2`}
+            whileHover={{
+              backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+            }}
             onClick={() => {
               setComponent("exercises");
             }}
@@ -100,7 +133,9 @@ const LateralNavbar = ({
           </motion.div>
         </div>
         <motion.div
-          whileHover={{ backgroundColor: "#00000" }}
+          whileHover={{
+            backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+          }}
           className="d-flex gap-2 rounded mb-2 px-2 pt-2"
         >
           <span

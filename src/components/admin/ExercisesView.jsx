@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllExercisesByParams } from "../../redux/actions/adminsActions";
 import Select from "react-select";
+import { useTheme } from "../Theme";
 
 const ExercisesView = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const [size, setSize] = useState(13);
   const exercises = useSelector((state) => state.admins.exercises);
   const [params, setParams] = useState({

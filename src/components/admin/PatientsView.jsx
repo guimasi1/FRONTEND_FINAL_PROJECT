@@ -4,12 +4,15 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getPatientsByLastName } from "../../redux/actions/adminsActions";
 import SinglePatientAdmin from "./SinglePatientAdmin";
+import { useTheme } from "../Theme";
 
 const PatientsView = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
   const [name, setName] = useState("");
   const patients = useSelector((state) => state.admins.patientsByLastName);
   const [size, setSize] = useState(13);
+
   useEffect(() => {
     dispatch(getPatientsByLastName(name, size));
   }, []);

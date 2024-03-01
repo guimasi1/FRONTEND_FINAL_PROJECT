@@ -10,9 +10,12 @@ import {
 } from "../../redux/actions/adminsActions";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
+import { useTheme } from "../Theme";
 
 const DashboardView = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const physiotherapists = useSelector(
     (state) => state.admins.physiotherapists
   );

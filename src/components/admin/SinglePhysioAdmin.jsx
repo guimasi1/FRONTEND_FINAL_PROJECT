@@ -5,8 +5,12 @@ import { motion } from "framer-motion";
 import DeleteConfirmation from "../Utils/DeleteConfirmation";
 import { Col, Row } from "react-bootstrap";
 import { removePhysio } from "../../redux/actions/adminsActions";
+import { useTheme } from "../Theme";
+
 const SinglePhysioAdmin = ({ physio }) => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const [confirmElimination, setConfirmElimination] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 

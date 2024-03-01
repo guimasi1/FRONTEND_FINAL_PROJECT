@@ -370,7 +370,7 @@ const MyNavbar = ({ ThemeProvider }) => {
                     : ""
                 }`}
               >
-                {roleState !== "PATIENT" && (
+                {roleState !== "PHYSIOTHERAPIST" && (
                   <div className={`d-flex align-items-center fw-bold`}>
                     <Link
                       to="/pricing"
@@ -409,10 +409,18 @@ const MyNavbar = ({ ThemeProvider }) => {
         {loggedIn && (
           <div className="d-flex gap-4 align-items-center">
             {roleState === "PHYSIOTHERAPIST" && (
-              <p className="m-0 fw-bold">Hi, {myPhysioProfile?.firstName}!</p>
+              <p className="m-0 fw-bold">
+                Hi,{" "}
+                <span className="text-greenish">
+                  {myPhysioProfile?.firstName}!
+                </span>
+              </p>
             )}
             {roleState === "PATIENT" && (
-              <p className="m-0 fw-bold">Hi, {myProfile?.firstName}!</p>
+              <p className="m-0 fw-bold">
+                Hi,{" "}
+                <span className="text-greenish">{myProfile?.firstName}!</span>
+              </p>
             )}
             <div style={{ width: "50px" }}>
               <img

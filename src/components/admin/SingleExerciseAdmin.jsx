@@ -5,8 +5,12 @@ import { useDispatch } from "react-redux";
 import DeleteConfirmation from "../Utils/DeleteConfirmation";
 import { motion } from "framer-motion";
 import { removeExercise } from "../../redux/actions/adminsActions";
+import { useTheme } from "../Theme";
+
 const SingleExerciseAdmin = ({ exercise }) => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const [confirmElimination, setConfirmElimination] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 

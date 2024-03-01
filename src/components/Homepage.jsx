@@ -436,7 +436,7 @@ const Homepage = () => {
       </Row>
 
       <Row className="" id="row-margin-top"></Row>
-      <Row className="mt-5">
+      {/* <Row className="mt-5">
         <Col className="d-flex flex-column text-center mt-5">
           <h4 className="fs-1 fw-bold">Are you ready?</h4>
           <div className="d-flex justify-content-center ">
@@ -468,7 +468,7 @@ const Homepage = () => {
             </svg>
           </div>
         </Col>
-      </Row>
+      </Row> */}
       <GoUpButton />
     </Container>
   );

@@ -224,3 +224,21 @@ $greenish-6: #d9f5e4;
   text-overflow: ellipsis;
   height: calc(1.2em * 5);
 }
+
+// INPUT RADIO
+
+input[type="radio"]:checked {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #f89100;
+  border-color: #f89100;
+  box-shadow: 0 0 0 1px #f89100;
+}
+input[type="radio"] {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+}

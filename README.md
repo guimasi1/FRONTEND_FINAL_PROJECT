@@ -85,4 +85,4 @@ https://github.com/guimasi1/EPICODE_FINAL_PROJECT
 ## Author
 
 Guido Masi
-[Linkedin](www.linkedin.com/in/guido-masi-fullstack-dev)
+[Linkedin](https://linkedin.com/in/guido-masi-fullstack-dev)

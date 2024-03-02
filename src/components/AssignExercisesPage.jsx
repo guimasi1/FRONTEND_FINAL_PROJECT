@@ -268,7 +268,7 @@ const AssignExercisesPage = () => {
                   <div className="d-flex justify-content-center mt-2 mb-4">
                     <img
                       src={patientProfile.profilePictureUrl}
-                      alt=""
+                      alt="profile"
                       className="image-profile-exercises rounded-4"
                     />
                   </div>

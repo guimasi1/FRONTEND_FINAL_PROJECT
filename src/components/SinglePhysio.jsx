@@ -84,7 +84,7 @@ const SinglePhysio = ({ physio, index }) => {
               : // : "https://placekitten.com/240"
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/768px-Circle-icons-profile.svg.png"
           }`}
-          alt=""
+          alt="profile"
           className={`rounded-start-1 mt-3 cursor  ${
             physio.profilePictureUrl === null
               ? "physio-profile-image-card-fallback"

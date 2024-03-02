@@ -104,7 +104,7 @@ const Homepage = () => {
         <Col xs={12} md={6} className="order-0 order-md-1">
           <motion.img
             src="/images\Phisiotherapy-bro.svg"
-            alt=""
+            alt="physiotherapist"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, ease: "easeOut", duration: 2 }}
@@ -115,7 +115,7 @@ const Homepage = () => {
       <Row className="position-relative mt-5 pt-5">
         <motion.img
           src="images/right-footprint.svg"
-          alt=""
+          alt="footprint"
           className="right-footprint position-absolute"
           style={{ width: "120px " }}
           transition={{ delay: 1.3, ease: "easeInOut", duration: 0.2 }}
@@ -125,7 +125,7 @@ const Homepage = () => {
         />
         <motion.img
           src="images/right-footprint.svg"
-          alt=""
+          alt="footprint"
           className="right-footprint-2 position-absolute"
           style={{ width: "120px " }}
           transition={{ delay: 1.6, ease: "easeInOut", duration: 0.2 }}
@@ -135,7 +135,7 @@ const Homepage = () => {
         />
         <motion.img
           src="images/right-footprint.svg"
-          alt=""
+          alt="footprint"
           className="right-footprint-3 position-absolute"
           style={{ width: "120px " }}
           transition={{ delay: 2.5, ease: "easeInOut", duration: 0.2 }}
@@ -145,7 +145,7 @@ const Homepage = () => {
         />
         <motion.img
           src="images/left-footprint.svg"
-          alt=""
+          alt="footprint"
           className="left-footprint position-absolute"
           style={{ width: "138px " }}
           transition={{ delay: 1.7, ease: "easeInOut", duration: 0.2 }}
@@ -155,7 +155,7 @@ const Homepage = () => {
         />
         <motion.img
           src="images/left-footprint.svg"
-          alt=""
+          alt="footprint"
           className="left-footprint-2 position-absolute"
           style={{ width: "138px " }}
           transition={{ delay: 2.3, ease: "easeInOut", duration: 0.2 }}
@@ -165,7 +165,7 @@ const Homepage = () => {
         />
         <motion.img
           src="images/left-footprint.svg"
-          alt=""
+          alt="footprint"
           className="left-footprint-3 position-absolute"
           style={{ width: "138px " }}
           transition={{ delay: 2.9, ease: "easeInOut", duration: 0.2 }}
@@ -174,7 +174,7 @@ const Homepage = () => {
           whileInView={{ opacity: 0.7 }}
         />
         <Col xs={12} md={5} className="pe-5 mt-4">
-          <img src="images/breathing-exercise.svg" alt="" />
+          <img src="images/breathing-exercise.svg" alt="yoga" />
         </Col>
         <Col className="ps-4">
           <motion.div ref={ref}>
@@ -341,7 +341,7 @@ const Homepage = () => {
             <motion.img
               src="images/Jogging-amico.svg"
               className={`w-100 rounded-top-4 bg-white`}
-              alt=""
+              alt="person jogging"
             />
             <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Discover the power of physiotherapy
@@ -369,7 +369,7 @@ const Homepage = () => {
             <motion.img
               src="images/physical-therapy-image.svg"
               className="w-100 rounded-top-4 bg-white "
-              alt=""
+              alt="physiotherapy"
             />
             <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Get in touch with the best physiotherapists
@@ -398,7 +398,7 @@ const Homepage = () => {
             <motion.img
               src="images/physical-therapy-image-2.svg"
               className="w-100 rounded-top-4 bg-white"
-              alt=""
+              alt="physiotherapy"
             />
             <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Follow a personalized exercise program{" "}
@@ -426,7 +426,7 @@ const Homepage = () => {
             <motion.img
               src="images/physical-therapy-image-3.svg"
               className="w-100 rounded-top-4 bg-white"
-              alt=""
+              alt="physiotherapy"
             />
             <p className="fs-5 ps-4 mt-2 fw-bold text-black">
               Receive feedback from your therapist{" "}

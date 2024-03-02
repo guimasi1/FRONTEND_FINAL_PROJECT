@@ -41,7 +41,7 @@ const SingleReview = ({ review }) => {
                       ? review.patient.profilePictureUrl
                       : "/images/Circle-icons-profile.svg"
                   }
-                  alt=""
+                  alt="profile"
                 />
               </div>
               <div className="d-flex flex-grow-1">

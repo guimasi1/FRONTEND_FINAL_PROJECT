@@ -426,7 +426,7 @@ const MyNavbar = ({ ThemeProvider }) => {
               <img
                 src={profilePictureUrl}
                 className="rounded-pill cursor w-100"
-                alt=""
+                alt="profile"
                 onClick={() => {
                   if (roleState === "PATIENT") {
                     navigate("/profile");

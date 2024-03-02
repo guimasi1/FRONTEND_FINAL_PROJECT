@@ -56,7 +56,7 @@ const SinglePhysioDetails = () => {
                     : "/images/Circle-icons-profile.svg"
                 }
                 className="physio-profile-image-details-card rounded-pill"
-                alt=""
+                alt="profile"
               />
             </Col>
             <Col xs={12} className="d-flex justify-content-between">

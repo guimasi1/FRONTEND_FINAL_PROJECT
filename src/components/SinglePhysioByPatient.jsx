@@ -59,7 +59,7 @@ const SinglePhysioByPatient = ({ physio }) => {
               }`}
               className="rounded-pill"
               style={{ width: "50px" }}
-              alt=""
+              alt="profile"
             />
           </div>
           <div className="d-flex flex-column ms-2">

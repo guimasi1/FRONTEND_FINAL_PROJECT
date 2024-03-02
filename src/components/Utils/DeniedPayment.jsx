@@ -14,7 +14,7 @@ const DeniedPayment = () => {
             <br /> Try again later.
           </p>
           <div>
-            <img src="images/sorry.svg" className="w-100" alt="" />
+            <img src="images/sorry.svg" className="w-100" alt="sad person" />
           </div>
         </Col>
       </Row>

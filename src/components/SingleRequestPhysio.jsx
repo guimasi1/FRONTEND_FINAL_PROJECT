@@ -18,7 +18,7 @@ const SingleRequestPhysio = ({ request }) => {
         <img
           src="https://placekitten.com/50"
           className="rounded-pill cursor"
-          alt=""
+          alt="profile"
         />
       </Col>
       <Col className="mt-2 p-0 cursor d-flex gap-1">
@@ -28,7 +28,7 @@ const SingleRequestPhysio = ({ request }) => {
       <Col className="mt-1 text-end cursor ">
         <img
           src="images\accept-icon.svg"
-          alt=""
+          alt="accept icon"
           className="me-2 icon-request"
           onClick={() => {
             dispatch(acceptRequest(request.id));
@@ -37,7 +37,7 @@ const SingleRequestPhysio = ({ request }) => {
         />
         <img
           src="images/delete_FILL0_wght400_GRAD0_opsz24.svg"
-          alt=""
+          alt="trash icon"
           className="icon-request"
           onClick={() => {
             dispatch(removeRequest(request.id));

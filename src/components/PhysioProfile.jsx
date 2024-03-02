@@ -91,7 +91,7 @@ const PhysioProfile = () => {
                         : "images/Circle-icons-profile.svg"
                     }
                     className="rounded-pill cursor mt-3 profile-image"
-                    alt=""
+                    alt="profile"
                   />
                 )}
                 <motion.span

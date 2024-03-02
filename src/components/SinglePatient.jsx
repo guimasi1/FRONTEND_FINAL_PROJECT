@@ -46,7 +46,7 @@ const SinglePatient = ({ patient }) => {
                 ? patient.profilePictureUrl
                 : "images/Circle-icons-profile.svg"
             }`}
-            alt=""
+            alt="profile"
             className="rounded-4 ms-1 patient-profile-image-card"
           />
         </div>

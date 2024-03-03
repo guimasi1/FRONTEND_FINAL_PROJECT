@@ -4,9 +4,12 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import SinglePhysioAdmin from "./SinglePhysioAdmin";
 import { getPhysiosByParameters } from "../../redux/actions/adminsActions";
+import { useTheme } from "../Theme";
 
 const PhysiotherapistsView = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const [name, setName] = useState("");
   const physiotherapists = useSelector(
     (state) => state.admins.physiotherapists

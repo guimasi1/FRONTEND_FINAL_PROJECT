@@ -165,7 +165,7 @@ const Pricing = () => {
             {theme === "light" && (
               <img
                 src="images/bookmark.svg"
-                alt=""
+                alt="bookmark"
                 className="w-25 position-absolute"
                 id="bookmark-favourite-plan"
               />

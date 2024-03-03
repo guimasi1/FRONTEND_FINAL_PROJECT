@@ -5,8 +5,12 @@ import DeleteConfirmation from "../Utils/DeleteConfirmation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removePatient } from "../../redux/actions/adminsActions";
+import { useTheme } from "../Theme";
+
 const SinglePatientAdmin = ({ patient }) => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const [confirmElimination, setConfirmElimination] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -30,7 +34,9 @@ const SinglePatientAdmin = ({ patient }) => {
       {!showAlert && (
         <motion.div
           className="fs-6 row rounded cursor text-start pb-2"
-          whileHover={{ backgroundColor: "#00000" }}
+          whileHover={{
+            backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+          }}
         >
           <Col>
             <p className="m-0 pt-2">

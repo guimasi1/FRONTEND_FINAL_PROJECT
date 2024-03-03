@@ -28,7 +28,7 @@ const SinglePatientExercisesDetails = ({ exercise }) => {
           className={`${
             isImgHovered ? "" : "rounded-4"
           } image-exercise-default`}
-          alt=""
+          alt="exercise"
         />
       </Col>
       <Col className="p-0 fw-bold" xs={5}>

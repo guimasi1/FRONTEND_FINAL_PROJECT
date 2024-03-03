@@ -5,8 +5,12 @@ import { useDispatch } from "react-redux";
 import DeleteConfirmation from "../Utils/DeleteConfirmation";
 import { motion } from "framer-motion";
 import { removeExercise } from "../../redux/actions/adminsActions";
+import { useTheme } from "../Theme";
+
 const SingleExerciseAdmin = ({ exercise }) => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const [confirmElimination, setConfirmElimination] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -29,7 +33,9 @@ const SingleExerciseAdmin = ({ exercise }) => {
       {!showAlert && (
         <motion.div
           className="fs-6 row rounded cursor text-start pb-2"
-          whileHover={{ backgroundColor: "#00000" }}
+          whileHover={{
+            backgroundColor: theme === "dark" ? "#00000" : "#68d89b",
+          }}
         >
           <Col>
             <p className="m-0 pt-2">

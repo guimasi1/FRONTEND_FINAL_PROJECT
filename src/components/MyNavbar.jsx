@@ -91,7 +91,7 @@ const MyNavbar = ({ ThemeProvider }) => {
               id="svgGroup"
               strokeLinecap="round"
               fillRule="evenodd"
-              font-size="9pt"
+              fontSize="9pt"
               stroke="#0e9a3d"
               strokeWidth="1mm"
               fill="#0e9a3d"
@@ -370,7 +370,7 @@ const MyNavbar = ({ ThemeProvider }) => {
                     : ""
                 }`}
               >
-                {roleState !== "PATIENT" && (
+                {roleState !== "PHYSIOTHERAPIST" && (
                   <div className={`d-flex align-items-center fw-bold`}>
                     <Link
                       to="/pricing"
@@ -409,16 +409,24 @@ const MyNavbar = ({ ThemeProvider }) => {
         {loggedIn && (
           <div className="d-flex gap-4 align-items-center">
             {roleState === "PHYSIOTHERAPIST" && (
-              <p className="m-0 fw-bold">Hi, {myPhysioProfile?.firstName}!</p>
+              <p className="m-0 fw-bold">
+                Hi,{" "}
+                <span className="text-greenish">
+                  {myPhysioProfile?.firstName}!
+                </span>
+              </p>
             )}
             {roleState === "PATIENT" && (
-              <p className="m-0 fw-bold">Hi, {myProfile?.firstName}!</p>
+              <p className="m-0 fw-bold">
+                Hi,{" "}
+                <span className="text-greenish">{myProfile?.firstName}!</span>
+              </p>
             )}
             <div style={{ width: "50px" }}>
               <img
                 src={profilePictureUrl}
                 className="rounded-pill cursor w-100"
-                alt=""
+                alt="profile"
                 onClick={() => {
                   if (roleState === "PATIENT") {
                     navigate("/profile");

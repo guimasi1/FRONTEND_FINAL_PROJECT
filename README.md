@@ -81,3 +81,8 @@ http://localhost:3001/uploadExercises with "picture" as key and the file exercis
 
 Link to backend repository
 https://github.com/guimasi1/EPICODE_FINAL_PROJECT
+
+## Author
+
+Guido Masi
+[Linkedin](https://linkedin.com/in/guido-masi-fullstack-dev)

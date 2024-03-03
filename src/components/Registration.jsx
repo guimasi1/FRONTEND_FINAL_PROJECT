@@ -34,7 +34,7 @@ const Registration = () => {
         <div>
           <img
             src="/images\blob (1).svg"
-            alt=""
+            alt="blob"
             className="z-0 position-absolute opacity-25"
             id="blob-registration"
           />
@@ -42,7 +42,7 @@ const Registration = () => {
         <div>
           <img
             src="/images\blob (2).svg"
-            alt=""
+            alt="blob"
             className="z-0 position-absolute opacity-25"
             id="blob-registration2"
           />
@@ -50,7 +50,7 @@ const Registration = () => {
         <div>
           <img
             src="/images\blob (3).svg"
-            alt=""
+            alt="blob"
             className="z-0 position-absolute opacity-25"
             id="blob-registration3"
           />

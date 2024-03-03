@@ -102,7 +102,7 @@ const Profile = () => {
                     }`}
                     style={{ width: "300px" }}
                     className={`bg-white rounded-pill mt-3 shadow-sm`}
-                    alt=""
+                    alt="profile"
                   />
                 )}
                 <motion.span

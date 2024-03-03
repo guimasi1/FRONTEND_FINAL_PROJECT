@@ -12,6 +12,7 @@ const MyPagination = ({ itemsCount, itemsPerPage }) => {
   for (let number = 1; number <= pageCount; number++) {
     items.push(
       <Pagination.Item
+        className="z-0"
         key={number}
         active={number === activePage}
         onClick={() => {

@@ -43,7 +43,7 @@ const SuccessfulPayment = () => {
           <img
             src="/images/successful-payment.jpg"
             className="w-25 rounded-4 mt-5"
-            alt=""
+            alt="smartphone"
           />
         </Col>
       </Row>

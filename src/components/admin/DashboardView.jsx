@@ -10,9 +10,12 @@ import {
 } from "../../redux/actions/adminsActions";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
+import { useTheme } from "../Theme";
 
 const DashboardView = () => {
   const dispatch = useDispatch();
+  const { theme } = useTheme();
+
   const physiotherapists = useSelector(
     (state) => state.admins.physiotherapists
   );
@@ -60,7 +63,18 @@ const DashboardView = () => {
                 setStatistics("patients-physios");
               }}
               className={`p-4 rounded cursor 
-              ${statistics.includes("patients") ? "bg-brownish" : "bg-grey"}
+              ${
+                theme === "dark" && statistics.includes("patients")
+                  ? "bg-brownish"
+                  : "bg-grey"
+              }
+               ${
+                 theme === "light"
+                   ? statistics.includes("patients")
+                     ? "bg-brownish"
+                     : "bg-white shadow-lg"
+                   : "bg-grey"
+               }
               `}
             >
               <p className="fw-bold fs-3">Patients</p>
@@ -72,7 +86,15 @@ const DashboardView = () => {
               transition={{ duration: 0.3 }}
               whileHover={{ scale: 1.04, backgroundColor: "#ce9d58" }}
               className={`p-4 rounded cursor ${
-                statistics.includes("patients") ? "bg-brownish" : "bg-grey"
+                theme === "dark" && statistics.includes("patients")
+                  ? "bg-brownish"
+                  : "bg-grey"
+              }     ${
+                theme === "light"
+                  ? statistics.includes("patients")
+                    ? "bg-brownish"
+                    : "bg-white shadow-lg"
+                  : "bg-grey"
               }`}
               onClick={() => {
                 setStatistics("patients-physios");
@@ -90,7 +112,15 @@ const DashboardView = () => {
                 setStatistics("exercises");
               }}
               className={`p-4 rounded cursor  ${
-                statistics === "exercises" ? "bg-brownish" : "bg-grey"
+                theme === "dark" && statistics === "exercises"
+                  ? "bg-brownish"
+                  : "bg-grey"
+              }  ${
+                theme === "light"
+                  ? statistics.includes("exercises")
+                    ? "bg-brownish"
+                    : "bg-white shadow-lg"
+                  : "bg-grey"
               }`}
             >
               <p className="fw-bold fs-3">Exercises</p>
@@ -99,9 +129,16 @@ const DashboardView = () => {
           </Col>
           <Col xs={12}>
             {statistics === "patients-physios" && (
-              <div style={{ height: "550px" }} className="bg-grey">
+              <div
+                style={{ height: "550px" }}
+                className={`rounded-3 ${
+                  theme === "dark" ? "bg-grey" : "shadow-lg"
+                }`}
+              >
                 <div
-                  className="w-100 bg-grey rounded mt-4"
+                  className={`${
+                    theme === "dark" ? "bg-grey" : ""
+                  } w-100 rounded mt-4`}
                   style={{ height: "500px" }}
                 >
                   <ResponsiveContainer width="100%" height="100%">
@@ -135,7 +172,12 @@ const DashboardView = () => {
               </div>
             )}
             {statistics === "exercises" && (
-              <div className="bg-grey rounded mt-4" style={{ height: "550px" }}>
+              <div
+                className={`${
+                  theme === "dark" ? "bg-grey" : "shadow-lg"
+                } rounded-3 mt-4`}
+                style={{ height: "550px" }}
+              >
                 <div className="w-100" style={{ height: "500px" }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart width={900} height={350}>

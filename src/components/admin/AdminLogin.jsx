@@ -25,8 +25,10 @@ const AdminLogin = () => {
       if (response) {
         setShowError(false);
         dispatch(getMyAdminProfile());
-        navigate("/admin");
-        setWaiting(false);
+        setTimeout(() => {
+          navigate("/admin");
+          setWaiting(false);
+        }, 1000);
       } else {
         setShowError(true);
         setMessage("Incorrect email or password");
@@ -38,7 +40,9 @@ const AdminLogin = () => {
   };
   return (
     <Container
-      className={`${theme === "dark" ? "border-0" : ""} border border-2`}
+      className={`${
+        theme === "dark" ? "border-0" : "border-0"
+      } border border-2`}
       id="admin-login-container"
     >
       {waiting && (

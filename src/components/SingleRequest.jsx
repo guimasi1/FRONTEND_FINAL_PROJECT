@@ -19,7 +19,7 @@ const SingleRequest = ({ request, updateProfile }) => {
         <img
           src="https://placekitten.com/50"
           className="rounded-pill cursor"
-          alt=""
+          alt="profile"
         />
       </Col>
       <Col className="mt-1 p-0 cursor">
@@ -29,7 +29,7 @@ const SingleRequest = ({ request, updateProfile }) => {
       <Col className="mt-1 text-end cursor ">
         <img
           src="images/delete_FILL0_wght400_GRAD0_opsz24.svg"
-          alt=""
+          alt="trash icon"
           className="icon-request"
           onClick={() => {
             dispatch(removeRequest(request.id));
